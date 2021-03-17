@@ -1,0 +1,25 @@
+Name: harbour-HackerNews
+Summary: Hacker News Reader
+Version: 1.0
+Release: 1
+Group: Qt/Qt
+URL: https://github.com/poetaster/SailfishHN
+License: GPLv3
+Sources:
+- '%{name}-%{version}.tar.bz2'
+Description: "Read Hacker News"
+Configure: none
+Builder: qtc5
+PkgConfigBR:
+- sailfishapp
+- Qt5Core
+- Qt5Qml
+- Qt5Quick
+Requires:
+- sailfishsilica-qt5 >= 1.1.0
+Files:
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/%{name}/qml'
+- '%{_bindir}/%{name}'
+PkgBR: []
