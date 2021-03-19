@@ -14,7 +14,6 @@ ListItem {
             id: column
             width: parent.width - parent.spacing
             spacing: Theme.paddingSmall
-
             Label {
 
                 text: {
@@ -31,15 +30,12 @@ ListItem {
 
             Label {
                 text: model.by
+
                 width: parent.width
                 wrapMode: Text.WordWrap
 
                 font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.highlightColor
             }
-
-
-
             Label {
                 //text: model.comms
                 text: {
@@ -53,14 +49,14 @@ ListItem {
                 wrapMode: Text.WordWrap
 
                 font.pixelSize: Theme.fontSizeSmall
-                color: Theme.primaryColor
+                color: Theme.highlightColor
             }
         }
     }
 
     Separator {
         id: separatorBottom
-        //visible: index < listView.count
+        visible: index < listView.count
         x: Theme.horizontalPageMargin
         width: parent.width - 2*x
         color: Theme.primaryColor

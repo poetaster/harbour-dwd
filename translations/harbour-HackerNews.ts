@@ -20,6 +20,17 @@
     </message>
 </context>
 <context>
+    <name>ShowComment</name>
+    <message>
+        <source>Open URL in browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ShowStory</name>
     <message>
         <source>Open URL in browser</source>

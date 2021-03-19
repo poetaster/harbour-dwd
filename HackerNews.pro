@@ -33,6 +33,9 @@ CONFIG += sailfishapp_i18n
 
 DISTFILES += \
     qml/NewsItem.qml \
+    qml/delegates/CommentItem.qml \
+    qml/delegates/StoryItem.qml \
+    qml/pages/ShowComment.qml \
     rpm/harbour-HackerNews.spec \
     rpm/harbour-HackerNews.yaml
 

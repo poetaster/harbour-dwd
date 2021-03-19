@@ -97,11 +97,12 @@ Page {
                 text: "Comments"
             }
         }
-        /* Label {
+         Label {
             width: parent.width
             textFormat: Text.RichText
             text: storyText
         }
+        /*
         SectionHeader { text: if (storyText != "") { "Story text"} else { "" } }
         Label {
             width: parent.width
@@ -124,12 +125,10 @@ Page {
 
             model: kidsModel;
 
-            delegate: NewsItem {
+            delegate: StoryItem {
                 id: delegate
-
-
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ShowStory.qml"), {"storyBy": by,
+                    pageStack.push(Qt.resolvedUrl("ShowComment.qml"), {"storyBy": by,
                                       "storyUrl": storyUrl,
                                        "storyId": id,
                                        "storyText": comms,
