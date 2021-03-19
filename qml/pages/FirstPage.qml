@@ -137,6 +137,7 @@ Page {
                                        "storyBy": by,
                                        "storyUrl": url,
                                        "storyId": id,
+                                       //"storyText": text,
                                        "storyTitle": title});
                 }
             }

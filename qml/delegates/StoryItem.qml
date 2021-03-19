@@ -20,7 +20,7 @@ ListItem {
                     if (model.title)
                         return model.title
                     else
-                        return model.id
+                        return model.text
                 }
                 width: parent.width
                 wrapMode: Text.WordWrap
