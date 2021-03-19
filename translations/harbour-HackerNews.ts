@@ -26,7 +26,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Load children</source>
+        <source>Reload</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

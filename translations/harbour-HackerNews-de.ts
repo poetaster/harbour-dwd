@@ -15,7 +15,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>HN</source>
+        <source>HackerNews</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -23,6 +23,10 @@
     <name>ShowStory</name>
     <message>
         <source>Open URL in browser</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Reload</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

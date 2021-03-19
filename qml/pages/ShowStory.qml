@@ -3,7 +3,7 @@ import Sailfish.Silica 1.0
 import "../delegates"
 
 Page {
-    id: storypage
+    id: page
     property string storyBy
     property string storyUrl
     property string storyText
@@ -21,8 +21,40 @@ Page {
         doc.open("GET", url);
         doc.send();
     }
-
-
+    function reloadComments(){
+        kidsModel.clear();
+        page.httpRequest("https://hacker-news.firebaseio.com/v0/item/" + storyId + ".json", function(doc) {
+            var story = JSON.parse(doc.responseText);
+            for (var i = 0; i < story.kids.length ; i++) {
+                var storyIndex = story.kids[i]
+                page.httpRequest("https://hacker-news.firebaseio.com/v0/item/" + storyIndex + ".json", function(doc) {
+                    var story = JSON.parse(doc.responseText);
+                    //var title = story.title
+                    console.debug(JSON.stringify(story));
+                    kidsModel.append({"by": story.by, "comms": story.text,"id": story.id});
+                });
+            }
+        });
+    }
+    onStatusChanged: {
+        if (PageStatus.Activating){
+          page.reloadComments();
+        }
+        /*
+        switch (status) {
+            case PageStatus.Activating:
+                indicator.visible = true;
+                errorMsg.visible = false;
+                timetableDesc.title = qsTr("Searching...");
+                fahrplanBackend.getTimeTable();
+                break;
+            case PageStatus.Deactivating:
+                errorMsg.visible = false;
+                fahrplanBackend.parser.cancelRequest();
+                break;
+        }
+        */
+    }
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
         anchors.fill: parent
@@ -35,24 +67,9 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr("Load children")
+                text: qsTr("Reload")
                 onClicked: {
-                    kidsModel.clear();
-                    /*for (var i = 0; i < storyKids.count && i < 20; i++) {
-                        var storyIndex = storyKids.get(i).id;*/
-                    storypage.httpRequest("https://hacker-news.firebaseio.com/v0/item/" + storyId + ".json", function(doc) {
-                        var story = JSON.parse(doc.responseText);
-                        for (var i = 0; i < story.kids.length ; i++) {
-                            var storyIndex = story.kids[i]
-                            storypage.httpRequest("https://hacker-news.firebaseio.com/v0/item/" + storyIndex + ".json", function(doc) {
-                                var story = JSON.parse(doc.responseText);
-                                //var title = story.title
-                                console.debug(JSON.stringify(story));
-                                kidsModel.append({"by": story.by, "comms": story.text,"id": story.id});
-                            });
-                        }
-                    });
-
+                  page.reloadComments();
                 }
             }
         }

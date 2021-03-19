@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.12.2, 2021-03-15T12:31:16. -->
+<!-- Written by QtCreator 4.12.2, 2021-03-19T16:14:56. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -385,16 +385,16 @@
     <value type="QString" key="Mer.RunConfig.AlternateRemoteExecutable"></value>
     <value type="bool" key="Mer.RunConfig.UseAlternateRemoteExecutable">false</value>
     <value type="bool" key="MerRunConfiguration.DebugBypassOpenSslArmCapEnabled">true</value>
-    <value type="QString" key="MerRunConfiguration.QmlLiveBenchWorkspace">/home/mwa/src/sailfish/SailfishHN</value>
+    <value type="QString" key="MerRunConfiguration.QmlLiveBenchWorkspace">/home/mwa/src/sailfish/harbour-hackernews</value>
     <value type="bool" key="MerRunConfiguration.QmlLiveEnabled">false</value>
     <value type="int" key="MerRunConfiguration.QmlLiveIpcPort">-1</value>
     <value type="int" key="MerRunConfiguration.QmlLiveOptions">3</value>
     <value type="QString" key="MerRunConfiguration.QmlLiveTargetWorkspace"></value>
     <value type="int" key="PE.EnvironmentAspect.Base">1</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">HackerNews (on Volla Phone (ARM))</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QmakeProjectManager.MerRunConfiguration:/home/mwa/src/sailfish/SailfishHN/HackerNews.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/mwa/src/sailfish/SailfishHN/HackerNews.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">HackerNews (on Volla Phone (ARM))2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QmakeProjectManager.MerRunConfiguration:/home/mwa/src/sailfish/harbour-hackernews/HackerNews.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">/home/mwa/src/sailfish/harbour-hackernews/HackerNews.pro</value>
     <value type="int" key="RemoteLinux.EnvironmentAspect.Version">1</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
