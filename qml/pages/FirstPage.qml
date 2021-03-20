@@ -121,7 +121,7 @@ Page {
             anchors.bottom: parent.bottom
             //anchors.top: header.bottom
             id: listView
-            model: listModel;
+            model: listModel
             anchors.fill: parent
 
             header: PageHeader {

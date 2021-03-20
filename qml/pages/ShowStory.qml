@@ -30,7 +30,7 @@ Page {
                 page.httpRequest("https://hacker-news.firebaseio.com/v0/item/" + storyIndex + ".json", function(doc) {
                     var story = JSON.parse(doc.responseText);
                     //var title = story.title
-                    console.debug(JSON.stringify(story));
+                    //console.debug(JSON.stringify(story));
                     kidsModel.append({"by": story.by, "comms": story.text,"id": story.id});
                 });
             }
@@ -83,6 +83,7 @@ Page {
 
             PageHeader {
                 title: storyTitle
+
             }
 
             SectionHeader { text: "URL" }
@@ -97,25 +98,6 @@ Page {
                 text: "Comments"
             }
         }
-         Label {
-            width: parent.width
-            textFormat: Text.RichText
-            text: storyText
-        }
-        /*
-        SectionHeader { text: if (storyText != "") { "Story text"} else { "" } }
-        Label {
-            width: parent.width
-            textFormat:  Text.RichText
-            text: storyKids
-        }
-
-        SectionHeader {
-            id: headerKids
-            width: parent.width
-            text: if (kidsModel.length > 1) { "Children"} else { "" }
-        }*/
-
 
         SilicaListView {
             id: kidsView
@@ -125,10 +107,11 @@ Page {
 
             model: kidsModel;
 
-            delegate: StoryItem {
+            delegate: CommentItem {
                 id: delegate
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ShowComment.qml"), {"storyBy": by,
+                    pageStack.push(Qt.resolvedUrl("ShowComment.qml"), {
+                                       "storyBy": by,
                                       "storyUrl": storyUrl,
                                        "storyId": id,
                                        "storyText": comms,

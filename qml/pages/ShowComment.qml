@@ -93,8 +93,19 @@ Page {
                 text: storyUrl
             }
             SectionHeader {
-                id: cHead
-                text: "Comments"
+                id: parentHead
+                text: "original Comment"
+            }
+            Label {
+               text: storyText
+               textFormat: Text.RichText
+               width: parent.width
+               wrapMode: Text.WordWrap
+               font.pixelSize: Theme.fontSizeSmall
+           }
+            SectionHeader {
+                id: childHead
+                text: "further Comments"
             }
         }
         SilicaListView {
@@ -110,7 +121,8 @@ Page {
 
 
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ShowComment.qml"), {"storyBy": by,
+                    pageStack.push(Qt.resolvedUrl("ShowComment.qml"), {
+                                       "storyBy": by,
                                       "storyUrl": storyUrl,
                                        "storyId": id,
                                        "storyText": comms,

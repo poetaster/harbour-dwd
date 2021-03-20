@@ -16,27 +16,28 @@ ListItem {
             spacing: Theme.paddingSmall
             Label {
 
-                text: {
+                text: model.by
+                /*{
                     if (model.title)
                         return model.title
                     else
                         return model.text
-                }
+                }*/
                 width: parent.width
                 wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeSmall
-
-            }
-
-            Label {
-                text: model.by
-
-                width: parent.width
-                wrapMode: Text.WordWrap
-
                 font.pixelSize: Theme.fontSizeExtraSmall
+
             }
+
             Label {
+                text: model.comms
+
+                width: parent.width
+                wrapMode: Text.WordWrap
+
+                font.pixelSize: Theme.fontSizeSmall
+            }
+            /*Label {
                 //text: model.comms
                 text: {
                     if (model.comms)
@@ -50,13 +51,13 @@ ListItem {
 
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.highlightColor
-            }
+            }*/
         }
     }
 
     Separator {
         id: separatorBottom
-        visible: index < listView.count
+        //visible: index < listView.count
         x: Theme.horizontalPageMargin
         width: parent.width - 2*x
         color: Theme.primaryColor

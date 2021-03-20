@@ -16,13 +16,7 @@ ListItem {
             spacing: Theme.paddingSmall
 
             Label {
-
-                text: {
-                    if (model.title)
-                        return model.title
-                    else
-                        return model.id
-                }
+                text: model.title
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeSmall
@@ -30,7 +24,9 @@ ListItem {
             }
 
             Label {
-                text: model.by
+
+                text: "By:" + model.by + " with " + descendants + " descendants"
+
                 width: parent.width
                 wrapMode: Text.WordWrap
 
@@ -40,7 +36,7 @@ ListItem {
 
 
 
-            Label {
+            /*Label {
                 //text: model.comms
                 text: {
                     if (model.comms)
@@ -54,7 +50,7 @@ ListItem {
 
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.primaryColor
-            }
+            }*/
         }
     }
 
