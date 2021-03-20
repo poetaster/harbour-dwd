@@ -70,7 +70,7 @@ Page {
                 var storyIndex = response[i];
                 page.httpRequest("https://hacker-news.firebaseio.com/v0/item/" + storyIndex + ".json", function(doc) {
                     var story = JSON.parse(doc.responseText);
-                    console.debug(JSON.stringify(story));
+                    //console.debug(JSON.stringify(story));
                     listModel.append(story);
                 });
             }

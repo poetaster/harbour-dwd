@@ -61,38 +61,50 @@ Page {
         id: storyView
         PullDownMenu {
             MenuItem {
-                text: qsTr("Open URL in browser")
-                onClicked: {
-                    Qt.openUrlExternally(storyUrl)
-                }
-            }
-            MenuItem {
                 text: qsTr("Reload")
                 onClicked: {
                   page.reloadComments();
                 }
             }
+            MenuItem {
+                text: qsTr("Open URL in browser")
+                onClicked: {
+                    Qt.openUrlExternally(storyUrl)
+                }
+            }
+
         }
 
         ListModel {
             id: kidsModel
         }
         Column {
+
+            x: Theme.horizontalPageMargin
+            width: parent.width - 2*x
+            spacing: Theme.paddingSmall
             id: header
-            width: parent.width
+
 
             PageHeader {
-                title: storyTitle
+                title: "Comments"
 
             }
+            SectionHeader { text: "Tile & URL" }
+            Label {
+                width: parent.width
+                textFormat: Text.RichText
+                wrapMode: Text.WordWrap
+                text: storyTitle
 
-            SectionHeader { text: "URL" }
+            }
             Label {
                 width: parent.width
                 textFormat: Text.RichText
                 wrapMode: Text.WrapAnywhere
                 text: storyUrl
             }
+
             SectionHeader {
                 id: cHead
                 text: "Comments"
@@ -120,7 +132,7 @@ Page {
             }
 
 
-            VerticalScrollDecorator {}
+            VerticalScrollDecorator { flickable: kidsView}
         }
 
 

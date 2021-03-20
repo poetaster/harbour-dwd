@@ -30,7 +30,7 @@ Page {
                 page.httpRequest("https://hacker-news.firebaseio.com/v0/item/" + storyIndex + ".json", function(doc) {
                     var story = JSON.parse(doc.responseText);
                     //var title = story.title
-                    console.debug(JSON.stringify(story));
+                    //console.debug(JSON.stringify(story));
                     kidsModel.append({"by": story.by, "comms": story.text,"id": story.id});
                 });
             }
@@ -60,16 +60,17 @@ Page {
         anchors.fill: parent
         id: storyView
         PullDownMenu {
-            MenuItem {
-                text: qsTr("Open URL in browser")
-                onClicked: {
-                    Qt.openUrlExternally(storyUrl)
-                }
-            }
+
             MenuItem {
                 text: qsTr("Reload")
                 onClicked: {
                   page.reloadComments();
+                }
+            }
+            MenuItem {
+                text: qsTr("Open URL in browser")
+                onClicked: {
+                    Qt.openUrlExternally(storyUrl)
                 }
             }
         }
@@ -79,13 +80,21 @@ Page {
         }
         Column {
             id: header
-            width: parent.width
 
+            x: Theme.horizontalPageMargin
+            width: parent.width - 2*x
+            spacing: Theme.paddingSmall
             PageHeader {
-                title: storyTitle
-            }
+                title: "Comments Details"
 
-            SectionHeader { text: "URL" }
+            }
+            SectionHeader { text: "Tile & URL" }
+            Label {
+                width: parent.width
+                textFormat: Text.RichText
+                wrapMode: Text.WordWrap
+                text: storyTitle
+            }
             Label {
                 width: parent.width
                 textFormat: Text.RichText
@@ -131,7 +140,7 @@ Page {
             }
 
 
-            VerticalScrollDecorator {}
+            VerticalScrollDecorator { flickable: kidsView}
         }
 
 
