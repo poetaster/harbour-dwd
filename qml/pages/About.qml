@@ -37,13 +37,18 @@ CoverBackground {
         anchors.centerIn: parent
         text: qsTr("Hacker News")
     }
+
     Image {
         source: "harbourHackerNews.png"
         anchors.fill: parent
     }
-    CoverActionList {
-        id: coverAction
+    Label {
+        width: parent.width
+        textFormat: Text.RichText
+        wrapMode: Text.WrapWort
+        text: "This be a simple viewer for links from and comments on: https://news.ycombinator.com/ . The source may be found at https://github.com/poetaster/harbour-hackernews"
     }
+
 }
 
 

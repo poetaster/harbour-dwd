@@ -102,6 +102,15 @@ Page {
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
+                text: qsTr("About")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("About.qml"),{});
+
+
+
+                }
+            }
+            MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
                     page.reloadStories();
@@ -111,12 +120,9 @@ Page {
 
         ListModel {
             id: listModel
-
         }
 
-
         SilicaListView {
-
             width: parent.width
             anchors.bottom: parent.bottom
             //anchors.top: header.bottom
