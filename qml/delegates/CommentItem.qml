@@ -22,8 +22,9 @@ ListItem {
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.highlightColor
             }
+
             Label {
-                text: model.comms
+                text:'<style type="text/css" media="screen"> a{color:white;}</style>' +  model.comms
                 /* text:
                 {
                     if (model.text)
@@ -32,7 +33,7 @@ ListItem {
                         return model.descendants
                 } */
 
-                textFormat: Text.StyledText
+                textFormat: Text.RichText
                 width: parent.width
                 wrapMode: Text.WordWrap
                 linkColor: Theme.highlightColor
