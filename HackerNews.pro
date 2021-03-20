@@ -33,7 +33,6 @@ CONFIG += sailfishapp_i18n
 
 DISTFILES += \
     qml/NewsItem.qml \
-    qml/cover/About.qml \
     qml/delegates/CommentItem.qml \
     qml/delegates/StoryItem.qml \
     qml/pages/ShowComment.qml \

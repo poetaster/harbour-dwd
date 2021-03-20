@@ -34,8 +34,11 @@ ListItem {
 
                 width: parent.width
                 wrapMode: Text.WordWrap
-
+                linkColor: "#ffffff"
                 font.pixelSize: Theme.fontSizeSmall
+                onLinkActivated: {
+                    Qt.openUrlExternally(link)
+                }
             }
             /*Label {
                 //text: model.comms

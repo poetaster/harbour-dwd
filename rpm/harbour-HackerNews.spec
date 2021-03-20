@@ -14,10 +14,10 @@ Name:       harbour-HackerNews
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Hacker News Reader
 Version:    1.0
-Release:    1
+Release:    1.0
 Group:      Qt/Qt
 License:    GPLv3
-URL:        https://github.com/poetaster/SailfishHN
+URL:        https://github.com/poetaster/harbour-hackernews
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-HackerNews.yaml
 Requires:   sailfishsilica-qt5 >= 1.1.0

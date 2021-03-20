@@ -1,9 +1,9 @@
 Name: harbour-HackerNews
 Summary: Hacker News Reader
 Version: 1.0
-Release: 1
+Release: 1.0
 Group: Qt/Qt
-URL: https://github.com/poetaster/SailfishHN
+URL: https://github.com/poetaster/harbour-hackernews
 License: GPLv3
 Sources:
 - '%{name}-%{version}.tar.bz2'

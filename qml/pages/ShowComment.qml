@@ -107,9 +107,10 @@ Page {
             }
             Label {
                text: storyText
-               textFormat: Text.RichText
+               textFormat: Text.StyledText
                width: parent.width
                wrapMode: Text.WordWrap
+               linkColor: Theme.primaryColor
                font.pixelSize: Theme.fontSizeSmall
            }
             SectionHeader {

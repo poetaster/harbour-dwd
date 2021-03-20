@@ -32,14 +32,19 @@ ListItem {
                         return model.descendants
                 } */
 
-                textFormat: Text.RichText
+                textFormat: Text.StyledText
                 width: parent.width
                 wrapMode: Text.WordWrap
+                linkColor: Theme.highlightColor
                 font.pixelSize: Theme.fontSizeSmall
+                onLinkActivated: {
+                    Qt.openUrlExternally(link)
+                }
 
             }
         }
     }
+    Text {}
 
     Separator {
         id: separatorBottom
