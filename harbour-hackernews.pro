@@ -14,7 +14,8 @@ TARGET = harbour-hackernews
 
 CONFIG += sailfishapp
 
-SOURCES += src/HackerNews.cpp
+SOURCES += \
+    src/harbour-hackernews.cpp
 
 OTHER_FILES += \
     harbour-hackernews.desktop \
@@ -22,11 +23,9 @@ OTHER_FILES += \
     qml/cover/CoverPage.qml \
     qml/harbour-hackernews.qml \
     qml/pages/FirstPage.qml \
-    rpm/harbour-hackernews.spec \
-    rpm/harbour-hackernews.yaml \
-    rpm/harbour-hackernews.changes.in \
+    qml/pages/ShowStory.qml \
     translations/*.ts \
-    qml/pages/ShowStory.qml
+
 
 # to disable building translations every time, comment out the
 # following CONFIG line
@@ -38,6 +37,6 @@ DISTFILES += \
     qml/delegates/CommentItem.qml \
     qml/delegates/StoryItem.qml \
     qml/pages/ShowComment.qml \
-    rpm/harbour-hackernews.spec \
-    rpm/harbour-hackernews.yaml
+    rpm/harbour-hackernews.yaml \
+    rpm/harbour-hackernews.changes.in
 
