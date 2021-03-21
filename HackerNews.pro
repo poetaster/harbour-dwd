@@ -10,20 +10,22 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = harbour-HackerNews
+TARGET = harbour-hackernews
 
 CONFIG += sailfishapp
 
 SOURCES += src/HackerNews.cpp
 
-OTHER_FILES += qml/harbour-HackerNews.qml \
+OTHER_FILES += \
+    harbour-hackernews.desktop \
+    harbour-hackernews.png \
     qml/cover/CoverPage.qml \
+    qml/harbour-hackernews.qml \
     qml/pages/FirstPage.qml \
-    rpm/HackerNews.spec \
-    rpm/harbour-HackerNews.changes.in \
+    rpm/harbour-hackernews.spec \
+    rpm/harbour-hackernews.yaml \
+    rpm/harbour-hackernews.changes.in \
     translations/*.ts \
-    harbour-HackerNews.desktop \
-    harbour-HackerNews.png \
     qml/pages/ShowStory.qml
 
 # to disable building translations every time, comment out the
@@ -36,6 +38,6 @@ DISTFILES += \
     qml/delegates/CommentItem.qml \
     qml/delegates/StoryItem.qml \
     qml/pages/ShowComment.qml \
-    rpm/harbour-HackerNews.spec \
-    rpm/harbour-HackerNews.yaml
+    rpm/harbour-hackernews.spec \
+    rpm/harbour-hackernews.yaml
 
