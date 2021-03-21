@@ -36,10 +36,18 @@ Page {
             }
         });
     }
+    ListModel {
+        id: kidsModel
+    }
+
     onStatusChanged: {
-        if (PageStatus.Activating){
-          page.reloadComments();
+        if (PageStatus.Activating) {
+            //console.debug(kidsModel.count)
+            if (kidsModel.count < 1){
+                page.reloadComments();
+            }
         }
+
         /*
         switch (status) {
             case PageStatus.Activating:
@@ -55,6 +63,8 @@ Page {
         }
         */
     }
+
+
     // To enable PullDownMenu, place our content in a SilicaFlickable
     SilicaFlickable {
         anchors.fill: parent
@@ -63,7 +73,7 @@ Page {
             MenuItem {
                 text: qsTr("Reload")
                 onClicked: {
-                  page.reloadComments();
+                    page.reloadComments();
                 }
             }
             MenuItem {
@@ -75,9 +85,7 @@ Page {
 
         }
 
-        ListModel {
-            id: kidsModel
-        }
+
         Column {
 
             x: Theme.horizontalPageMargin
@@ -124,7 +132,7 @@ Page {
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("ShowComment.qml"), {
                                        "storyBy": by,
-                                      "storyUrl": storyUrl,
+                                       "storyUrl": storyUrl,
                                        "storyId": id,
                                        "storyText": comms,
                                        "storyTitle": storyTitle});

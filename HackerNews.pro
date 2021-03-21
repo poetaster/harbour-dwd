@@ -19,8 +19,8 @@ SOURCES += src/HackerNews.cpp
 OTHER_FILES += qml/harbour-HackerNews.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
-    rpm/HackerNews.changes.in \
     rpm/HackerNews.spec \
+    rpm/harbour-HackerNews.changes.in \
     translations/*.ts \
     harbour-HackerNews.desktop \
     harbour-HackerNews.png \

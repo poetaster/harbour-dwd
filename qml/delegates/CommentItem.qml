@@ -15,7 +15,15 @@ ListItem {
             width: parent.width - parent.spacing
             spacing: Theme.paddingSmall
             Label {
-                text: model.by
+                //text: model.by + " : " + model.kids.count + " comments"
+                text:
+                    if ( model.kids )
+                        return model.by + " " + model.kids.count + " comments"
+                     else
+                        return model.by
+
+
+
 
                 width: parent.width
                 wrapMode: Text.WordWrap
@@ -24,6 +32,7 @@ ListItem {
             }
 
             Label {
+                id: mainText
                 text:'<style type="text/css" media="screen"> a{color:white;}</style>' +  model.comms
                 /* text:
                 {
@@ -43,6 +52,7 @@ ListItem {
                 }
 
             }
+
         }
     }
     Text {}

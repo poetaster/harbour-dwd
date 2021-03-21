@@ -76,10 +76,19 @@ Page {
             }
         });
     }
+
+    ListModel {
+        id: listModel
+    }
     onStatusChanged: {
+
         if (PageStatus.Activating) {
-          page.reloadStories();
-        }
+            //console.debug(listModel.count)
+            if (listModel.count < 1) {
+                page.reloadStories();
+            }
+         }
+
         /*
         switch (status) {
             case PageStatus.Activating:
@@ -116,10 +125,6 @@ Page {
                     page.reloadStories();
                 }
             }
-        }
-
-        ListModel {
-            id: listModel
         }
 
         SilicaListView {

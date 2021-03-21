@@ -36,10 +36,18 @@ Page {
             }
         });
     }
+    ListModel {
+        id: kidsModel
+    }
     onStatusChanged: {
-        if (PageStatus.Activating){
-          page.reloadComments();
+        if (PageStatus.Activating) {
+            //console.debug(kidsModel.count)
+            if (kidsModel.count < 1){
+                page.reloadComments();
+            }
+
         }
+
         /*
         switch (status) {
             case PageStatus.Activating:
@@ -59,12 +67,13 @@ Page {
     SilicaFlickable {
         anchors.fill: parent
         id: storyView
+
         PullDownMenu {
 
             MenuItem {
                 text: qsTr("Reload")
                 onClicked: {
-                  page.reloadComments();
+                    page.reloadComments();
                 }
             }
             MenuItem {
@@ -75,9 +84,7 @@ Page {
             }
         }
 
-        ListModel {
-            id: kidsModel
-        }
+
         Column {
             id: header
 
@@ -94,30 +101,44 @@ Page {
                 textFormat: Text.RichText
                 wrapMode: Text.WordWrap
                 text: storyTitle
+                font.pixelSize: Theme.fontSizeExtraSmall
             }
+            /*
             Label {
                 width: parent.width
                 textFormat: Text.RichText
                 wrapMode: Text.WrapAnywhere
                 text: storyUrl
-            }
+                font.pixelSize: Theme.fontSizeExtraSmall
+            }*/
+
             SectionHeader {
                 id: parentHead
                 text: "original Comment"
             }
+            Text{}
             Label {
-               text: storyText
-               textFormat: Text.StyledText
-               width: parent.width
-               wrapMode: Text.WordWrap
-               linkColor: Theme.primaryColor
-               font.pixelSize: Theme.fontSizeSmall
-           }
+                text: storyText
+                textFormat: Text.RichtText
+                width: parent.width
+                height: 2
+                elide: Text.ElideRight
+                wrapMode: Text.WordWrap
+                linkColor: Theme.primaryColor
+                font.pixelSize: Theme.fontSizeSmall
+
+            }
+
             SectionHeader {
                 id: childHead
                 text: "further Comments"
             }
         }
+        Item {
+            width: 1
+            height: Theme.paddingMedium
+        }
+
         SilicaListView {
             id: kidsView
             width: parent.width
@@ -133,7 +154,7 @@ Page {
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("ShowComment.qml"), {
                                        "storyBy": by,
-                                      "storyUrl": storyUrl,
+                                       "storyUrl": storyUrl,
                                        "storyId": id,
                                        "storyText": comms,
                                        "storyTitle": storyTitle});

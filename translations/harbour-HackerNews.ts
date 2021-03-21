@@ -11,6 +11,10 @@
 <context>
     <name>FirstPage</name>
     <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
@@ -18,19 +22,15 @@
         <source>HackerNews</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>ShowComment</name>
     <message>
-        <source>Open URL in browser</source>
+        <source>Reload</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Reload</source>
+        <source>Open URL in browser</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
