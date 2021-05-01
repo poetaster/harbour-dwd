@@ -10,18 +10,17 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = harbour-hackernews
-
+TARGET = harbour-dwd
 CONFIG += sailfishapp
 
 SOURCES += \
     src/harbour-hackernews.cpp
 
 OTHER_FILES += \
-    harbour-hackernews.desktop \
-    harbour-hackernews.png \
+    harbour-dwd.desktop \
+    #harbour-hackernews.png \
     qml/cover/CoverPage.qml \
-    qml/harbour-hackernews.qml \
+    qml/harbour-dwd.qml \
     qml/pages/FirstPage.qml \
     qml/pages/ShowStory.qml \
     translations/*.ts \
@@ -30,13 +29,13 @@ OTHER_FILES += \
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-#TRANSLATIONS += translations/harbour-HackerNews-de.ts
+#TRANSLATIONS += translations/harbour-dwd-de.ts
 
 DISTFILES += \
     qml/NewsItem.qml \
     qml/delegates/CommentItem.qml \
     qml/delegates/StoryItem.qml \
     qml/pages/ShowComment.qml \
-    rpm/harbour-hackernews.yaml \
-    rpm/harbour-hackernews.changes.in
+    rpm/harbour-dwd.yaml \
+    rpm/harbour-dwd.changes.in
 
