@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Icon=harbour-hackernews
-Exec=harbour-hackernews
-Name=HackerNews
+Icon=harbour-dwd
+Exec=harbour-dwd
+Name=German Weather Service
 # translation example:
 # your app name in German locale (de)
-Name[de]=HackerNews
+Name[de]=Deutscher Wetter Dienst
 

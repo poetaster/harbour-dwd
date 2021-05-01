@@ -14,11 +14,11 @@ TARGET = harbour-dwd
 CONFIG += sailfishapp
 
 SOURCES += \
-    src/harbour-hackernews.cpp
+    src/harbour-dwd.cpp
 
 OTHER_FILES += \
     harbour-dwd.desktop \
-    #harbour-hackernews.png \
+    harbour-hackernews.png \
     qml/cover/CoverPage.qml \
     qml/harbour-dwd.qml \
     qml/pages/FirstPage.qml \

@@ -5,44 +5,53 @@
 
 */
 
+/* requests: https://api.brightsky.dev/
+weather?lat=52.52&lon=13.41&date=2021-04-30 */
+
 /* types
-  story item
-  https://hacker-news.firebaseio.com/v0/item/26455058.json
 {
-
-    "by": "harporoeder",
-    "descendants": 7,
-    "id": 26455058,
-    "kids": [
-        26455852,
-        26455399
+    weather: [
+        {
+            timestamp: "2021-05-01T00:00:00+02:00",
+            source_id: 6894,
+            precipitation: 0,
+            pressure_msl: 1014.8,
+            sunshine: null,
+            temperature: 7.4,
+            wind_direction: 60,
+            wind_speed: 5,
+            cloud_cover: 100,
+            dew_point: 4,
+            relative_humidity: null,
+            visibility: 45000,
+            wind_gust_direction: 90,
+            wind_gust_speed: 16.9,
+            condition: "dry",
+            fallback_source_ids: {9 items},
+            icon: "cloudy"
+        }
     ],
-    "score": 63,
-    "time": 1615727266,
-    "title": "EBPFSnitch: An eBPF based Linux Application Firewall",
-    "type": "story",
-    "url": "https://github.com/harporoeder/ebpfsnitch"
+    sources: [
+        {
+            id: 6894,
+            dwd_station_id: "00433",
+            observation_type: "historical",
+            lat: 52.4675,
+            lon: 13.4021,
+            height: 48,
+            station_name: "Berlin-Tempelhof",
+            wmo_station_id: "10384",
+            first_record: "2010-01-01T00:00:00+00:00",
+            last_record: "2021-04-30T23:00:00+00:00",
+            distance: 5869
+        },
+        {11 items},
+        {11 items}
+    ]
 
 }
-comment item
-{
 
-    "by": "XorNot",
-    "id": 26455399,
-    "kids": [
-        26455454,
-        26455981,
-        26455555,
-        26455715,
-        26455644,
-        26456079
-    ],
-    "parent": 26455058,
-    "text": "This looks spectacular! Finally! This is functionality I&#x27;ve desperately wanted on Linux desktop. Link that up with with some of the SELinux on-demand tools and you have a plausible way to run untrusted binaries without the overhead of completely containerizing them up front.",
-    "time": 1615729821,
-    "type": "comment"
 
-}
 */
 
 import QtQuick 2.0
@@ -63,7 +72,7 @@ Page {
         doc.send();
     }
     function reloadStories(){
-        page.httpRequest("https://hacker-news.firebaseio.com/v0/topstories.json", function(doc) {
+        page.httpRequest("https://api.brightsky.dev/weather?lat=52.52&lon=13.41&date=2021-04-30", function(doc) {
             var response = JSON.parse(doc.responseText);
             listModel.clear();
             for (var i = 0; i < response.length && i < 20; i++) {
@@ -115,8 +124,6 @@ Page {
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("About.qml"),{});
 
-
-
                 }
             }
             MenuItem {
@@ -136,7 +143,7 @@ Page {
             anchors.fill: parent
 
             header: PageHeader {
-                title: qsTr("HackerNews")
+                title: qsTr("DeutscherWetterDienst")
             }
             //text: descendants  + ":  " + title + " " + kids.count
 

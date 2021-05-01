@@ -12,14 +12,14 @@ Name:       harbour-dwd
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
-Summary:    German Weather Service (DWD) client
-Version:    1.0
+Summary:    German Weather Service client
+Version:    1.0.
 Release:    1
 Group:      Qt/Qt
 License:    GPLv3
 URL:        https://github.com/poetaster/harbour-dwd
 Source0:    %{name}-%{version}.tar.bz2
-Source100:  harbour-hackernews.yaml
+Source100:  harbour-dwd.yaml
 Requires:   sailfishsilica-qt5 >= 1.1.0
 BuildRequires:  pkgconfig(sailfishapp)
 BuildRequires:  pkgconfig(Qt5Core)
@@ -28,7 +28,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-German Weather Service
+Read Hacker News
 
 %prep
 %setup -q -n %{name}-%{version}
