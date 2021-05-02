@@ -77,6 +77,12 @@ ListItem {
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.highlightColor
             }
+            Image {
+                id: weatherImage
+                width: 150; height: 150
+                //source: "image://theme/icon-m-right?" + Theme.highlightColor
+                source: "../svg/wi-"+ model.icon + ".svg"
+            }
 
         }
     }
@@ -86,7 +92,7 @@ ListItem {
         //visible: index < listView.count
         x: Theme.horizontalPageMargin
         width: parent.width - 2*x
-        color: Theme.primaryColor
+        //color: Theme.primaryColor
     }
 }
 

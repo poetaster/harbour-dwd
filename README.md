@@ -5,3 +5,5 @@ The service at brightsky.dev creates an easy to use json api to get at the data.
 
 Just getting it up-to-date for SFOS 3.4. This is a simple project to test QML programming and network api usage/access.
 
+Weather icons from:
+https://github.com/erikflowers/weather-icons
