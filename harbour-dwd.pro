@@ -35,6 +35,8 @@ DISTFILES += \
     qml/NewsItem.qml \
     qml/delegates/CommentItem.qml \
     qml/delegates/StoryItem.qml \
+    qml/js/cities.js \
+    qml/js/locations.js \
     qml/pages/ShowComment.qml \
     rpm/harbour-dwd.yaml \
     rpm/harbour-dwd.changes.in

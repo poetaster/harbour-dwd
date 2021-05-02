@@ -20,94 +20,105 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
 
-import "../js/locations.js" as Locations
+import "../js/locations.js" as Locs
 
 Page {
-    id: searchPage
-    Component.onCompleted: searchField.forceActiveFocus()
+    property var cities;
 
-    function addLocation(token) {
-        var details = Locations.getDetails(token)
-        meteoApp.locationAdded(details)
+    id: searchPage
+    allowedOrientations: Orientation.All
+
+    Component.onCompleted: {
+        searchField.forceActiveFocus();
+        fetchCities();
     }
+    function fetchCities() {
+        Locs.httpRequest("https://brightsky.dev/demo/cities.json", function(doc) {
+            var response = JSON.parse(doc.responseText);
+            listModel.clear();
+            cities = response;
+            for (var i = 0; i < response.length && i < 2500; i++) {
+                listModel.append(response[i]);
+                //console.debug(JSON.stringify(cities[i]))
+            };
+        });
+    }
+    function search(string) {
+        var ret = [];
+        //console.debug(JSON.stringify(cities[0]));
+        //listModel.clear();
+        for (var i = 0; i < cities.length; i++) {
+            if (string !== "" && cities[i].name.indexOf(string) >= 0) {
+                ret.push({"name": cities[i].name});
+                listModel.append(cities[i])
+                //console.debug(JSON.stringify(cities[i].name));
+                console.debug(JSON.stringify(listModel.count));
+            }
+            if (ret.length === 50) break;
+        }
+        return ret;
+    }
+
+    anchors.fill: parent
 
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.height
 
-        VerticalScrollDecorator {}
-
-        PullDownMenu {
-            busy: false
-            visible: meteoApp.debug
-
-            MenuItem {
-                text: qsTr("Bootstrap debug locations")
-                onClicked: {
-                    addLocation("4001 Basel (BS)");
-                    addLocation("6600 Locarno (TI)");
-                    addLocation("7450 Tiefencastel (GR)");
-                    addLocation("3975 Randogne (VS)");
-                    addLocation("1470 Bollion (FR)");
-                }
-            }
+        PageHeader {
+            id: header
+            title: qsTr("Choose Location")
         }
 
+        SearchField {
+            placeholderText: qsTr("Search")
+            id: searchField
+            width: parent.width
+            anchors.top: header.bottom
+            inputMethodHints: Qt.ImhNoPredictiveText
+
+            onTextChanged: listModel.update()
+            EnterKey.onClicked: {
+                if (text != "") searchField.focus = false
+            }
+        }
         Column {
             id: column
-            width: searchPage.width
+            width: parent.width
+            anchors.top: searchField.bottom
 
-            PageHeader {
-                title: qsTr("Add Location")
-            }
-
-            SearchField {
-                id: searchField
-                width: parent.width
-                placeholderText: qsTr("Search")
-                inputMethodHints: Qt.ImhNoPredictiveText
-
-                onTextChanged: listModel.update()
-
-                EnterKey.onClicked: {
-                    if (text != "") searchField.focus = false
-                }
-            }
-
-            Repeater {
-                width: parent.width
-
-                model: ListModel {
+            SilicaListView {
+                id:sListview
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2*x
+                height: 2000
+                //spacing: Theme.paddingSmall
+                model:   ListModel {
                     id: listModel
-
                     function update() {
                         clear()
-
                         if (searchField.text != "") {
-                            append(Locations.search(searchField.text));
+                            searchPage.search(searchField.text);
                         }
                     }
-
-                    Component.onCompleted: update()
+                    //Component.onCompleted:update()
                 }
-
                 delegate: ListItem {
                     Label {
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                            leftMargin: searchField.textLeftMargin
-                            rightMargin: searchField.textRightMargin
-                            verticalCenter: parent.verticalCenter
-                        }
                         text: model.name
                         truncationMode: TruncationMode.Fade
                     }
                     onClicked: {
-                        addLocation(model.name);
-                        pageStack.pop()
+                        //addLocation(model);
+                        //pageStack.pop()
+                        pageStack.push(Qt.resolvedUrl("FirstPage.qml"), {
+                                           "name": name,
+                                           "lat": lat,
+                                           "lon": lon});
                     }
                 }
+                spacing: 2
+                VerticalScrollDecorator { flickable: sListview}
             }
         }
     }

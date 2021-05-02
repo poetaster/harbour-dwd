@@ -57,32 +57,33 @@ weather?lat=52.52&lon=13.41&date=2021-04-30 */
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../delegates"
+import "../js/locations.js" as Locs
 
 Page {
     id: page
+    property string name;
+    property string lat;
+    property string lon;
 
-    function httpRequest(url, callback) {
-        var doc = new XMLHttpRequest();
-        doc.onreadystatechange = function() {
-            if (doc.readyState === XMLHttpRequest.DONE) {
-                callback(doc);
-            }
-        }
-        doc.open("GET", url);
-        doc.send();
-    }
     function reloadStories(){
-        page.httpRequest("https://api.brightsky.dev/weather?lat=52.52&lon=13.41&date=2021-04-30", function(doc) {
+        if (name === "") { name="Berlin" ;}
+        if (lat === "") { lat="52.52"; }
+        if (lon ==="") { lon="13.41"  ;}
+
+        var now = new Date();
+        var passDate = now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate();
+        // const dateStr = date.toISOString().split('T')[0];
+
+        var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + passDate;
+        //console.debug(uri);
+        Locs.httpRequest(uri, function(doc) {
             var response = JSON.parse(doc.responseText);
             listModel.clear();
-            for (var i = 0; i < response.length && i < 20; i++) {
-                var storyIndex = response[i];
-                page.httpRequest("https://hacker-news.firebaseio.com/v0/item/" + storyIndex + ".json", function(doc) {
-                    var story = JSON.parse(doc.responseText);
-                    //console.debug(JSON.stringify(story));
-                    listModel.append(story);
-                });
-            }
+            for (var i = 0; i < response.weather.length && i < 30; i++) {
+                //console.debug(JSON.stringify(response.weather[i]));
+                //console.debug(response.weather[i]);
+                listModel.append(response.weather[i]);
+            };
         });
     }
 
@@ -123,7 +124,12 @@ Page {
                 text: qsTr("About")
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("About.qml"),{});
-
+                }
+            }
+            MenuItem {
+                text: qsTr("Locations")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
                 }
             }
             MenuItem {
@@ -147,17 +153,18 @@ Page {
             }
             //text: descendants  + ":  " + title + " " + kids.count
 
-            delegate: NewsItem {
+
+            delegate: WeatherItem{
                 id: delegate
 
-                onClicked: {
+                /*onClicked: {
                     pageStack.push(Qt.resolvedUrl("ShowStory.qml"), {
                                        "storyBy": by,
                                        "storyUrl": url,
                                        "storyId": id,
                                        //"storyText": text,
                                        "storyTitle": title});
-                }
+                }*/
             }
 
             VerticalScrollDecorator {}
