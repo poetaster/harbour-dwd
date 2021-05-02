@@ -22,7 +22,6 @@ OTHER_FILES += \
     qml/cover/CoverPage.qml \
     qml/harbour-dwd.qml \
     qml/pages/FirstPage.qml \
-    qml/pages/ShowStory.qml \
     translations/*.ts \
 
 
@@ -33,6 +32,7 @@ CONFIG += sailfishapp_i18n
 
 DISTFILES += \
     qml/NewsItem.qml \
+    qml/svg/* \
     qml/delegates/CommentItem.qml \
     qml/delegates/StoryItem.qml \
     qml/js/cities.js \

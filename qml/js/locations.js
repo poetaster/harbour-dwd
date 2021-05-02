@@ -28,6 +28,7 @@ function httpRequest(url, callback) {
     }
     doc.open("GET", url);
     doc.send();
+
 }
 
 function getDetails(token) {
@@ -47,4 +48,39 @@ function search(string) {
         if (ret.length == 50) break;
     }
     return ret;
+}
+
+function dailyTotal(weather, key) {
+    var total = 0;
+        //console.debug(JSON.stringify(weather));
+    for (var i = 0; i < weather.length; i++) {
+             total += weather[i][key];
+    }
+    //console.debug(parseFloat(total).toPrecision(2))
+    return parseFloat(total).toPrecision(2);
+}
+
+function dailyAvg(weather, key) {
+    return dailyTotal(weather, key) / weather.length;
+}
+
+
+function dailyMax(weather, key) {
+    var current;
+    for (var i = 0; i < weather.length; i++) {
+             if ( weather[i].key > current ) {
+                 current = weather[i].key;
+             }
+    }
+    return current;
+}
+
+function dailyMin(weather, key) {
+    var current;
+    for (var i = 0; i < weather.length; i++) {
+             if ( weather[i].key < current ) {
+                 current = weather[i].key;
+             }
+    }
+    return current;
 }

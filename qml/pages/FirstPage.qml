@@ -64,7 +64,8 @@ Page {
     property string name;
     property string lat;
     property string lon;
-
+    property string headerDate;
+    property var weather;
     function reloadStories(){
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
@@ -72,12 +73,14 @@ Page {
 
         var now = new Date();
         var passDate = now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate();
-        // const dateStr = date.toISOString().split('T')[0];
+        //headerDate = now.toISOString().split('T')[0];
+        headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
 
         var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + passDate;
         //console.debug(uri);
         Locs.httpRequest(uri, function(doc) {
             var response = JSON.parse(doc.responseText);
+            weather = response;
             listModel.clear();
             for (var i = 0; i < response.weather.length && i < 30; i++) {
                 //console.debug(JSON.stringify(response.weather[i]));
@@ -114,7 +117,11 @@ Page {
         }
         */
     }
-    // To enable PullDownMenu, place our content in a SilicaFlickable
+    anchors.fill: parent
+    PageHeader {
+        id: dateA
+        title: headerDate
+    }
     SilicaFlickable {
         anchors.fill: parent
 
@@ -139,37 +146,45 @@ Page {
                 }
             }
         }
+        Row {
+
+            Label {
+                topPadding:  120
+                height:100
+                leftPadding: 30
+                id:totalRain
+                text: "Rain: " + Locs.dailyTotal(weather.weather ,"precipitation") + " mm"
+            }
+            Label {
+                topPadding:  120
+                height:100
+                leftPadding: 30
+                id:avgWind
+                text: "Avg Temp: " + Locs.dailyAvg(weather.weather ,"temperature") + " C"
+            }
+        }
 
         SilicaListView {
-            width: parent.width
-            anchors.bottom: parent.bottom
-            //anchors.top: header.bottom
+            topMargin: 200
+            //x: Theme.horizontalPageMargin
+            width: parent.width - 2*x
+            height: 5000
             id: listView
             model: listModel
-            anchors.fill: parent
 
-            header: PageHeader {
-                title: qsTr("DeutscherWetterDienst")
-            }
-            //text: descendants  + ":  " + title + " " + kids.count
-
+            /*header: PageHeader {
+                title: headerDate
+            }*/
 
             delegate: WeatherItem{
                 id: delegate
-
                 /*onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ShowStory.qml"), {
-                                       "storyBy": by,
-                                       "storyUrl": url,
-                                       "storyId": id,
-                                       //"storyText": text,
-                                       "storyTitle": title});
+                    pageStack.push(Qt.resolvedUrl("ShowStory.qml"), {  "storyId": id });
                 }*/
             }
-
-            VerticalScrollDecorator {}
+            spacing: 2
+            VerticalScrollDecorator {flickable: listView}
         }
-
 
         /*PullDownMenu{
 

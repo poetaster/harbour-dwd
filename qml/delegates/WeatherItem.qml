@@ -50,6 +50,10 @@ import Sailfish.Silica 1.0
 
 ListItem {
     contentHeight: contentRow.height + separatorBottom.height
+    function localDate (timestamp) {
+                date.toLocaleString('de-de', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+    }
+
 
     Row {
         id: contentRow
@@ -59,11 +63,11 @@ ListItem {
 
         Column {
             id: column
-            width: parent.width - parent.spacing
+            width: parent.width / 4
             spacing: Theme.paddingSmall
 
             Label {
-                text: "Time:" + model.timestamp
+                text: model.timestamp.split('T')[1].split('+')[0];
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeSmall
@@ -81,7 +85,7 @@ ListItem {
                 id: weatherImage
                 width: 150; height: 150
                 //source: "image://theme/icon-m-right?" + Theme.highlightColor
-                source: "../svg/wi-"+ model.icon + ".svg"
+                source: "../svg/"+ model.icon + ".svg"
             }
 
         }

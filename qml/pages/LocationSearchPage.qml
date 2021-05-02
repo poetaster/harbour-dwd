@@ -52,7 +52,7 @@ Page {
                 ret.push({"name": cities[i].name});
                 listModel.append(cities[i])
                 //console.debug(JSON.stringify(cities[i].name));
-                console.debug(JSON.stringify(listModel.count));
+                //console.debug(JSON.stringify(listModel.count));
             }
             if (ret.length === 50) break;
         }
