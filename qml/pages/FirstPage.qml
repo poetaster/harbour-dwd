@@ -89,7 +89,7 @@ Page {
             };
         });
     }
-
+    allowedOrientations: Orientation.All
     ListModel {
         id: listModel
     }
@@ -120,7 +120,7 @@ Page {
     anchors.fill: parent
     PageHeader {
         id: dateA
-        title: headerDate
+        title: passDate
     }
     SilicaFlickable {
         anchors.fill: parent
@@ -168,13 +168,9 @@ Page {
             topMargin: 200
             //x: Theme.horizontalPageMargin
             width: parent.width - 2*x
-            height: 5000
+            height: 2000
             id: listView
             model: listModel
-
-            /*header: PageHeader {
-                title: headerDate
-            }*/
 
             delegate: WeatherItem{
                 id: delegate
@@ -182,7 +178,6 @@ Page {
                     pageStack.push(Qt.resolvedUrl("ShowStory.qml"), {  "storyId": id });
                 }*/
             }
-            spacing: 2
             VerticalScrollDecorator {flickable: listView}
         }
 

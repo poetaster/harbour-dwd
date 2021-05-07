@@ -42,6 +42,35 @@
 }
 
 
+// Measures
+
+Cloud cover	%	%
+Dew point	°C	K
+Precipitation	mm	kg / m²
+Pressure	hPa	Pa
+Relative humidity	%	%
+Sunshine	min	s
+Temperature	°C	K
+Visibility	m	m
+Wind direction	°	°
+Wind speed	km / h	m / s
+Wind gust direction	°	°
+Wind gust speed	km / h	m / s
+
+// Internal icons
+
+            Image {
+                id: icon
+                x: Theme.horizontalPageMargin
+                anchors.verticalCenter: labelColumn.verticalCenter
+                visible: model.status !== Weather.Loading
+                width: Theme.iconSizeMedium
+                height: Theme.iconSizeMedium
+                source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
+                                                       + (highlighted ? "?" + Theme.highlightColor : "")
+                                                     : ""
+            }
+
 */
 
 
@@ -65,17 +94,8 @@ ListItem {
             id: column
             width: parent.width / 4
             spacing: Theme.paddingSmall
-
             Label {
                 text: model.timestamp.split('T')[1].split('+')[0];
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeSmall
-
-            }
-
-            Label {
-                text: model.icon
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
@@ -83,9 +103,54 @@ ListItem {
             }
             Image {
                 id: weatherImage
-                width: 150; height: 150
+                width:120
+                height:120
                 //source: "image://theme/icon-m-right?" + Theme.highlightColor
                 source: "../svg/"+ model.icon + ".svg"
+                x: Theme.horizontalPageMargin
+               /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
+                                                       + (highlighted ? "?" + Theme.highlightColor : "")
+                                                     : ""*/
+            }
+
+
+        }
+        Column {
+            id: column2
+            width: parent.width / 4
+            spacing: Theme.paddingSmall
+            Label {
+                text: model.temperature + " °C"
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.highlightColor
+            }
+            Label {
+                text: model.precipitation + " mm"
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.highlightColor
+            }
+        }
+        Column {
+            id: column3
+            width: parent.width / 4
+            spacing: Theme.paddingSmall
+            Label {
+                text: model.wind_speed + " km/h " + model.wind_direction + " °"
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.highlightColor
+            }
+            Label {
+                text: model.pressure_msl + " hPa"
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.highlightColor
             }
 
         }
@@ -95,8 +160,8 @@ ListItem {
         id: separatorBottom
         //visible: index < listView.count
         x: Theme.horizontalPageMargin
-        width: parent.width - 2*x
-        //color: Theme.primaryColor
+        width: 1 //parent.width - 2*x
+        //color: Theme.hightlightColor
     }
 }
 
