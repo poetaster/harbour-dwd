@@ -92,32 +92,50 @@ ListItem {
 
         Column {
             id: column
-            width: parent.width / 4
+            width: parent.width / 3
             spacing: Theme.paddingSmall
             Label {
                 text: model.timestamp.split('T')[1].split('+')[0];
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.highlightColor
+                //color: Theme.highlightColor
+            }
+
+        }
+        Column {
+            id: column2
+            width: parent.width / 3
+            spacing: Theme.paddingSmall
+            Label {
+                text: model.cloud_cover + "% cloudy  " + model.precipitation + " mm"
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                //color: Theme.highlightColor
             }
             Image {
                 id: weatherImage
                 width:120
                 height:120
                 //source: "image://theme/icon-m-right?" + Theme.highlightColor
-                source: "../svg/"+ model.icon + ".svg"
+                source: "../png/"+ model.icon + ".svg.png"
                 x: Theme.horizontalPageMargin
                /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
                                                        + (highlighted ? "?" + Theme.highlightColor : "")
                                                      : ""*/
-            }
-
-
+            }/*
+            Label {
+                text: "Icon: " + model.icon
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                //color: Theme.highlightColor
+            }*/
         }
         Column {
-            id: column2
-            width: parent.width / 4
+            id: column3
+            width: parent.width / 3
             spacing: Theme.paddingSmall
             Label {
                 text: model.temperature + " °C"
@@ -126,18 +144,6 @@ ListItem {
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.highlightColor
             }
-            Label {
-                text: model.precipitation + " mm"
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.highlightColor
-            }
-        }
-        Column {
-            id: column3
-            width: parent.width / 4
-            spacing: Theme.paddingSmall
             Label {
                 text: model.wind_speed + " km/h " + model.wind_direction + " °"
                 width: parent.width

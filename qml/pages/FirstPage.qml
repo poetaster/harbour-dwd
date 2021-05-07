@@ -65,16 +65,21 @@ Page {
     property string lat;
     property string lon;
     property string headerDate;
+    property string dDay;
+    property string dMonth;
     property var weather;
-    function reloadStories(){
+    function reloadDetails(){
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
 
         var now = new Date();
         var passDate = now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate();
-        //headerDate = now.toISOString().split('T')[0];
-        headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+        headerDate = now.toLocaleString('de-DE');
+        headerDate = headerDate.split(now.getFullYear())[0];
+        dDay = now.getDate();
+        dMonth = now.getMonth()+1;
+        //headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
 
         var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + passDate;
         //console.debug(uri);
@@ -89,7 +94,9 @@ Page {
             };
         });
     }
+
     allowedOrientations: Orientation.All
+
     ListModel {
         id: listModel
     }
@@ -98,7 +105,7 @@ Page {
         if (PageStatus.Activating) {
             //console.debug(listModel.count)
             if (listModel.count < 1) {
-                page.reloadStories();
+                page.reloadDetails();
             }
          }
 
@@ -118,10 +125,12 @@ Page {
         */
     }
     anchors.fill: parent
-    PageHeader {
-        id: dateA
-        title: passDate
-    }
+
+    /*PageHeader {
+        id: vDate
+        //title: name + " : " + dMonth + " " + dDay
+        title: name + " : " + headerDate
+    }*/
     SilicaFlickable {
         anchors.fill: parent
 
@@ -146,7 +155,7 @@ Page {
                 }
             }
         }
-        Row {
+        /*Row {
 
             Label {
                 topPadding:  120
@@ -162,12 +171,17 @@ Page {
                 id:avgWind
                 text: "Avg Temp: " + Locs.dailyAvg(weather.weather ,"temperature") + " C"
             }
-        }
+        }*/
 
         SilicaListView {
+            PageHeader {
+                id: lDate
+                //title: name + " : " + dMonth + " " + dDay
+                title: name + " : " + headerDate
+            }
             topMargin: 200
             //x: Theme.horizontalPageMargin
-            width: parent.width - 2*x
+            width: parent.width
             height: 2000
             id: listView
             model: listModel
