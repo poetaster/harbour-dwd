@@ -12,14 +12,16 @@ CoverBackground {
         anchors.top: back.top
         anchors.horizontalCenter: parent.horizontalCenter
         id: label
-        text: qsTr("Hacker News")
+        text: qsTr("Deutscher") + "\n"  +
+                qsTr("Wetter") + "\n" +
+                qsTr("Dienst");
     }
     Image {
 
         id:hnImage
         anchors.centerIn: parent
-        source: "/usr/share/icons/hicolor/86x86/apps/harbour-hackernews.png"
-        //source: Qt.resolvedUrl("harbour-hackernews.png")
+        source: "/usr/share/icons/hicolor/86x86/apps/harbour-dwd.png"
+        //source: Qt.resolvedUrl("harbour-dwd.png")
         //anchors.fill: parent
 
     }

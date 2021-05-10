@@ -32,13 +32,12 @@ CONFIG += sailfishapp_i18n
 
 DISTFILES += \
     qml/NewsItem.qml \
+    qml/delegates/LocationItem.qml \
+    qml/pages/ManageLocations.qml \
     qml/pages/StartPage.qml \
     qml/svg/* \
-    qml/delegates/CommentItem.qml \
-    qml/delegates/StoryItem.qml \
     qml/js/cities.js \
     qml/js/locations.js \
-    qml/pages/ShowComment.qml \
     rpm/harbour-dwd.yaml \
     rpm/harbour-dwd.changes.in
 
