@@ -32,6 +32,7 @@ CONFIG += sailfishapp_i18n
 
 DISTFILES += \
     qml/NewsItem.qml \
+    qml/pages/StartPage.qml \
     qml/svg/* \
     qml/delegates/CommentItem.qml \
     qml/delegates/StoryItem.qml \

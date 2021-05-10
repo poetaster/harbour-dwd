@@ -102,7 +102,8 @@ function addLocation(locationData) {
     var lat = defaultFor(locationData.lat, 0);
     var lon = defaultFor(locationData.lon, 0);
     var name = defaultFor(locationData.name, null);
-    var res = simpleQuery('INSERT INTO locations VALUES (?,?,?,?);', ['1', name, lat, lon ]);
+    var id =  getLocationsCount() + 10;
+    var res = simpleQuery('INSERT INTO locations VALUES (?,?,?,?);', [id, name, lat, lon ]);
     if (res !== 0 && !res) {
         console.log("error: failed to save location " + name + " to db");
     }
