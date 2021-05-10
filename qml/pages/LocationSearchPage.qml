@@ -21,6 +21,7 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 
 import "../js/locations.js" as Locs
+import "../js/storage.js" as Store
 
 Page {
     property var cities;
@@ -109,9 +110,9 @@ Page {
                         truncationMode: TruncationMode.Fade
                     }
                     onClicked: {
-                        //addLocation(model);
+                        Store.addLocation(model);
                         //pageStack.pop()
-                        pageStack.push(Qt.resolvedUrl("FirstPage.qml"), {
+                        pageStack.push(Qt.resolvedUrl("OverviewPage.qml"), {
                                            "name": name,
                                            "lat": lat,
                                            "lon": lon});
