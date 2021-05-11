@@ -25,7 +25,7 @@ Page {
             width: parent.width / 5
             height: width
             anchors.horizontalCenter: parent.horizontalCenter
-            source: "../cover/dwd.svg"
+            source: "/usr/share/icons/hicolor/128x128/apps/harbour-dwd.png"
             smooth: true
             asynchronous: true
         }
@@ -87,7 +87,7 @@ Page {
             text: "<a href=\"https://github.com/poetaster/harbour-dwd\">Source: github</a>"
             /*text: "<style>a:link{color: " + Theme.highlightColor + ";}</style>" +  "<a href=\"https://github.com/poetaster/harbour-dwd\">Source: github</a>" */
             onLinkActivated: {
-                console.log("Opening external browser: " + link);
+                //console.log("Opening external browser: " + link);
                 Qt.openUrlExternally(link)
             }
         }

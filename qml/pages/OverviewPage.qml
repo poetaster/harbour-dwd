@@ -116,7 +116,7 @@ Page {
             if (listModel.count < 1) {
                 page.reloadDetails();
             }
-         }
+        }
 
         /*
         switch (status) {
@@ -164,67 +164,72 @@ Page {
                 }
             }
         }
-        Row {
-            id:contentRow
-            width: parent.width
-            height: 2000
-            Column {
-                topPadding:  120
-                id: column1
-                width: parent.width / 2
-                spacing: Theme.paddingSmall
-                Label {
-                    id:lowTemp
-                    height:100
-                    leftPadding: 30
-                    text: "Low: " + Locs.dailyMin(weather.weather,"temperature") + " °C"
-                }
-                Image {
-                    id: weatherImage
-                    width:120
-                    height:120
-                    //source: "image://theme/icon-m-right?" + Theme.highlightColor
-                    source: "../png/"+ weather.weather[11].icon + ".svg.png"
-                    x: Theme.horizontalPageMargin
-                   /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
+
+            MouseArea {
+                id:area1
+                width: parent.width
+                height: 2000
+                Row {
+                   height: 2000
+                   id:contentRow
+                    width: parent.width
+                    Column {
+                        topPadding:  120
+                        id: column1
+                        width: parent.width / 2
+                        spacing: Theme.paddingSmall
+                        leftPadding: 30
+                        Label {
+                            id:lowTemp
+                            height:100
+                            text: qsTr("Low") + ": "  + Locs.dailyMin(weather.weather,"temperature") + " °C"
+                        }
+                        Image {
+                            id: weatherImage
+                            width:120
+                            height:120
+                            //source: "image://theme/icon-m-right?" + Theme.highlightColor
+                            source: "../png/"+ weather.weather[11].icon + ".svg.png"
+                            x: Theme.horizontalPageMargin
+                            /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
                                                            + (highlighted ? "?" + Theme.highlightColor : "")
                                                          : ""*/
+                        }
+                        Label {
+                            id:highTemp
+                            height:100
+                            text: "High: " + Locs.dailyMax(weather.weather ,"temperature") + " °C"
+                        }
+                    }
+                    Column {
+                        id: column2
+                        width: parent.width / 2
+                        spacing: Theme.paddingSmall
+                        topPadding:  120
+                        Label {
+                            id:totalRain
+                            height:100
+                            leftPadding: 30
+                            text: "Rain: " + Locs.dailyTotal(weather.weather ,"precipitation") + " mm"
+                        }
+                        Label {
+                            id:avgWind
+                            height:100
+                            leftPadding: 30
+                            text: "Avg Temp: " + Locs.dailyAvg(weather.weather ,"temperature") + " C"
+                        }
+                        Label {
+                            id:avgCloud
+                            height:100
+                            leftPadding: 30
+                            text: "Avg. Cloud: " + Locs.dailyAvg(weather.weather ,"cloud_cover") + ""
+                        }
+                    }
                 }
-                Label {
-                    id:highTemp
-                    topPadding:  120
-                    height:100
-                    leftPadding: 30
-                    text: "High: " + Locs.dailyMax(weather.weather ,"temperature") + " °C"
-                }
+                     onClicked: {
+                      pageStack.push(Qt.resolvedUrl("DailyDetails.qml"), { "name": name, "lat": lat, "lon": lon});
+                     }
             }
-            Column {
-                id: column2
-                width: parent.width / 2
-                spacing: Theme.paddingSmall
-                Label {
-                    id:totalRain
-                    topPadding:  120
-                    height:100
-                    leftPadding: 30
-                    text: "Rain: " + Locs.dailyTotal(weather.weather ,"precipitation") + " mm"
-                }
-                Label {
-                    id:avgWind
-                    topPadding:  120
-                    height:100
-                    leftPadding: 30
-                    text: "Avg Temp: " + Locs.dailyAvg(weather.weather ,"temperature") + " C"
-                }
-                Label {
-                    id:avgCloud
-                    topPadding:  120
-                    height:100
-                    leftPadding: 30
-                    text: "Avg. Cloud: " + Locs.dailyAvg(weather.weather ,"cloud_cover") + ""
-                }
-            }
-        }
 
 
         PushUpMenu {
@@ -239,5 +244,3 @@ Page {
         }
     }
 }
-
-
