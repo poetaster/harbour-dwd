@@ -22,6 +22,7 @@ import Sailfish.Silica 1.0
 
 import "../js/locations.js" as Locs
 import "../js/storage.js" as Store
+import "../delegates"
 
 Page {
     property var cities;
@@ -85,7 +86,7 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr("Locations")
+                text: qsTr("Add Locations")
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
                 }
@@ -93,7 +94,7 @@ Page {
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
-                    page.reloadStories();
+                    startPage.fetchCities();
                 }
             }
         }
@@ -114,19 +115,9 @@ Page {
                     }
                     Component.onCompleted:update()
                 }
-                delegate: ListItem {
-                    Label {
-                        text: model.name
-                        truncationMode: TruncationMode.Fade
-                    }
-                    onClicked: {
-                        //Store.addLocation(model);
-                        //pageStack.pop()
-                        pageStack.push(Qt.resolvedUrl("OverviewPage.qml"), {
-                                           "name": name,
-                                           "lat": lat,
-                                           "lon": lon});
-                    }
+                delegate: LocationItem {
+                    id:locations
+
                 }
                 spacing: 2
                 VerticalScrollDecorator { flickable: sListview}

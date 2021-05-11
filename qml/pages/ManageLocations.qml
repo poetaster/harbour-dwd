@@ -22,7 +22,7 @@ import Sailfish.Silica 1.0
 
 import "../js/locations.js" as Locs
 import "../js/storage.js" as Store
-
+import "../delegates"
 Page {
     property var cities;
 

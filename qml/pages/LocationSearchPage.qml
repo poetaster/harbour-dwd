@@ -22,6 +22,7 @@ import Sailfish.Silica 1.0
 
 import "../js/locations.js" as Locs
 import "../js/storage.js" as Store
+import "../delegates"
 
 Page {
     property var cities;
@@ -111,11 +112,11 @@ Page {
                     }
                     onClicked: {
                         Store.addLocation(model);
-                        //pageStack.pop()
-                        pageStack.push(Qt.resolvedUrl("OverviewPage.qml"), {
+                        pageStack.pop()
+                       /* pageStack.push(Qt.resolvedUrl("OverviewPage.qml"), {
                                            "name": name,
                                            "lat": lat,
-                                           "lon": lon});
+                                           "lon": lon}); */
                     }
                 }
                 spacing: 2

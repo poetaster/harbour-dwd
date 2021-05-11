@@ -73,12 +73,12 @@
 <context>
     <name>LocationSearchPage</name>
     <message>
-        <location filename="../qml/pages/LocationSearchPage.qml" line="71"/>
+        <location filename="../qml/pages/LocationSearchPage.qml" line="72"/>
         <source>Choose Location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LocationSearchPage.qml" line="75"/>
+        <location filename="../qml/pages/LocationSearchPage.qml" line="76"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
@@ -127,22 +127,22 @@
 <context>
     <name>StartPage</name>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="76"/>
+        <location filename="../qml/pages/StartPage.qml" line="77"/>
         <source>Stored Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="82"/>
+        <location filename="../qml/pages/StartPage.qml" line="83"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="88"/>
-        <source>Locations</source>
+        <location filename="../qml/pages/StartPage.qml" line="89"/>
+        <source>Add Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="94"/>
+        <location filename="../qml/pages/StartPage.qml" line="95"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>

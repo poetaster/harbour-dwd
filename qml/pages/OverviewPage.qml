@@ -151,7 +151,7 @@ Page {
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
-                    page.reloadStories();
+                    page.reloadDetails();
                 }
             }
         }
