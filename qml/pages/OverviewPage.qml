@@ -96,11 +96,10 @@ Page {
         Locs.httpRequest(uri, function(doc) {
             var response = JSON.parse(doc.responseText);
             weather = response;
-            listModel.clear();
             for (var i = 0; i < response.weather.length && i < 30; i++) {
                 //console.debug(JSON.stringify(response.weather[i]));
-                //console.debug(response.weather[i]);
-                listModel.append(response.weather[i]);
+                //console.debug(weather.weather[i]['icon']);
+                //listModel.append(response.weather[i]);
             };
         });
     }
@@ -165,6 +164,69 @@ Page {
                 }
             }
         }
+        Row {
+            id:contentRow
+            width: parent.width
+            height: 2000
+            Column {
+                topPadding:  120
+                id: column1
+                width: parent.width / 2
+                spacing: Theme.paddingSmall
+                Label {
+                    id:lowTemp
+                    height:100
+                    leftPadding: 30
+                    text: "Low: " + Locs.dailyMin(weather.weather,"temperature") + " °C"
+                }
+                Image {
+                    id: weatherImage
+                    width:120
+                    height:120
+                    //source: "image://theme/icon-m-right?" + Theme.highlightColor
+                    source: "../png/"+ weather.weather[11].icon + ".svg.png"
+                    x: Theme.horizontalPageMargin
+                   /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
+                                                           + (highlighted ? "?" + Theme.highlightColor : "")
+                                                         : ""*/
+                }
+                Label {
+                    id:highTemp
+                    topPadding:  120
+                    height:100
+                    leftPadding: 30
+                    text: "High: " + Locs.dailyMax(weather.weather ,"temperature") + " °C"
+                }
+            }
+            Column {
+                id: column2
+                width: parent.width / 2
+                spacing: Theme.paddingSmall
+                Label {
+                    id:totalRain
+                    topPadding:  120
+                    height:100
+                    leftPadding: 30
+                    text: "Rain: " + Locs.dailyTotal(weather.weather ,"precipitation") + " mm"
+                }
+                Label {
+                    id:avgWind
+                    topPadding:  120
+                    height:100
+                    leftPadding: 30
+                    text: "Avg Temp: " + Locs.dailyAvg(weather.weather ,"temperature") + " C"
+                }
+                Label {
+                    id:avgCloud
+                    topPadding:  120
+                    height:100
+                    leftPadding: 30
+                    text: "Avg. Cloud: " + Locs.dailyAvg(weather.weather ,"cloud_cover") + ""
+                }
+            }
+        }
+
+
         PushUpMenu {
             MenuItem {
                 text: qsTr("Next")
@@ -175,46 +237,6 @@ Page {
                 }
             }
         }
-        /*Row {
-
-            Label {
-                topPadding:  120
-                height:100
-                leftPadding: 30
-                id:totalRain
-                text: "Rain: " + Locs.dailyTotal(weather.weather ,"precipitation") + " mm"
-            }
-            Label {
-                topPadding:  120
-                height:100
-                leftPadding: 30
-                id:avgWind
-                text: "Avg Temp: " + Locs.dailyAvg(weather.weather ,"temperature") + " C"
-            }
-        }*/
-
-        SilicaListView {
-            anchors.fill: parent
-            anchors.top: vDate.bottom
-            topMargin: 200
-            //x: Theme.horizontalPageMargin
-            width: parent.width
-            height: 2000
-            id: listView
-            model: listModel
-
-            delegate: WeatherItem{
-                id: delegate
-                /*onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ShowStory.qml"), {  "storyId": id });
-                }*/
-            }
-            VerticalScrollDecorator {flickable: listView}
-        }
-
-        /*PullDownMenu{
-
-        }*/
     }
 }
 

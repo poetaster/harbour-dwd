@@ -88,9 +88,14 @@ Page {
 
             SilicaListView {
                 id:listView
-                x: Theme.horizontalPageMargin
+                //anchors.centerIn: parent
+                anchors.top: header.bottom
+                //y: 200
+                //x: Theme.horizontalPageMargin
+
                 width: parent.width - 2*x
-                height: 1000
+                height: 500
+
                 //spacing: Theme.paddingSmall
                 model:   ListModel {
                     id: listModel

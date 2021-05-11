@@ -16,28 +16,25 @@ CONFIG += sailfishapp
 SOURCES += \
     src/harbour-dwd.cpp
 
+DISTFILES += \
+    qml/delegates/LocationItem.qml \
+    qml/pages/* \
+    qml/pages/* \
+    qml/svg/* \
+    qml/png/* \
+    qml/js/* \
+    rpm/harbour-dwd.spec \
+    rpm/harbour-dwd.yaml \
+    rpm/harbour-dwd.changes.in
+
 OTHER_FILES += \
     harbour-dwd.desktop \
-    harbour-hackernews.png \
-    qml/cover/CoverPage.qml \
-    qml/harbour-dwd.qml \
-    qml/pages/FirstPage.qml \
     translations/*.ts \
 
 
 # to disable building translations every time, comment out the
 # following CONFIG line
-CONFIG += sailfishapp_i18n
+#CONFIG += sailfishapp_i18n
 #TRANSLATIONS += translations/harbour-dwd-de.ts
 
-DISTFILES += \
-    qml/NewsItem.qml \
-    qml/delegates/LocationItem.qml \
-    qml/pages/ManageLocations.qml \
-    qml/pages/StartPage.qml \
-    qml/svg/* \
-    qml/js/cities.js \
-    qml/js/locations.js \
-    rpm/harbour-dwd.yaml \
-    rpm/harbour-dwd.changes.in
-
+SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172

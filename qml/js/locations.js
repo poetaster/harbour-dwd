@@ -66,21 +66,21 @@ function dailyAvg(weather, key) {
 
 
 function dailyMax(weather, key) {
-    var current;
+    var current = 0 ;
     for (var i = 0; i < weather.length; i++) {
-             if ( weather[i].key > current ) {
-                 current = weather[i].key;
+             if ( weather[i][key] > current ) {
+                 current = weather[i][key];
              }
     }
-    return current;
+    return parseFloat(current).toPrecision(2);
 }
 
 function dailyMin(weather, key) {
-    var current;
+    var current = 0;
     for (var i = 0; i < weather.length; i++) {
-             if ( weather[i].key < current ) {
-                 current = weather[i].key;
+             if ( weather[i][key] < current ) {
+                 current = weather[i][key];
              }
     }
-    return current;
+    return parseFloat(current).toPrecision(2);
 }

@@ -20,7 +20,7 @@ CoverBackground {
 
         id:hnImage
         anchors.centerIn: parent
-        source: "/usr/share/icons/hicolor/86x86/apps/harbour-dwd.png"
+        source: "/usr/share/icons/hicolor/128x128/apps/harbour-dwd.png"
         //source: Qt.resolvedUrl("harbour-dwd.png")
         //anchors.fill: parent
 

@@ -55,18 +55,23 @@
 <context>
     <name>DailyDetails</name>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="140"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="141"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="146"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="147"/>
         <source>Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="152"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="153"/>
         <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DailyDetails.qml" line="161"/>
+        <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -109,40 +114,45 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="140"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="150"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="146"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="156"/>
         <source>Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="152"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="162"/>
         <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/OverviewPage.qml" line="170"/>
+        <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>StartPage</name>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="77"/>
+        <location filename="../qml/pages/StartPage.qml" line="61"/>
         <source>Stored Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="83"/>
+        <location filename="../qml/pages/StartPage.qml" line="67"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="89"/>
+        <location filename="../qml/pages/StartPage.qml" line="73"/>
         <source>Add Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="95"/>
+        <location filename="../qml/pages/StartPage.qml" line="79"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>

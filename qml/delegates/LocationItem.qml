@@ -1,37 +1,21 @@
-/*
-            image {
-                id: icon
-                x: theme.horizontalpagemargin
-                anchors.verticalcenter: labelcolumn.verticalcenter
-                visible: model.status !== weather.loading
-                width: theme.iconsizemedium
-                height: theme.iconsizemedium
-                source: model.weathertype.length > 0 ? "image://theme/icon-m-weather-" + model.weathertype
-                                                       + (highlighted ? "?" + theme.highlightcolor : "")
-                                                     : ""
-            }
-
-*/
-
 import QtQuick 2.6
 import Sailfish.Silica 1.0
 
 import "../js/storage.js" as Store
-//import "../js/storage.js" as Store
 
 ListItem {
 
-    contentHeight: contentrow.height + separatorBottom.height
+    contentHeight: contentRow.height + separatorBottom.height
     function localDate (timestamp) {
         date.toLocaleString('de-de', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
     }
 
     Row {
-        y: 200
-        id: contentrow
+        y:200
+        id: contentRow
         x: Theme.horizontalPageMargin
         width: parent.width - 2*x
-        spacing: Theme.paddingMedium //xmpp clients on macos
+        spacing: Theme.paddingSmall
         Button {
             //text: model.timestamp.split('t')[1].split('+')[0];
             text: model.name
@@ -62,10 +46,9 @@ ListItem {
     Separator {
         y: 200
         id: separatorBottom
-        visible: index < listView.count
+        //visible: index < listView.count
         x: Theme.horizontalPageMargin
         width: parent.width - 2*x
-        color: Theme.backgroundGlowColor
+        color: Theme.darkSecondaryColor
     }
 }
-
