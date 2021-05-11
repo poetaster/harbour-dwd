@@ -67,18 +67,28 @@ Page {
     property string headerDate;
     property string dDay;
     property string dMonth;
+    property string dYear;
     property var weather;
+    property var now;
+
     function reloadDetails(){
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
 
-        var now = new Date();
-        var passDate = now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate();
-        headerDate = now.toLocaleString('de-DE');
-        headerDate = headerDate.split(now.getFullYear())[0];
+        if (dDay === ""){
+            now = new Date();
+        }
         dDay = now.getDate();
-        dMonth = now.getMonth()+1;
+        dMonth = (now.getMonth()+1) ;
+        dYear = now.getFullYear() ;
+
+        var passDate = dYear + "-" + dMonth + "-" + dDay;
+        console.debug(passDate);
+        headerDate = now.toLocaleString('de-DE');
+
+        headerDate = headerDate.split(dYear)[0];
+
         //headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
 
         var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + passDate;
@@ -126,14 +136,14 @@ Page {
     }
     anchors.fill: parent
 
-    /*PageHeader {
+    PageHeader {
         id: vDate
         //title: name + " : " + dMonth + " " + dDay
         title: name + " : " + headerDate
-    }*/
+    }
     SilicaFlickable {
         anchors.fill: parent
-
+        quickScroll: true
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
@@ -151,6 +161,16 @@ Page {
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
+                    page.reloadDetails();
+                }
+            }
+        }
+        PushUpMenu {
+            MenuItem {
+                text: qsTr("Next")
+                onClicked: {
+                    now.setDate(now.getDate() + 1);
+                    console.debug(now);
                     page.reloadDetails();
                 }
             }
@@ -174,11 +194,8 @@ Page {
         }*/
 
         SilicaListView {
-            PageHeader {
-                id: lDate
-                //title: name + " : " + dMonth + " " + dDay
-                title: name + " : " + headerDate
-            }
+            anchors.fill: parent
+            anchors.top: vDate.bottom
             topMargin: 200
             //x: Theme.horizontalPageMargin
             width: parent.width

@@ -27,7 +27,7 @@ ListItem {
     }
 
     Row {
-        y: 150
+        y: 200
         id: contentrow
         x: Theme.horizontalPageMargin
         width: parent.width - 2*x
@@ -59,13 +59,13 @@ ListItem {
         }
 
     }
-
     Separator {
+        y: 200
         id: separatorBottom
-        //visible: index < listview.count
+        visible: index < listView.count
         x: Theme.horizontalPageMargin
         width: parent.width - 2*x
-        //color: theme.hightlightcolor
+        color: Theme.backgroundGlowColor
     }
 }
 

@@ -41,37 +41,21 @@ Page {
         listModel.clear();
         if (response.length > 0) {
             for (var i = 0; i < response.length && i < 500; i++) {
-                  var location = Store.getLocationData(response[i]);
-                  listModel.append(location);
-                  console.debug(JSON.stringify(location))
+                var location = Store.getLocationData(response[i]);
+                listModel.append(location);
+                console.debug(JSON.stringify(location))
             }
         } else {
             pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
         }
     }
 
-    function search(string) {
-        var ret = [];
-        //console.debug(JSON.stringify(cities[0]));
-        //listModel.clear();
-        for (var i = 0; i < cities.length; i++) {
-            if (string !== "" && cities[i].name.indexOf(string) >= 0) {
-                ret.push({"name": cities[i].name});
-                listModel.append(cities[i])
-                //console.debug(JSON.stringify(cities[i].name));
-                //console.debug(JSON.stringify(listModel.count));
-            }
-            if (ret.length === 50) break;
-        }
-        return ret;
-    }
-
     anchors.fill: parent
 
     SilicaFlickable {
         anchors.fill: parent
-        contentHeight: column.height
-
+       // contentHeight: column.height
+        //contentWidth: column.width; contentHeight: column.height
         PageHeader {
             id: header
             title: qsTr("Stored Locations")
@@ -103,10 +87,10 @@ Page {
             width: parent.width
 
             SilicaListView {
-                id:sListview
+                id:listView
                 x: Theme.horizontalPageMargin
                 width: parent.width - 2*x
-                height: 2000
+                height: 1000
                 //spacing: Theme.paddingSmall
                 model:   ListModel {
                     id: listModel

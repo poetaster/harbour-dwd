@@ -126,11 +126,12 @@ Page {
     }
     anchors.fill: parent
 
-    /*PageHeader {
+    PageHeader {
         id: vDate
         //title: name + " : " + dMonth + " " + dDay
         title: name + " : " + headerDate
-    }*/
+    }
+
     SilicaFlickable {
         anchors.fill: parent
 
@@ -155,30 +156,16 @@ Page {
                 }
             }
         }
-        /*Row {
-
-            Label {
-                topPadding:  120
-                height:100
-                leftPadding: 30
-                id:totalRain
-                text: "Rain: " + Locs.dailyTotal(weather.weather ,"precipitation") + " mm"
+        PushUpMenu {
+            MenuItem {
+                text: qsTr("Next")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("Dailytails.qml"),{});
+                }
             }
-            Label {
-                topPadding:  120
-                height:100
-                leftPadding: 30
-                id:avgWind
-                text: "Avg Temp: " + Locs.dailyAvg(weather.weather ,"temperature") + " C"
-            }
-        }*/
-
+        }
         SilicaListView {
-            PageHeader {
-                id: lDate
-                //title: name + " : " + dMonth + " " + dDay
-                title: name + " : " + headerDate
-            }
+            anchores.top: vDate.bottom
             topMargin: 200
             //x: Theme.horizontalPageMargin
             width: parent.width

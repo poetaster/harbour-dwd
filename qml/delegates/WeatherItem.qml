@@ -101,19 +101,19 @@ ListItem {
                 font.pixelSize: Theme.fontSizeExtraSmall
                 //color: Theme.highlightColor
             }
+            Label {
+                text: model.temperature + " °C"
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeSmall
+                //color: Theme.highlightColor
+            }
 
         }
         Column {
             id: column2
             width: parent.width / 3
             spacing: Theme.paddingSmall
-            Label {
-                text: model.cloud_cover + "% cloudy  " + model.precipitation + " mm"
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                //color: Theme.highlightColor
-            }
             Image {
                 id: weatherImage
                 width:120
@@ -124,8 +124,15 @@ ListItem {
                /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
                                                        + (highlighted ? "?" + Theme.highlightColor : "")
                                                      : ""*/
-            }/*
+            }
             Label {
+                text: model.cloud_cover + "% cloudy  " + model.precipitation + " mm"
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                //color: Theme.highlightColor
+            }
+           /* Label {
                 text: "Icon: " + model.icon
                 width: parent.width
                 wrapMode: Text.WordWrap
@@ -138,25 +145,18 @@ ListItem {
             width: parent.width / 3
             spacing: Theme.paddingSmall
             Label {
-                text: model.temperature + " °C"
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.highlightColor
-            }
-            Label {
                 text: model.wind_speed + " km/h " + model.wind_direction + " °"
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.highlightColor
+                //color: Theme.highlightColor
             }
             Label {
                 text: model.pressure_msl + " hPa"
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.highlightColor
+                //color: Theme.highlightColor
             }
 
         }
