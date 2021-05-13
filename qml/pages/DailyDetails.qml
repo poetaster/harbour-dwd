@@ -68,17 +68,22 @@ Page {
     property string dDay;
     property string dMonth;
     property string dYear;
-    property var weather;
     property var now;
+    property var weather;
+    property var dailyDate;
 
     function reloadDetails(){
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
 
-        if (dDay === ""){
-            now = new Date();
-        }
+        console.debug(dailyDate);
+
+          if (dDay === ""){
+            now = new Date(dailyDate);
+          }
+
+
         dDay = now.getDate();
         dMonth = (now.getMonth()+1) ;
         dYear = now.getFullYear() ;
@@ -105,7 +110,7 @@ Page {
         });
     }
 
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
 
     ListModel {
         id: listModel

@@ -70,6 +70,7 @@ Page {
     property string dYear;
     property var weather;
     property var now;
+    property var wArray;
 
     function addDays(tNow,days) {
       var date = new Date (tNow.valueOf());
@@ -100,23 +101,26 @@ Page {
         for (var j = 0; j < 5; j++) {
             var dDate = passDate + "-" + addDays(now,j).getDate() ;
             var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + dDate;
+            // initialize listModel slot
+             listModel.set(j,[]);
 
-            //console.debug(JSON.stringify(uri));
-            Locs.httpRequest(uri, function(doc) {
+            Locs.httpRequestIndex(uri, j, function(index,doc) {
+
                 var response = JSON.parse(doc.responseText);
-                weather = response;
+                var dailyDate = response.weather[0].timestamp;
                 var dailyIcon =  response.weather[11].icon ;
                 var dailyLow =  Locs.dailyMin(response.weather,"temperature");
                 var dailyHigh =  Locs.dailyMax(response.weather,"temperature");
                 var dailyRain =  Locs.dailyTotal(response.weather ,"precipitation");
                 var dailyCloud =  Locs.dailyAvg(response.weather ,"cloud_cover");
                 var dailyWind=  Locs.dailyAvg(response.weather ,"wind_speed");
-                var daily = {icon: dailyIcon , temperatureHigh:  dailyHigh, temperatureLow: dailyLow,
+                var daily = {dailyDate: dailyDate, icon: dailyIcon , temperatureHigh:  dailyHigh, temperatureLow: dailyLow,
                             totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
+                var indexDate = new Date(dailyDate);
 
-                listModel.append(daily);
+                //console.debug(JSON.stringify(indexDate.getDate()));
+                listModel.set(index,daily);
 
-                //console.debug(JSON.stringify(listModel[0]));
             });
        }
     }
@@ -196,7 +200,7 @@ Page {
             delegate: ForecastItem {
                 id:delegate
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("DailyDetails.qml"), { "name": name, "lat": lat, "lon": lon, "now": now });
+                    pageStack.push(Qt.resolvedUrl("DailyDetails.qml"), { "name": name, "lat": lat, "lon": lon, "dailyDate": dailyDate   });
                 }
             }
             spacing: 2

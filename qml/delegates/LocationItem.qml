@@ -54,7 +54,7 @@ ListItem {
     Separator {
         y: 200
         id: separatorBottom
-        //visible: index < listView.count
+        visible: index < listView.count
         x: Theme.horizontalPageMargin
         width: parent.width - 2*x
         color: Theme.darkSecondaryColor

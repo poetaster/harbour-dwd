@@ -37,13 +37,12 @@ Page {
 
     function fetchCities() {
         var response = Store.getLocationsList();
-        console.debug(JSON.stringify(response))
         listModel.clear();
         if (response.length > 0) {
             for (var i = 0; i < response.length && i < 500; i++) {
                 var location = Store.getLocationData(response[i]);
                 listModel.append(location);
-                console.debug(JSON.stringify(location))
+                //console.debug(JSON.stringify(location))
             }
         } else {
             pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});

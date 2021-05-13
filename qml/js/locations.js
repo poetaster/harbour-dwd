@@ -30,6 +30,20 @@ function httpRequest(url, callback) {
     doc.send();
 
 }
+/*  This json doc function takes and returns an index to the callback.
+ * This permits it to be called in a loop.
+ */
+
+function httpRequestIndex(url, index, callback) {
+    var doc = new XMLHttpRequest();
+    doc.onreadystatechange = function() {
+        if (doc.readyState === XMLHttpRequest.DONE) {
+            callback(index,doc);
+        }
+    }
+    doc.open("GET", url);
+    doc.send();
+}
 function getDetails(token) {
     return {
         name: name,
@@ -40,13 +54,14 @@ function getDetails(token) {
 function search(string) {
     var ret = [];
     for (var i = 0; i < Locations.LocationsList.length; i++) {
-        if (string != "" && Locations.LocationsList[i].indexOf(string) >= 0) {
+        if (string !== "" && Locations.LocationsList[i].indexOf(string) >= 0) {
             ret.push({"name": Locations.LocationsList[i]});
         }
-        if (ret.length == 50) break;
+        if (ret.length === 50) break;
     }
     return ret;
 }
+
 function dailyTotal(weather, key) {
     var total = 0;
         //console.debug(JSON.stringify(weather));

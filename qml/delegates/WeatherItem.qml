@@ -118,10 +118,16 @@ ListItem {
                 id: weatherImage
                 width:120
                 height:120
-                //source: "image://theme/icon-m-right?" + Theme.highlightColor
-                source: "../png/"+ model.icon + ".svg.png"
                 x: Theme.horizontalPageMargin
-               /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
+                source:
+                    if ( mode.icon === "cloud") {
+
+                    } else {
+                     source: "../png/"+ model.icon + ".svg.png"
+                    }
+
+                //source: "image://theme/icon-m-right?" + Theme.highlightColor
+                /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
                                                        + (highlighted ? "?" + Theme.highlightColor : "")
                                                      : ""*/
             }
