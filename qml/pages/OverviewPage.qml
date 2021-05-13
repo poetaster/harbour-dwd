@@ -71,7 +71,13 @@ Page {
     property var weather;
     property var now;
 
-    function reloadDetails(){
+    function addDays(tNow,days) {
+      var date = new Date (tNow.valueOf());
+      date.setDate(date.getDate() + days);
+      return date;
+    }
+
+    function reload(){
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
@@ -81,35 +87,46 @@ Page {
         }
         dDay = now.getDate();
         dMonth = (now.getMonth()+1) ;
-        dYear = now.getFullYear() ;
+        dYear = now.getFullYear() ; //"../png/"+ weather.weather[11].icon + ".svg.png"
 
-        var passDate = dYear + "-" + dMonth + "-" + dDay;
-        console.debug(passDate);
+        var passDate = dYear + "-" + dMonth;
+        //console.debug(passDate);
         headerDate = now.toLocaleString('de-DE');
-
         headerDate = headerDate.split(dYear)[0];
-
         //headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
 
-        var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + passDate;
-        //console.debug(uri);
-        Locs.httpRequest(uri, function(doc) {
-            var response = JSON.parse(doc.responseText);
-            weather = response;
-            for (var i = 0; i < response.weather.length && i < 30; i++) {
-                //console.debug(JSON.stringify(response.weather[i]));
-                //console.debug(weather.weather[i]['icon']);
-                //listModel.append(response.weather[i]);
-            };
-        });
+        listModel.clear();
+
+        for (var j = 0; j < 5; j++) {
+            var dDate = passDate + "-" + addDays(now,j).getDate() ;
+            var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + dDate;
+
+            //console.debug(JSON.stringify(uri));
+            Locs.httpRequest(uri, function(doc) {
+                var response = JSON.parse(doc.responseText);
+                weather = response;
+                var dailyIcon =  response.weather[11].icon ;
+                var dailyLow =  Locs.dailyMin(response.weather,"temperature");
+                var dailyHigh =  Locs.dailyMax(response.weather,"temperature");
+                var dailyRain =  Locs.dailyTotal(response.weather ,"precipitation");
+                var dailyCloud =  Locs.dailyAvg(response.weather ,"cloud_cover");
+                var dailyWind=  Locs.dailyAvg(response.weather ,"wind_speed");
+                var daily = {icon: dailyIcon , temperatureHigh:  dailyHigh, temperatureLow: dailyLow,
+                            totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
+
+                listModel.append(daily);
+
+                //console.debug(JSON.stringify(listModel[0]));
+            });
+       }
     }
 
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
+    anchors.fill: parent
 
-    ListModel {
-        id: listModel
-    }
-    onStatusChanged: {
+    Component.onCompleted: page.reload();
+
+    /*onStatusChanged: {
 
         if (PageStatus.Activating) {
             //console.debug(listModel.count)
@@ -117,8 +134,6 @@ Page {
                 page.reloadDetails();
             }
         }
-
-        /*
         switch (status) {
             case PageStatus.Activating:
                 indicator.visible = true;
@@ -131,19 +146,17 @@ Page {
                 fahrplanBackend.parser.cancelRequest();
                 break;
         }
-        */
-    }
-    anchors.fill: parent
+    } */
 
     PageHeader {
         id: vDate
-        //title: name + " : " + dMonth + " " + dDay
         title: name + " : " + headerDate
     }
     SilicaFlickable {
+
         anchors.fill: parent
         quickScroll: true
-        // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
+
         PullDownMenu {
             MenuItem {
                 text: qsTr("About")
@@ -160,87 +173,45 @@ Page {
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
-                    page.reloadDetails();
+                    page.reload();
                 }
             }
         }
 
-            MouseArea {
-                id:area1
-                width: parent.width
-                height: 2000
-                Row {
-                   height: 2000
-                   id:contentRow
-                    width: parent.width
-                    Column {
-                        topPadding:  120
-                        id: column1
-                        width: parent.width / 2
-                        spacing: Theme.paddingSmall
-                        leftPadding: 30
-                        Label {
-                            id:lowTemp
-                            height:100
-                            text: qsTr("Low") + ": "  + Locs.dailyMin(weather.weather,"temperature") + " °C"
-                        }
-                        Image {
-                            id: weatherImage
-                            width:120
-                            height:120
-                            //source: "image://theme/icon-m-right?" + Theme.highlightColor
-                            source: "../png/"+ weather.weather[11].icon + ".svg.png"
-                            x: Theme.horizontalPageMargin
-                            /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
-                                                           + (highlighted ? "?" + Theme.highlightColor : "")
-                                                         : ""*/
-                        }
-                        Label {
-                            id:highTemp
-                            height:100
-                            text: "High: " + Locs.dailyMax(weather.weather ,"temperature") + " °C"
-                        }
-                    }
-                    Column {
-                        id: column2
-                        width: parent.width / 2
-                        spacing: Theme.paddingSmall
-                        topPadding:  120
-                        Label {
-                            id:totalRain
-                            height:100
-                            leftPadding: 30
-                            text: "Rain: " + Locs.dailyTotal(weather.weather ,"precipitation") + " mm"
-                        }
-                        Label {
-                            id:avgWind
-                            height:100
-                            leftPadding: 30
-                            text: "Avg Temp: " + Locs.dailyAvg(weather.weather ,"temperature") + " C"
-                        }
-                        Label {
-                            id:avgCloud
-                            height:100
-                            leftPadding: 30
-                            text: "Avg. Cloud: " + Locs.dailyAvg(weather.weather ,"cloud_cover") + ""
-                        }
-                    }
+        SilicaListView {
+            anchors.fill: parent
+            //anchors.top: vDate.bottom
+            topMargin: 200
+            //x: Theme.horizontalPageMargin
+            width: parent.width
+            height: 2000
+            id: listView
+            model:   ListModel {
+                id: listModel
+                /*function update() {
+                    reload()
                 }
-                     onClicked: {
-                      pageStack.push(Qt.resolvedUrl("DailyDetails.qml"), { "name": name, "lat": lat, "lon": lon});
-                     }
+                Component.onCompleted:update() */
             }
-
-
+            delegate: ForecastItem {
+                id:delegate
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("DailyDetails.qml"), { "name": name, "lat": lat, "lon": lon, "now": now });
+                }
+            }
+            spacing: 2
+            VerticalScrollDecorator {flickable: listView}
+        }
         PushUpMenu {
             MenuItem {
                 text: qsTr("Next")
                 onClicked: {
                     now.setDate(now.getDate() + 1);
                     console.debug(now);
-                    page.reloadDetails();
+                    page.reload();
                 }
             }
         }
+
     }
 }

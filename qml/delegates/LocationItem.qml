@@ -22,19 +22,27 @@ ListItem {
             width: parent.width / 2
             //color: Theme.highlightColor
             color: Theme.primaryColor
+            opacity: 0.5
             onClicked: {
-                 pageStack.push(Qt.resolvedUrl("../pages/OverviewPage.qml"), {
-                                    "name": name,
-                                    "lat": lat,
-                                    "lon": lon});
+                pageStack.push(Qt.resolvedUrl("../pages/OverviewPage.qml"), {
+                                   "name": name,
+                                   "lat": lat,
+                                   "lon": lon});
             }
         }
         Button {
             id: deleteMe
-            //text: qsTr("Delete")
+            color: Theme.primaryColor
+            opacity: 0.5
+            //OpacityRampEffect
+                x: Theme.horizontalPageMargin
             Image {
-              source: "image://theme/icon-m-delete?"  // + Theme.highlightColor
+                //x: Theme.horizontalPageMargin
+                x: Theme.paddingMedium
+                y: Theme.paddingSmall
+                source: "image://theme/icon-m-delete?"  // + Theme.highlightColor
             }
+            text: qsTr("Delete")
             onClicked: {
                 //console.debug(model.locationId);
                 Store.removeLocation(model.locationId);

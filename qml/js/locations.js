@@ -1,19 +1,19 @@
 /*
- * This file is part of harbour-meteoswiss.
- * Copyright (C) 2018-2019  Mirian Margiani
+ * This file is part of harbour-dwd.
+ * Copyright (C) 2021 blueprint@poetaster.de Mark Washeim
  *
- * harbour-meteoswiss is free software: you can redistribute it and/or modify
+ * harbour-dwd is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * harbour-meteoswiss is distributed in the hope that it will be useful,
+ * harbour-dwd is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with harbour-meteoswiss.  If not, see <http://www.gnu.org/licenses/>.
+ * along with harbour-dwd.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -30,7 +30,6 @@ function httpRequest(url, callback) {
     doc.send();
 
 }
-
 function getDetails(token) {
     return {
         name: name,
@@ -38,7 +37,6 @@ function getDetails(token) {
         longitude: lon,
     }
 }
-
 function search(string) {
     var ret = [];
     for (var i = 0; i < Locations.LocationsList.length; i++) {
@@ -49,7 +47,6 @@ function search(string) {
     }
     return ret;
 }
-
 function dailyTotal(weather, key) {
     var total = 0;
         //console.debug(JSON.stringify(weather));
@@ -59,28 +56,24 @@ function dailyTotal(weather, key) {
     //console.debug(parseFloat(total).toPrecision(2))
     return parseFloat(total).toPrecision(2);
 }
-
 function dailyAvg(weather, key) {
     return dailyTotal(weather, key) / weather.length;
 }
-
-
 function dailyMax(weather, key) {
-    var current = 0 ;
+    var  current = 0.0 ;
     for (var i = 0; i < weather.length; i++) {
              if ( weather[i][key] > current ) {
                  current = weather[i][key];
              }
     }
-    return parseFloat(current).toPrecision(2);
+    return current;
 }
-
 function dailyMin(weather, key) {
-    var current = 0;
+    var current = dailyMax(weather,key);
     for (var i = 0; i < weather.length; i++) {
              if ( weather[i][key] < current ) {
                  current = weather[i][key];
              }
     }
-    return parseFloat(current).toPrecision(2);
+    return current;
 }

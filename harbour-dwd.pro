@@ -17,9 +17,11 @@ SOURCES += \
     src/harbour-dwd.cpp
 
 DISTFILES += \
+    qml/delegates/ForecastItem.qml \
     qml/delegates/LocationItem.qml \
     qml/pages/* \
     qml/pages/* \
+    qml/pages/OverviewPageSingle.qml \
     qml/svg/* \
     qml/png/* \
     qml/js/* \
