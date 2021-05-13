@@ -70,7 +70,6 @@ Page {
     property string dYear;
     property var weather;
     property var now;
-    property var wArray;
 
     function addDays(tNow,days) {
       var date = new Date (tNow.valueOf());
@@ -118,7 +117,8 @@ Page {
                             totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
                 var indexDate = new Date(dailyDate);
 
-                //console.debug(JSON.stringify(indexDate.getDate()));
+                console.debug(JSON.stringify(indexDate.getDate()));
+                console.debug(JSON.stringify(daily));
                 listModel.set(index,daily);
 
             });

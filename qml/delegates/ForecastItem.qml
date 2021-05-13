@@ -78,6 +78,8 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 
 ListItem {
+
+    id:forecastItem
     contentHeight: contentRow.height + separatorBottom.height
     function localDate (timestamp) {
                 date.toLocaleString('de-de', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
@@ -95,14 +97,15 @@ ListItem {
             width: parent.width / 3
             spacing: Theme.paddingSmall
             Label {
-                text: model.timestamp.split('T')[1].split('+')[0];
+                text: model.temperatureLow + " °C"
+                //text: model.timestamp.split('T')[1].split('+')[0];
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
                 //color: Theme.highlightColor
             }
             Label {
-                text: model.temperature + " °C"
+                text: model.temperatureHigh + " °C"
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeSmall
@@ -114,29 +117,19 @@ ListItem {
             id: column2
             width: parent.width / 3
             spacing: Theme.paddingSmall
-            Image {
-                id: weatherImage
-                width:120
-                height:120
-                x: Theme.horizontalPageMargin
-                source:
-                    if ( model.icon === "cloudy" && parseFloat(model.precipitation) > 0.0 ) {
-                     return "../png/showers.svg.png";
-                    } else {
-                     return "../png/"+ model.icon + ".svg.png";
-                    }
-
-                //source: "image://theme/icon-m-right?" + Theme.highlightColor
-                /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
-                                                       + (highlighted ? "?" + Theme.highlightColor : "")
-                                                     : ""*/
-            }
             Label {
-                text: model.cloud_cover + "% cloudy  " + model.precipitation + " mm"
+                text: model.cloud_cover + "% cloudy  " //+ model.precipitation + " mm"
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
                 //color: Theme.highlightColor
+            }
+            Image {
+                id: weatherImage
+                width:120
+                height:120
+                source: "../png/"+ model.icon + ".svg.png"
+                x: Theme.horizontalPageMargin
             }
            /* Label {
                 text: "Icon: " + model.icon
@@ -151,19 +144,19 @@ ListItem {
             width: parent.width / 3
             spacing: Theme.paddingSmall
             Label {
-                text: model.wind_speed + " km/h " + model.wind_direction + " °"
+                text: model.wind_speed + " km/h " //+ model.wind_direction + " °"
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
                 //color: Theme.highlightColor
-            }
+            }/*
             Label {
                 text: model.pressure_msl + " hPa"
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
                 //color: Theme.highlightColor
-            }
+            }*/
 
         }
     }
