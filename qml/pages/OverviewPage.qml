@@ -117,7 +117,7 @@ Page {
                             totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
                 var indexDate = new Date(dailyDate);
 
-                console.debug(JSON.stringify(indexDate.getDate()));
+                //console.debug(JSON.stringify(indexDate.getDate()));
                 console.debug(JSON.stringify(daily));
                 listModel.set(index,daily);
 

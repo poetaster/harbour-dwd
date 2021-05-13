@@ -77,7 +77,7 @@ Page {
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
 
-        console.debug(dailyDate);
+        //console.debug(dailyDate);
 
           if (dDay === ""){
             now = new Date(dailyDate);
@@ -89,7 +89,7 @@ Page {
         dYear = now.getFullYear() ;
 
         var passDate = dYear + "-" + dMonth + "-" + dDay;
-        console.debug(passDate);
+        //console.debug(passDate);
         headerDate = now.toLocaleString('de-DE');
 
         headerDate = headerDate.split(dYear)[0];
@@ -175,7 +175,7 @@ Page {
                 text: qsTr("Next")
                 onClicked: {
                     now.setDate(now.getDate() + 1);
-                    console.debug(now);
+                    //console.debug(now);
                     page.reloadDetails();
                 }
             }
