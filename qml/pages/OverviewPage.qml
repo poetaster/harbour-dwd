@@ -209,7 +209,7 @@ Page {
                 // since we can't depend on the order of the data coming in on the wire.
                 WorkerScript {
                         id: myWorker
-                        source: "worker.mjs"
+                        source: "worker.js"
                         onMessage: console.debug(messageObject.reply)//myText.text = messageObject.reply
                 }
             }
