@@ -71,10 +71,18 @@ Page {
     property var weather;
     property var now;
 
-    function addDays(tNow,days) {
-      var date = new Date (tNow.valueOf());
+    function addDays(aDate,days) {
+      var date = new Date (aDate.valueOf());
       date.setDate(date.getDate() + days);
       return date;
+    }
+    function delay(delayTime) {
+        timer = new Timer();
+        timer.interval = delayTime;
+        timer.repeat = false;
+        timer.triggeredOnStart = true;
+        timer.start();
+
     }
 
     function reload(){
@@ -99,10 +107,12 @@ Page {
 
         for (var j = 0; j < 5; j++) {
             var dDate = passDate + "-" + addDays(now,j).getDate() ;
+            console.debug(JSON.stringify(dDate));
             var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + dDate;
             // initialize listModel slot
-             listModel.set(j,[]);
-
+            // listModel.set(j,[]);
+            myWorker.sendMessage({ 'uri': uri, 'index': j });
+            /*
             Locs.httpRequestIndex(uri, j, function(index,doc) {
 
                 var response = JSON.parse(doc.responseText);
@@ -115,20 +125,20 @@ Page {
                 var dailyWind=  Locs.dailyAvg(response.weather ,"wind_speed");
                 var daily = {dailyDate: dailyDate, icon: dailyIcon , temperatureHigh:  dailyHigh, temperatureLow: dailyLow,
                             totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
-                var indexDate = new Date(dailyDate);
 
-                //console.debug(JSON.stringify(indexDate.getDate()));
+                var indexDate = new Date(dailyDate);
+                console.debug(JSON.stringify(indexDate.getDate()));
                 console.debug(JSON.stringify(daily));
                 listModel.set(index,daily);
 
-            });
+            });*/
        }
     }
 
     allowedOrientations: Orientation.Portrait
     anchors.fill: parent
 
-    Component.onCompleted: page.reload();
+    //Component.onCompleted: page.reload();
 
     /*onStatusChanged: {
 
@@ -192,10 +202,16 @@ Page {
             id: listView
             model:   ListModel {
                 id: listModel
-                /*function update() {
-                    reload()
+                function update() {
+                    page.reload()
                 }
-                Component.onCompleted:update() */
+                Component.onCompleted:update()
+                // since we can't depend on the order of the data coming in on the wire.
+                WorkerScript {
+                        id: myWorker
+                        source: "worker.mjs"
+                        onMessage: console.debug(messageObject.reply)//myText.text = messageObject.reply
+                }
             }
             delegate: ForecastItem {
                 id:delegate
@@ -211,7 +227,7 @@ Page {
                 text: qsTr("Next")
                 onClicked: {
                     now.setDate(now.getDate() + 1);
-                    console.debug(now);
+                    //console.debug(now);
                     page.reload();
                 }
             }

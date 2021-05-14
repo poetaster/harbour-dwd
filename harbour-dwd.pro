@@ -19,6 +19,7 @@ SOURCES += \
 DISTFILES += \
     qml/delegates/ForecastItem.qml \
     qml/delegates/LocationItem.qml \
+    qml/js/worker.js \
     qml/pages/* \
     qml/pages/* \
     qml/pages/OverviewPageSingle.qml \
