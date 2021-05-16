@@ -71,25 +71,18 @@ Page {
     property var weather;
     property var now;
 
+    onWeatherChanged: updateWeatherModel();
+    //onQueryChanged: updateJSONModel();
+
     function addDays(aDate,days) {
-      var date = new Date (aDate.valueOf());
-      date.setDate(date.getDate() + days);
-      return date;
+        var date = new Date (aDate.valueOf());
+        date.setDate(date.getDate() + days);
+        return date;
     }
-    function delay(delayTime) {
-        timer = new Timer();
-        timer.interval = delayTime;
-        timer.repeat = false;
-        timer.triggeredOnStart = true;
-        timer.start();
-
-    }
-
     function reload(){
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
-
         if (dDay === ""){
             now = new Date();
         }
@@ -102,19 +95,16 @@ Page {
         headerDate = now.toLocaleString('de-DE');
         headerDate = headerDate.split(dYear)[0];
         //headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+        // clear the listmodel
 
         listModel.clear();
-
+        weather = new Array;
         for (var j = 0; j < 5; j++) {
             var dDate = passDate + "-" + addDays(now,j).getDate() ;
-            console.debug(JSON.stringify(dDate));
             var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + dDate;
             // initialize listModel slot
-            // listModel.set(j,[]);
-            myWorker.sendMessage({ 'uri': uri, 'index': j });
-            /*
-            Locs.httpRequestIndex(uri, j, function(index,doc) {
-
+            listModel.set(j,[])
+            Locs.httpRequestIndex(uri,j, function(index,doc) {
                 var response = JSON.parse(doc.responseText);
                 var dailyDate = response.weather[0].timestamp;
                 var dailyIcon =  response.weather[11].icon ;
@@ -124,19 +114,41 @@ Page {
                 var dailyCloud =  Locs.dailyAvg(response.weather ,"cloud_cover");
                 var dailyWind=  Locs.dailyAvg(response.weather ,"wind_speed");
                 var daily = {dailyDate: dailyDate, icon: dailyIcon , temperatureHigh:  dailyHigh, temperatureLow: dailyLow,
-                            totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
+                    totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
+                weather[index]=daily;
 
-                var indexDate = new Date(dailyDate);
-                console.debug(JSON.stringify(indexDate.getDate()));
-                console.debug(JSON.stringify(daily));
-                listModel.set(index,daily);
-
-            });*/
-       }
+                getTimer.restart();
+                //listModel.set(index,weather[index]);
+                //console.debug(JSON.stringify(weather[index]));
+                //var indexDate = new Date(dailyDate);
+            });
+            //listModel.set(j,weather[j])
+            //console.debug(JSON.stringify(weather[j]));
+        }
     }
+
+    function updateWeatherModel(){
+        listModel.clear();
+        for (var j = 0; j < 5; j++) {
+            if (weather[j] !== ""){
+                console.debug(JSON.stringify(weather[j]));
+                listModel.append(weather[j]);
+            }
+        }
+    }
+
 
     allowedOrientations: Orientation.Portrait
     anchors.fill: parent
+
+    Timer{
+        id:getTimer
+        interval: 1000
+        repeat: false
+        running:true
+        triggeredOnStart:true
+        onTriggered: updateWeatherModel()
+    }
 
     //Component.onCompleted: page.reload();
 
@@ -206,12 +218,6 @@ Page {
                     page.reload()
                 }
                 Component.onCompleted:update()
-                // since we can't depend on the order of the data coming in on the wire.
-                WorkerScript {
-                        id: myWorker
-                        source: "worker.js"
-                        onMessage: console.debug(messageObject.reply)//myText.text = messageObject.reply
-                }
             }
             delegate: ForecastItem {
                 id:delegate
@@ -222,6 +228,8 @@ Page {
             spacing: 2
             VerticalScrollDecorator {flickable: listView}
         }
+
+
         PushUpMenu {
             MenuItem {
                 text: qsTr("Next")

@@ -69,18 +69,16 @@ Page {
     property string dMonth;
     property string dYear;
     property var now;
-    property var weather;
-    property var dailyDate;
+    property var index;
 
     function reloadDetails(){
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
 
-        //console.debug(dailyDate);
 
           if (dDay === ""){
-            now = new Date(dailyDate);
+            now = new Date();
           }
 
 
@@ -100,7 +98,7 @@ Page {
         //console.debug(uri);
         Locs.httpRequest(uri, function(doc) {
             var response = JSON.parse(doc.responseText);
-            weather = response;
+            //weather = response;
             listModel.clear();
             for (var i = 0; i < response.weather.length && i < 30; i++) {
                 //console.debug(JSON.stringify(response.weather[i]));
@@ -175,7 +173,7 @@ Page {
                 text: qsTr("Next")
                 onClicked: {
                     now.setDate(now.getDate() + 1);
-                    //console.debug(now);
+                    console.debug(now);
                     page.reloadDetails();
                 }
             }

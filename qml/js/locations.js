@@ -45,11 +45,7 @@ function httpRequestIndex(url, index, callback) {
     doc.send();
 }
 
-WorkerScript.onMessage = function(msg) {
-    if (msg.action === 'nextDay') {
-
-        httpRequestIndex(uri, j, function(index,doc) {
-        var response = JSON.parse(doc.responseText);
+function extractDaily(response) {
         var dailyDate = response.weather[0].timestamp;
         var dailyIcon =  response.weather[11].icon ;
         var dailyLow =  Locs.dailyMin(response.weather,"temperature");
@@ -59,10 +55,7 @@ WorkerScript.onMessage = function(msg) {
         var dailyWind=  Locs.dailyAvg(response.weather ,"wind_speed");
         var daily = {dailyDate: dailyDate, icon: dailyIcon , temperatureHigh:  dailyHigh, temperatureLow: dailyLow,
                     totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
-        msg.model.append(daily);
-        msg.model.sync();   // updates the changes to the list
-        });
-    }
+    return daily;
 }
 
 function getDetails(token) {

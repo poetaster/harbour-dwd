@@ -97,6 +97,13 @@ ListItem {
             width: parent.width / 3
             spacing: Theme.paddingSmall
             Label {
+                text: model.dailyDate.split('T')[0];
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                //color: Theme.highlightColor
+            }
+            Label {
                 text: model.temperatureLow + " °C"
                 //text: model.timestamp.split('T')[1].split('+')[0];
                 width: parent.width
