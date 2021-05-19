@@ -17,15 +17,19 @@ SOURCES += \
     src/harbour-dwd.cpp
 
 DISTFILES += \
-    qml/delegates/ForecastItem.qml \
+    qml/cover/CoverPage.qml \
+    qml/pages/About.qml \
+    qml/pages/StartPage.qml \
+    qml/pages/OverviewPage.qml \
+    qml/pages/LocationSearchPage.qml \
+    qml/pages/DailyDetails.qml \
     qml/delegates/LocationItem.qml \
-    qml/js/worker.js \
-    qml/pages/* \
-    qml/pages/* \
-    qml/pages/OverviewPageSingle.qml \
-    qml/svg/* \
+    qml/delegates/ForecastItem.qml \
+    qml/delegates/WeatherItem.qml \
     qml/png/* \
-    qml/js/* \
+    qml/js/locations.js \
+    qml/js/storage.js \
+    qml/js/worker.js \
     rpm/harbour-dwd.spec \
     rpm/harbour-dwd.yaml \
     rpm/harbour-dwd.changes.in

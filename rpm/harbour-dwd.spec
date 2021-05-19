@@ -13,7 +13,7 @@ Name:       harbour-dwd
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    German Weather Service client
-Version:    1.0.
+Version:    0.1
 Release:    1
 Group:      Qt/Qt
 License:    GPLv3
@@ -28,7 +28,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Read Hacker News
+German Weather Service client""
 
 %prep
 %setup -q -n %{name}-%{version}

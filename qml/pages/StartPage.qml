@@ -26,12 +26,13 @@ import "../delegates"
 
 Page {
     property var cities;
-
+    property var now;
     id: startPage
     allowedOrientations: Orientation.All
 
     Component.onCompleted: {
         //searchField.forceActiveFocus();
+        now = new Date();
         fetchCities();
     }
 
@@ -50,6 +51,13 @@ Page {
     }
 
     anchors.fill: parent
+
+    onStatusChanged: {
+        if (PageStatus.Activating) {
+            //console.debug(listModel.count)
+             fetchCities();
+        }
+       }
 
     SilicaFlickable {
         anchors.fill: parent

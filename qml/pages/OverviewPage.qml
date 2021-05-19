@@ -71,7 +71,7 @@ Page {
     property var weather;
     property var now;
 
-    onWeatherChanged: updateWeatherModel();
+    //onWeatherChanged: updateWeatherModel();
     //onQueryChanged: updateJSONModel();
 
     function addDays(aDate,days) {
@@ -97,13 +97,13 @@ Page {
         //headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
         // clear the listmodel
 
-        listModel.clear();
+        //listModel.clear();
         weather = new Array;
         for (var j = 0; j < 5; j++) {
             var dDate = passDate + "-" + addDays(now,j).getDate() ;
             var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + dDate;
             // initialize listModel slot
-            listModel.set(j,[])
+            //listModel.set(j,[])
             Locs.httpRequestIndex(uri,j, function(index,doc) {
                 var response = JSON.parse(doc.responseText);
                 var dailyDate = response.weather[0].timestamp;
@@ -115,9 +115,10 @@ Page {
                 var dailyWind=  Locs.dailyAvg(response.weather ,"wind_speed");
                 var daily = {dailyDate: dailyDate, icon: dailyIcon , temperatureHigh:  dailyHigh, temperatureLow: dailyLow,
                     totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
+
                 weather[index]=daily;
 
-                getTimer.restart();
+                if(index < 4) getTimer.restart();
                 //listModel.set(index,weather[index]);
                 //console.debug(JSON.stringify(weather[index]));
                 //var indexDate = new Date(dailyDate);
@@ -129,9 +130,15 @@ Page {
 
     function updateWeatherModel(){
         listModel.clear();
+        var modelComplete = true;
+        for (var i = 0; i < 5; i++) {
+            if (weather[i] === ""){
+                modelComplete = false;
+            }
+        }
         for (var j = 0; j < 5; j++) {
-            if (weather[j] !== ""){
-                console.debug(JSON.stringify(weather[j]));
+            if (modelComplete === true){
+                console.debug(JSON.stringify('index: ' + j));
                 listModel.append(weather[j]);
             }
         }
@@ -143,7 +150,7 @@ Page {
 
     Timer{
         id:getTimer
-        interval: 1000
+        interval: 500
         repeat: false
         running:true
         triggeredOnStart:true

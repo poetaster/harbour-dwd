@@ -95,11 +95,17 @@ ListItem {
             width: parent.width / 3
             spacing: Theme.paddingSmall
             Label {
-                text: model.timestamp.split('T')[1].split('+')[0];
+                visible: index < listView.count
+                text: model.timestamp.split('T')[1].split('+')[0].split(':')[0] + ":00";
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
-                //color: Theme.highlightColor
+                color:
+                    if( index % 2 === 0){
+                        return Theme.highlightColor
+                    } else {
+                        return Theme.primaryColor
+                    }
             }
             Label {
                 text: model.temperature + " °C"
@@ -122,6 +128,8 @@ ListItem {
                 source:
                     if ( model.icon === "cloudy" && parseFloat(model.precipitation) > 0.0 ) {
                      return "../png/showers.svg.png";
+                    } else if ( model.icon === "partly-cloudy-day" && parseFloat(model.precipitation) > 0.1 ) {
+                     return "../png/partly-cloudy-day-showers.svg.png";
                     } else {
                      return "../png/"+ model.icon + ".svg.png";
                     }
@@ -132,14 +140,14 @@ ListItem {
                                                      : ""*/
             }
             Label {
-                text: model.cloud_cover + "% cloudy  " + model.precipitation + " mm"
+                text: model.cloud_cover + "% cloud  " + model.precipitation + " mm"
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
                 //color: Theme.highlightColor
             }
-           /* Label {
-                text: "Icon: " + model.icon
+            /*Label {
+                text:  model.icon
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall

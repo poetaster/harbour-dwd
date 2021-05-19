@@ -25,9 +25,10 @@ ListItem {
             opacity: 0.5
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("../pages/OverviewPage.qml"), {
-                                   "name": name,
-                                   "lat": lat,
-                                   "lon": lon});
+                                   "now":now,
+                                   "name":name,
+                                   "lat":lat,
+                                   "lon":lon});
             }
         }
         Button {
