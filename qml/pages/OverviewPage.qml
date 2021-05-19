@@ -83,18 +83,17 @@ Page {
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
-        if (dDay === ""){
-            now = new Date();
-        }
+
         dDay = now.getDate();
         dMonth = (now.getMonth()+1) ;
         dYear = now.getFullYear() ; //"../png/"+ weather.weather[11].icon + ".svg.png"
 
         var passDate = dYear + "-" + dMonth;
         //console.debug(passDate);
-        headerDate = now.toLocaleString('de-DE');
+        //headerDate = now.toLocaleString('de-DE');
+        //headerDate = headerDate.split(dYear)[0];
+        headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
         headerDate = headerDate.split(dYear)[0];
-        //headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
         // clear the listmodel
 
         //listModel.clear();
@@ -106,7 +105,7 @@ Page {
             //listModel.set(j,[])
             Locs.httpRequestIndex(uri,j, function(index,doc) {
                 var response = JSON.parse(doc.responseText);
-                var dailyDate = response.weather[0].timestamp;
+                var dailyDate = new Date(response.weather[0].timestamp);
                 var dailyIcon =  response.weather[11].icon ;
                 var dailyLow =  Locs.dailyMin(response.weather,"temperature");
                 var dailyHigh =  Locs.dailyMax(response.weather,"temperature");
@@ -183,7 +182,7 @@ Page {
 
     PageHeader {
         id: vDate
-        title: name + " : " + headerDate
+        title: name + " : " + now.toLocaleString('de-DE').split(now.getFullYear())[0]
     }
     SilicaFlickable {
 

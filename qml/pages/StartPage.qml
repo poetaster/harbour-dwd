@@ -25,16 +25,23 @@ import "../js/storage.js" as Store
 import "../delegates"
 
 Page {
+    id: startPage
+
     property var cities;
     property var now;
-    id: startPage
-    allowedOrientations: Orientation.All
 
-    Component.onCompleted: {
+    property string dDay;
+    property string dMonth;
+    property string dYear;
+
+    allowedOrientations: Orientation.Portrait
+
+    /*Component.onCompleted: {
         //searchField.forceActiveFocus();
         now = new Date();
+        now = now.toLocaleString('de-DE')
         fetchCities();
-    }
+    }*/
 
     function fetchCities() {
         var response = Store.getLocationsList();
@@ -48,6 +55,7 @@ Page {
         } else {
             pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
         }
+        now = new Date();
     }
 
     anchors.fill: parent
@@ -92,11 +100,20 @@ Page {
         Column {
             id: column
             width: parent.width
-
+             anchors.top: header.bottom
+             /*Text{
+                id:textone
+                width: parent.width - 2*x
+                height: 200
+                x: Theme.horizontalPageMargin
+                text:now.toLocaleString('de-DE').split(now.getFullYear())[0]
+                color: Theme.primaryColor
+                font.pixelSize:Theme.fontSizeLarge
+             }*/
             SilicaListView {
                 id:listView
                 //anchors.centerIn: parent
-                anchors.top: header.bottom
+                //anchors.top: header.bottom
                 //y: 200
                 //x: Theme.horizontalPageMargin
 

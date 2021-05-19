@@ -95,61 +95,77 @@ ListItem {
         Column {
             id: column
             width: parent.width / 3
-            spacing: Theme.paddingSmall
+            spacing: Theme.paddingMedium
             Label {
-                text: model.dailyDate.split('T')[0];
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                //color: Theme.highlightColor
-            }
-            Label {
-                text: model.temperatureLow + " °C"
-                //text: model.timestamp.split('T')[1].split('+')[0];
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                //color: Theme.highlightColor
-            }
-            Label {
-                text: model.temperatureHigh + " °C"
+                id:fDate
+                text: model.dailyDate.toLocaleString('de-DE').split(now.getFullYear())[0];
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeSmall
-                //color: Theme.highlightColor
+                color: Theme.highlightColor
             }
+            Label {
+                id:low
+                width: parent.width
+                text: model.temperatureLow + " < " + model.temperatureHigh + " °C"
+                font.pixelSize: Theme.fontSizeMedium
+
+                color: Theme.primaryColor
+            }
+            /*Label {
+                id:high
+                //x:low.width + 2
+                width: parent.width
+                text: model.temperatureHigh + " °C"
+                font.pixelSize: Theme.fontSizeMedium
+                color: Theme.primaryColor
+            }*/
 
         }
         Column {
             id: column2
             width: parent.width / 3
             spacing: Theme.paddingSmall
-            Label {
-                text: model.cloud_cover + "% cloudy  " //+ model.precipitation + " mm"
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                //color: Theme.highlightColor
-            }
             Image {
                 id: weatherImage
                 width:120
                 height:120
                 source: "../png/"+ model.icon + ".svg.png"
                 x: Theme.horizontalPageMargin
-            }
-           /* Label {
-                text: "Icon: " + model.icon
+            }/*
+            Label {
+                text: model.cloud_cover + "% cloud"
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
                 //color: Theme.highlightColor
+            }
+            Label {
+                text: model.totalRain + " mm Rain"
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.highlightColor
             }*/
         }
         Column {
             id: column3
             width: parent.width / 3
             spacing: Theme.paddingSmall
+            Label {
+                text: model.cloud_cover + "% cloud"
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                color: Theme.highlightColor
+            }
+            Label {
+                text: model.totalRain + " mm Rain"
+                width: parent.width
+                wrapMode: Text.WordWrap
+                font.pixelSize: Theme.fontSizeExtraSmall
+                //color: Theme.highlightColor
+            }
             Label {
                 text: model.wind_speed + " km/h " //+ model.wind_direction + " °"
                 width: parent.width
