@@ -1,4 +1,4 @@
-/*
+﻿/*
   Copyright (C) 2021 Mark Washeim
   Contact: blueprint@poetaster.de
 
@@ -55,6 +55,7 @@ weather?lat=52.52&lon=13.41&date=2021-04-30 */
 */
 
 import QtQuick 2.6
+import QtMultimedia 5.6
 import Sailfish.Silica 1.0
 import "../delegates"
 import "../js/locations.js" as Locs
@@ -83,6 +84,9 @@ Page {
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
+        if (dDay ==="") {
+            now = new Date();
+        }
 
         dDay = now.getDate();
         dMonth = (now.getMonth()+1) ;
@@ -92,10 +96,9 @@ Page {
         //console.debug(passDate);
         //headerDate = now.toLocaleString('de-DE');
         //headerDate = headerDate.split(dYear)[0];
-        headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
-        headerDate = headerDate.split(dYear)[0];
+        //headerDate = now.toLocaleString('en_US', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+        headerDate = now.toLocaleString().split(dYear)[0];
         // clear the listmodel
-
         //listModel.clear();
         weather = new Array;
         for (var j = 0; j < 5; j++) {
@@ -137,12 +140,11 @@ Page {
         }
         for (var j = 0; j < 5; j++) {
             if (modelComplete === true){
-                console.debug(JSON.stringify('index: ' + j));
+                //console.debug(JSON.stringify('index: ' + j));
                 listModel.append(weather[j]);
             }
         }
     }
-
 
     allowedOrientations: Orientation.Portrait
     anchors.fill: parent
@@ -182,7 +184,7 @@ Page {
 
     PageHeader {
         id: vDate
-        title: name + " : " + now.toLocaleString('de-DE').split(now.getFullYear())[0]
+        title: name + " : " + now.toLocaleString().split(now.getFullYear())[0]
     }
     SilicaFlickable {
 

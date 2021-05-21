@@ -36,12 +36,12 @@ Page {
 
     allowedOrientations: Orientation.Portrait
 
-    /*Component.onCompleted: {
+    Component.onCompleted: {
         //searchField.forceActiveFocus();
-        now = new Date();
-        now = now.toLocaleString('de-DE')
-        fetchCities();
-    }*/
+        //now = new Date();
+        //now = now.toLocaleString('de-DE')
+        //fetchCities();
+    }
 
     function fetchCities() {
         var response = Store.getLocationsList();

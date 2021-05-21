@@ -4,10 +4,10 @@ import Sailfish.Silica 1.0
 import "../js/storage.js" as Store
 
 ListItem {
-
+    //property var now;
     contentHeight: contentRow.height + separatorBottom.height
     function localDate (timestamp) {
-        date.toLocaleString('de-de', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+        timestamp.toLocaleString('de-de', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
     }
 
     Row {
@@ -25,7 +25,6 @@ ListItem {
             opacity: 0.5
             onClicked: {
                 pageStack.push(Qt.resolvedUrl("../pages/OverviewPage.qml"), {
-                                   "now":now,
                                    "name":name,
                                    "lat":lat,
                                    "lon":lon});

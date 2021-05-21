@@ -82,7 +82,7 @@ ListItem {
     id:forecastItem
     contentHeight: contentRow.height + separatorBottom.height
     function localDate (timestamp) {
-                date.toLocaleString('de-de', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+                date.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
     }
 
 
@@ -98,7 +98,7 @@ ListItem {
             spacing: Theme.paddingMedium
             Label {
                 id:fDate
-                text: model.dailyDate.toLocaleString('de-DE').split(now.getFullYear())[0];
+                text: model.dailyDate.toLocaleString().split(now.getFullYear())[0];
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeSmall
@@ -107,7 +107,7 @@ ListItem {
             Label {
                 id:low
                 width: parent.width
-                text: model.temperatureLow + " < " + model.temperatureHigh + " °C"
+                text: model.temperatureLow + " °C " + " - " + model.temperatureHigh + " °C"
                 font.pixelSize: Theme.fontSizeMedium
 
                 color: Theme.primaryColor
