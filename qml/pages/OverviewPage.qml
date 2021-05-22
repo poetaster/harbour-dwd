@@ -65,7 +65,8 @@ Page {
     property string name;
     property string lat;
     property string lon;
-    property string headerDate;
+    property string dailyDate; // used to go to the next dayk
+    property string headerDate; // used to go to the next dayk
     property string dDay;
     property string dMonth;
     property string dYear;
@@ -84,9 +85,15 @@ Page {
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
-        if (dDay ==="") {
+        console.debug("daily: "+dailyDate);
+        console.debug("now: "+dailyDate);
+        if (dailyDate === "") {
             now = new Date();
+        } else {
+            now = new Date(dailyDate);
+
         }
+        console.debug("now: "+now);
 
         dDay = now.getDate();
         dMonth = (now.getMonth()+1) ;
@@ -119,14 +126,11 @@ Page {
                     totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
 
                 weather[index]=daily;
-
+                // restart the timer. gives us enough time to
+                // get all the results
                 if(index < 4) getTimer.restart();
-                //listModel.set(index,weather[index]);
                 //console.debug(JSON.stringify(weather[index]));
-                //var indexDate = new Date(dailyDate);
             });
-            //listModel.set(j,weather[j])
-            //console.debug(JSON.stringify(weather[j]));
         }
     }
 
@@ -140,7 +144,7 @@ Page {
         }
         for (var j = 0; j < 5; j++) {
             if (modelComplete === true){
-                //console.debug(JSON.stringify('index: ' + j));
+                console.debug(JSON.stringify('index: ' + j));
                 listModel.append(weather[j]);
             }
         }

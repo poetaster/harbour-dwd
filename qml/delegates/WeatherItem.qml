@@ -79,10 +79,6 @@ import Sailfish.Silica 1.0
 
 ListItem {
     contentHeight: contentRow.height + separatorBottom.height
-    function localDate (timestamp) {
-                date.toLocaleString('de-de', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
-    }
-
 
     Row {
         id: contentRow
@@ -93,10 +89,15 @@ ListItem {
         Column {
             id: column
             width: parent.width / 3
-            spacing: Theme.paddingSmall
-            Label {
+            spacing: Theme.paddingMedium
+            Text{
+                // this is a hack, obviously
+                padding:  2
+            }
+            Text {
                 visible: index < listView.count
                 text: model.timestamp.split('T')[1].split('+')[0].split(':')[0] + ":00";
+                //text: model.timestamp;
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
@@ -119,7 +120,7 @@ ListItem {
         Column {
             id: column2
             width: parent.width / 3
-            spacing: Theme.paddingSmall
+            spacing: Theme.paddingMedium
             Image {
                 id: weatherImage
                 width:120
@@ -144,7 +145,7 @@ ListItem {
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
-                //color: Theme.highlightColor
+                color: Theme.highlightColor
             }
             /*Label {
                 text:  model.icon
@@ -157,13 +158,19 @@ ListItem {
         Column {
             id: column3
             width: parent.width / 3
-            spacing: Theme.paddingSmall
-            Label {
+            spacing: Theme.paddingMedium
+            Text{
+                // this is a hack, obviously
+                padding:  2
+            }
+
+            Text {
+                topPadding: 2
                 text: model.wind_speed + " km/h " + model.wind_direction + " °"
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
-                //color: Theme.highlightColor
+                color: Theme.highlightColor
             }
             Label {
                 text: model.pressure_msl + " hPa"
@@ -180,8 +187,9 @@ ListItem {
         id: separatorBottom
         //visible: index < listView.count
         x: Theme.horizontalPageMargin
-        width: 1 //parent.width - 2*x
-        //color: Theme.hightlightColor
+        width: parent.width - 2*x
+        height: 0 //parent.width - 2*x
+        color: Theme.secondaryColor
     }
 }
 

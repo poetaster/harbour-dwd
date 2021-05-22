@@ -1,7 +1,7 @@
 /*
  * This file is part of harbour-dwd.
  * Copyright (C) 2021  blueprint@poetaster.de based on code from
- * Copyright (C) 2018-2019  Mirian Margiani
+ * Copyright (C) 2018-2019  Mirian Margiani (harbour-meteoswiss)
  *
  * This is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

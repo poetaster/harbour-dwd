@@ -18,24 +18,25 @@ Page {
     property string name;
     property string lat;
     property string lon;
-    property string headerDate;
+    property var now;
+    property string dailyDate;
     property string dDay;
     property string dMonth;
     property string dYear;
-    property var now;
     property var index;
-    property string dailyDate;
 
     function reloadDetails(){
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
 
-          if (dailyDate === ""){
+        console.debug("daily: "+dailyDate);
+        if (dailyDate === "") {
             now = new Date();
-          } else {
+        } else {
             now = new Date(dailyDate);
-          }
+        }
+        console.debug("now: "+now);
 
         dDay = now.getDate();
         dMonth = (now.getMonth()+1) ;
@@ -43,8 +44,7 @@ Page {
 
         var passDate = dYear + "-" + dMonth + "-" + dDay;
         //console.debug(passDate);
-        headerDate = now.toLocaleString('de-DE');
-        headerDate = headerDate.split(dYear)[0];
+        //var headerDate = now.toLocaleString().split(dYear)[0];
 
         //headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
 
@@ -96,7 +96,7 @@ Page {
     PageHeader {
         id: vDate
         //title: name + " : " + dMonth + " " + dDay
-        title: name + " : " + headerDate
+        title: name + " : " + now.toLocaleString().split(now.getFullYear())[0]
     }
     SilicaFlickable {
         anchors.fill: parent
