@@ -222,7 +222,7 @@ Page {
         }
         PageHeader {
                 id: vDate
-                title: name + " : " + now.toLocaleString().split(now.getFullYear())[0]
+                title: name + " : " + now.toLocaleString().split(now.getFullYear())[0].slice(0,-1)
         }
 
         SilicaListView {

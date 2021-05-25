@@ -104,10 +104,10 @@ ListItem {
                 Label {
                     topPadding: 8
                     id:fDate
-                    text: model.dailyDate.toLocaleString("medium").split(now.getFullYear())[0];
+                    text: model.dailyDate.toLocaleString().split(now.getFullYear())[0].slice(0,-1);
                     width: parent.width
                     wrapMode: Text.WordWrap
-                    font.pixelSize: Theme.fontSizeSmall
+                    font.pixelSize: Theme.fontSizeExtraSmall
                     //color: Theme.highlightColor
                 }
                 Label {
