@@ -133,9 +133,9 @@ ListItem {
                     height:120
                     x: Theme.horizontalPageMargin
                     source:
-                        if ( model.icon === "cloudy" && parseFloat(model.precipitation) > 0.2 ) {
+                        if ( model.icon === "cloudy" && parseFloat(model.precipitation) > 0.1 ) {
                             return "../png/showers.svg.png";
-                        } else if ( model.icon === "partly-cloudy-day" && parseFloat(model.precipitation) > 0.2 ) {
+                        } else if ( model.icon === "partly-cloudy-day" && parseFloat(model.precipitation) > 0.1 ) {
                             return "../png/partly-cloudy-day-showers.svg.png";
                         } else {
                             return "../png/"+ model.icon + ".svg.png";

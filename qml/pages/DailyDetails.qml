@@ -134,7 +134,8 @@ Page {
                 text: qsTr("Next")
                 onClicked: {
                     now.setDate(now.getDate() + 1);
-                    console.debug(now);
+                    //console.debug(now);
+                    dailyDate = now.toLocaleString();
                     page.reloadDetails();
                 }
             }
