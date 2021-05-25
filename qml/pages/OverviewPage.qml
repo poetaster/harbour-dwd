@@ -55,7 +55,6 @@ weather?lat=52.52&lon=13.41&date=2021-04-30 */
 */
 
 import QtQuick 2.6
-import QtMultimedia 5.6
 import Sailfish.Silica 1.0
 import "../delegates"
 import "../js/locations.js" as Locs
@@ -85,8 +84,8 @@ Page {
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
-        console.debug("daily: "+dailyDate);
-        console.debug("now: "+dailyDate);
+        //console.debug("daily: "+dailyDate);
+        //console.debug("now: "+dailyDate);
         if (dailyDate === "") {
             now = new Date();
         } else {
@@ -108,24 +107,32 @@ Page {
         // clear the listmodel
         //listModel.clear();
         weather = new Array;
+        //listModel.clear();
         for (var j = 0; j < 5; j++) {
             var dDate = passDate + "-" + addDays(now,j).getDate() ;
             var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + dDate;
             // initialize listModel slot
-            //listModel.set(j,[])
+            //listModel.set(j,{})
             Locs.httpRequestIndex(uri,j, function(index,doc) {
                 var response = JSON.parse(doc.responseText);
                 var dailyDate = new Date(response.weather[0].timestamp);
-                var dailyIcon =  response.weather[11].icon ;
-                var dailyLow =  Locs.dailyMin(response.weather,"temperature");
-                var dailyHigh =  Locs.dailyMax(response.weather,"temperature");
                 var dailyRain =  Locs.dailyTotal(response.weather ,"precipitation");
                 var dailyCloud =  Locs.dailyAvg(response.weather ,"cloud_cover");
+                var dailyIcon =  response.weather[15].icon ;
+                if ( dailyIcon === "cloudy" && parseFloat(response.weather[15].precipitation) > 0.2 ) {
+                    dailyIcon = "../png/showers";
+                } else if ( dailyIcon === "partly-cloudy-day" && parseFloat(response.weather[15].precipitation) > 0.2 ) {
+                    dailyIcon = "../png/partly-cloudy-day-showers";
+                }
+                var dailyLow =  Locs.dailyMin(response.weather,"temperature");
+                var dailyHigh =  Locs.dailyMax(response.weather,"temperature");
                 var dailyWind=  Locs.dailyAvg(response.weather ,"wind_speed");
                 var daily = {dailyDate: dailyDate, icon: dailyIcon , temperatureHigh:  dailyHigh, temperatureLow: dailyLow,
                     totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
 
                 weather[index]=daily;
+                //listModel.set(index,daily)
+                //listModel.insert(index,daily);
                 // restart the timer. gives us enough time to
                 // get all the results
                 if(index < 4) getTimer.restart();
@@ -139,12 +146,13 @@ Page {
         var modelComplete = true;
         for (var i = 0; i < 5; i++) {
             if (weather[i] === ""){
+                console.debug(JSON.stringify('weather: ' + i));
                 modelComplete = false;
             }
         }
         for (var j = 0; j < 5; j++) {
             if (modelComplete === true){
-                console.debug(JSON.stringify('index: ' + j));
+                //console.debug(JSON.stringify('index: ' + j));
                 listModel.append(weather[j]);
             }
         }
@@ -155,7 +163,7 @@ Page {
 
     Timer{
         id:getTimer
-        interval: 500
+        interval: 400
         repeat: false
         running:true
         triggeredOnStart:true
@@ -186,10 +194,7 @@ Page {
         }
     } */
 
-    PageHeader {
-        id: vDate
-        title: name + " : " + now.toLocaleString().split(now.getFullYear())[0]
-    }
+
     SilicaFlickable {
 
         anchors.fill: parent
@@ -215,6 +220,10 @@ Page {
                 }
             }
         }
+        PageHeader {
+                id: vDate
+                title: name + " : " + now.toLocaleString().split(now.getFullYear())[0]
+        }
 
         SilicaListView {
             anchors.fill: parent
@@ -234,7 +243,8 @@ Page {
             delegate: ForecastItem {
                 id:delegate
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("DailyDetails.qml"), { "name": name, "lat": lat, "lon": lon, "dailyDate": dailyDate   });
+                    console.debug(JSON.stringify(weather[index]))
+                    pageStack.push(Qt.resolvedUrl("DailyDetails.qml"), { "name": name, "lat": lat, "lon": lon, "dailyDate": dailyDate,"weather": weather[index]   });
                 }
             }
             spacing: 2
@@ -247,7 +257,7 @@ Page {
                 text: qsTr("Next")
                 onClicked: {
                     now.setDate(now.getDate() + 1);
-                    //console.debug(now);
+                    console.debug(now);
                     page.reload();
                 }
             }

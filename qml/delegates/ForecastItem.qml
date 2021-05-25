@@ -82,37 +82,42 @@ ListItem {
     id:forecastItem
     contentHeight: contentRow.height + separatorBottom.height
     function localDate (timestamp) {
-                date.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
+        date.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
     }
+    Rectangle {
+        height: contentRow.height + separatorBottom.height
+        width:parent.width
+        id:wrapper
+        opacity: !((index) & 1) ? 0.7 : 1.0
+        color: !((index) & 1) ? Theme.darkPrimaryColor : "transparent"
 
-
-    Row {
-        id: contentRow
-        x: Theme.horizontalPageMargin
-        width: parent.width - 2*x
-        spacing: Theme.paddingSmall
-
-        Column {
-            id: column
-            width: parent.width / 3
-            spacing: Theme.paddingMedium
-            Label {
-                id:fDate
-                text: model.dailyDate.toLocaleString().split(now.getFullYear())[0];
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeSmall
-                color: Theme.highlightColor
-            }
-            Label {
-                id:low
-                width: parent.width
-                text: model.temperatureLow + " °C " + " - " + model.temperatureHigh + " °C"
-                font.pixelSize: Theme.fontSizeMedium
-
-                color: Theme.primaryColor
-            }
-            /*Label {
+        Row {
+            id: contentRow
+            x: Theme.horizontalPageMargin
+            width: parent.width - 2*x
+            spacing: Theme.paddingSmall
+            //opacity: !((index) & 1) ? Theme.opacityLow : Theme.opacityHigh
+            Column {
+                id: column
+                width: parent.width / 3
+                spacing: Theme.paddingMedium
+                Label {
+                    topPadding: 8
+                    id:fDate
+                    text: model.dailyDate.toLocaleString("medium").split(now.getFullYear())[0];
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeSmall
+                    //color: Theme.highlightColor
+                }
+                Label {
+                    id:low
+                    width: parent.width
+                    text: model.temperatureLow + " °C " + " - " + model.temperatureHigh + " °C"
+                    font.pixelSize: Theme.fontSizeMedium
+                    color: Theme.highlightColor
+                }
+                /*Label {
                 id:high
                 //x:low.width + 2
                 width: parent.width
@@ -121,18 +126,18 @@ ListItem {
                 color: Theme.primaryColor
             }*/
 
-        }
-        Column {
-            id: column2
-            width: parent.width / 3
-            spacing: Theme.paddingSmall
-            Image {
-                id: weatherImage
-                width:120
-                height:120
-                source: "../png/"+ model.icon + ".svg.png"
-                x: Theme.horizontalPageMargin
-            }/*
+            }
+            Column {
+                id: column2
+                width: parent.width / 3
+                spacing: Theme.paddingSmall
+                Image {
+                    id: weatherImage
+                    width:120
+                    height:120
+                    source: "../png/"+ model.icon + ".svg.png"
+                    x: Theme.horizontalPageMargin
+                }/*
             Label {
                 text: model.cloud_cover + "% cloud"
                 width: parent.width
@@ -147,32 +152,34 @@ ListItem {
                 font.pixelSize: Theme.fontSizeExtraSmall
                 color: Theme.highlightColor
             }*/
-        }
-        Column {
-            id: column3
-            width: parent.width / 3
-            spacing: Theme.paddingSmall
-            Label {
-                text: model.cloud_cover + "% cloud"
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.highlightColor
             }
-            Label {
-                text: model.totalRain + " mm Rain"
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                //color: Theme.highlightColor
-            }
-            Label {
-                text: model.wind_speed + " km/h " //+ model.wind_direction + " °"
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                //color: Theme.highlightColor
-            }/*
+            Column {
+                id: column3
+                width: parent.width / 3
+                spacing: Theme.paddingSmall
+                Label {
+                    topPadding: 8
+                    text: model.cloud_cover + "% cloud"
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    //color: Theme.highlightColor
+                }
+                Label {
+                    text: model.totalRain + " mm Rain"
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    //color: Theme.highlightColor
+                }
+                Label {
+                    bottomPadding: 4
+                    text: model.wind_speed + " km/h " //+ model.wind_direction + " °"
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    //color: Theme.highlightColor
+                }/*
             Label {
                 text: model.pressure_msl + " hPa"
                 width: parent.width
@@ -181,6 +188,7 @@ ListItem {
                 //color: Theme.highlightColor
             }*/
 
+            }
         }
     }
 
@@ -188,7 +196,7 @@ ListItem {
         id: separatorBottom
         //visible: index < listView.count
         x: Theme.horizontalPageMargin
-        width: 1 //parent.width - 2*x
+        width: 4 //parent.width - 2*x
         //color: Theme.hightlightColor
     }
 }

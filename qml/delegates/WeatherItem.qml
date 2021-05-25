@@ -78,108 +78,119 @@ import QtQuick 2.6
 import Sailfish.Silica 1.0
 
 ListItem {
-    contentHeight: contentRow.height + separatorBottom.height
+    contentHeight: contentRow.height + separatorBottom.height + 8
+    //opacity: !((index) & 1) ? Theme.opacityHigh : Theme.opacityLow
+    Rectangle {
+        height: contentRow.height + separatorBottom.height
+        width:parent.width
+        id:wrapper
+        opacity: !((index) & 1) ? 0.7 : 1.0
+        color: !((index) & 1) ? Theme.darkPrimaryColor : "transparent" //Theme.darkPrimaryColor
+        Row {
+            id: contentRow
+            x: Theme.horizontalPageMargin
+            width: parent.width - 2*x
+            spacing: Theme.paddingSmall
+            Column {
+                id: column
+                width: parent.width / 3
+                spacing: Theme.paddingMedium
+                /*Text{
+                    // this is a hack, obviously
+                    padding:  2
+                }*/
+                Text {
+                    visible: index < listView.count
+                    text: model.timestamp.split('T')[1].split('+')[0].split(':')[0] + ":00";
+                    //text: model.timestamp;
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    //color: ((index % 2 === 0 ) ) ? Theme.highlightColor : Theme.primaryColor
+                    color: Theme.primaryColor
+                }
+                Label {
+                    text: model.temperature + " °C"
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeMedium
+                    color: Theme.highlightColor
+                }
 
-    Row {
-        id: contentRow
-        x: Theme.horizontalPageMargin
-        width: parent.width - 2*x
-        spacing: Theme.paddingSmall
-
-        Column {
-            id: column
-            width: parent.width / 3
-            spacing: Theme.paddingMedium
-            Text{
-                // this is a hack, obviously
-                padding:  2
             }
-            Text {
-                visible: index < listView.count
-                text: model.timestamp.split('T')[1].split('+')[0].split(':')[0] + ":00";
-                //text: model.timestamp;
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                color:
-                    if( index % 2 === 0){
-                        return Theme.highlightColor
-                    } else {
-                        return Theme.primaryColor
-                    }
-            }
-            Label {
-                text: model.temperature + " °C"
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeSmall
-                //color: Theme.highlightColor
-            }
+            Column {
+                id: column2
+                width: parent.width / 3
+                spacing: Theme.paddingMedium
+                Text{
+                    text:qsTr("")
+                    topPadding:2
+                }
 
-        }
-        Column {
-            id: column2
-            width: parent.width / 3
-            spacing: Theme.paddingMedium
-            Image {
-                id: weatherImage
-                width:120
-                height:120
-                x: Theme.horizontalPageMargin
-                source:
-                    if ( model.icon === "cloudy" && parseFloat(model.precipitation) > 0.0 ) {
-                     return "../png/showers.svg.png";
-                    } else if ( model.icon === "partly-cloudy-day" && parseFloat(model.precipitation) > 0.1 ) {
-                     return "../png/partly-cloudy-day-showers.svg.png";
-                    } else {
-                     return "../png/"+ model.icon + ".svg.png";
-                    }
+                Image {
+                    id: weatherImage
+                    width:120
+                    height:120
+                    x: Theme.horizontalPageMargin
+                    source:
+                        if ( model.icon === "cloudy" && parseFloat(model.precipitation) > 0.2 ) {
+                            return "../png/showers.svg.png";
+                        } else if ( model.icon === "partly-cloudy-day" && parseFloat(model.precipitation) > 0.2 ) {
+                            return "../png/partly-cloudy-day-showers.svg.png";
+                        } else {
+                            return "../png/"+ model.icon + ".svg.png";
+                        }
 
-                //source: "image://theme/icon-m-right?" + Theme.highlightColor
-                /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
+                    //source: "image://theme/icon-m-right?" + Theme.highlightColor
+                    /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
                                                        + (highlighted ? "?" + Theme.highlightColor : "")
                                                      : ""*/
-            }
-            Label {
-                text: model.cloud_cover + "% cloud  " + model.precipitation + " mm"
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.highlightColor
-            }
-            /*Label {
+                }
+                Label {
+                    text: model.cloud_cover + "% cloud  " + model.precipitation + " mm"
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.highlightColor
+                }
+                /*Label {
                 text:  model.icon
                 width: parent.width
                 wrapMode: Text.WordWrap
                 font.pixelSize: Theme.fontSizeExtraSmall
                 //color: Theme.highlightColor
             }*/
-        }
-        Column {
-            id: column3
-            width: parent.width / 3
-            spacing: Theme.paddingMedium
-            Text{
-                // this is a hack, obviously
-                padding:  2
             }
+            Column {
+                id: column3
+                width: parent.width / 3
+                spacing: Theme.paddingMedium
+                Label {
+                    topPadding: 8
+                    text: model.cloud_cover + "% cloud  " + model.precipitation + " mm"
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.primaryColor
+                }
 
-            Text {
-                topPadding: 2
-                text: model.wind_speed + " km/h " + model.wind_direction + " °"
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                color: Theme.highlightColor
-            }
-            Label {
-                text: model.pressure_msl + " hPa"
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                //color: Theme.highlightColor
-            }
+                Text {
+                    text: model.wind_speed + " km/h " + model.wind_direction + " °"
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.primaryColor
+                }
+                Label {
+                    bottomPadding: 4
+                    text: model.pressure_msl + " hPa"
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    //color: Theme.highlightColor
+                }
 
+            }
         }
     }
 
@@ -188,8 +199,9 @@ ListItem {
         //visible: index < listView.count
         x: Theme.horizontalPageMargin
         width: parent.width - 2*x
-        height: 0 //parent.width - 2*x
+        height: 8 //parent.width - 2*x
         color: Theme.secondaryColor
+        opacity: 0.0
     }
 }
 

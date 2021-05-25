@@ -19,7 +19,10 @@ Page {
     property string lat;
     property string lon;
     property var now;
+    property var weather;
     property string dailyDate;
+    property string headerDate;
+    property string weatherDetails;
     property string dDay;
     property string dMonth;
     property string dYear;
@@ -44,22 +47,30 @@ Page {
 
         var passDate = dYear + "-" + dMonth + "-" + dDay;
         //console.debug(passDate);
-        //var headerDate = now.toLocaleString().split(dYear)[0];
+        headerDate = now.toLocaleString().split(dYear)[0];
 
         //headerDate = now.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
-
-        var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + passDate;
-        //console.debug(uri);
-        Locs.httpRequest(uri, function(doc) {
-            var response = JSON.parse(doc.responseText);
-            //weather = response;
-            listModel.clear();
-            for (var i = 0; i < response.weather.length && i < 30; i++) {
+        if (weatherDetails !== ""){
+            for (var i = 0; i < weather.length && i < 30; i++) {
                 //console.debug(JSON.stringify(response.weather[i]));
-                //console.debug(response.weather[i]);
-                listModel.append(response.weather[i]);
+                console.debug(weather[i]);
+                listModel.append(weather[i]);
             };
-        });
+        } else {
+
+            var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + passDate;
+            //console.debug(uri);
+            Locs.httpRequest(uri, function(doc) {
+                var response = JSON.parse(doc.responseText);
+                //weather = response;
+                listModel.clear();
+                for (var i = 0; i < response.weather.length && i < 30; i++) {
+                    //console.debug(JSON.stringify(response.weather[i]));
+                    //console.debug(response.weather[i]);
+                    listModel.append(response.weather[i]);
+                };
+            });
+        }
     }
 
     allowedOrientations: Orientation.Portrait
@@ -93,11 +104,7 @@ Page {
     }
     anchors.fill: parent
 
-    PageHeader {
-        id: vDate
-        //title: name + " : " + dMonth + " " + dDay
-        title: name + " : " + now.toLocaleString().split(now.getFullYear())[0]
-    }
+
     SilicaFlickable {
         anchors.fill: parent
         quickScroll: true
@@ -151,15 +158,19 @@ Page {
         }*/
 
         SilicaListView {
+            header: PageHeader {
+                id: vDate
+                //title: name + " : " + dMonth + " " + dDay
+                title: name + " : " + headerDate //now.toLocaleString().split(now.getFullYear())[0]
+            }
             anchors.fill: parent
-            anchors.top: vDate.bottom
-            topMargin: 200
+            //anchors.top: vDate.bottom
             //x: Theme.horizontalPageMargin
             width: parent.width
             height: 2000
             id: listView
             model: listModel
-
+            //highlight: Rectangle { color: Theme.backgroundColor }
             delegate: WeatherItem{
                 id: delegate
                 /*onClicked: {
