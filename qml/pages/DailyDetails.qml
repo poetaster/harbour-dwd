@@ -33,13 +33,13 @@ Page {
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
 
-        console.debug("daily: "+dailyDate);
+       // console.debug("daily: "+dailyDate);
         if (dailyDate === "") {
             now = new Date();
         } else {
             now = new Date(dailyDate);
         }
-        console.debug("now: "+now);
+        //console.debug("now: "+now);
 
         dDay = now.getDate();
         dMonth = (now.getMonth()+1) ;

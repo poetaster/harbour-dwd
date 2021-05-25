@@ -92,7 +92,7 @@ Page {
             now = new Date(dailyDate);
 
         }
-        console.debug("now: "+now);
+       // console.debug("now: "+now);
 
         dDay = now.getDate();
         dMonth = (now.getMonth()+1) ;
@@ -146,7 +146,7 @@ Page {
         var modelComplete = true;
         for (var i = 0; i < 5; i++) {
             if (weather[i] === ""){
-                console.debug(JSON.stringify('weather: ' + i));
+                //console.debug(JSON.stringify('weather: ' + i));
                 modelComplete = false;
             }
         }
