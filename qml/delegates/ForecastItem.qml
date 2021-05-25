@@ -1,7 +1,65 @@
 import QtQuick 2.2
 import Sailfish.Silica 1.0
-
-
+/*
+}.wi-day-sunny:before{content:"\f00d"
+}.wi-day-cloudy:before{content:"\f002"
+}.wi-day-cloudy-gusts:before{content:"\f000"
+}.wi-day-cloudy-windy:before{content:"\f001"
+}.wi-day-fog:before{content:"\f003"
+}.wi-day-hail:before{content:"\f004"
+}.wi-day-haze:before{content:"\f0b6"
+}.wi-day-lightning:before{content:"\f005"
+}.wi-day-rain:before{content:"\f008"
+}.wi-day-rain-mix:before{content:"\f006"
+}.wi-day-rain-wind:before{content:"\f007"
+}.wi-day-showers:before{content:"\f009"
+}.wi-day-sleet:before{content:"\f0b2"
+}.wi-day-sleet-storm:before{content:"\f068"
+}.wi-day-snow:before{content:"\f00a"
+}.wi-day-snow-thunderstorm:before{content:"\f06b"
+}.wi-day-snow-wind:before{content:"\f065"
+}.wi-day-sprinkle:before{content:"\f00b"
+}.wi-day-storm-showers:before{content:"\f00e"
+}.wi-day-sunny-overcast:before{content:"\f00c"
+}.wi-day-thunderstorm:before{content:"\f010"a
+}.wi-night-clear:before{content:"\f02e"
+}.wi-night-alt-cloudy:before{content:"\f086"
+}.wi-night-alt-cloudy-gusts:before{content:"\f022"
+}.wi-night-alt-cloudy-windy:before{content:"\f023"
+}.wi-night-alt-hail:before{content:"\f024"
+}.wi-night-alt-lightning:before{content:"\f025"
+}.wi-night-alt-rain:before{content:"\f028"
+}.wi-night-alt-rain-mix:before{content:"\f026"
+}.wi-night-alt-rain-wind:before{content:"\f027"
+}.wi-night-alt-showers:before{content:"\f029"
+}.wi-night-alt-sleet:before{content:"\f0b4"
+}.wi-night-alt-sleet-storm:before{content:"\f06a"
+}.wi-night-alt-snow:before{content:"\f02a"
+}.wi-night-alt-snow-thunderstorm:before{content:"\f06d"
+}.wi-night-alt-snow-wind:before{content:"\f067"
+}.wi-night-alt-sprinkle:before{content:"\f02b"
+}.wi-night-alt-storm-showers:before{content:"\f02c"
+}.wi-night-alt-thunderstorm:before{content:"\f02d"
+}.wi-night-cloudy:before{content:"\f031"
+}.wi-night-cloudy-gusts:before{content:"\f02f"
+}.wi-night-cloudy-windy:before{content:"\f030"
+}.wi-night-fog:before{content:"\f04a"
+}.wi-night-hail:before{content:"\f032"
+}.wi-night-lightning:before{content:"\f033"
+}.wi-night-partly-cloudy:before{content:"\f083"
+}.wi-night-rain:before{content:"\f036"
+}.wi-night-rain-mix:before{content:"\f034"
+}.wi-night-rain-wind:before{content:"\f035"
+}.wi-night-showers:before{content:"\f037"
+}.wi-night-sleet:before{content:"\f0b3"
+}.wi-night-sleet-storm:before{content:"\f069"
+}.wi-night-snow:before{content:"\f038"
+}.wi-night-snow-thunderstorm:before{content:"\f06c"
+}.wi-night-snow-wind:before{content:"\f066"
+}.wi-night-sprinkle:before{content:"\f039"
+}.wi-night-storm-showers:before{content:"\f03a"
+}.wi-night-thunderstorm:before{content:"\f03b"
+*/
 ListItem {
 
     FontLoader {
@@ -10,9 +68,7 @@ ListItem {
     }
     id:forecastItem
     contentHeight: contentRow.height + separatorBottom.height
-    function localDate (timestamp) {
-        date.toLocaleString('de-DE', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
-    }
+
     Rectangle {
         height: contentRow.height + separatorBottom.height
         width:parent.width
@@ -72,7 +128,7 @@ ListItem {
                     topPadding: 24
                     bottomPadding: 24
                     font.family: localFont.name
-                    text: "\uf006"
+                    text: model.icon
                     //text: model.cloud_cover + "% cloud"
                     width: parent.width
                     wrapMode: Text.WordWrap
@@ -129,15 +185,8 @@ ListItem {
         //color: Theme.hightlightColor
     }
 }
+/*
 
-/* @font-face{font-family:weathericons;src:url(../font/weathericons-regular-webfont.eot);src:url(../font/weathericons-regular-webfont.eot?#iefix) format('embedded-opentype'),url(../font/weathericons-regular-webfont.woff2) format('woff2'),url(../font/weathericons-regular-webfont.woff) format('woff'),url(../font/weathericons-regular-webfont.ttf) format('truetype'),url(../font/weathericons-regular-webfont.svg#weather_iconsregular) format('svg');font-weight:400;font-style:normal
-}.wi{display:inline-block;font-family:weathericons;font-style:normal;font-weight:400;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale
-}.wi-fw{text-align:center;width:1.4em
-}.wi-rotate-90{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg)
-}.wi-rotate-180{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);-webkit-transform:rotate(180deg);-ms-transform:rotate(180deg);transform:rotate(180deg)
-}.wi-rotate-270{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);-webkit-transform:rotate(270deg);-ms-transform:rotate(270deg);transform:rotate(270deg)
-}.wi-flip-horizontal{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);-webkit-transform:scale(-1,1);-ms-transform:scale(-1,1);transform:scale(-1,1)
-}.wi-flip-vertical{filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);-webkit-transform:scale(1,-1);-ms-transform:scale(1,-1);transform:scale(1,-1)
 }.wi-day-sunny:before{content:"\f00d"
 }.wi-day-cloudy:before{content:"\f002"
 }.wi-day-cloudy-gusts:before{content:"\f000"

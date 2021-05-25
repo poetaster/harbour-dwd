@@ -24,6 +24,26 @@ Page {
     property var weather;
     property var now;
 
+    function mapIcon(iconName) {
+
+        //console.debug(iconName)
+        var iconMapping = {
+            'clear-day': '\uf00d',
+            'clear-night': '\uf02e',
+            'partly-cloudy-day': '\uf002',
+            'partly-cloudy-night': '\uf083',
+            'cloudy': '\uf041',
+            'fog': '\uf014',
+            'wind': '\uf050',
+            'rain': '\uf019',
+            'sleet': '\uf0b3',
+            'snow': '\uf038',
+            'hail': '\uf015',
+            'thunderstorm': '\uf01e'
+        }
+        //console.debug(iconMapping[iconName])
+        return iconMapping[iconName]
+    }
     //onWeatherChanged: updateWeatherModel();
     //onQueryChanged: updateJSONModel();
 
@@ -70,12 +90,13 @@ Page {
                 var dailyDate = new Date(response.weather[0].timestamp);
                 var dailyRain =  Locs.dailyTotal(response.weather ,"precipitation");
                 var dailyCloud =  Locs.dailyAvg(response.weather ,"cloud_cover");
-                var dailyIcon =  response.weather[15].icon ;
+                var dailyIcon =  mapIcon(response.weather[15].icon) ;
+                /*
                 if ( dailyIcon === "cloudy" && parseFloat(response.weather[15].precipitation) > 0.2 ) {
                     dailyIcon = "../png/showers";
                 } else if ( dailyIcon === "partly-cloudy-day" && parseFloat(response.weather[15].precipitation) > 0.2 ) {
                     dailyIcon = "../png/partly-cloudy-day-showers";
-                }
+                }*/
                 var dailyLow =  Locs.dailyMin(response.weather,"temperature");
                 var dailyHigh =  Locs.dailyMax(response.weather,"temperature");
                 var dailyWind=  Locs.dailyAvg(response.weather ,"wind_speed");
@@ -208,8 +229,7 @@ Page {
             MenuItem {
                 text: qsTr("Next")
                 onClicked: {
-                    now.setDate(now.getDate() + 1);
-                    console.debug(now);
+                    dailyDate = addDays(dailyDate,1);//now.setDate(now.getDate() + 1);
                     page.reload();
                 }
             }

@@ -40,10 +40,37 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeMedium
             color: Theme.primaryColor
-            text: qsTr("A simple client for the brightsky api view") + "\n" +
-                  qsTr("of the German Weather Service (DWD)") + "\n"
+            textFormat: Text.StyledText
+            linkColor: Theme.highlightColor
+            text: qsTr("A simple consumer of the") + "\n" +
+                       "<a href=\"https://brightsky.dev\">brightsky.dev</a> view"
+            onLinkActivated: {
+                Qt.openUrlExternally(link)
+            }
         }
-
+        Label {
+            id: dwdLabel
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: Theme.fontSizeMedium
+            color: Theme.primaryColor
+            textFormat: Text.StyledText
+            linkColor: Theme.highlightColor
+            text: "<a href=\"https://dwd.de\">" + qsTr("of the German Weather Service") + "</a>"
+            onLinkActivated: {
+                Qt.openUrlExternally(link)
+            }
+        }
+        Item {
+            width: 69
+            height: Theme.paddingLarge
+        }
+        Image {
+            width: 258
+            height: 69
+            anchors.horizontalCenter: parent.horizontalCenter
+            source: "../png/dwd_logo_258x69.png"
+        }
         Item {
             width: 1
             height: Theme.paddingLarge
@@ -85,9 +112,7 @@ Page {
             linkColor: Theme.highlightColor
             font.pixelSize: Theme.fontSizeSmall
             text: "<a href=\"https://github.com/poetaster/harbour-dwd\">Source: github</a>"
-            /*text: "<style>a:link{color: " + Theme.highlightColor + ";}</style>" +  "<a href=\"https://github.com/poetaster/harbour-dwd\">Source: github</a>" */
             onLinkActivated: {
-                //console.log("Opening external browser: " + link);
                 Qt.openUrlExternally(link)
             }
         }
