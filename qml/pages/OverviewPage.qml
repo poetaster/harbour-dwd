@@ -24,26 +24,6 @@ Page {
     property var weather;
     property var now;
 
-    function mapIcon(iconName) {
-
-        //console.debug(iconName)
-        var iconMapping = {
-            'clear-day': '\uf00d',
-            'clear-night': '\uf02e',
-            'partly-cloudy-day': '\uf002',
-            'partly-cloudy-night': '\uf083',
-            'cloudy': '\uf041',
-            'fog': '\uf014',
-            'wind': '\uf050',
-            'rain': '\uf019',
-            'sleet': '\uf0b3',
-            'snow': '\uf038',
-            'hail': '\uf015',
-            'thunderstorm': '\uf01e'
-        }
-        //console.debug(iconMapping[iconName])
-        return iconMapping[iconName]
-    }
     //onWeatherChanged: updateWeatherModel();
     //onQueryChanged: updateJSONModel();
 
@@ -90,7 +70,8 @@ Page {
                 var dailyDate = new Date(response.weather[0].timestamp);
                 var dailyRain =  Locs.dailyTotal(response.weather ,"precipitation");
                 var dailyCloud =  Locs.dailyAvg(response.weather ,"cloud_cover");
-                var dailyIcon =  mapIcon(response.weather[15].icon) ;
+                var dailyIcon =  Locs.mapIcon(response.weather[15].icon,dailyRain,response.weather[15].condition) ;
+                //var dailyIcon =  response.weather[15].icon) ;
                 /*
                 if ( dailyIcon === "cloudy" && parseFloat(response.weather[15].precipitation) > 0.2 ) {
                     dailyIcon = "../png/showers";
@@ -237,52 +218,3 @@ Page {
 
     }
 }
-/* requests: https://api.brightsky.dev/
-weather?lat=52.52&lon=13.41&date=2021-04-30 */
-
-/* types
-{
-    weather: [
-        {
-            timestamp: "2021-05-01T00:00:00+02:00",
-            source_id: 6894,
-            precipitation: 0,
-            pressure_msl: 1014.8,
-            sunshine: null,
-            temperature: 7.4,
-            wind_direction: 60,
-            wind_speed: 5,
-            cloud_cover: 100,
-            dew_point: 4,
-            relative_humidity: null,
-            visibility: 45000,
-            wind_gust_direction: 90,
-            wind_gust_speed: 16.9,
-            condition: "dry",
-            fallback_source_ids: {9 items},
-            icon: "cloudy"
-        }
-    ],
-    sources: [
-        {
-            id: 6894,
-            dwd_station_id: "00433",
-            observation_type: "historical",
-            lat: 52.4675,
-            lon: 13.4021,
-            height: 48,
-            station_name: "Berlin-Tempelhof",
-            wmo_station_id: "10384",
-            first_record: "2010-01-01T00:00:00+00:00",
-            last_record: "2021-04-30T23:00:00+00:00",
-            distance: 5869
-        },
-        {11 items},
-        {11 items}
-    ]
-
-}
-
-
-*/
-

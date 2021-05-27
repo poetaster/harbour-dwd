@@ -21,63 +21,16 @@
             icon: "cloudy"
         }
     ],
-    sources: [
-        {
-            id: 6894,
-            dwd_station_id: "00433",
-            observation_type: "historical",
-            lat: 52.4675,
-            lon: 13.4021,
-            height: 48,
-            station_name: "Berlin-Tempelhof",
-            wmo_station_id: "10384",
-            first_record: "2010-01-01T00:00:00+00:00",
-            last_record: "2021-04-30T23:00:00+00:00",
-            distance: 5869
-        },
-        {11 items},
-        {11 items}
-    ]
-
 }
-
-
-// Measures
-
-Cloud cover	%	%
-Dew point	°C	K
-Precipitation	mm	kg / m²
-Pressure	hPa	Pa
-Relative humidity	%	%
-Sunshine	min	s
-Temperature	°C	K
-Visibility	m	m
-Wind direction	°	°
-Wind speed	km / h	m / s
-Wind gust direction	°	°
-Wind gust speed	km / h	m / s
-
-// Internal icons
-
-            Image {
-                id: icon
-                x: Theme.horizontalPageMargin
-                anchors.verticalCenter: labelColumn.verticalCenter
-                visible: model.status !== Weather.Loading
-                width: Theme.iconSizeMedium
-                height: Theme.iconSizeMedium
-                source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
-                                                       + (highlighted ? "?" + Theme.highlightColor : "")
-                                                     : ""
-            }
 
 */
 
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-
+import "../js/locations.js" as Locs
 ListItem {
+
     contentHeight: contentRow.height + separatorBottom.height + 8
     //opacity: !((index) & 1) ? Theme.opacityHigh : Theme.opacityLow
     Rectangle {
@@ -126,26 +79,34 @@ ListItem {
                     text:qsTr("")
                     topPadding:2
                 }
+                Label {
+                    topPadding: 24
+                    text:  Locs.mapIcon(model.icon,model.precipitation,model.condition)
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeExtraLarge + 24
+                    color: Theme.highlightColor
+                    horizontalAlignment: "AlignHCenter"
+                    verticalAlignment: "AlignVCenter"
+                }
 
-                Image {
+                /*Image {
                     id: weatherImage
                     width:120
                     height:120
                     x: Theme.horizontalPageMargin
                     source:
-                        if ( model.icon === "cloudy" && parseFloat(model.precipitation) > 0.1 ) {
+                        if ( model.icon === "cloudy" && parseFloat(model.precipitation) > 0.2 ) {
                             return "../png/showers.svg.png";
-                        } else if ( model.icon === "partly-cloudy-day" && parseFloat(model.precipitation) > 0.1 ) {
+                        } else if ( model.icon === "partly-cloudy-day" && parseFloat(model.precipitation) > 0.2 ) {
                             return "../png/partly-cloudy-day-showers.svg.png";
                         } else {
                             return "../png/"+ model.icon + ".svg.png";
                         }
 
                     //source: "image://theme/icon-m-right?" + Theme.highlightColor
-                    /* source: model.weatherType.length > 0 ? "image://theme/icon-m-weather-" + model.weatherType
-                                                       + (highlighted ? "?" + Theme.highlightColor : "")
-                                                     : ""*/
-                }
+                }*/
+
                 Label {
                     text: model.cloud_cover + "% cloud  " + model.precipitation + " mm"
                     width: parent.width
@@ -153,13 +114,6 @@ ListItem {
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.highlightColor
                 }
-                /*Label {
-                text:  model.icon
-                width: parent.width
-                wrapMode: Text.WordWrap
-                font.pixelSize: Theme.fontSizeExtraSmall
-                //color: Theme.highlightColor
-            }*/
             }
             Column {
                 id: column3
@@ -167,13 +121,20 @@ ListItem {
                 spacing: Theme.paddingMedium
                 Label {
                     topPadding: 8
-                    text: model.cloud_cover + "% cloud  " + model.precipitation + " mm"
+                    text: model.condition
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
                 }
-
+                /*Label {
+                    topPadding: 8
+                    text: model.cloud_cover + "% cloud  " + model.precipitation + " mm"
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.primaryColor
+                }*/
                 Text {
                     text: model.wind_speed + " km/h " + model.wind_direction + " °"
                     width: parent.width
