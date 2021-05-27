@@ -72,7 +72,9 @@ function mapIcon(icon,precipitation,condition) {
    //console.debug(JSON.stringify(precipitation))
     var iconMapping = {
         'clear-day': '\uf00d',
-        'clear-night': '\uf02e',
+        //'clear-night': '\uf02e',
+        //'clear-night': '\uf077',
+        'clear-night': '\uf02e\uf077',
         'partly-cloudy-day': '\uf002',
         'partly-cloudy-day-rain': '\uf009',
         'partly-cloudy-day-rain': '\uf009',
@@ -94,6 +96,12 @@ function mapIcon(icon,precipitation,condition) {
     }
     //console.debug(iconMapping[iconName])
     return iconMapping[icon]
+}
+
+function addDays(aDate,days) {
+    var date = new Date (aDate.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
 }
 
 function getDetails(token) {

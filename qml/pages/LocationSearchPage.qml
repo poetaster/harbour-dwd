@@ -26,6 +26,7 @@ import "../delegates"
 
 Page {
     property var cities;
+    property var debug;
 
     id: searchPage
     allowedOrientations: Orientation.All
@@ -35,13 +36,15 @@ Page {
         fetchCities();
     }
     function fetchCities() {
+        debug = false;
+
         Locs.httpRequest("https://brightsky.dev/demo/cities.json", function(doc) {
             var response = JSON.parse(doc.responseText);
             listModel.clear();
             cities = response;
             for (var i = 0; i < response.length && i < 2500; i++) {
                 listModel.append(response[i]);
-                //console.debug(JSON.stringify(cities[i]))
+                if (debug) console.debug(JSON.stringify(cities[i]))
             };
         });
     }
@@ -53,8 +56,8 @@ Page {
             if (string !== "" && cities[i].name.indexOf(string) >= 0) {
                 ret.push({"name": cities[i].name});
                 listModel.append(cities[i])
-                //console.debug(JSON.stringify(cities[i].name));
-                //console.debug(JSON.stringify(listModel.count));
+                if(debug) console.debug(JSON.stringify(cities[i].name));
+                if(debug) console.debug(JSON.stringify(listModel.count));
             }
             if (ret.length === 50) break;
         }

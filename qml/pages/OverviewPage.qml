@@ -23,28 +23,24 @@ Page {
     property string dYear;
     property var weather;
     property var now;
+    property var debug;
 
     //onWeatherChanged: updateWeatherModel();
     //onQueryChanged: updateJSONModel();
 
-    function addDays(aDate,days) {
-        var date = new Date (aDate.valueOf());
-        date.setDate(date.getDate() + days);
-        return date;
-    }
     function reload(){
+        debug = false;
+
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
-        //console.debug("daily: "+dailyDate);
-        //console.debug("now: "+dailyDate);
-        if (dailyDate === "") {
-            now = new Date();
-        } else {
-            now = new Date(dailyDate);
 
+        //console.debug("daily: "+dailyDate);
+
+        if (now == undefined) {
+            now = new Date();
         }
-       // console.debug("now: "+now);
+        //console.debug("now: "+now);
 
         dDay = now.getDate();
         dMonth = (now.getMonth()+1) ;
@@ -52,18 +48,16 @@ Page {
 
         var passDate = dYear + "-" + dMonth;
         //console.debug(passDate);
-        //headerDate = now.toLocaleString('de-DE');
-        //headerDate = headerDate.split(dYear)[0];
-        //headerDate = now.toLocaleString('en_US', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
         headerDate = now.toLocaleString().split(dYear)[0];
         // clear the listmodel
         //listModel.clear();
         weather = new Array;
         //listModel.clear();
         for (var j = 0; j < 5; j++) {
-            var dDate = passDate + "-" + addDays(now,j).getDate() ;
+            var dDate = passDate + "-" + Locs.addDays(now,j).getDate() ;
             var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + dDate;
             // initialize listModel slot
+            // sadly, this doesn't work
             //listModel.set(j,{})
             Locs.httpRequestIndex(uri,j, function(index,doc) {
                 var response = JSON.parse(doc.responseText);
@@ -72,12 +66,6 @@ Page {
                 var dailyCloud =  Locs.dailyAvg(response.weather ,"cloud_cover");
                 var dailyIcon =  Locs.mapIcon(response.weather[15].icon,dailyRain,response.weather[15].condition) ;
                 //var dailyIcon =  response.weather[15].icon) ;
-                /*
-                if ( dailyIcon === "cloudy" && parseFloat(response.weather[15].precipitation) > 0.2 ) {
-                    dailyIcon = "../png/showers";
-                } else if ( dailyIcon === "partly-cloudy-day" && parseFloat(response.weather[15].precipitation) > 0.2 ) {
-                    dailyIcon = "../png/partly-cloudy-day-showers";
-                }*/
                 var dailyLow =  Locs.dailyMin(response.weather,"temperature");
                 var dailyHigh =  Locs.dailyMax(response.weather,"temperature");
                 var dailyWind=  Locs.dailyAvg(response.weather ,"wind_speed");
@@ -85,6 +73,7 @@ Page {
                     totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
 
                 weather[index]=daily;
+                // the listmodel set method does not work. well sometimes.
                 //listModel.set(index,daily)
                 //listModel.insert(index,daily);
                 // restart the timer. gives us enough time to
@@ -100,13 +89,13 @@ Page {
         var modelComplete = true;
         for (var i = 0; i < 5; i++) {
             if (weather[i] === ""){
-                //console.debug(JSON.stringify('weather: ' + i));
+                if (debug) console.debug(JSON.stringify('weather: ' + i));
                 modelComplete = false;
             }
         }
         for (var j = 0; j < 5; j++) {
             if (modelComplete === true){
-                //console.debug(JSON.stringify('index: ' + j));
+                if (debug) console.debug(JSON.stringify('index: ' + j));
                 listModel.append(weather[j]);
             }
         }
@@ -127,23 +116,14 @@ Page {
     //Component.onCompleted: page.reload();
 
     /*onStatusChanged: {
-
-        if (PageStatus.Activating) {
-            //console.debug(listModel.count)
-            if (listModel.count < 1) {
-                page.reloadDetails();
-            }
-        }
         switch (status) {
             case PageStatus.Activating:
                 indicator.visible = true;
                 errorMsg.visible = false;
-                timetableDesc.title = qsTr("Searching...");
-                fahrplanBackend.getTimeTable();
+                page.reloadDetails();
                 break;
             case PageStatus.Deactivating:
                 errorMsg.visible = false;
-                fahrplanBackend.parser.cancelRequest();
                 break;
         }
     } */
@@ -210,8 +190,12 @@ Page {
             MenuItem {
                 text: qsTr("Next")
                 onClicked: {
-                    dailyDate = addDays(dailyDate,1);//now.setDate(now.getDate() + 1);
+                    now = Locs.addDays(now, 5);
+                    //now = dailyDate;
+                    console.debug(now);
+                    dailyDate = now.toLocaleString();
                     page.reload();
+
                 }
             }
         }

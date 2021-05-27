@@ -75,12 +75,9 @@ ListItem {
                 id: column2
                 width: parent.width / 3
                 spacing: Theme.paddingMedium
-                Text{
-                    text:qsTr("")
-                    topPadding:2
-                }
                 Label {
                     topPadding: 24
+                    bottomPadding: 24
                     text:  Locs.mapIcon(model.icon,model.precipitation,model.condition)
                     width: parent.width
                     wrapMode: Text.WordWrap
@@ -107,34 +104,34 @@ ListItem {
                     //source: "image://theme/icon-m-right?" + Theme.highlightColor
                 }*/
 
-                Label {
+                /*Label {
                     text: model.cloud_cover + "% cloud  " + model.precipitation + " mm"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.highlightColor
-                }
+                }*/
             }
             Column {
                 id: column3
                 width: parent.width / 3
                 spacing: Theme.paddingMedium
-                Label {
+                /*Label {
                     topPadding: 8
                     text: model.condition
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
-                }
-                /*Label {
+                }*/
+                Label {
                     topPadding: 8
                     text: model.cloud_cover + "% cloud  " + model.precipitation + " mm"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
-                }*/
+                }
                 Text {
                     text: model.wind_speed + " km/h " + model.wind_direction + " °"
                     width: parent.width
@@ -143,7 +140,6 @@ ListItem {
                     color: Theme.primaryColor
                 }
                 Label {
-                    bottomPadding: 4
                     text: model.pressure_msl + " hPa"
                     width: parent.width
                     wrapMode: Text.WordWrap

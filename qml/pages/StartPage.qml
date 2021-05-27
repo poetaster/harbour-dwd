@@ -33,6 +33,7 @@ Page {
     property string dDay;
     property string dMonth;
     property string dYear;
+    property var debug;
 
     allowedOrientations: Orientation.Portrait
 
@@ -44,13 +45,14 @@ Page {
     }
 
     function fetchCities() {
+        debug = false;
         var response = Store.getLocationsList();
         listModel.clear();
         if (response.length > 0) {
             for (var i = 0; i < response.length && i < 500; i++) {
                 var location = Store.getLocationData(response[i]);
                 listModel.append(location);
-                //console.debug(JSON.stringify(location))
+                if (debug) console.debug(JSON.stringify(location))
             }
         } else {
             pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
@@ -62,7 +64,7 @@ Page {
 
     onStatusChanged: {
         if (PageStatus.Activating) {
-            //console.debug(listModel.count)
+            if (debug) console.debug(listModel.count)
              fetchCities();
         }
        }
@@ -112,10 +114,6 @@ Page {
              }*/
             SilicaListView {
                 id:listView
-                //anchors.centerIn: parent
-                //anchors.top: header.bottom
-                //y: 200
-                //x: Theme.horizontalPageMargin
 
                 width: parent.width - 2*x
                 height: 500

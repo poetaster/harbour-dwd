@@ -95,22 +95,33 @@ Page {
             font.pixelSize: Theme.fontSizeSmall
             color: Theme.secondaryColor
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-            text: qsTr("This program is FOSS software licensed under the terms of ")
-                  + qsTr("the GNU General Public License v3.")
+            text: qsTr("This program is FOSS software licensed") + "\n"
+                  + qsTr("GNU General Public License v3.")
         }
 
         Item {
             width: 1
             height: 2 * Theme.paddingLarge
         }
-
+        Label {
+            id: iconLabel
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: Theme.fontSizeMedium
+            color: Theme.primaryColor
+            textFormat: Text.StyledText
+            linkColor: Theme.highlightColor
+            text: "<a href=\"https://https://erikflowers.github.io\">" + qsTr("Icons by Erik Flowers") + "</a>"
+            onLinkActivated: {
+                Qt.openUrlExternally(link)
+            }
+        }
         Label {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottomMargin: Theme.paddingSmall
             color: Theme.secondaryColor
             textFormat: Text.StyledText
             linkColor: Theme.highlightColor
-            font.pixelSize: Theme.fontSizeSmall
             text: "<a href=\"https://github.com/poetaster/harbour-dwd\">Source: github</a>"
             onLinkActivated: {
                 Qt.openUrlExternally(link)

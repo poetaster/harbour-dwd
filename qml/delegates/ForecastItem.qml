@@ -93,7 +93,7 @@ ListItem {
                     //color: Theme.highlightColor
                 }
                 Label {
-                    text: model.totalRain + " mm Rain"
+                    text: model.totalRain + " mm"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
