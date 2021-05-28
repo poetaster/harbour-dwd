@@ -35,26 +35,18 @@ Page {
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
 
-        //console.debug("daily: "+dailyDate);
-
         if (now == undefined) {
             now = new Date();
         }
-        //console.debug("now: "+now);
-
-        dDay = now.getDate();
-        dMonth = (now.getMonth()+1) ;
-        dYear = now.getFullYear() ; //"../png/"+ weather.weather[11].icon + ".svg.png"
-
-        var passDate = dYear + "-" + dMonth;
-        //console.debug(passDate);
+        dYear = now.getFullYear() ;
         headerDate = now.toLocaleString().split(dYear)[0];
+
         // clear the listmodel
         //listModel.clear();
         weather = new Array;
         //listModel.clear();
         for (var j = 0; j < 5; j++) {
-            var dDate = passDate + "-" + Locs.addDays(now,j).getDate() ;
+            var dDate = Locs.addDays(now,j).toISOString().replace(/T.*/,'') ;
             var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + dDate;
             // initialize listModel slot
             // sadly, this doesn't work
