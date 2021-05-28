@@ -18,6 +18,7 @@ PkgConfigBR:
 Requires:
 - sailfishsilica-qt5 >= 1.1.0
 Files:
+- '%{_datadir}/%{name}/translations'
 - '%{_datadir}/icons/hicolor/*/apps/%{name}.png'
 - '%{_datadir}/applications/%{name}.desktop'
 - '%{_datadir}/%{name}/qml'

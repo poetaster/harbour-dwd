@@ -32,16 +32,17 @@ DISTFILES += \
     qml/js/worker.js \
     rpm/harbour-dwd.spec \
     rpm/harbour-dwd.yaml \
-    rpm/harbour-dwd.changes.in
+    rpm/harbour-dwd.changes.in \
+    translations/harbour-dwd.ts
+    translations/harbour-dwd-de_DE.ts
 
 OTHER_FILES += \
-    harbour-dwd.desktop \
-    translations/*.ts \
+    harbour-dwd.desktop
 
 
 # to disable building translations every time, comment out the
 # following CONFIG line
-#CONFIG += sailfishapp_i18n
-#TRANSLATIONS += translations/harbour-dwd-de.ts
+CONFIG += sailfishapp_i18n
+TRANSLATIONS += translations/harbour-dwd-de_DE.ts
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
