@@ -24,14 +24,11 @@ Page {
     property string dailyDate;
     property string headerDate;
     property string weatherDetails;
-    property string dDay;
-    property string dMonth;
-    property string dYear;
     property var index;
 
     function reloadDetails(){
 
-        debug = true;
+        debug = false;
 
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
@@ -48,14 +45,14 @@ Page {
 
         var passDate = now.toISOString().replace(/T.*/,'') ;
         if (debug) console.debug("passDate: "+passDate);
-        dYear = now.getFullYear() ;
+        var dYear = now.getFullYear() ;
         // header display date
         headerDate = now.toLocaleString().split(dYear)[0];
         // not being used yet
         if (weatherDetails !== ""){
             for (var i = 0; i < weather.length && i < 30; i++) {
                 //console.debug(JSON.stringify(response.weather[i]));
-                //if (debug) console.debug(weather[i]);
+                if (debug) console.debug(weather[i]);
                 listModel.append(weather[i]);
             };
         } else {
@@ -68,7 +65,7 @@ Page {
                 //weather = response;
                 listModel.clear();
                 for (var i = 0; i < response.weather.length && i < 30; i++) {
-                    //if (debug) console.debug(response.weather[i]);
+                    if (debug) console.debug(response.weather[i]);
                     listModel.append(response.weather[i]);
                 };
             });

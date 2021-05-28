@@ -18,9 +18,6 @@ Page {
     property string lon;
     property string dailyDate; // used to go to the next dayk
     property string headerDate; // used to go to the next dayk
-    property string dDay;
-    property string dMonth;
-    property string dYear;
     property var weather;
     property var now;
     property var debug;
@@ -38,7 +35,7 @@ Page {
         if (now == undefined) {
             now = new Date();
         }
-        dYear = now.getFullYear() ;
+        var dYear = now.getFullYear() ;
         headerDate = now.toLocaleString().split(dYear)[0];
 
         // clear the listmodel

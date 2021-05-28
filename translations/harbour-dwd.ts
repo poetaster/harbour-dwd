@@ -60,22 +60,22 @@
 <context>
     <name>DailyDetails</name>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="120"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="110"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="126"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="116"/>
         <source>Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="132"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="122"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="140"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="130"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
@@ -127,22 +127,22 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="139"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="128"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="145"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="134"/>
         <source>Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="151"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="140"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="191"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="180"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>

@@ -29,7 +29,6 @@ DISTFILES += \
     qml/png/* \
     qml/js/locations.js \
     qml/js/storage.js \
-    qml/js/worker.js \
     rpm/harbour-dwd.spec \
     rpm/harbour-dwd.yaml \
     rpm/harbour-dwd.changes.in \
