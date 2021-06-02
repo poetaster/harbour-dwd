@@ -14,7 +14,7 @@ Name:       harbour-dwd
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    German Weather Service client
 Version:    0.2
-Release:    1
+Release:    2
 Group:      Qt/Qt
 License:    GPLv3
 URL:        https://github.com/poetaster/harbour-dwd
@@ -28,7 +28,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-German Weather Service client""
+This German Weather Service client uses the brightsky.dev version of the DWD raw data
 
 %prep
 %setup -q -n %{name}-%{version}

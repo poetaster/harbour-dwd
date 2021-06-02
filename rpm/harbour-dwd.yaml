@@ -7,7 +7,8 @@ URL: https://github.com/poetaster/harbour-dwd
 License: GPLv3
 Sources:
 - '%{name}-%{version}.tar.bz2'
-Description: "German Weather Service client"
+Description: This German Weather Service client uses the brightsky.dev version of the DWD raw data
+
 Configure: none
 Builder: qtc5
 PkgConfigBR:
