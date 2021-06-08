@@ -24,6 +24,7 @@ ListItem {
             color: Theme.primaryColor
             opacity: 0.5
             onClicked: {
+                Store.setCoverLocation(model.locationId);
                 pageStack.push(Qt.resolvedUrl("../pages/OverviewPage.qml"), {
                                    "name":name,
                                    "lat":lat,

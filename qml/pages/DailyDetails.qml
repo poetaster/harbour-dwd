@@ -14,7 +14,7 @@ import "../delegates"
 import "../js/locations.js" as Locs
 
 Page {
-    id: page
+    id: detailsPage
     property var debug;
     property string name;
     property string lat;
@@ -82,7 +82,7 @@ Page {
         if (PageStatus.Activating) {
             //console.debug(listModel.count)
             if (listModel.count < 1) {
-                page.reloadDetails();
+                detailsPage.reloadDetails();
             }
          }
 

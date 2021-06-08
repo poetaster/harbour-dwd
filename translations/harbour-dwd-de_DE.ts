@@ -21,7 +21,7 @@
     <message>
         <location filename="../qml/pages/About.qml" line="84"/>
         <source> © 2021 Mark Washeim</source>
-        <translation ></translation>
+        <translation > © 2021 Mark Washeim</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="98"/>

@@ -232,7 +232,7 @@ function getLocationsCount() {
 
 function getLocationData(locationId) {
     var db = getDatabase();
-    var res = [];
+    var res = {location_id:"",lat:"",lon:"",name:""};
 
     try {
         db.transaction(function(tx) {
@@ -245,12 +245,16 @@ function getLocationData(locationId) {
             }
 
             for (var i = 0; i < rs.rows.length; i++) {
-                res.push({
+                res.location_id = rs.rows.item(i).location_id;
+                res.name = rs.rows.item(i).name;
+                res.lat = rs.rows.item(i).lat;
+                res.lon = rs.rows.item(i).lon;
+                /*res.push({
                     locationId: rs.rows.item(i).location_id,
                     lat: rs.rows.item(i).lat,
                     lon: rs.rows.item(i).lon,
                     name: rs.rows.item(i).name,
-                });
+                });*/
             }
         });
     } catch(e) {

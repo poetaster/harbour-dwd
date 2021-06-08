@@ -5,6 +5,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../js/locations.js" as Locs
+import "../js/storage.js" as Store
 
 CoverBackground {
     id: back
@@ -13,106 +14,155 @@ CoverBackground {
     property string name;
     property string lat;
     property string lon;
+    property var hourly;
 
     function reload(){
-        debug = true;
+        debug = false;
+
+        var cLocation = Store.getLocationData(Store.getCoverLocation());
+        if (debug) console.debug(JSON.stringify(cLocation));
+        name = cLocation.name;
+        lat = cLocation.lat;
+        lon = cLocation.lon;
 
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
         if (lon ==="") { lon="13.41"  ;}
 
-        if (now == undefined) {
-            now = new Date();
-        }
+        now = new Date();
         var dYear = now.getFullYear() ;
         var headerDate = now.toLocaleString().split(dYear)[0];
         var headerTime = now.toLocaleString().split(dYear)[1];
-        if (debug ) console.debug(JSON.stringify(headerDate));
+        if (debug ) console.debug(JSON.stringify(now.getHours()));
         if (debug ) console.debug(JSON.stringify(headerTime));
 
         var dDate = now.toISOString().replace(/T.*/,'') ;
+        if (debug ) console.debug(JSON.stringify(dDate));
+
         var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + dDate;
 
         if (debug ) console.debug(JSON.stringify(uri)) ;
 
+        hourly = new Array; //({date:"" , temp: "", cond: "", icon: "",  rain: "", cloud:"", wind:""});
+
         Locs.httpRequest(uri, function(doc) {
             var response = JSON.parse(doc.responseText);
+            for (var i = 0; i < response.weather.length ; i++) {
+                var hourlyDate = new Date(response.weather[i].timestamp);
+                if (hourlyDate.getHours().toLocaleString() === now.getHours().toLocaleString() ) {
+                    var index = now.getHours();
+                    if (debug ) console.debug(JSON.stringify(hourlyDate.getHours()));
+                    if (debug ) console.debug(JSON.stringify(now.getHours()));
+                    if (debug ) console.debug(JSON.stringify(i));
 
-            var dailyDate = new Date(response.weather[0].timestamp);
-            if (debug) console.debug(JSON.stringify(response.weather[0].timestamp));
-            var dailyRain =  Locs.dailyTotal(response.weather ,"precipitation");
-            var dailyCloud =  Locs.dailyAvg(response.weather ,"cloud_cover");
-            var dailyIcon =  Locs.mapIcon(response.weather[15].icon,dailyRain,response.weather[15].condition) ;
-            //var dailyIcon =  response.weather[15].icon) ;
-            var dailyLow =  Locs.dailyMin(response.weather,"temperature");
-            var dailyHigh =  Locs.dailyMax(response.weather,"temperature");
-            var dailyWind=  Locs.dailyAvg(response.weather ,"wind_speed");
-            var daily = {dailyDate: dailyDate, icon: dailyIcon , temperatureHigh:  dailyHigh, temperatureLow: dailyLow,
-                totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
+                    var rain =  response.weather[index].precipitation;
+                    rainLabel.text = "\uf084  "  + response.weather[index].precipitation + " mm";
 
-            console.debug(JSON.stringify(daily));
+                    var cloud =  response.weather[index].cloud_cover;
+                    cloudLabel.text =  "\uf041  " + response.weather[index].cloud_cover + " %";
+
+                    var temp =  response.weather[index].temperature;
+                    tempLabel.text =  response.weather[index].temperature + " °C" ;
+
+                    var cond =  response.weather[index].condition ;
+                    var icon =  Locs.mapIcon(response.weather[index].icon,hourly.rain,response.weather[index].condition) ;
+                    iconLabel.text =  Locs.mapIcon(response.weather[index].icon,rain,response.weather[index].condition) ;
+
+                    var wind  = response.weather[index].wind_speed;
+                    windLabel.text  = "\uf050  " + response.weather[i].wind_speed;
+                    hourly={temp:temp , cond: cond, icon: icon,  rain: rain, cloud:cloud, wind:wind };
+
+                    if (debug) console.debug(JSON.stringify(hourly));
+
+                }
+            }
         });
     }
 
-    function updateWeatherModel(){
-        listModel.clear();
-        var modelComplete = true;
-        for (var i = 0; i < 5; i++) {
-            if (weather[i] === ""){
-                if (debug) console.debug(JSON.stringify('weather: ' + i));
-                modelComplete = false;
-            }
-        }
-        for (var j = 0; j < 5; j++) {
-            if (modelComplete === true){
-                if (debug) console.debug(JSON.stringify('index: ' + j));
-                listModel.append(weather[j]);
-            }
-        }
-    }
-
     onStatusChanged: {
-        reload();
+        //reload();
     }
 
-    Label {
-        anchors.top: back.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        id: label
-        text: qsTr("Deutscher") + "\n" +
-                qsTr("Wetter")+ "\n" +
-                qsTr("Dienst");
-    }
-    Image {
-        id:logoImage
-        width: 128
-        height: 128
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        //anchors.centerIn: parent
-        source: "/usr/share/icons/hicolor/128x128/apps/harbour-dwd.png"
+    Column {
+        id: contentRow
+        x: Theme.horizontalPageMargin
+        width: parent.width - 2*x
+        spacing: Theme.paddingMedium
+
+        Component.onCompleted: reload();
+
+        Label {
+            text: name
+            width: parent.width
+            wrapMode: Text.WordWrap
+            font.pixelSize: Theme.fontSizeMedium
+            color: Theme.primaryColor
+            horizontalAlignment: "AlignHCenter"
+            verticalAlignment: "AlignVCenter"
+            topPadding: 48
+        }
+
+        Label {
+            id:tempLabel
+            width: parent.width
+            wrapMode: Text.WordWrap
+            font.pixelSize: Theme.fontSizeLarge
+            color: Theme.highlightColor
+            horizontalAlignment: "AlignHCenter"
+            verticalAlignment: "AlignVCenter"
+        }
+
+        Label {
+            id:iconLabel
+            //topPadding: 24
+            //bottomPadding: 24
+            width: parent.width
+            wrapMode: Text.WordWrap
+            font.pixelSize: Theme.fontSizeExtraLarge + 24
+            color: Theme.highlightColor
+            horizontalAlignment: "AlignHCenter"
+            verticalAlignment: "AlignVCenter"
+        }
+        Label {
+            id:rainLabel
+            topPadding: 4
+            width: parent.width
+            wrapMode: Text.WordWrap
+            font.pixelSize: Theme.fontSizeExtraSmall
+            color: Theme.highlightColor
+            horizontalAlignment: "AlignHCenter"
+            verticalAlignment: "AlignVCenter"
+        }
+        Label {
+            id:cloudLabel
+            topPadding: 4
+            width: parent.width
+            wrapMode: Text.WordWrap
+            font.pixelSize: Theme.fontSizeExtraSmall
+            color: Theme.highlightColor
+            horizontalAlignment: "AlignHCenter"
+            verticalAlignment: "AlignVCenter"
+        }
+        Label {
+            id:windLabel
+            topPadding: 4
+            width: parent.width
+            wrapMode: Text.WordWrap
+            font.pixelSize: Theme.fontSizeExtraSmall
+            color: Theme.highlightColor
+            horizontalAlignment: "AlignHCenter"
+            verticalAlignment: "AlignVCenter"
+        }
 
     }
-    Image {
-        id:dwdImage
-        width: 258
-        height: 69
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        source: "../png/dwd_logo_258x69.png"
-        Component.onCompleted:reload()
-    }
 
-
-
-    /*CoverActionList {
+    CoverActionList {
         id: coverAction
         CoverAction {
             iconSource: 'image://theme/icon-cover-refresh'
-            //onTriggered: firstpage.label.text = '0'
+            onTriggered: reload();
         }
-    }*/
+    }
 
 }
 
