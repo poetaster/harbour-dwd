@@ -45,7 +45,7 @@ Page {
     }
 
     function fetchCities() {
-        debug = false;
+        debug = true;
         var response = Store.getLocationsList();
         listModel.clear();
         if (response.length > 0) {

@@ -36,7 +36,7 @@ Page {
         fetchCities();
     }
     function fetchCities() {
-        debug = false;
+        debug = true;
 
         Locs.httpRequest("https://brightsky.dev/demo/cities.json", function(doc) {
             var response = JSON.parse(doc.responseText);

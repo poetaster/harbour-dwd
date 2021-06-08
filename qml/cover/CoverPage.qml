@@ -8,6 +8,10 @@ import "../js/locations.js" as Locs
 import "../js/storage.js" as Store
 
 CoverBackground {
+    FontLoader {
+        id: localFont
+        source: "../png/weathericons-regular-webfont.ttf"
+    }
     id: back
     property var debug;
     property var now;
@@ -17,7 +21,7 @@ CoverBackground {
     property var hourly;
 
     function reload(){
-        debug = false;
+        debug = true;
 
         var cLocation = Store.getLocationData(Store.getCoverLocation());
         if (debug) console.debug(JSON.stringify(cLocation));
@@ -92,6 +96,7 @@ CoverBackground {
         Component.onCompleted: reload();
 
         Label {
+            font.family: localFont.name
             text: name
             width: parent.width
             wrapMode: Text.WordWrap
@@ -103,6 +108,7 @@ CoverBackground {
         }
 
         Label {
+            font.family: localFont.name
             id:tempLabel
             width: parent.width
             wrapMode: Text.WordWrap
@@ -113,6 +119,7 @@ CoverBackground {
         }
 
         Label {
+            font.family: localFont.name
             id:iconLabel
             //topPadding: 24
             //bottomPadding: 24
@@ -124,6 +131,7 @@ CoverBackground {
             verticalAlignment: "AlignVCenter"
         }
         Label {
+            font.family: localFont.name
             id:rainLabel
             topPadding: 4
             width: parent.width
@@ -134,6 +142,7 @@ CoverBackground {
             verticalAlignment: "AlignVCenter"
         }
         Label {
+            font.family: localFont.name
             id:cloudLabel
             topPadding: 4
             width: parent.width
@@ -144,6 +153,7 @@ CoverBackground {
             verticalAlignment: "AlignVCenter"
         }
         Label {
+            font.family: localFont.name
             id:windLabel
             topPadding: 4
             width: parent.width

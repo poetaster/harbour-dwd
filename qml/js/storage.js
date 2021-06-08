@@ -102,8 +102,8 @@ function addLocation(locationData) {
     var lat = defaultFor(locationData.lat, 0);
     var lon = defaultFor(locationData.lon, 0);
     var name = defaultFor(locationData.name, null);
-    var id =  getLocationsCount() + 10;
-    var res = simpleQuery('INSERT INTO locations VALUES (?,?,?,?);', [id, name, lat, lon ]);
+    //var id =  getLocationsCount() + 100;
+    var res = simpleQuery('INSERT INTO locations VALUES (?,?,?,?);', [, name, lat, lon ]);
     if (res !== 0 && !res) {
         console.log("error: failed to save location " + name + " to db");
     }
@@ -169,13 +169,24 @@ function getNextCoverLocation(locationId) {
     return res;
 }
 
+
+function delCoverLocation(locationId) {
+    //var res = simpleQuery('DELETE FROM locations WHERE location_id=?;', [locationId]);
+    var res = simpleQuery('DELETE from settings where cover_location=?;', [locationId]);
+
+    if (!res) {
+        console.log("error: failed to remove location " + locationId + " from db");
+    }
+    return res;
+}
+
 function setCoverLocation(locationId) {
     var db = getDatabase();
     var res = undefined;
 
     try {
         db.transaction(function(tx) {
-            var rs = tx.executeSql('INSERT OR REPLACE INTO settings VALUES (?,?);', ['cover_location', locationId]);
+            var rs = tx.executeSql('REPLACE INTO settings VALUES (?,?);', ['cover_location', locationId]);
 
             if (rs.rowsAffected > 0) {
                 res = rs.rowsAffected;

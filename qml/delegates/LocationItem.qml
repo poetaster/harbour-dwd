@@ -24,7 +24,7 @@ ListItem {
             color: Theme.primaryColor
             opacity: 0.5
             onClicked: {
-                Store.setCoverLocation(model.locationId);
+                Store.setCoverLocation(model.location_id);
                 pageStack.push(Qt.resolvedUrl("../pages/OverviewPage.qml"), {
                                    "name":name,
                                    "lat":lat,
@@ -45,8 +45,10 @@ ListItem {
             }
             text: qsTr("Delete")
             onClicked: {
-                //console.debug(model.locationId);
-                Store.removeLocation(model.locationId);
+                if (debug) console.debug(model.location_id);
+
+                Store.delCoverLocation(model.location_id);
+                Store.removeLocation(model.location_id);
                 fetchCities();
             }
         }
