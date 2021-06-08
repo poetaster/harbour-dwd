@@ -32,7 +32,7 @@ DISTFILES += \
     rpm/harbour-dwd.spec \
     rpm/harbour-dwd.yaml \
     rpm/harbour-dwd.changes.in \
-    translations/harbour-dwd.ts
+    translations/harbour-dwd.ts \
     translations/harbour-dwd-de_DE.ts
 
 OTHER_FILES += \
