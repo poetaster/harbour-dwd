@@ -34,11 +34,25 @@ Page {
     Component.onCompleted: {
         searchField.forceActiveFocus();
         fetchCities();
+        //fetchLocal();
     }
+    function fetchLocal(){
+        Locs.loadJSON("../js/stations.json", function(doc) {
+            var response = JSON.parse(doc.responseText);
+            listModel.clear();
+            cities = response;
+            for (var i = 0; i < response.length && i < 2500; i++) {
+                listModel.append(response[i]);
+                if (debug) console.debug(JSON.stringify(cities[i]))
+            };
+        });
+    }
+
     function fetchCities() {
         debug = true;
 
-        Locs.httpRequest("https://brightsky.dev/demo/cities.json", function(doc) {
+        //Locs.httpRequest("https://brightsky.dev/demo/cities.json", function(doc) {
+        Locs.httpRequest("https://poetaster.de/stations.json", function(doc) {
             var response = JSON.parse(doc.responseText);
             listModel.clear();
             cities = response;

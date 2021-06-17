@@ -11,7 +11,6 @@ ListItem {
     }
 
     Row {
-        y:200
         id: contentRow
         x: Theme.horizontalPageMargin
         width: parent.width - 2*x
@@ -55,7 +54,6 @@ ListItem {
 
     }
     Separator {
-        y: 200
         id: separatorBottom
         visible: index < listView.count
         x: Theme.horizontalPageMargin

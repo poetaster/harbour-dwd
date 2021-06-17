@@ -30,6 +30,25 @@ function httpRequest(url, callback) {
     doc.send();
 
 }
+
+function loadJSON(file, callback) {
+
+   var xobj = new XMLHttpRequest();
+   //xobj.overrideMimeType("application/json");
+   xobj.open('GET', file, true);
+   xobj.onreadystatechange = function () {
+       if (xobj.readyState === XMLHttpRequest.DONE) {
+           callback(xobj);
+       }
+         /*if (xobj.readyState == 4 && xobj.status == "200") {
+           // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+           callback(xobj.responseText);
+         }*/
+
+   };
+    xobj.open("GET",file)
+   xobj.send(null);
+}
 /*  This json doc function takes and returns an index to the callback.
  * This permits it to be called in a loop.
  */
