@@ -33,8 +33,8 @@ Page {
 
     Component.onCompleted: {
         searchField.forceActiveFocus();
-        fetchCities();
-        //fetchLocal();
+        //fetchCities();
+        fetchLocal();
     }
     function fetchLocal(){
         Locs.loadJSON("../js/stations.json", function(doc) {
@@ -49,7 +49,7 @@ Page {
     }
 
     function fetchCities() {
-        debug = true;
+        debug = false;
 
         //Locs.httpRequest("https://brightsky.dev/demo/cities.json", function(doc) {
         Locs.httpRequest("https://poetaster.de/stations.json", function(doc) {

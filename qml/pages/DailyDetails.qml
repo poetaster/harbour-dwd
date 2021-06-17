@@ -132,7 +132,7 @@ Page {
                     now = Locs.addDays(now, 1);
                     if (debug) console.debug(now);
                     dailyDate = now;
-                    page.reloadDetails();
+                    reloadDetails();
                 }
             }
         }

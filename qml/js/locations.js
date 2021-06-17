@@ -47,7 +47,7 @@ function loadJSON(file, callback) {
 
    };
     xobj.open("GET",file)
-   xobj.send(null);
+   xobj.send();
 }
 /*  This json doc function takes and returns an index to the callback.
  * This permits it to be called in a loop.
