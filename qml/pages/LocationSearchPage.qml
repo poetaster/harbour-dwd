@@ -33,23 +33,27 @@ Page {
 
     Component.onCompleted: {
         searchField.forceActiveFocus();
-        //fetchCities();
+       // fetchCities();
         fetchLocal();
     }
     function fetchLocal(){
+        debug = false;
         Locs.loadJSON("../js/stations.json", function(doc) {
             var response = JSON.parse(doc.responseText);
             listModel.clear();
             cities = response;
-            for (var i = 0; i < response.length && i < 2500; i++) {
+            for (var i = 0; i < response.length && i < 8000; i++) {
                 listModel.append(response[i]);
-                if (debug) console.debug(JSON.stringify(cities[i]))
+                 cities[i] = response[i];
+                //if (debug) console.debug(JSON.stringify(cities[i]))
             };
         });
     }
 
     function fetchCities() {
         debug = false;
+        // dynamic search
+        // https://api.brightsky.dev/sources?lat=48.944&lon=11.569&max_dist=500000
 
         //Locs.httpRequest("https://brightsky.dev/demo/cities.json", function(doc) {
         Locs.httpRequest("https://poetaster.de/stations.json", function(doc) {
@@ -58,20 +62,21 @@ Page {
             cities = response;
             for (var i = 0; i < response.length && i < 2500; i++) {
                 listModel.append(response[i]);
-                if (debug) console.debug(JSON.stringify(cities[i]))
+                //if (debug) console.debug(JSON.stringify(cities[i]))
             };
         });
     }
     function search(string) {
         var ret = [];
         //console.debug(JSON.stringify(cities[0]));
-        //listModel.clear();
+        listModel.clear();
         for (var i = 0; i < cities.length; i++) {
             if (string !== "" && cities[i].name.indexOf(string) >= 0) {
                 ret.push({"name": cities[i].name});
                 listModel.append(cities[i])
+                //if(debug) console.debug(JSON.stringify(i));
                 if(debug) console.debug(JSON.stringify(cities[i].name));
-                if(debug) console.debug(JSON.stringify(listModel.count));
+                //if(debug) console.debug(JSON.stringify(listModel.count));
             }
             if (ret.length === 50) break;
         }

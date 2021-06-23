@@ -10,6 +10,7 @@ import QtQuick 2.2
 import Sailfish.Silica 1.0
 import "../delegates"
 import "../js/locations.js" as Locs
+import "../js/locales.js" as TZ
 
 Page {
     id: page
@@ -26,7 +27,7 @@ Page {
     //onQueryChanged: updateJSONModel();
 
     function reload(){
-        debug = false;
+        debug = true;
 
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
@@ -35,6 +36,9 @@ Page {
         if (now == undefined) {
             now = new Date();
         }
+        var tz = TZ.jstz.determine(); // Determines the time zone of the browser client
+        var tzname = tz.name(); // Returns the name of the time zone eg "Europe/Berlin"
+
         var dYear = now.getFullYear() ;
         headerDate = now.toLocaleString().split(dYear)[0];
 
@@ -44,7 +48,8 @@ Page {
         //listModel.clear();
         for (var j = 0; j < 5; j++) {
             var dDate = Locs.addDays(now,j).toISOString().replace(/T.*/,'') ;
-            var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + dDate;
+            var uri = "https://api.brightsky.dev/weather?tz="+tzname+"&lat=" + lat + "&lon=" + lon + "&date=" + dDate;
+            if (debug) console.debug(uri)
             // initialize listModel slot
             // sadly, this doesn't work
             //listModel.set(j,{})

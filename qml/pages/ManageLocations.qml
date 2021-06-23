@@ -18,6 +18,7 @@
  */
 
 import QtQuick 2.6
+import QtPositioning 5.2
 import Sailfish.Silica 1.0
 
 import "../js/locations.js" as Locs
@@ -25,31 +26,130 @@ import "../js/storage.js" as Store
 import "../delegates"
 Page {
     property var cities;
+    property variant coordinate;
+    property var debug;
+    property var now;
+    property var coord;
+    property var lat;
+    property var lon;
+    property var name;
 
-    id: startPage
+    id: managePage
     allowedOrientations: Orientation.All
 
     Component.onCompleted: {
-        fetchStoredCities();
+        //fetchStoredCities();
+    }
+    function titleCase(str) {
+       //str.toLowerCase().replace('/\b(\w)/g');
+       //return str.toUpperCase();
+        str = str.toLowerCase();
+        var words = str.split(' ');
+        var results = [];
+        for (var i = 0; i < words.length; i++) {
+          var letter = words[i].charAt(0).toUpperCase();
+          results.push(letter + words[i].slice(1));
+        }
+        return results.join(' ');
     }
 
-    function fetchStoredCities() {
+    function printableMethod(method) {
+            if (method === PositionSource.SatellitePositioningMethods)
+                return "Satellite";
+            else if (method === PositionSource.NoPositioningMethods)
+                return "Not available"
+            else if (method === PositionSource.NonSatellitePositioningMethods)
+                return "Non-satellite"
+            else if (method === PositionSource.AllPositioningMethods)
+                return "Multiple"
+            return "source error";
+    }
+    /*
+    "id": 4732,
+    "dwd_station_id": null,
+    "observation_type": "forecast",
+    "lat": 48.92,
+    "lon": 11.52,
+    "height": 500.0,
+    "station_name": "SWIS-PUNKT",
+    "wmo_station_id": "X218",
+    "first_record": "2021-06-23T10:00:00+00:00",
+    "last_record": "2021-07-03T11:00:00+00:00",
+    "distance": 4470.0
+      */
+    function fetchCities() {
+        debug = false;
         var response = Store.getLocationsList();
-        console.debug(JSON.stringify(response))
         listModel.clear();
         if (response.length > 0) {
             for (var i = 0; i < response.length && i < 500; i++) {
-                  var location = Store.getLocationData(response[i]);
-                  listModel.append(location);
-                  console.debug(JSON.stringify(location))
+                var location = Store.getLocationData(response[i]);
+                listModel.append(location);
+                if (debug) console.debug(JSON.stringify(location))
             }
         } else {
             pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
         }
+        now = new Date();
+    }
+
+    function gpsLocations() {
+        debug = true;
+        var uri = "https://api.brightsky.dev/sources?lat=" + lat + "&lon=" + lon + "&max_dist=50000";
+        if (debug) console.debug(JSON.stringify(uri))
+        Locs.httpRequest(uri, function(doc) {
+            var response = JSON.parse(doc.responseText);
+            listModel.clear();
+            cities = response.sources;
+            for (var i = 0; i < cities.length && i < 2500; i++) {
+                if (cities[i].observation_type === "forecast") {
+                    listModel.append(cities[i]);
+                    if (debug) console.debug(JSON.stringify(cities[i]))
+                }
+            };
+        });
+    }
+    function search(string) {
+        var ret = [];
+        //console.debug(JSON.stringify(cities[0]));
+        listModel.clear();
+        for (var i = 0; i < cities.length; i++) {
+            if (string !== "" && cities[i].name.indexOf(string) >= 0) {
+                ret.push({"name": cities[i].name});
+                listModel.append(cities[i])
+                //if(debug) console.debug(JSON.stringify(i));
+                if(debug) console.debug(JSON.stringify(cities[i].name));
+                //if(debug) console.debug(JSON.stringify(listModel.count));
+            }
+            if (ret.length === 50) break;
+        }
+        return ret;
     }
 
     anchors.fill: parent
+    PositionSource {
+        id: positionSource
+        onPositionChanged: {
+            coord = positionSource.position.coordinate;
+            if (debug) console.log("Coordinate:", coord.longitude, coord.latitude);
+            lat = coord.latitude;
+            lon = coord.longitude;
 
+        }
+
+        onSourceErrorChanged: {
+            if (sourceError == PositionSource.NoError)
+                return
+
+            console.log("Source error: " + sourceError)
+            activityText.fadeOut = true
+            stop()
+        }
+
+        /*onUpdateTimeout: {
+            activityText.fadeOut = true
+        }*/
+    }
     SilicaFlickable {
         anchors.fill: parent
         contentHeight: column.height
@@ -74,6 +174,12 @@ Page {
                 }
             }
             MenuItem {
+                text: qsTr("Start")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("StartPage.qml"),{});
+                }
+            }
+            MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
                     page.reloadStories();
@@ -83,24 +189,94 @@ Page {
         Column {
             id: column
             width: parent.width
-
-            SilicaListView {
-                id:sListview
-                x: Theme.horizontalPageMargin
+             anchors.top: header.bottom
+             /*Text{
+                id:textone
                 width: parent.width - 2*x
-                height: 2000
-                //spacing: Theme.paddingSmall
+                height: 200
+                x: Theme.horizontalPageMargin
+                text:now.toLocaleString('de-DE').split(now.getFullYear())[0]
+                color: Theme.primaryColor
+                font.pixelSize:Theme.fontSizeLarge
+             }*/
+            SilicaListView {
+                id:listView
+
+                width: parent.width - 2*x
+                height: 500
+
                 model:   ListModel {
                     id: listModel
                     function update() {
-                        fetchStoredCities()
+                        gpsLocations()
                     }
                     Component.onCompleted:update()
                 }
-                delegate: LocationItem
-
+                delegate: ListItem {
+                    Label {
+                        text: titleCase(model.station_name)
+                        truncationMode: TruncationMode.Fade
+                    }
+                    onClicked: {
+                        var location = {"name": titleCase( model.station_name ), "lon": lon, "lat": lat}
+                        Store.addLocation(location);
+                        pageStack.pop()
+                       /* pageStack.push(Qt.resolvedUrl("OverviewPage.qml"), {
+                                           "name": name,
+                                           "lat": lat,
+                                           "lon": lon}); */
+                    }
+                }
                 spacing: 2
                 VerticalScrollDecorator { flickable: sListview}
+            }
+        }
+        Button {
+                id: locateButton
+                text: "Locate & update"
+                anchors.top: column.bottom
+                anchors.left: column.left
+                onClicked: {
+                    if (positionSource.supportedPositioningMethods ===
+                            PositionSource.NoPositioningMethods) {
+                        //positionSource.nmeaSource = "nmealog.txt";
+                        //sourceText.text = "(filesource): " + printableMethod(positionSource.supportedPositioningMethods);
+                    }
+                    positionSource.update();
+                    gpsLocations();
+                }
+        }
+        Text {id: sourceText; color: "white"; font.bold: true;
+            anchors.top: locateButton.bottom
+            anchors.left: locateButton.left
+            text: "Source: " + printableMethod(positionSource.supportedPositioningMethods); style: Text.Raised; styleColor: "black";
+        }
+
+        Text {id: posText; color: "white"; font.bold: true;
+            anchors.top: sourceText.bottom
+            anchors.left: sourceText.left
+
+            text: "Longitud: "+ coord.longitude + " Latitude: " + coord.latitude
+            style: Text.Raised
+            styleColor: "black"
+        }
+        Text {
+            id: activityText; color: "white"; font.bold: true;
+            anchors { bottom: parent.bottom; horizontalCenter: parent.horizontalCenter }
+            property bool fadeOut: false
+
+            text: {
+                if (fadeOut)
+                    return qsTr("Timeout occurred!");
+                else if (positionSource.active)
+                    return qsTr("Retrieving update...")
+                else
+                    return ""
+            }
+
+            Timer {
+                id: fadeoutTimer; repeat: false; interval: 3000; running: activityText.fadeOut
+                onTriggered: { activityText.fadeOut = false; }
             }
         }
     }

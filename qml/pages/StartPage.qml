@@ -45,7 +45,7 @@ Page {
     }
 
     function fetchCities() {
-        debug = true;
+        debug = false;
         var response = Store.getLocationsList();
         listModel.clear();
         if (response.length > 0) {
@@ -90,6 +90,12 @@ Page {
                 text: qsTr("Add Locations")
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
+                }
+            }
+            MenuItem {
+                text: qsTr("Manage Locations")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("ManageLocations.qml"),{});
                 }
             }
             MenuItem {

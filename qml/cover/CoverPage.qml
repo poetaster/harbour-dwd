@@ -4,8 +4,9 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../js/locations.js" as Locs
 import "../js/storage.js" as Store
+import "../js/locations.js" as Locs
+import "../js/locales.js" as TZ
 
 CoverBackground {
     FontLoader {
@@ -22,6 +23,8 @@ CoverBackground {
 
     function reload(){
         debug = true;
+        var tz = TZ.jstz.determine(); // Determines the time zone of the browser client
+        var tzname = tz.name(); // Returns the name of the time zone eg "Europe/Berlin"
 
         var cLocation = Store.getLocationData(Store.getCoverLocation());
         if (debug) console.debug(JSON.stringify(cLocation));
@@ -43,7 +46,7 @@ CoverBackground {
         var dDate = now.toISOString().replace(/T.*/,'') ;
         if (debug ) console.debug(JSON.stringify(dDate));
 
-        var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + dDate;
+        var uri = "https://api.brightsky.dev/weather?tz="+tzname+"&lat=" + lat + "&lon=" + lon + "&date=" + dDate;
 
         if (debug ) console.debug(JSON.stringify(uri)) ;
 

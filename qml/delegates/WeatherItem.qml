@@ -116,17 +116,17 @@ ListItem {
                 id: column3
                 width: parent.width / 3
                 spacing: Theme.paddingMedium
-                /*Label {
+                Label {
                     topPadding: 8
                     text: model.condition
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
-                }*/
+                }
                 Label {
                     topPadding: 8
-                    text: model.cloud_cover + "% cloud  " + model.precipitation + " mm"
+                    text: model.cloud_cover + "% cloud  " +parseFloat(model.precipitation) + " mm"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall

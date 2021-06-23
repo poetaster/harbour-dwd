@@ -10,8 +10,10 @@ weather?lat=52.52&lon=13.41&date=2021-04-30 */
 
 import QtQuick 2.2
 import Sailfish.Silica 1.0
+
 import "../delegates"
 import "../js/locations.js" as Locs
+import "../js/locales.js" as TZ
 
 Page {
     id: detailsPage
@@ -28,7 +30,7 @@ Page {
 
     function reloadDetails(){
 
-        debug = false;
+        debug = true;
 
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
@@ -41,11 +43,18 @@ Page {
         } else {
             now = new Date(dailyDate);
         }
-        if (debug) console.debug("now: "+now);
+        if (debug) console.debug("now: "+now.toISOString());
+
+        var tz = TZ.jstz.determine(); // Determines the time zone of the browser client
+        var tzname = tz.name(); // Returns the name of the time zone eg "Europe/Berlin"
+        if (debug) console.debug(tz.name());
+
+       // console.debug(now.toLocaleDateString('de-DE', {timezone: 'long', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}));
 
         var passDate = now.toISOString().replace(/T.*/,'') ;
         if (debug) console.debug("passDate: "+passDate);
         var dYear = now.getFullYear() ;
+
         // header display date
         headerDate = now.toLocaleString().split(dYear)[0];
         // not being used yet
@@ -57,7 +66,7 @@ Page {
             };
         } else {
 
-            var uri = "https://api.brightsky.dev/weather?lat=" + lat + "&lon=" + lon + "&date=" + passDate;
+            var uri = "https://api.brightsky.dev/weather?tz="+tzname + "&lat=" + lat + "&lon=" + lon + "&date=" + passDate;
             if (debug) console.debug(uri);
 
             Locs.httpRequest(uri, function(doc) {
@@ -65,7 +74,7 @@ Page {
                 //weather = response;
                 listModel.clear();
                 for (var i = 0; i < response.weather.length && i < 30; i++) {
-                    if (debug) console.debug(response.weather[i]);
+                    if (debug) console.debug(response.weather[i].condition);
                     listModel.append(response.weather[i]);
                 };
             });
@@ -121,7 +130,7 @@ Page {
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
-                    page.reloadDetails();
+                    reloadDetails();
                 }
             }
         }
