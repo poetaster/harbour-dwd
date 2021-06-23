@@ -31,6 +31,11 @@ import Sailfish.Silica 1.0
 import "../js/locations.js" as Locs
 ListItem {
 
+
+    FontLoader {
+        id: localFont
+        source: "../png/weathericons-regular-webfont.ttf"
+    }
     contentHeight: contentRow.height + separatorBottom.height + 8
     //opacity: !((index) & 1) ? Theme.opacityHigh : Theme.opacityLow
     Rectangle {
@@ -116,17 +121,17 @@ ListItem {
                 id: column3
                 width: parent.width / 3
                 spacing: Theme.paddingMedium
-                Label {
+                /*Label {
                     topPadding: 8
                     text: model.condition
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
-                }
+                }*/
                 Label {
                     topPadding: 8
-                    text: model.cloud_cover + "% cloud  " +parseFloat(model.precipitation) + " mm"
+                    text: model.cloud_cover + "% \uf013 " +parseFloat(model.precipitation) + " mm"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall

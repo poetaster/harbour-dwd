@@ -71,7 +71,6 @@ ListItem {
                     bottomPadding: 24
                     font.family: localFont.name
                     text: model.icon
-                    //text: model.cloud_cover + "% cloud"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraLarge + 24
@@ -86,7 +85,7 @@ ListItem {
                 spacing: Theme.paddingSmall
                 Label {
                     topPadding: 8
-                    text: model.cloud_cover + "% cloud"
+                    text: model.cloud_cover + " % \uf013"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall

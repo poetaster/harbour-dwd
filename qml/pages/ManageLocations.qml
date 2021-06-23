@@ -156,7 +156,7 @@ Page {
 
         PageHeader {
             id: header
-            title: qsTr("Stored Locations")
+            title: qsTr("Position (GPS) Locations")
         }
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
@@ -201,10 +201,10 @@ Page {
              }*/
             SilicaListView {
                 id:listView
-
+                leftMargin: 24
                 width: parent.width - 2*x
-                height: 500
-
+                height: 600
+                //anchors.horizontalCenter:  parent.horizontalCenter
                 model:   ListModel {
                     id: listModel
                     function update() {
@@ -214,7 +214,7 @@ Page {
                 }
                 delegate: ListItem {
                     Label {
-                        text: titleCase(model.station_name)
+                        text: titleCase(model.station_name) + " - " + model.distance + qsTr(" meters")
                         truncationMode: TruncationMode.Fade
                     }
                     onClicked: {
