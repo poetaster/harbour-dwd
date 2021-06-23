@@ -92,7 +92,7 @@ ListItem {
                     //color: Theme.highlightColor
                 }
                 Label {
-                    text: model.totalRain + " mm"
+                    text: model.totalRain + " mm \uf084 "
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
@@ -100,7 +100,7 @@ ListItem {
                 }
                 Label {
                     bottomPadding: 4
-                    text: model.wind_speed + " km/h " //+ model.wind_direction + " °"
+                    text: model.wind_speed + " km/h \uf050" //+ model.wind_direction + " °"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall

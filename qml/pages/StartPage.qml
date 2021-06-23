@@ -87,15 +87,15 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr("Add Locations")
+                text: qsTr("GPS Locations")
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
+                    pageStack.push(Qt.resolvedUrl("ManageLocations.qml"),{});
                 }
             }
             MenuItem {
-                text: qsTr("Manage Locations")
+                text: qsTr("Add Locations")
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("ManageLocations.qml"),{});
+                    pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
                 }
             }
             MenuItem {

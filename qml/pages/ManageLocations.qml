@@ -95,7 +95,7 @@ Page {
 
     function gpsLocations() {
         debug = true;
-        var uri = "https://api.brightsky.dev/sources?lat=" + lat + "&lon=" + lon + "&max_dist=50000";
+        var uri = "https://api.brightsky.dev/sources?lat=" + lat + "&lon=" + lon + "&max_dist=30000";
         if (debug) console.debug(JSON.stringify(uri))
         Locs.httpRequest(uri, function(doc) {
             var response = JSON.parse(doc.responseText);
@@ -168,7 +168,7 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr("Locations")
+                text: qsTr("Add Locations")
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
                 }
@@ -179,31 +179,29 @@ Page {
                     pageStack.push(Qt.resolvedUrl("StartPage.qml"),{});
                 }
             }
-            MenuItem {
-                text: qsTr("Refresh")
-                onClicked: {
-                    page.reloadStories();
-                }
-            }
         }
+        /*SearchField {
+            placeholderText: qsTr("Search")
+            id: searchField
+            width: parent.width
+            anchors.top: header.bottom
+            inputMethodHints: Qt.ImhNoPredictiveText
+
+            onTextChanged: listModel.update()
+            EnterKey.onClicked: {
+                if (text != "") searchField.focus = false
+            }
+        }*/
         Column {
             id: column
             width: parent.width
              anchors.top: header.bottom
-             /*Text{
-                id:textone
-                width: parent.width - 2*x
-                height: 200
-                x: Theme.horizontalPageMargin
-                text:now.toLocaleString('de-DE').split(now.getFullYear())[0]
-                color: Theme.primaryColor
-                font.pixelSize:Theme.fontSizeLarge
-             }*/
             SilicaListView {
                 id:listView
-                leftMargin: 24
+                leftMargin: 40
                 width: parent.width - 2*x
-                height: 600
+                y: 20
+                height: 1800
                 //anchors.horizontalCenter:  parent.horizontalCenter
                 model:   ListModel {
                     id: listModel
@@ -236,6 +234,7 @@ Page {
                 text: "Locate & update"
                 anchors.top: column.bottom
                 anchors.left: column.left
+                visible: false
                 onClicked: {
                     if (positionSource.supportedPositioningMethods ===
                             PositionSource.NoPositioningMethods) {
@@ -250,15 +249,18 @@ Page {
             anchors.top: locateButton.bottom
             anchors.left: locateButton.left
             text: "Source: " + printableMethod(positionSource.supportedPositioningMethods); style: Text.Raised; styleColor: "black";
+            visible: false
         }
 
-        Text {id: posText; color: "white"; font.bold: true;
+        Label {id: posText; color: "white"; font.bold: true;
             anchors.top: sourceText.bottom
+            anchors.bottom: parent.bottom
             anchors.left: sourceText.left
+            horizontalAlignment: parent.horizontalCenter
 
-            text: "Longitud: "+ coord.longitude + " Latitude: " + coord.latitude
-            style: Text.Raised
-            styleColor: "black"
+            text: "Longitude: "+ coord.longitude + " Latitude: " + coord.latitude
+            //style: Text.Raised
+            //styleColor: "black"
         }
         Text {
             id: activityText; color: "white"; font.bold: true;

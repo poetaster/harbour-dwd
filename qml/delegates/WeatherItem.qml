@@ -131,14 +131,14 @@ ListItem {
                 }*/
                 Label {
                     topPadding: 8
-                    text: model.cloud_cover + "% \uf013 " +parseFloat(model.precipitation) + " mm"
+                    text: model.cloud_cover + "% \uf013 " +parseFloat(model.precipitation) + " mm \uf084 "
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
                 }
                 Text {
-                    text: model.wind_speed + " km/h " + model.wind_direction + " °"
+                    text: model.wind_speed + " km/h \uf050 " + model.wind_direction + " °"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
