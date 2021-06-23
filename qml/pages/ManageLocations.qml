@@ -94,7 +94,7 @@ Page {
     }
 
     function gpsLocations() {
-        debug = true;
+        debug = false;
         var uri = "https://api.brightsky.dev/sources?lat=" + lat + "&lon=" + lon + "&max_dist=30000";
         if (debug) console.debug(JSON.stringify(uri))
         Locs.httpRequest(uri, function(doc) {

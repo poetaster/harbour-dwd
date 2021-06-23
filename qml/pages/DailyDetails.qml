@@ -30,7 +30,7 @@ Page {
 
     function reloadDetails(){
 
-        debug = true;
+        debug = false;
 
         if (name === "") { name="Berlin" ;}
         if (lat === "") { lat="52.52"; }
@@ -122,7 +122,13 @@ Page {
                 }
             }
             MenuItem {
-                text: qsTr("Locations")
+                text: qsTr("GPS Locations")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("ManageLocations.qml"),{});
+                }
+            }
+            MenuItem {
+                text: qsTr("Add Locations")
                 onClicked: {
                     pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
                 }
