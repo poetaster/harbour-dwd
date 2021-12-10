@@ -1,10 +1,16 @@
 [Desktop Entry]
 Type=Application
-X-Nemo-Application-Type=silica-qt5
 Icon=harbour-dwd
-Exec=harbour-dwd
+Exec=sailjail -p harbour-dwd.desktop /usr/bin/harbour-dwd
 Name=German Weather Service
+
 # translation example:
 # your app name in German locale (de)
+
+[X-Sailjail]
+OrganizationName=de.poetaster
+ApplicationName=harbour-dwd
+Permissions=Internet;Location
+
 Name[de]=Deutscher Wetter Dienst
 

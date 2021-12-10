@@ -6,78 +6,65 @@
     <message>
         <location filename="../qml/pages/About.qml" line="16"/>
         <source>About the DWD client</source>
-        <translation >Über den DWD client</translation>
+        <translation>Über den DWD client</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="45"/>
         <source>A simple consumer of the</source>
-        <translation >Ein einfacher Konsument des</translation>
+        <translation>Ein einfacher Konsument des</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="59"/>
         <source>of the German Weather Service</source>
-        <translation >Deutschen Wetter Dienstes</translation>
+        <translation>Deutschen Wetter Dienstes</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="84"/>
         <source> © 2021 Mark Washeim</source>
-        <translation > © 2021 Mark Washeim</translation>
+        <translation> © 2021 Mark Washeim</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="98"/>
         <source>This program is FOSS software licensed</source>
-        <translation >Dieses Program ist FOSS, lizensiert</translation>
+        <translation>Dieses Program ist FOSS, lizensiert</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="99"/>
         <source>GNU General Public License v3.</source>
-        <translation >GNU General Public License v3.</translation>
+        <translation>GNU General Public License v3.</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="114"/>
         <source>Icons by Erik Flowers</source>
-        <translation >Icons von Erik Flowers</translation>
-    </message>
-</context>
-<context>
-    <name>CoverPage</name>
-    <message>
-        <location filename="../qml/cover/CoverPage.qml" line="15"/>
-        <source>Deutscher</source>
-        <translation >Deutscher</translation>
-    </message>
-    <message>
-        <location filename="../qml/cover/CoverPage.qml" line="16"/>
-        <source>Wetter</source>
-        <translation >Wetter</translation>
-    </message>
-    <message>
-        <location filename="../qml/cover/CoverPage.qml" line="17"/>
-        <source>Dienst</source>
-        <translation >Dienst</translation>
+        <translation>Icons von Erik Flowers</translation>
     </message>
 </context>
 <context>
     <name>DailyDetails</name>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="110"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="119"/>
         <source>About</source>
-        <translation >Über</translation>
+        <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="116"/>
-        <source>Locations</source>
-        <translation >Orte</translation>
+        <location filename="../qml/pages/DailyDetails.qml" line="125"/>
+        <source>GPS Locations</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="122"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="131"/>
+        <source>Add Locations</source>
+        <translation type="unfinished">Ort hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DailyDetails.qml" line="137"/>
         <source>Refresh</source>
-        <translation >Neu Laden</translation>
+        <translation>Neu Laden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="130"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="145"/>
         <source>Next</source>
-        <translation >Weiter</translation>
+        <translation>Weiter</translation>
     </message>
 </context>
 <context>
@@ -85,66 +72,86 @@
     <message>
         <location filename="../qml/delegates/LocationItem.qml" line="45"/>
         <source>Delete</source>
-        <translation >Löschen</translation>
+        <translation>Löschen</translation>
     </message>
 </context>
 <context>
     <name>LocationSearchPage</name>
     <message>
-        <location filename="../qml/pages/LocationSearchPage.qml" line="75"/>
+        <location filename="../qml/pages/LocationSearchPage.qml" line="94"/>
         <source>Choose Location</source>
-        <translation >Ort wählen</translation>
+        <translation>Ort wählen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/LocationSearchPage.qml" line="79"/>
+        <location filename="../qml/pages/LocationSearchPage.qml" line="98"/>
         <source>Search</source>
-        <translation >Suchen</translation>
+        <translation>Suchen</translation>
     </message>
 </context>
 <context>
     <name>ManageLocations</name>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="59"/>
-        <source>Stored Locations</source>
-        <translation >Gespeicherte Orte</translation>
+        <location filename="../qml/pages/ManageLocations.qml" line="159"/>
+        <source>Position (GPS) Locations</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="65"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="165"/>
         <source>About</source>
-        <translation >Über</translation>
+        <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="71"/>
-        <source>Locations</source>
-        <translation >Orte</translation>
+        <location filename="../qml/pages/ManageLocations.qml" line="171"/>
+        <source>Add Locations</source>
+        <translation type="unfinished">Ort hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="77"/>
-        <source>Refresh</source>
-        <translation >Neu laden</translation>
+        <location filename="../qml/pages/ManageLocations.qml" line="177"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ManageLocations.qml" line="215"/>
+        <source> meters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ManageLocations.qml" line="272"/>
+        <source>Timeout occurred!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ManageLocations.qml" line="274"/>
+        <source>Retrieving update...</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="128"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="133"/>
         <source>About</source>
-        <translation >Über</translation>
+        <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="134"/>
-        <source>Locations</source>
-        <translation >Orte</translation>
+        <location filename="../qml/pages/OverviewPage.qml" line="139"/>
+        <source>GPS Locations</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="140"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="145"/>
+        <source>Add Locations</source>
+        <translation type="unfinished">Ort hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/OverviewPage.qml" line="151"/>
         <source>Refresh</source>
-        <translation >Neu Laden</translation>
+        <translation>Neu Laden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="180"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="191"/>
         <source>Next</source>
-        <translation >Weiter</translation>
+        <translation>Weiter</translation>
     </message>
 </context>
 <context>
@@ -152,22 +159,27 @@
     <message>
         <location filename="../qml/pages/StartPage.qml" line="78"/>
         <source>Stored Locations</source>
-        <translation >Gespeicherte Orte</translation>
+        <translation>Gespeicherte Orte</translation>
     </message>
     <message>
         <location filename="../qml/pages/StartPage.qml" line="84"/>
         <source>About</source>
-        <translation >Über</translation>
+        <translation>Über</translation>
     </message>
     <message>
         <location filename="../qml/pages/StartPage.qml" line="90"/>
-        <source>Add Locations</source>
-        <translation >Ort hinzufügen</translation>
+        <source>GPS Locations</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/StartPage.qml" line="96"/>
+        <source>Add Locations</source>
+        <translation>Ort hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StartPage.qml" line="102"/>
         <source>Refresh</source>
-        <translation >Neu Laden</translation>
+        <translation>Neu Laden</translation>
     </message>
 </context>
 </TS>

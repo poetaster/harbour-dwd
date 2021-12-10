@@ -15,7 +15,7 @@ Name:       harbour-dwd
 Summary:    German Weather Service client
 Version:    0.6
 Release:    1
-Group:      Qt/Qt
+Group:      Applications/Internet
 License:    GPLv3
 URL:        https://github.com/poetaster/harbour-dwd
 Source0:    %{name}-%{version}.tar.bz2
