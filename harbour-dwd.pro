@@ -32,7 +32,6 @@ DISTFILES += \
     qml/js/stations.json \
     qml/js/locales.js \
     rpm/harbour-dwd.spec \
-    rpm/harbour-dwd.yaml \
     rpm/harbour-dwd.changes \
     translations/harbour-dwd.ts \
     translations/harbour-dwd-de_DE.ts
