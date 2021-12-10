@@ -30,6 +30,27 @@ BuildRequires:  desktop-file-utils
 %description
 This German Weather Service client uses the brightsky.dev version of the DWD raw data
 
+%if "%{?vendor}" == "chum"
+PackageName: German Weather Service
+Type: desktop-application
+Categories:
+ - Science
+DeveloperName: Mark Washeim (blueprint@poetaster.de)
+Custom:
+ - RepoType: github
+ - Repo: https://github.com/poetaster/harbour-dwd
+Icon: https://raw.githubusercontent.com/poetaster/harbour-dwd/master/icons/172x172/harbour-dwd.png
+Screenshots:
+ - https://raw.githubusercontent.com/poetaster/harbour-dwd/main/screen1.png
+ - https://raw.githubusercontent.com/poetaster/harbour-dwd/main/screen2.png
+ - https://raw.githubusercontent.com/poetaster/harbour-dwd/main/screen3.png
+Url:
+ - Homepage: https://github.com/poetaster/harbour-dwd
+ - Help: https://github.com/poetaster/harbour-dwd/discussions
+ - Bugtracker: https://github.com/poetaster/harbour-dwd/issues
+ - Donation: https://www.paypal.me/poetasterFOSS
+%endif
+
 %prep
 %setup -q -n %{name}-%{version}
 
