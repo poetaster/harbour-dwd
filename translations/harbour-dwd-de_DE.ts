@@ -49,7 +49,7 @@
     <message>
         <location filename="../qml/pages/DailyDetails.qml" line="125"/>
         <source>GPS Locations</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GPS Orte hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/pages/DailyDetails.qml" line="131"/>
@@ -93,7 +93,7 @@
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="159"/>
         <source>Position (GPS) Locations</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GPS Orte hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="165"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../qml/pages/StartPage.qml" line="90"/>
         <source>GPS Locations</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GPS Orte hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/pages/StartPage.qml" line="96"/>
