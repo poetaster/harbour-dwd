@@ -35,7 +35,7 @@ PackageName: German Weather Service
 Type: desktop-application
 Categories:
  - Science
-DeveloperName: Mark Washeim (blueprint@poetaster.de)
+DeveloperName: Mark Washeim 
 Custom:
  - RepoType: github
  - Repo: https://github.com/poetaster/harbour-dwd
