@@ -12,8 +12,9 @@ Name:       harbour-dwd
 %{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
+
 Summary:    German Weather Service client
-Version:    0.7
+Version:    0.7/blob/main/rpm/harbour-dwd.spec
 Release:    1
 Group:      Applications/Internet
 License:    GPLv3
@@ -35,7 +36,9 @@ PackageName: German Weather Service
 Type: desktop-application
 Categories:
  - Science
-DeveloperName: Mark Washeim (blueprint@poetaster.de)
+ - Physics
+ - News
+DeveloperName: Mark Washeim
 Custom:
  - RepoType: github
  - Repo: https://github.com/poetaster/harbour-dwd
