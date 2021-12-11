@@ -5,10 +5,6 @@ Icon=harbour-dwd
 Exec=harbour-dwd
 Name=German Weather Service
 
-[X-Sailjail]
-OrganizationName=de.poetaster
-ApplicationName=harbour-dwd
-
 # translation example:
 # your app name in German locale (de)
 
