@@ -9,6 +9,7 @@
 #include <QtQuick>
 #endif
 
+#include <QDebug>
 #include <QDir>
 #include <QFile>
 #include <QString>
