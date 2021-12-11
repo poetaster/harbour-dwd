@@ -3,7 +3,7 @@
 
 * Fri Dec 10 2021 Mark Washeim <blueprint@poetaster.de> 0.7.1
 - added sailjail specs for permission control
-- added code to migrate to new org/app paths
+- added code to migrate to new org/app paths, migrateLocalStorage()
 - fixed the location list page size to use contentItem.children for correct height.
 - added chum meta data for the chum gui.
 
