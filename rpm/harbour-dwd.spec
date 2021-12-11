@@ -38,7 +38,7 @@ Categories:
  - Science
  - Physics
  - News
-DeveloperName: Mark Washeim
+DeveloperName: Mark Washeim 
 Custom:
  - RepoType: github
  - Repo: https://github.com/poetaster/harbour-dwd
