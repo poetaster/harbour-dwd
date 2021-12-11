@@ -20,7 +20,6 @@ Group:      Applications/Internet
 License:    GPLv3
 URL:        https://github.com/poetaster/harbour-dwd
 Source0:    %{name}-%{version}.tar.bz2
-Source100:  harbour-dwd.yaml
 Requires:   sailfishsilica-qt5 >= 1.1.0
 BuildRequires:  pkgconfig(sailfishapp)
 BuildRequires:  pkgconfig(Qt5Core)
