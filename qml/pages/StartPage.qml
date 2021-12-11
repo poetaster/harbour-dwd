@@ -120,10 +120,9 @@ Page {
              }*/
             SilicaListView {
                 id:listView
-
+                height: contentItem.childrenRect.height
                 width: parent.width - 2*x
-                height: 500
-
+                
                 //spacing: Theme.paddingSmall
                 model:   ListModel {
                     id: listModel

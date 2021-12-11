@@ -40,42 +40,29 @@
     </message>
 </context>
 <context>
-    <name>CoverPage</name>
-    <message>
-        <location filename="../qml/cover/CoverPage.qml" line="15"/>
-        <source>Deutscher</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/cover/CoverPage.qml" line="16"/>
-        <source>Wetter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/cover/CoverPage.qml" line="17"/>
-        <source>Dienst</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>DailyDetails</name>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="110"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="119"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="116"/>
-        <source>Locations</source>
+        <location filename="../qml/pages/DailyDetails.qml" line="125"/>
+        <source>GPS Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="122"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="131"/>
+        <source>Add Locations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DailyDetails.qml" line="137"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="130"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="145"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
@@ -91,12 +78,12 @@
 <context>
     <name>LocationSearchPage</name>
     <message>
-        <location filename="../qml/pages/LocationSearchPage.qml" line="75"/>
+        <location filename="../qml/pages/LocationSearchPage.qml" line="94"/>
         <source>Choose Location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LocationSearchPage.qml" line="79"/>
+        <location filename="../qml/pages/LocationSearchPage.qml" line="98"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
@@ -104,45 +91,65 @@
 <context>
     <name>ManageLocations</name>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="59"/>
-        <source>Stored Locations</source>
+        <location filename="../qml/pages/ManageLocations.qml" line="159"/>
+        <source>Position (GPS) Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="65"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="165"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="71"/>
-        <source>Locations</source>
+        <location filename="../qml/pages/ManageLocations.qml" line="171"/>
+        <source>Add Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="77"/>
-        <source>Refresh</source>
+        <location filename="../qml/pages/ManageLocations.qml" line="177"/>
+        <source>Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ManageLocations.qml" line="215"/>
+        <source> meters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ManageLocations.qml" line="272"/>
+        <source>Timeout occurred!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ManageLocations.qml" line="274"/>
+        <source>Retrieving update...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="128"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="133"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="134"/>
-        <source>Locations</source>
+        <location filename="../qml/pages/OverviewPage.qml" line="139"/>
+        <source>GPS Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="140"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="145"/>
+        <source>Add Locations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/OverviewPage.qml" line="151"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="180"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="191"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
@@ -161,11 +168,16 @@
     </message>
     <message>
         <location filename="../qml/pages/StartPage.qml" line="90"/>
-        <source>Add Locations</source>
+        <source>GPS Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/StartPage.qml" line="96"/>
+        <source>Add Locations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StartPage.qml" line="102"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
