@@ -1,13 +1,17 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Dec 13 2021 Mark Washeim <blueprint@poetaster.de> 0.7.2
+- Removed the sailjail stuff. GPS locations block.
+- stopped migration of data
+
 * Sat Dec 11 2021 Mark Washeim <blueprint@poetaster.de> 0.7.1
 - added sailjail specs for permission control
 - added code to migrate to new org/app paths, migrateLocalStorage()
 - fixed the location list page size to use contentItem.children for correct height.
 - added chum meta data for the chum gui.
 
-* Sun Mar 23 2021 Mark Washeim <blueprint@poetaster.de> 0.6.1
+* Sun Mar 21 2021 Mark Washeim <blueprint@poetaster.de> 0.6.1
 - Added conditional on Loading of entries to keep flickable cached
 - Made a small layout change to see if this would make long comments/replies easier to read
 

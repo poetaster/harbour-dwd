@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
     // To display the view, call "show()" (will show fullscreen on device).
 
     // first check if we've got the new paths in place
-    migrateLocalStorage();
+   // migrateLocalStorage();
 
     return SailfishApp::main(argc, argv);
 }
