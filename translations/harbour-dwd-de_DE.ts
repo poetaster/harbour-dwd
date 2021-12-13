@@ -136,7 +136,7 @@
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="139"/>
         <source>GPS Locations</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">GPS Orte hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="145"/>
