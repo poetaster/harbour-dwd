@@ -9,6 +9,16 @@
 #include <QtQuick>
 #endif
 
+
+#include <QGuiApplication>
+#include <QLocale>
+#include <QQuickView>
+#include <QScopedPointer>
+#include <QStandardPaths>
+#include <QString>
+#include <QStringList>
+#include <QTranslator>
+#include <QtQml>
 #include <QDebug>
 #include <QDir>
 #include <QFile>
@@ -56,9 +66,29 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
-    // first check if we've got the new paths in place
-   // migrateLocalStorage();
+    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
 
-    return SailfishApp::main(argc, argv);
+    app->setOrganizationDomain("de.poetaster");
+    app->setOrganizationName("de.poetaster"); // needed for Sailjail
+    app->setApplicationName("harbour-dwd");
+
+    // first check if we've got the new paths in place
+    migrateLocalStorage();
+
+    // install translations, though this is probably automagical, to-do see actual values
+    // QLocale::system().name()
+    QTranslator *appTranslator = new QTranslator;
+    appTranslator->load("harbour-dwd-" + QLocale::system().name(), SailfishApp::pathTo("translations").path());
+    app->installTranslator(appTranslator);
+
+    QScopedPointer<QQuickView> view(SailfishApp::createView());
+    //view->rootContext()->setContextProperty("dateParser", &dateParser);
+    //view->rootContext()->setContextProperty("json", &json);
+
+    view->setSource(SailfishApp::pathTo("qml/harbour-dwd.qml"));
+    view->setTitle("German Weath Service");
+    view->showFullScreen();
+
+    return app->exec();
 }
 

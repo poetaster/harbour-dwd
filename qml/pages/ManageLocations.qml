@@ -25,14 +25,15 @@ import "../js/locations.js" as Locs
 import "../js/storage.js" as Store
 import "../delegates"
 Page {
-    property var cities;
-    property variant coordinate;
-    property var debug;
-    property var now;
-    property var coord;
-    property var lat;
-    property var lon;
-    property var name;
+
+    property var cities
+    property variant coordinate
+    property var debug: true
+    property var now
+    property var coord
+    property var lat
+    property var lon
+    property var name
 
     id: managePage
     allowedOrientations: Orientation.All
@@ -41,28 +42,28 @@ Page {
         //fetchStoredCities();
     }
     function titleCase(str) {
-       //str.toLowerCase().replace('/\b(\w)/g');
-       //return str.toUpperCase();
+        //str.toLowerCase().replace('/\b(\w)/g');
+        //return str.toUpperCase();
         str = str.toLowerCase();
         var words = str.split(' ');
         var results = [];
         for (var i = 0; i < words.length; i++) {
-          var letter = words[i].charAt(0).toUpperCase();
-          results.push(letter + words[i].slice(1));
+            var letter = words[i].charAt(0).toUpperCase();
+            results.push(letter + words[i].slice(1));
         }
         return results.join(' ');
     }
 
     function printableMethod(method) {
-            if (method === PositionSource.SatellitePositioningMethods)
-                return "Satellite";
-            else if (method === PositionSource.NoPositioningMethods)
-                return "Not available"
-            else if (method === PositionSource.NonSatellitePositioningMethods)
-                return "Non-satellite"
-            else if (method === PositionSource.AllPositioningMethods)
-                return "Multiple"
-            return "source error";
+        if (method === PositionSource.SatellitePositioningMethods)
+            return "Satellite";
+        else if (method === PositionSource.NoPositioningMethods)
+            return "Not available"
+        else if (method === PositionSource.NonSatellitePositioningMethods)
+            return "Non-satellite"
+        else if (method === PositionSource.AllPositioningMethods)
+            return "Multiple"
+        return "source error";
     }
     /*
     "id": 4732,
@@ -77,6 +78,7 @@ Page {
     "last_record": "2021-07-03T11:00:00+00:00",
     "distance": 4470.0
       */
+
     function fetchCities() {
         debug = false;
         var response = Store.getLocationsList();
@@ -111,13 +113,15 @@ Page {
     }
     function search(string) {
         var ret = [];
-        //console.debug(JSON.stringify(cities[0]));
+        if (debug) console.debug(JSON.stringify(cities[0]));
         listModel.clear();
         for (var i = 0; i < cities.length; i++) {
             if (string !== "" && cities[i].name.indexOf(string) >= 0) {
+
                 ret.push({"name": cities[i].name});
                 listModel.append(cities[i])
                 //if(debug) console.debug(JSON.stringify(i));
+
                 if(debug) console.debug(JSON.stringify(cities[i].name));
                 //if(debug) console.debug(JSON.stringify(listModel.count));
             }
@@ -126,9 +130,10 @@ Page {
         return ret;
     }
 
-    anchors.fill: parent
     PositionSource {
         id: positionSource
+        active: true
+
         onPositionChanged: {
             coord = positionSource.position.coordinate;
             if (debug) console.log("Coordinate:", coord.longitude, coord.latitude);
@@ -141,7 +146,7 @@ Page {
             if (sourceError == PositionSource.NoError)
                 return
 
-            console.log("Source error: " + sourceError)
+            if (debug) console.log("Source error: " + sourceError)
             activityText.fadeOut = true
             stop()
         }
@@ -150,15 +155,17 @@ Page {
             activityText.fadeOut = true
         }*/
     }
+
     SilicaFlickable {
+        id:container
         anchors.fill: parent
         contentHeight: column.height
+        //contentHeight: contentItem.childrenRect.heighta
 
         PageHeader {
             id: header
             title: qsTr("Position (GPS) Locations")
         }
-
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
@@ -180,7 +187,51 @@ Page {
                 }
             }
         }
-        /*SearchField {
+
+        Column {
+            id: column
+            y:60
+            spacing: 10
+            width: parent.width
+            Item {
+                width: parent.width
+                height: Theme.paddingLarge
+            }
+            Label {
+                id: posText
+                font.bold: true
+                padding:Theme.paddingLarge
+                text: "Longitude: "+ coord.longitude + "\n" + "Latitude: " + coord.latitude
+            }
+            Item {
+                width: parent.width
+                height: Theme.paddingLarge
+            }
+            Text {
+                id: activityText;
+                color: Theme.backgroundGlowColor
+                font.bold: true
+                padding:Theme.paddingLarge
+                property bool fadeOut: false
+                visible: false
+                text: {
+                    if (fadeOut)
+                        return qsTr("Timeout occurred!")
+                    else if (positionSource.active)
+                       // this will, given source is marked active always be true
+                       // why this is different than in 3.4, I don't know
+                        return qsTr("Retrieving update...")
+                    else
+                        return ""
+                }
+
+                Timer {
+                    id: fadeoutTimer; repeat: false; interval: 3000; running: activityText.fadeOut
+                    onTriggered: { activityText.fadeOut = false; }
+                }
+            }
+            /* Consider adding a search by Lat/Long
+        SearchField {
             placeholderText: qsTr("Search")
             id: searchField
             width: parent.width
@@ -192,24 +243,23 @@ Page {
                 if (text != "") searchField.focus = false
             }
         }*/
-        Column {
-            id: column
-            width: parent.width
-             anchors.top: header.bottom
             SilicaListView {
+                //anchors.top: header.bottom
                 id:listView
-                leftMargin: 40
+                leftMargin: Theme.paddingLarge
+                topMargin: Theme.paddingLarge
                 width: parent.width - 2*x
-                y: 20
-                height: 1800
+                height: contentItem.childrenRect.height - 200
                 //anchors.horizontalCenter:  parent.horizontalCenter
                 model:   ListModel {
                     id: listModel
                     function update() {
                         gpsLocations()
                     }
+
                     Component.onCompleted:update()
                 }
+
                 delegate: ListItem {
                     Label {
                         text: titleCase(model.station_name) + " - " + model.distance + qsTr(" meters")
@@ -219,16 +269,23 @@ Page {
                         var location = {"name": titleCase( model.station_name ), "lon": lon, "lat": lat}
                         Store.addLocation(location);
                         pageStack.pop()
-                       /* pageStack.push(Qt.resolvedUrl("OverviewPage.qml"), {
+                        /* pageStack.push(Qt.resolvedUrl("OverviewPage.qml"), {
                                            "name": name,
                                            "lat": lat,
                                            "lon": lon}); */
                     }
                 }
                 spacing: 2
-                VerticalScrollDecorator { flickable: sListview}
+                //VerticalScrollDecorator { flickable: listView}
+                VerticalScrollDecorator {}
+                ScrollDecorator { color: palette.primaryColor }
             }
+
+
         }
+        VerticalScrollDecorator {}
+        ScrollDecorator { color: palette.primaryColor }
+
         Button {
                 id: locateButton
                 text: "Locate & update"
@@ -252,34 +309,6 @@ Page {
             visible: false
         }
 
-        Label {id: posText; color: "white"; font.bold: true;
-            anchors.top: sourceText.bottom
-            anchors.bottom: parent.bottom
-            anchors.left: sourceText.left
-            horizontalAlignment: parent.horizontalCenter
 
-            text: "Longitude: "+ coord.longitude + " Latitude: " + coord.latitude
-            //style: Text.Raised
-            //styleColor: "black"
-        }
-        Text {
-            id: activityText; color: "white"; font.bold: true;
-            anchors { bottom: parent.bottom; horizontalCenter: parent.horizontalCenter }
-            property bool fadeOut: false
-
-            text: {
-                if (fadeOut)
-                    return qsTr("Timeout occurred!");
-                else if (positionSource.active)
-                    return qsTr("Retrieving update...")
-                else
-                    return ""
-            }
-
-            Timer {
-                id: fadeoutTimer; repeat: false; interval: 3000; running: activityText.fadeOut
-                onTriggered: { activityText.fadeOut = false; }
-            }
-        }
     }
 }

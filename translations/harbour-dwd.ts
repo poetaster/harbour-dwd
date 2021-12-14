@@ -91,37 +91,37 @@
 <context>
     <name>ManageLocations</name>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="159"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="167"/>
         <source>Position (GPS) Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="165"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="172"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="171"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="178"/>
         <source>Add Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="177"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="184"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="215"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="265"/>
         <source> meters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="272"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="219"/>
         <source>Timeout occurred!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="274"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="223"/>
         <source>Retrieving update...</source>
         <translation type="unfinished"></translation>
     </message>
