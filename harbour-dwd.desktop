@@ -5,10 +5,10 @@ X-Nemo-Application-Type=silica-qt5
 Exec=harbour-dwd
 Name=German Weather Service
 
-#[X-Sailjail]
-#OrganizationName=de.poetaster
-#ApplicationName=harbour-dwd
-#Permissions=Internet;Location
+[X-Sailjail]
+OrganizationName=de.poetaster
+ApplicationName=harbour-dwd
+Permissions=Internet;Location
 
 #[X-HarbourBackup]
 #BackupPathList=.local/share/de.poetaster/harbour-dwd

@@ -129,6 +129,8 @@ Page {
     anchors.fill: parent
     PositionSource {
         id: positionSource
+        active: true
+
         onPositionChanged: {
             coord = positionSource.position.coordinate;
             if (debug) console.log("Coordinate:", coord.longitude, coord.latitude);
