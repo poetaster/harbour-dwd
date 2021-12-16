@@ -6,7 +6,7 @@
 - start migration of data, again
 - rebuild the GPS page considerably
 
-* Tue Dec 13 2021 Mark Washeim <blueprint@poetaster.de> 0.7.2
+* Mon Dec 13 2021 Mark Washeim <blueprint@poetaster.de> 0.7.2
 - Removed the sailjail stuff. GPS locations block.
 - stopped migration of data
 

@@ -51,7 +51,7 @@ ListItem {
             spacing: Theme.paddingSmall
             Column {
                 id: column
-                width: parent.width / 3
+                width: parent.width * .30
                 spacing: Theme.paddingMedium
                 /*Text{
                     // this is a hack, obviously
@@ -78,7 +78,7 @@ ListItem {
             }
             Column {
                 id: column2
-                width: parent.width / 3
+                width: parent.width * .30
                 spacing: Theme.paddingMedium
                 Label {
                     topPadding: 24
@@ -88,7 +88,7 @@ ListItem {
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraLarge + 24
                     color: Theme.highlightColor
-                    horizontalAlignment: "AlignHCenter"
+                    //horizontalAlignment: "AlignHCenter"
                     verticalAlignment: "AlignVCenter"
                 }
 
@@ -119,7 +119,7 @@ ListItem {
             }
             Column {
                 id: column3
-                width: parent.width / 3
+                width: parent.width * .40
                 spacing: Theme.paddingMedium
                 /*Label {
                     topPadding: 8
