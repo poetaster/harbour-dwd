@@ -132,7 +132,7 @@ Page {
 
     PositionSource {
         id: positionSource
-        active: true
+        //active: true
 
         onPositionChanged: {
             coord = positionSource.position.coordinate;
@@ -145,7 +145,6 @@ Page {
         onSourceErrorChanged: {
             if (sourceError == PositionSource.NoError)
                 return
-
             if (debug) console.log("Source error: " + sourceError)
             activityText.fadeOut = true
             stop()
@@ -213,7 +212,7 @@ Page {
                 font.bold: true
                 padding:Theme.paddingLarge
                 property bool fadeOut: false
-                visible: false
+                visible: true
                 text: {
                     if (fadeOut)
                         return qsTr("Timeout occurred!")
@@ -291,7 +290,7 @@ Page {
                 text: "Locate & update"
                 anchors.top: column.bottom
                 anchors.left: column.left
-                visible: false
+                visible: true
                 onClicked: {
                     if (positionSource.supportedPositioningMethods ===
                             PositionSource.NoPositioningMethods) {
