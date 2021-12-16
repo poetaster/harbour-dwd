@@ -1,7 +1,7 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
-* Thu Dec 16 2021 Mark Washeim <blueprint@poetaster.de> 0.7.2
+* Thu Dec 16 2021 Mark Washeim <blueprint@poetaster.de> 0.8.0
 - Added the sailjail stuff. GPS locations block.
 - start migration of data, again
 - rebuild the GPS page considerably

@@ -28,7 +28,7 @@ Page {
 
     property var cities
     property variant coordinate
-    property var debug: true
+    property var debug: false
     property var now
     property var coord
     property var lat
