@@ -66,14 +66,15 @@ int main(int argc, char *argv[])
     //
     // To display the view, call "show()" (will show fullscreen on device).
 
+    // first check if we've got the new paths in place
+    // this has to be done here, before we assign name below
+    migrateLocalStorage();
+
     QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
 
     app->setOrganizationDomain("de.poetaster");
     app->setOrganizationName("de.poetaster"); // needed for Sailjail
     app->setApplicationName("harbour-dwd");
-
-    // first check if we've got the new paths in place
-    migrateLocalStorage();
 
     // install translations, though this is probably automagical, to-do see actual values
     // QLocale::system().name()
