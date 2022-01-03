@@ -47,10 +47,10 @@ Screenshots:
  - https://raw.githubusercontent.com/poetaster/harbour-dwd/main/screen2.png
  - https://raw.githubusercontent.com/poetaster/harbour-dwd/main/screen3.png
 Url:
- - Homepage: https://github.com/poetaster/harbour-dwd
- - Help: https://github.com/poetaster/harbour-dwd/discussions
- - Bugtracker: https://github.com/poetaster/harbour-dwd/issues
- - Donation: https://www.paypal.me/poetasterFOSS
+  Homepage: https://github.com/poetaster/harbour-dwd
+  Help: https://github.com/poetaster/harbour-dwd/discussions
+  Bugtracker: https://github.com/poetaster/harbour-dwd/issues
+  Donation: https://www.paypal.me/poetasterFOSS
 %endif
 
 %prep

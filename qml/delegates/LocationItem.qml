@@ -35,7 +35,7 @@ ListItem {
             color: Theme.primaryColor
             opacity: 0.5
             //OpacityRampEffect
-                x: Theme.horizontalPageMargin
+            x: Theme.horizontalPageMargin
             Image {
                 //x: Theme.horizontalPageMargin
                 x: Theme.paddingMedium
