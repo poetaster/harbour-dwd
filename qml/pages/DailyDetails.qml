@@ -160,7 +160,7 @@ Page {
             anchors.fill: parent
             //x: Theme.horizontalPageMargin
             width: parent.width
-            height: 2000
+            height: contentItem.childrenRect.heigh
             id: listView
             model: listModel
             delegate: WeatherItem{

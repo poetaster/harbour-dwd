@@ -165,7 +165,7 @@ Page {
             topMargin: 200
             //x: Theme.horizontalPageMargin
             width: parent.width
-            height: 2000
+            height: contentItem.childrenRect.heigh
             id: listView
             model:   ListModel {
                 id: listModel
