@@ -111,17 +111,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="266"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="231"/>
         <source> meters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="220"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="283"/>
         <source>Timeout occurred!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="224"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="287"/>
         <source>Retrieving update...</source>
         <translation type="unfinished"></translation>
     </message>

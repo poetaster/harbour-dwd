@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with harbour-meteoswiss.  If not, see <http://www.gnu.org/licenses/>.
+ * along with harbour-dwd.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -99,7 +99,7 @@ Page {
 
     function gpsLocations() {
         debug = false;
-        var uri = "https://api.brightsky.dev/sources?lat=" + lat + "&lon=" + lon + "&max_dist=30000";
+        var uri = "https://api.brightsky.dev/sources?lat=" + lat + "&lon=" + lon + "&max_dist=22000";
         if (debug) console.debug(JSON.stringify(uri))
         Locs.httpRequest(uri, function(doc) {
             var response = JSON.parse(doc.responseText);
@@ -204,53 +204,18 @@ Page {
                 padding:Theme.paddingLarge
                 text: "Longitude: "+ coord.longitude + "\n" + "Latitude: " + coord.latitude
             }
+
             Item {
                 width: parent.width
                 height: Theme.paddingLarge
             }
-            Text {
-                id: activityText;
-                color: Theme.backgroundGlowColor
-                font.bold: true
-                padding:Theme.paddingLarge
-                property bool fadeOut: false
-                visible: true
-                text: {
-                    if (fadeOut)
-                        return qsTr("Timeout occurred!")
-                    else if (positionSource.active)
-                       // this will, given source is marked active always be true
-                       // why this is different than in 3.4, I don't know
-                        return qsTr("Retrieving update...")
-                    else
-                        return ""
-                }
-
-                Timer {
-                    id: fadeoutTimer; repeat: false; interval: 3000; running: activityText.fadeOut
-                    onTriggered: { activityText.fadeOut = false; }
-                }
-            }
-            /* Consider adding a search by Lat/Long
-        SearchField {
-            placeholderText: qsTr("Search")
-            id: searchField
-            width: parent.width
-            anchors.top: header.bottom
-            inputMethodHints: Qt.ImhNoPredictiveText
-
-            onTextChanged: listModel.update()
-            EnterKey.onClicked: {
-                if (text != "") searchField.focus = false
-            }
-        }*/
             SilicaListView {
                 //anchors.top: header.bottom
                 id:listView
                 leftMargin: Theme.paddingLarge
                 topMargin: Theme.paddingLarge
                 width: parent.width - 2*x
-                height: contentItem.childrenRect.height - 200
+                height: contentItem.childrenRect.height - 50
                 //anchors.horizontalCenter:  parent.horizontalCenter
                 model:   ListModel {
                     id: listModel
@@ -282,16 +247,15 @@ Page {
                 ScrollDecorator { color: palette.primaryColor }
             }
 
+            Item {
+                width: parent.width
+                height: Theme.paddingLarge * 2
+            }
 
-        }
-        VerticalScrollDecorator {}
-        ScrollDecorator { color: palette.primaryColor }
-
-        Button {
+            Button {
                 id: locateButton
                 text: "Locate & update"
-                anchors.top: column.bottom
-                anchors.left: column.left
+                anchors.left : column.horizontalCenter
                 visible: true
                 onClicked: {
                     if (positionSource.supportedPositioningMethods ===
@@ -302,7 +266,39 @@ Page {
                     positionSource.update();
                     gpsLocations();
                 }
+            }
+            Item {
+                width: parent.width
+                height: Theme.paddingLarge
+            }
+            Text {
+                id: activityText;
+                color: Theme.backgroundGlowColor
+                font.bold: true
+                padding:Theme.paddingLarge
+                property bool fadeOut: false
+                visible: true
+                text: {
+                    if (fadeOut)
+                        return qsTr("Timeout occurred!")
+                    else if (positionSource.active)
+                        // this will, given source is marked active always be true
+                        // why this is different than in 3.4, I don't know
+                        return qsTr("Retrieving update...")
+                    else
+                        return ""
+                }
+
+                Timer {
+                    id: fadeoutTimer; repeat: false; interval: 3000; running: activityText.fadeOut
+                    onTriggered: { activityText.fadeOut = false; }
+                }
+            }
         }
+        VerticalScrollDecorator {}
+        ScrollDecorator { color: palette.primaryColor }
+
+
         Text {id: sourceText; color: "white"; font.bold: true;
             anchors.top: locateButton.bottom
             anchors.left: locateButton.left

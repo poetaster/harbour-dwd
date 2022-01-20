@@ -1,6 +1,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Thu Jan 20 2022 Mark Washeim <blueprint@poetaster.de> 0.8.2
+- rebuild the GPS page, text and button position.
+
 * Thu Dec 16 2021 Mark Washeim <blueprint@poetaster.de> 0.8.0
 - Added the sailjail stuff. GPS locations block.
 - start migration of data, again
