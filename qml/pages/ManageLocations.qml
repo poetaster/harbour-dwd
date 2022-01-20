@@ -134,7 +134,7 @@ Page {
 
     PositionSource {
         id: positionSource
-        //active: true
+        active: true
 
         onPositionChanged: {
             coord = positionSource.position.coordinate;
