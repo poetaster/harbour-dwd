@@ -31,7 +31,7 @@ ListItem {
                 Label {
                     topPadding: 8
                     id:fDate
-                    text: model.dailyDate.toLocaleString().split(now.getFullYear())[0].slice(0,-1);
+                    text: model.dailyDate.toLocaleString(locale, "ddd. dd");
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall

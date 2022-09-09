@@ -26,6 +26,7 @@ DISTFILES += \
     qml/delegates/LocationItem.qml \
     qml/delegates/ForecastItem.qml \
     qml/delegates/WeatherItem.qml \
+    qml/Pages/RadarView.qml \
     qml/png/* \
     qml/js/locations.js \
     qml/js/storage.js \

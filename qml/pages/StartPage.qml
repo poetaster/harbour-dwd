@@ -27,13 +27,13 @@ import "../delegates"
 Page {
     id: startPage
 
-    property var cities;
-    property var now;
+    property var cities
+    property var now
 
-    property string dDay;
-    property string dMonth;
-    property string dYear;
-    property var debug;
+    property string dDay
+    property string dMonth
+    property string dYear
+    property bool debug
 
     allowedOrientations: Orientation.Portrait
 
@@ -98,13 +98,17 @@ Page {
                     pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
                 }
             }
+        }
+        PushUpMenu {
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
                     startPage.fetchCities();
                 }
             }
+
         }
+
         Column {
             id: column
             width: parent.width

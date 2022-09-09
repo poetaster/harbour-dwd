@@ -53,10 +53,6 @@ ListItem {
                 id: column
                 width: parent.width * .30
                 spacing: Theme.paddingMedium
-                /*Text{
-                    // this is a hack, obviously
-                    padding:  2
-                }*/
                 Text {
                     visible: index < listView.count
                     text: model.timestamp.split('T')[1].split('+')[0].split(':')[0] + ":00";
@@ -121,17 +117,10 @@ ListItem {
                 id: column3
                 width: parent.width * .40
                 spacing: Theme.paddingMedium
-                /*Label {
-                    topPadding: 8
-                    text: model.condition
-                    width: parent.width
-                    wrapMode: Text.WordWrap
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.primaryColor
-                }*/
                 Label {
                     topPadding: 8
-                    text: model.cloud_cover + "% \uf013 " +parseFloat(model.precipitation) + " mm \uf084 "
+                    //text: model.cloud_cover + "% \uf013 " +parseFloat(model.precipitation) + " mm \uf084 "
+                    text: parseFloat(model.precipitation) + " mm \uf084 " + model.cloud_cover + "% \uf013 "
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall

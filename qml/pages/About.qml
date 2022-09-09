@@ -56,7 +56,7 @@ Page {
             color: Theme.primaryColor
             textFormat: Text.StyledText
             linkColor: Theme.highlightColor
-            text: "<a href=\"https://dwd.de\">" + qsTr("of the German Weather Service") + "</a>"
+            text: qsTr("of the ") + "<a href=\"https://dwd.de\">" + qsTr("German Weather Service") + "</a>"
             onLinkActivated: {
                 Qt.openUrlExternally(link)
             }
@@ -72,7 +72,7 @@ Page {
             source: "../png/dwd_logo_258x69.png"
         }
         Item {
-            width: 1
+            width: parent.width
             height: Theme.paddingLarge
         }
 
@@ -81,11 +81,11 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.secondaryColor
-            text:  qsTr(" © 2021 Mark Washeim")
+            text:  qsTr(" © 2021-2022 Mark Washeim")
         }
 
         Item {
-            width: 1
+            width: parent.width
             height: 2 * Theme.paddingLarge
         }
 
@@ -100,8 +100,8 @@ Page {
         }
 
         Item {
-            width: 1
-            height: 2 * Theme.paddingLarge
+            width: parent.width
+            height: Theme.paddingLarge
         }
         Label {
             id: iconLabel
@@ -111,10 +111,31 @@ Page {
             color: Theme.primaryColor
             textFormat: Text.StyledText
             linkColor: Theme.highlightColor
-            text: "<a href=\"https://https://erikflowers.github.io\">" + qsTr("Icons by Erik Flowers") + "</a>"
+            text: qsTr("Icons by ") + "<a href=\"https://erikflowers.github.io\">Erik Flowers</a>"
             onLinkActivated: {
                 Qt.openUrlExternally(link)
             }
+        }
+        Item {
+            width: parent.width
+            height: Theme.paddingLarge
+        }
+        Label {
+            id: radarLabel
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: Theme.fontSizeMedium
+            color: Theme.primaryColor
+            textFormat: Text.StyledText
+            linkColor: Theme.highlightColor
+            text: qsTr("Radar courtesy of") + " <a href=\"https://www.rainviewer.com\">rainviewer.com</a>"
+            onLinkActivated: {
+                Qt.openUrlExternally(link)
+            }
+        }
+        Item {
+            width: parent.width
+            height: Theme.paddingLarge
         }
         Label {
             anchors.horizontalCenter: parent.horizontalCenter

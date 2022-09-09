@@ -19,9 +19,8 @@ ListItem {
             //text: model.timestamp.split('t')[1].split('+')[0];
             text: model.name
             width: parent.width / 2
-            //color: Theme.highlightColor
-            color: Theme.primaryColor
-            opacity: 0.5
+            color: Theme.highlightColor
+            opacity: 0.7
             onClicked: {
                 Store.setCoverLocation(model.location_id);
                 pageStack.push(Qt.resolvedUrl("../pages/OverviewPage.qml"), {
@@ -32,8 +31,8 @@ ListItem {
         }
         Button {
             id: deleteMe
-            color: Theme.primaryColor
-            opacity: 0.5
+            color: Theme.highlightColor
+            opacity: 0.7
             //OpacityRampEffect
             x: Theme.horizontalPageMargin
             Image {
@@ -44,7 +43,7 @@ ListItem {
             }
             text: qsTr("Delete")
             onClicked: {
-                if (debug) console.debug(model.location_id);
+                //if (debug) console.debug(model.location_id);
 
                 Store.delCoverLocation(model.location_id);
                 Store.removeLocation(model.location_id);

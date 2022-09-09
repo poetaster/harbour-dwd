@@ -34,6 +34,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/About.qml" line="127"/>
+        <source>Radar courtesy o rainviews.com</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/About.qml" line="84"/>
         <source> © 2021 Mark Washeim</source>
         <translation type="unfinished"></translation>
@@ -42,27 +47,17 @@
 <context>
     <name>DailyDetails</name>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="119"/>
-        <source>About</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="125"/>
-        <source>GPS Locations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="131"/>
-        <source>Add Locations</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="137"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="143"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="145"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="149"/>
+        <source>Rain Radar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DailyDetails.qml" line="157"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
@@ -70,7 +65,7 @@
 <context>
     <name>LocationItem</name>
     <message>
-        <location filename="../qml/delegates/LocationItem.qml" line="45"/>
+        <location filename="../qml/delegates/LocationItem.qml" line="44"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
@@ -129,27 +124,27 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="133"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="138"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="139"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="144"/>
         <source>GPS Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="145"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="150"/>
         <source>Add Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="151"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="156"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="191"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="197"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>

@@ -18,6 +18,12 @@
  */
 
 //.import "cities.js" as Cities
+/*
+                        showRequestInfo("Headers -->");
+                        showRequestInfo(doc.getAllResponseHeaders ());
+                        showRequestInfo("Last modified -->");
+                        showRequestInfo(doc.getResponseHeader ("Last-Modified"));
+*/
 
 function httpRequest(url, callback) {
     var doc = new XMLHttpRequest();

@@ -14,24 +14,26 @@ import "../js/locales.js" as TZ
 
 Page {
     id: page
-    property string name;
-    property string lat;
-    property string lon;
-    property string dailyDate; // used to go to the next dayk
-    property string headerDate; // used to go to the next dayk
-    property var weather;
-    property var now;
-    property var debug;
+    property string name
+    property string lat
+    property string lon
+    property string dailyDate // used to go to the next day
+    property string headerDate // used to go to the next day
+    property var weather
+    property var now
+    property bool debug
+    property var locale: Qt.locale()
 
     //onWeatherChanged: updateWeatherModel();
     //onQueryChanged: updateJSONModel();
 
     function reload(){
+
         debug = false;
 
-        if (name === "") { name="Berlin" ;}
+        if (name === "") { name="Berlin" ; }
         if (lat === "") { lat="52.52"; }
-        if (lon ==="") { lon="13.41"  ;}
+        if (lon ==="") { lon="13.41"  ; }
 
         if (now == undefined) {
             now = new Date();
@@ -40,7 +42,10 @@ Page {
         var tzname = tz.name(); // Returns the name of the time zone eg "Europe/Berlin"
 
         var dYear = now.getFullYear() ;
-        headerDate = now.toLocaleString().split(dYear)[0];
+
+        //headerDate = now.toLocaleString().split(dYear)[0];
+        var headerDay = Locs.addDays(now, 4).toLocaleString(locale, "dd");
+        headerDate = now.toLocaleString(locale, "MMM. dd - ") + headerDay
 
         // clear the listmodel
         //listModel.clear();
@@ -156,7 +161,8 @@ Page {
         }
         PageHeader {
                 id: vDate
-                title: name + " : " + now.toLocaleString().split(now.getFullYear())[0].slice(0,-1)
+                //title: name + " : " + now.toLocaleString().split(now.getFullYear())[0].slice(0,-1)
+                title: name + " : " + headerDate
         }
 
         SilicaListView {
