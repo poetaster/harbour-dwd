@@ -169,6 +169,7 @@ Page {
                 var time = new Date();
                 if (debug) console.debug(time.toTimeString(Locale.LongFormat).split(':')[0] )
                 tindex = time.toTimeString(Locale.LongFormat).split(':')[0]
+                // set the index first
                 listView.currentIndex = tindex
                 listView.positionViewAtIndex(tindex, ListView.Beginning)
             }

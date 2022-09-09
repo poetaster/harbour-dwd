@@ -15,7 +15,27 @@
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="59"/>
-        <source>of the German Weather Service</source>
+        <source>of the </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="59"/>
+        <source>German Weather Service</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="84"/>
+        <source> © 2021-2022 Mark Washeim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="114"/>
+        <source>Icons by </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="131"/>
+        <source>Radar courtesy of</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -28,36 +48,21 @@
         <source>GNU General Public License v3.</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../qml/pages/About.qml" line="114"/>
-        <source>Icons by Erik Flowers</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/About.qml" line="127"/>
-        <source>Radar courtesy o rainviews.com</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/About.qml" line="84"/>
-        <source> © 2021 Mark Washeim</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>DailyDetails</name>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="143"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="138"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="149"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="144"/>
         <source>Rain Radar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="157"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="152"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
@@ -172,7 +177,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="102"/>
+        <location filename="../qml/pages/StartPage.qml" line="104"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>

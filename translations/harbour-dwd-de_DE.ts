@@ -15,13 +15,28 @@
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="59"/>
-        <source>of the German Weather Service</source>
-        <translation>Deutschen Wetter Dienstes</translation>
+        <source>of the </source>
+        <translation type="unfinished">vom </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="59"/>
+        <source>German Weather Service</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="84"/>
-        <source> © 2021 Mark Washeim</source>
-        <translation> © 2021 Mark Washeim</translation>
+        <source> © 2021-2022 Mark Washeim</source>
+        <translation type="unfinished"> © 2021 Mark Washeim {2021-2022 ?}</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="114"/>
+        <source>Icons by </source>
+        <translation type="unfinished">Icons von </translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="131"/>
+        <source>Radar courtesy of</source>
+        <translation type="unfinished">Radar von </translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="98"/>
@@ -33,31 +48,21 @@
         <source>GNU General Public License v3.</source>
         <translation>GNU General Public License v3.</translation>
     </message>
-    <message>
-        <location filename="../qml/pages/About.qml" line="114"/>
-        <source>Icons by Erik Flowers</source>
-        <translation>Icons von Erik Flowers</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/About.qml" line="127"/>
-        <source>Radar courtesy o rainviews.com</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>DailyDetails</name>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="143"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="138"/>
         <source>Refresh</source>
         <translation>Neu Laden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="149"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="144"/>
         <source>Rain Radar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Regenradar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="157"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="152"/>
         <source>Next</source>
         <translation>Weiter</translation>
     </message>
@@ -101,24 +106,25 @@
         <translation type="unfinished">Ort hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="185"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="185"/>:w
+
         <source>Start</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Start</translation>
     </message>
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="231"/>
         <source> meters</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> meter</translation>
     </message>
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="283"/>
         <source>Timeout occurred!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zeitüberschreitung!</translation>
     </message>
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="287"/>
         <source>Retrieving update...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Update holen ...</translation>
     </message>
 </context>
 <context>
@@ -172,7 +178,7 @@
         <translation>Ort hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="102"/>
+        <location filename="../qml/pages/StartPage.qml" line="104"/>
         <source>Refresh</source>
         <translation>Neu Laden</translation>
     </message>
