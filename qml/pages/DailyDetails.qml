@@ -45,10 +45,9 @@ Page {
         if (debug) console.debug("now: " + now);
         // console.debug(now.toLocaleDateString('de-DE', {timezone: 'long', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}));
 
-        var time = new Date();
-        if (debug) console.debug(time.toTimeString(Locale.LongFormat).split(':')[0] ) ;
-
-        tindex = time.toTimeString(Locale.LongFormat).split(':')[0]  ;
+        //var time = new Date();
+        //if (debug) console.debug(time.toTimeString(Locale.LongFormat).split(':')[0] ) ;
+        //tindex = time.toTimeString(Locale.LongFormat).split(':')[0]  ;
 
         // print(Date.fromLocaleString(locale, dateTimeString, "ddd yyyy-MM-dd hh:mm:ss"));
         // if (debug) console.log(now.toISOString().split('T')[1].split('+')[0].split(':')[0] + ":00");
@@ -87,6 +86,9 @@ Page {
                 };
             });
         }
+
+        // set position in listView after all elements appended.
+        //listView.positionViewAtIndex(tindex, ListView.Beginning)
     }
 
     allowedOrientations: Orientation.Portrait
@@ -167,6 +169,7 @@ Page {
                 var time = new Date();
                 if (debug) console.debug(time.toTimeString(Locale.LongFormat).split(':')[0] )
                 tindex = time.toTimeString(Locale.LongFormat).split(':')[0]
+                listView.currentIndex = tindex
                 listView.positionViewAtIndex(tindex, ListView.Beginning)
             }
             anchors.fill: parent
