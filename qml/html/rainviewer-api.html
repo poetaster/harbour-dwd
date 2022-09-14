@@ -24,7 +24,7 @@
     }
     function getLoc() {
         var customEvent = new CustomEvent("framescript:action",
-            {detail: { topic: longitude, also: latitude }});
+            { detail: { topic: longitude, also: latitude } } );
         document.dispatchEvent(customEvent);
     }
 
@@ -59,7 +59,7 @@
     <li><input style="padding: 5px; width: 30px; height: 30px;" type="button" onclick="stop(); showFrame(animationPosition - 1); return;" value="&lt;"></li>
     <li><input style="padding: 5px; height: 30px;" type="button" onclick="playStop();" value="Play / Stop"></li>
     <li><input style="padding: 5px; width: 30px; height: 30px;" type="button" onclick="stop(); showFrame(animationPosition + 1); return;" value="&gt;"></li>
-    <li><!--<select id="colors" onchange="setColors(); return;">
+    <!-- <li><select id="colors" onchange="setColors(); return;">
         <option value="0">Black and White Values</option>
         <option value="1">Original</option>
         <option value="2" selected="selected">Universal Blue</option>
@@ -69,7 +69,7 @@
         <option value="6">NEXRAD Level-III</option>
         <option value="7">RAINBOW @ SELEX-SI</option>
         <option value="8">Dark Sky</option>
-	    </select>--></li>
+    </select></li> -->
 </ul>
 
 <p>
@@ -83,8 +83,9 @@
 
     if ( longitude == null ) longitude = 13.404954;
     if ( latitude == null ) latitude = 52.520008;
-    var map = L.map('mapid').setView([latitude, longitude], 9);
 
+    var map = L.map('mapid').setView([latitude, longitude], 9);
+    // this depends on Location being available.
     map.locate({setView: true, maxZoom: 10});
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

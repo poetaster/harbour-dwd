@@ -31,16 +31,16 @@ import "../delegates"
 Page {
     property bool debug: false
     property string lat
+    property string lon
     property string dailyDate
     property string name
-    property string lon
     property string rurl
 
     onStatusChanged: {
 
         if (PageStatus.Activating) {
             rurl= "https://www.rainviewer.com/map.html?loc=" + lat + "00," + lon +"00,5&oFa=0&oC=1&oU=0&oCS=1&oF=0&oAP=1&c=1&o=83&lm=1&layer=radar&sm=1&sn=1&undefined=1"
-            if (debug) console.debug(rurl)
+            //if (debug) console.debug(rurl)
          }
 
         /*
@@ -61,16 +61,37 @@ Page {
     SilicaFlickable {
         anchors.fill: parent
         WebView {
+            id: webview
+            anchors.fill: parent
             /* This will probably be required from 4.4 on. */
             Component.onCompleted: {
                 WebEngineSettings.setPreference("security.disable_cors_checks", true, WebEngineSettings.BoolPref)
-                //WebEngineSettings.setPreference("security.fileuri.strict_origin_policy", false, WebEngineSettings.BoolPref)
+                WebEngineSettings.setPreference("security.fileuri.strict_origin_policy", false, WebEngineSettings.BoolPref)
             }
-            id: webView
-            anchors.fill: parent
-            //url: "https://www.rainviewer.com/map.html?loc=" + lat + "00," + lon +"00,5&oFa=0&oC=1&oU=0&oCS=1&oF=0&oAP=1&c=1&o=83&lm=1&layer=radar&sm=1&sn=1&undefined=1"
-            url: rurl
+
+            url: Qt.resolvedUrl("../html/rainviewer-api.html")
+
+            onViewInitialized: {
+                webview.loadFrameScript(Qt.resolvedUrl("../html/framescript.js"));
+                webview.addMessageListener("webview:action")
+            }
+            onRecvAsyncMessage: {
+                if (debug) console.debug(message)
+                //webview.runJavaScript("return latlon('" + lat + "," +lon + "')")
+                switch (message) {
+                case "webview:action":
+                    //label.text = {"four": "4", "five": "5", "six": "6"}[data.topic]
+                    if (debug) console.debug(data.topic)
+                    if (debug) console.debug(data.also)
+                    //webview.runJavaScript("return lon('" + lon + "')")
+                    //webview.runJavaScript("return lat('" + lat + "')")
+                    //webview.runJavaScript("return action('three')")
+                    //webview.runJavaScript("return latlon('" + lat + "," +lon + "')")
+                    break
+                }
+            }
         }
+
 
     }
 
