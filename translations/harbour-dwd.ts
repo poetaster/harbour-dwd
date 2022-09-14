@@ -129,27 +129,27 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="138"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="151"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="144"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="157"/>
         <source>GPS Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="150"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="163"/>
         <source>Add Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="156"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="169"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="197"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="210"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>

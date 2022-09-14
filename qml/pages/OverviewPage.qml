@@ -107,8 +107,8 @@ Page {
             if (modelComplete === true){
                 if (debug) console.debug(JSON.stringify('index: ' + j));
                 // this migt come to haunt us, but append generates errors
-                //listModel.append(weather[j]);
-                listModel.insert(j,weather[j]);
+                listModel.append(weather[j]);
+                //listModel.insert(j,weather[j]);
             }
         }
     }

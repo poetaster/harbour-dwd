@@ -59,7 +59,7 @@ Page {
         id: positionSource
         active: true
         onPositionChanged: {
-            coord = positionSource.position.coordinate;
+            var coord = positionSource.position.coordinate;
             if (debug) console.log("Coordinate:", coord.longitude, coord.latitude);
             //lat = coord.latitude;
             //lon = coord.longitude;
@@ -71,9 +71,6 @@ Page {
             if (debug) console.log("Source error: " + sourceError)
             //activityText.fadeOut = true
             //stop()
-        }
-        onUpdateTimeout: {
-            // activityText.fadeOut = true
         }
     }
 
