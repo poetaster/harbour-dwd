@@ -62,7 +62,7 @@ Page {
 
         // header display date
         // headerDate = now.toLocaleString().split(dYear)[0]
-        headerDate = now.toLocaleString(locale, "ddd. MMM. dd");
+        headerDate = now.toLocaleString(locale, "ddd MMM dd");
 
         // not being used yet
         if (weatherDetails !== ""){

@@ -45,19 +45,23 @@ Page {
 
         //headerDate = now.toLocaleString().split(dYear)[0];
         var headerDay = Locs.addDays(now, 4).toLocaleString(locale, "dd");
-        headerDate = now.toLocaleString(locale, "MMM. dd - ") + headerDay
+        headerDate = now.toLocaleString(locale, "MMM dd - ") + headerDay;
 
         // clear the listmodel
         //listModel.clear();
         weather = new Array;
         //listModel.clear();
         for (var j = 0; j < 5; j++) {
+
             var dDate = Locs.addDays(now,j).toISOString().replace(/T.*/,'') ;
             var uri = "https://api.brightsky.dev/weather?tz="+tzname+"&lat=" + lat + "&lon=" + lon + "&date=" + dDate;
+
             if (debug) console.debug(uri)
+
             // initialize listModel slot
             // sadly, this doesn't work
             //listModel.set(j,{})
+
             Locs.httpRequestIndex(uri,j, function(index,doc) {
                 var response = JSON.parse(doc.responseText);
                 var dailyDate = new Date(response.weather[0].timestamp);
@@ -72,19 +76,26 @@ Page {
                     totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
 
                 weather[index]=daily;
+
                 // the listmodel set method does not work. well sometimes.
                 //listModel.set(index,daily)
                 //listModel.insert(index,daily);
                 // restart the timer. gives us enough time to
-                // get all the results
+                // get all the results since ORDER is not garanteed
+
                 if(index < 4) getTimer.restart();
-                //console.debug(JSON.stringify(weather[index]));
+
+                if (debug) console.debug(JSON.stringify(weather[index]));
             });
         }
     }
 
     function updateWeatherModel(){
+
+        debug = false
+
         listModel.clear();
+
         var modelComplete = true;
         for (var i = 0; i < 5; i++) {
             if (weather[i] === ""){
@@ -95,7 +106,9 @@ Page {
         for (var j = 0; j < 5; j++) {
             if (modelComplete === true){
                 if (debug) console.debug(JSON.stringify('index: ' + j));
-                listModel.append(weather[j]);
+                // this migt come to haunt us, but append generates errors
+                //listModel.append(weather[j]);
+                listModel.insert(j,weather[j]);
             }
         }
     }
