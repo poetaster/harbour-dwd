@@ -234,7 +234,7 @@
         radarLayers[nextFrame.path].setOpacity(100);
 
 
-        var pastOrForecast = nextFrame.time > Date.now() / 1000 ? 'FORE' : 'PAST';
+	var pastOrForecast = nextFrame.time > Date.now() / 1000 ? '>>' : '<<';
 
         document.getElementById("timestamp").innerHTML = pastOrForecast + ': ' + (new Date(nextFrame.time * 1000)).toString();
     }

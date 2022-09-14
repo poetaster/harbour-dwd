@@ -19,7 +19,7 @@
 
 import QtQuick 2.6
 import Sailfish.Silica 1.0
-
+import QtPositioning 5.4
 import Sailfish.WebView 1.0
 import Sailfish.WebEngine 1.0
 
@@ -55,6 +55,28 @@ Page {
         }
         */
     }
+    PositionSource {
+        id: positionSource
+        active: true
+        onPositionChanged: {
+            coord = positionSource.position.coordinate;
+            if (debug) console.log("Coordinate:", coord.longitude, coord.latitude);
+            //lat = coord.latitude;
+            //lon = coord.longitude;
+        }
+
+        onSourceErrorChanged: {
+            if (sourceError == PositionSource.NoError)
+                return
+            if (debug) console.log("Source error: " + sourceError)
+            //activityText.fadeOut = true
+            //stop()
+        }
+        onUpdateTimeout: {
+            // activityText.fadeOut = true
+        }
+    }
+
     id:radarView
     allowedOrientations: Orientation.All
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of harbour-dwd.
  * Copyright (C) 2021 <blueprint@poetaster.de> Mark Washeim
  *
@@ -18,7 +18,7 @@
  */
 
 import QtQuick 2.6
-import QtPositioning 5.2
+import QtPositioning 5.4
 import Sailfish.Silica 1.0
 
 import "../js/locations.js" as Locs
