@@ -32,6 +32,10 @@ DISTFILES += \
     qml/js/storage.js \
     qml/js/stations.json \
     qml/js/locales.js \
+    qml/html/rainviewer-api.html \
+    qml/html/leaflet.js \
+    qml/html/leaflet.css \
+    qml/html/framescript.js \
     rpm/harbour-dwd.spec \
     rpm/harbour-dwd.changes \
     translations/harbour-dwd.ts \
