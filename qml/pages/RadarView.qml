@@ -29,7 +29,7 @@ import "../delegates"
 
 
 Page {
-    property bool debug: false
+    property bool debug: true
     property string lat
     property string lon
     property string dailyDate
@@ -60,7 +60,7 @@ Page {
         active: true
         onPositionChanged: {
             var coord = positionSource.position.coordinate;
-            if (debug) console.log("Coordinate:", coord.longitude, coord.latitude);
+            //if (debug) console.log("Coordinate:", coord.longitude, coord.latitude);
             //lat = coord.latitude;
             //lon = coord.longitude;
         }
@@ -92,20 +92,28 @@ Page {
 
             onViewInitialized: {
                 webview.loadFrameScript(Qt.resolvedUrl("../html/framescript.js"));
-                webview.addMessageListener("webview:action")
+                webview.addMessageListener("webview:action");
+                webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
             }
+            on_PageOrientationChanged: {
+                if ( data.topic != lon ) {
+                        webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
+                }
+
+            }
+
             onRecvAsyncMessage: {
                 if (debug) console.debug(message)
-                //webview.runJavaScript("return latlon('" + lat + "," +lon + "')")
+                //webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
                 switch (message) {
+                case "embed:contentOrientationChanged":
+                    break
                 case "webview:action":
-                    //label.text = {"four": "4", "five": "5", "six": "6"}[data.topic]
-                    if (debug) console.debug(data.topic)
-                    if (debug) console.debug(data.also)
-                    //webview.runJavaScript("return lon('" + lon + "')")
-                    //webview.runJavaScript("return lat('" + lat + "')")
-                    //webview.runJavaScript("return action('three')")
-                    //webview.runJavaScript("return latlon('" + lat + "," +lon + "')")
+                    if ( data.topic != lon ) {
+                        webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
+                        if (debug) console.debug(data.topic)
+                        if (debug) console.debug(data.also)
+                    }
                     break
                 }
             }

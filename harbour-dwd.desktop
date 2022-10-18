@@ -4,6 +4,7 @@ Icon=harbour-dwd
 X-Nemo-Application-Type=silica-qt5
 Exec=harbour-dwd
 Name=German Weather Service
+Name[de]=Deutscher Wetter Dienst
 
 [X-Sailjail]
 OrganizationName=de.poetaster
@@ -12,6 +13,4 @@ Permissions=Internet;Location
 
 #[X-HarbourBackup]
 #BackupPathList=.local/share/de.poetaster/harbour-dwd
-
-Name[de]=Deutscher Wetter Dienst
 
