@@ -29,7 +29,7 @@ import "../delegates"
 
 
 Page {
-    property bool debug: true
+    property bool debug: false
     property string lat
     property string lon
     property string dailyDate
