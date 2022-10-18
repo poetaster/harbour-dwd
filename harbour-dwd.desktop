@@ -12,5 +12,5 @@ ApplicationName=harbour-dwd
 Permissions=Internet;Location
 
 [X-HarbourBackup]
-BackupPathList=.local/share/de.poetaster/harbour-dwd
+BackupPathList=.local/share/de.poetaster/harbour-dwd/
 
