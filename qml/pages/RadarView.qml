@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of harbour-dwd.
  * Copyright (C) 2021 <blueprint@poetaster.de> Mark Washeim
  *
@@ -29,7 +29,7 @@ import "../delegates"
 
 
 Page {
-    property bool debug: false
+    property bool debug: true
     property string lat
     property string lon
     property string dailyDate
@@ -113,6 +113,7 @@ Page {
                         webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
                         if (debug) console.debug(data.topic)
                         if (debug) console.debug(data.also)
+                        if (debug) console.debug(data.src)
                     }
                     break
                 }

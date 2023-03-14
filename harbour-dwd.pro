@@ -19,6 +19,7 @@ SOURCES += \
 DISTFILES += \
     qml/cover/CoverPage.qml \
     qml/pages/About.qml \
+    qml/pages/RadarViewQml.qml \
     qml/pages/StartPage.qml \
     qml/pages/OverviewPage.qml \
     qml/pages/LocationSearchPage.qml \

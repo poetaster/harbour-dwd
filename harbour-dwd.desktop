@@ -12,5 +12,4 @@ ApplicationName=harbour-dwd
 Permissions=Internet;Location
 
 [X-HarbourBackup]
-BackupPathList=.local/share/de.poetaster/harbour-dwd/
-
+BackupPathList=.cache/de.poetaster/harbour-scaler
