@@ -22,7 +22,7 @@ CoverBackground {
     property var hourly;
 
     function reload(){
-        debug = false;
+        debug = true;
         var tz = TZ.jstz.determine(); // Determines the time zone of the browser client
         var tzname = tz.name(); // Returns the name of the time zone eg "Europe/Berlin"
 

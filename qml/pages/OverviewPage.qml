@@ -26,16 +26,52 @@ Page {
 
     //onWeatherChanged: updateWeatherModel();
     //onQueryChanged: updateJSONModel();
+    function updateModel(index,response){
+
+        console.log("func index: " + index)
+        for (var i = 0; i < response.weather.length && i < 30; i++) {
+            switch( index ) {
+               case 0 : {
+                   model0.append(response.weather[i]);
+                   break
+               }
+               case 1 : {
+                   model1.append(response.weather[i]);
+                   break
+               }
+               case 2 : {
+                   model2.append(response.weather[i]);
+                   break
+               }
+               case 3 : {
+                   model3.append(response.weather[i]);
+                   break
+               }
+               case 4 :  {
+                   model4.append(response.weather[i]);
+                   break
+               }
+               default : console.log("none")
+
+            }
+        };
+
+    }
 
     function reload(){
+        model0.clear()
+        model1.clear()
+        model2.clear()
+        model3.clear()
+        model4.clear()
 
         debug = false;
 
-        if (name === "") { name="Berlin" ; }
-        if (lat === "") { lat="52.52"; }
-        if (lon ==="") { lon="13.41"  ; }
+        if (name === "") name="Berlin"
+        if (lat === "" ) lat="52.52"
+        if (lon ===""  ) lon="13.41"
 
-        if (now == undefined) {
+        if (now === undefined) {
             now = new Date();
         }
         var tz = TZ.jstz.determine(); // Determines the time zone of the browser client
@@ -47,25 +83,19 @@ Page {
         var headerDay = Locs.addDays(now, 4).toLocaleString(locale, "dd");
         headerDate = now.toLocaleString(locale, "MMM dd - ") + headerDay;
 
-        // clear the listmodel
-        //listModel.clear();
         weather = new Array;
-        //listModel.clear();
         for (var j = 0; j < 5; j++) {
 
             var dDate = Locs.addDays(now,j).toISOString().replace(/T.*/,'') ;
-            var uri = "https://api.brightsky.dev/weather?tz="+tzname+"&lat=" + lat + "&lon=" + lon + "&date=" + dDate;
+            //var uri = "https://api.brightsky.dev/weather?tz="+tzname+"&lat=" + lat + "&lon=" + lon + "&date=" + dDate + "&max_dist=5000";
+            var uri = "https://api.brightsky.dev/weather?tz="+tzname+"&lat=" + lat + "&lon=" + lon + "&date=" + dDate ;
 
             if (debug) console.debug(uri)
-
-            // initialize listModel slot
-            // sadly, this doesn't work
-            //listModel.set(j,{})
-
             Locs.httpRequestIndex(uri,j, function(index,doc) {
                 var response = JSON.parse(doc.responseText);
                 var dailyDate = new Date(response.weather[0].timestamp);
                 var dailyRain =  Locs.dailyTotal(response.weather ,"precipitation");
+                var pRain =  Locs.dailyMax(response.weather,"precipitation_probability");
                 var dailyCloud =  Locs.dailyAvg(response.weather ,"cloud_cover");
                 var dailyIcon =  Locs.mapIcon(response.weather[15].icon,dailyRain,response.weather[15].condition) ;
                 //var dailyIcon =  response.weather[15].icon) ;
@@ -73,18 +103,15 @@ Page {
                 var dailyHigh =  Locs.dailyMax(response.weather,"temperature");
                 var dailyWind=  Locs.dailyAvg(response.weather ,"wind_speed");
                 var daily = {dailyDate: dailyDate, icon: dailyIcon , temperatureHigh:  dailyHigh, temperatureLow: dailyLow,
-                    totalRain: dailyRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
+                    totalRain: dailyRain, likelyRain: pRain, cloud_cover:dailyCloud, wind_speed:dailyWind};
 
-                weather[index]=daily;
+                weather[index]=daily
+                updateModel(index,response)
 
-                // the listmodel set method does not work. well sometimes.
-                //listModel.set(index,daily)
-                //listModel.insert(index,daily);
                 // restart the timer. gives us enough time to
                 // get all the results since ORDER is not garanteed
 
-                if(index < 4) getTimer.restart();
-
+                if( index < 4) getTimer.restart();
                 if (debug) console.debug(JSON.stringify(weather[index]));
             });
         }
@@ -92,12 +119,13 @@ Page {
 
     function updateWeatherModel(){
 
-        debug = false
+        debug = true
 
         listModel.clear();
 
         var modelComplete = true;
         for (var i = 0; i < 5; i++) {
+
             if (weather[i] === ""){
                 if (debug) console.debug(JSON.stringify('weather: ' + i));
                 modelComplete = false;
@@ -105,12 +133,18 @@ Page {
         }
         for (var j = 0; j < 5; j++) {
             if (modelComplete === true){
-                if (debug) console.debug(JSON.stringify('index: ' + j));
-                // this migt come to haunt us, but append generates errors
                 listModel.append(weather[j]);
-                //listModel.insert(j,weather[j]);
             }
         }
+        if (debug) console.debug("length0 : " + model0.count);
+        if (debug) console.debug("length1 : " + model1.count);
+        if (debug) console.debug("length2 : " + model2.count);
+        if (debug) console.debug("length3 : " + model3.count);
+        if (debug) console.debug("length4 : " + model4.count);
+
+        /*for (var i = 0; i < model4.count; i++) {
+                console.log("element " + i + ":" + model4.get(i).timestamp)
+        }*/
     }
 
     allowedOrientations: Orientation.Portrait
@@ -120,25 +154,25 @@ Page {
         id:getTimer
         interval: 400
         repeat: false
-        running:true
+        running:false
         triggeredOnStart:true
         onTriggered: updateWeatherModel()
     }
 
     //Component.onCompleted: page.reload();
 
-    /*onStatusChanged: {
+   /* onStatusChanged: {
         switch (status) {
             case PageStatus.Activating:
-                indicator.visible = true;
-                errorMsg.visible = false;
-                page.reloadDetails();
+                //indicator.visible = true;
+                //errorMsg.visible = false;
+                page.reload();
                 break;
             case PageStatus.Deactivating:
-                errorMsg.visible = false;
+                //errorMsg.visible = false;
                 break;
         }
-    } */
+    }*/
 
 
     SilicaFlickable {
@@ -196,8 +230,8 @@ Page {
             delegate: ForecastItem {
                 id:delegate
                 onClicked: {
-                    //console.debug(JSON.stringify(weather[index]))
-                    pageStack.push(Qt.resolvedUrl("DailyDetails.qml"), { "name": name, "lat": lat, "lon": lon, "dailyDate": dailyDate   });
+                    console.debug(JSON.stringify(weather[index]))
+                    pageStack.push(Qt.resolvedUrl("DailyDetails.qml"), { "name": name, "lat": lat, "lon": lon, "dailyDate": dailyDate, "oindex": index   });
                 }
             }
             spacing: 2
@@ -211,9 +245,19 @@ Page {
                 onClicked: {
                     now = Locs.addDays(now, 5);
                     //now = dailyDate;
-                    console.debug(now);
+                    //console.debug(now);
                     dailyDate = now.toLocaleString();
                     page.reload();
+
+                    /*
+                    pageStack.push(Qt.resolvedUrl("OverviewPage.qml"), {
+                                       "name":name,
+                                       "lat":lat,
+                                       "lon":lon,
+                                       "now":now
+                                   });
+                                   */
+
 
                 }
             }

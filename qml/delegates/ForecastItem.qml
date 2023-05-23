@@ -92,11 +92,11 @@ ListItem {
                     //color: Theme.highlightColor
                 }
                 Label {
-                    text: model.totalRain + " mm \uf084 "
+                    text: model.likelyRain + " % \uf084 " + model.totalRain + " mm"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
-                    //color: Theme.highlightColor
+                    color: Theme.highlightColor
                 }
                 Label {
                     bottomPadding: 4
@@ -105,7 +105,8 @@ ListItem {
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
                     //color: Theme.highlightColor
-                }/*
+                }
+                /*
             Label {
                 text: model.pressure_msl + " hPa"
                 width: parent.width

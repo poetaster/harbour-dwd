@@ -49,11 +49,13 @@ ListItem {
             x: Theme.horizontalPageMargin
             width: parent.width - 2*x
             spacing: Theme.paddingSmall
+
             Column {
                 id: column
-                width: parent.width * .30
+                width: parent.width * .3
                 spacing: Theme.paddingMedium
-                Text {
+                Text
+                {
                     visible: index < listView.count
                     text: model.timestamp.split('T')[1].split('+')[0].split(':')[0] + ":00";
                     //text: model.timestamp;
@@ -63,7 +65,8 @@ ListItem {
                     //color: ((index % 2 === 0 ) ) ? Theme.highlightColor : Theme.primaryColor
                     color: Theme.primaryColor
                 }
-                Label {
+                Label
+                {
                     text: model.temperature + " °C"
                     width: parent.width
                     wrapMode: Text.WordWrap
@@ -74,7 +77,7 @@ ListItem {
             }
             Column {
                 id: column2
-                width: parent.width * .30
+                width: parent.width * .25
                 spacing: Theme.paddingMedium
                 Label {
                     topPadding: 24
@@ -115,16 +118,24 @@ ListItem {
             }
             Column {
                 id: column3
-                width: parent.width * .40
+                width: parent.width * .45
                 spacing: Theme.paddingMedium
                 Label {
                     topPadding: 8
-                    //text: model.cloud_cover + "% \uf013 " +parseFloat(model.precipitation) + " mm \uf084 "
-                    text: parseFloat(model.precipitation) + " mm \uf084 " + model.cloud_cover + "% \uf013 "
+                    text:model.cloud_cover + "% \uf013  " +  model.pressure_msl + " hPa"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.primaryColor
+                    //color: Theme.highlightColor
+                }
+                Label {
+                    //text: model.cloud_cover + "% \uf013  " +parseFloat(model.precipitation) + " mm \uf084 "
+                    text: model.precipitation_probability + "% \uf084 " + parseFloat(model.precipitation) + " mm"
+                    width: parent.width
+                    wrapMode: Text.WordWrap
+                    font.pixelSize: Theme.fontSizeExtraSmall
+                    color: Theme.highlightColor
+                    //color: Theme.primaryColor
                 }
                 Text {
                     text: model.wind_speed + " km/h \uf050 " + model.wind_direction + " °"
@@ -133,13 +144,7 @@ ListItem {
                     font.pixelSize: Theme.fontSizeExtraSmall
                     color: Theme.primaryColor
                 }
-                Label {
-                    text: model.pressure_msl + " hPa"
-                    width: parent.width
-                    wrapMode: Text.WordWrap
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    //color: Theme.highlightColor
-                }
+
 
             }
         }

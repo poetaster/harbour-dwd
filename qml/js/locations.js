@@ -156,9 +156,11 @@ function dailyTotal(weather, key) {
     //console.debug(parseFloat(total).toPrecision(2))
     return parseFloat(total).toPrecision(2);
 }
+
 function dailyAvg(weather, key) {
     return dailyTotal(weather, key) / weather.length;
 }
+
 function dailyMax(weather, key) {
     var  current = 0.0 ;
     for (var i = 0; i < weather.length; i++) {
@@ -168,6 +170,7 @@ function dailyMax(weather, key) {
     }
     return current;
 }
+
 function dailyMin(weather, key) {
     var current = dailyMax(weather,key);
     for (var i = 0; i < weather.length; i++) {

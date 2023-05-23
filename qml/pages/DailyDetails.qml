@@ -17,7 +17,7 @@ import "../js/locales.js" as TZ
 
 Page {
     id: detailsPage
-    property bool debug: false
+    property bool debug: true
     property string name
     property string lat
     property string lon
@@ -29,13 +29,50 @@ Page {
     property var index
     property var locale: Qt.locale()
     property var tindex
+    property var oindex
 
+    function updateModel(index){
+
+        console.log("func index: " + index)
+
+        for (var i = 0; i < 26; i++) {
+            switch( index ) {
+               case 0 : {
+                   listModel.insert(i, model0.get(i))
+                   break
+               }
+               case 1 : {
+                   listModel.insert(i, model1.get(i))
+                   break
+               }
+               case 2 : {
+                   listModel.insert(i, model2.get(i))
+                   break
+               }
+               case 3 : {
+                   listModel.insert(i,model3.get(i))
+                   break
+               }
+               case 4 :  {
+                   listModel.insert(i, model4.get(i))
+                   break
+               }
+               default : console.log("none")
+
+            }
+        };
+
+    }
     function reloadDetails(){
         if (name === "") { name="Berlin" }
         if (lat === "") { lat="52.52" }
         if (lon ==="") { lon="13.41"  }
 
         if (debug) console.debug("daily: "+dailyDate)
+        if (debug) console.debug("oindex: "+oindex)
+
+        // update the listModel from previously obtained values.
+        updateModel(oindex)
 
         if (dailyDate === "") {
             now = new Date();
@@ -65,15 +102,20 @@ Page {
         headerDate = now.toLocaleString(locale, "ddd MMM dd");
 
         // not being used yet
-        if (weatherDetails !== ""){
+        if (listModel.count > 20){
+            if (debug) console.log("cached")
+
+            /*
             for (var i = 0; i < weather.length && i < 30; i++) {
                 //console.debug(JSON.stringify(response.weather[i]));
                 if (debug) console.debug(weather[i]);
                 listModel.append(weather[i]);
             };
+            */
+
         } else {
 
-            var uri = "https://api.brightsky.dev/weather?tz="+tzname + "&lat=" + lat + "&lon=" + lon + "&date=" + passDate;
+            var uri = "https://api.brightsky.dev/weather?tz="+tzname + "&lat=" + lat + "&lon=" + lon + "&date=" + passDate //+ "&max_dist=5000";
             if (debug) console.debug(uri);
 
             Locs.httpRequest(uri, function(doc) {
@@ -137,7 +179,8 @@ Page {
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
-                    reloadDetails();
+                    listModel.clear()
+                    reloadDetails()
                 }
             }
             MenuItem {
@@ -154,6 +197,8 @@ Page {
                     now = Locs.addDays(now, 1);
                     if (debug) console.debug(now);
                     dailyDate = now;
+                    listModel.clear()
+                    oindex+=1
                     reloadDetails();
                 }
             }

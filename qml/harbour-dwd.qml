@@ -34,6 +34,23 @@ import "pages"
 
 ApplicationWindow
 {
+    id:root
+
+    ListModel{
+        id: model0
+    }
+    ListModel{
+        id: model1
+    }
+    ListModel{
+        id: model2
+    }
+    ListModel{
+        id: model3
+    }
+    ListModel{
+        id: model4
+    }
     initialPage: Component { StartPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 }
