@@ -24,11 +24,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="84"/>
-        <source> © 2021-2022 Mark Washeim</source>
-        <translation type="unfinished"> © 2021 Mark Washeim {2021-2022 ?}</translation>
-    </message>
-    <message>
         <location filename="../qml/pages/About.qml" line="114"/>
         <source>Icons by </source>
         <translation type="unfinished">Icons von </translation>
@@ -44,6 +39,11 @@
         <translation>Dieses Program ist FOSS, lizensiert</translation>
     </message>
     <message>
+        <location filename="../qml/pages/About.qml" line="84"/>
+        <source> © 2021-2023 Mark Washeim</source>
+        <translation type="unfinished"> © 2021 Mark Washeim {2021-2022 ?} {2021-2023 ?}</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/About.qml" line="99"/>
         <source>GNU General Public License v3.</source>
         <translation>GNU General Public License v3.</translation>
@@ -52,17 +52,17 @@
 <context>
     <name>DailyDetails</name>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="138"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="191"/>
         <source>Refresh</source>
         <translation>Neu Laden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="144"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="198"/>
         <source>Rain Radar</source>
         <translation type="unfinished">Regenradar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="152"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="206"/>
         <source>Next</source>
         <translation>Weiter</translation>
     </message>
@@ -106,8 +106,7 @@
         <translation type="unfinished">Ort hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="185"/>:w
-
+        <location filename="../qml/pages/ManageLocations.qml" line="185"/>
         <source>Start</source>
         <translation type="unfinished">Start</translation>
     </message>
@@ -130,27 +129,27 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="138"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="194"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="144"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="200"/>
         <source>GPS Locations</source>
         <translation type="unfinished">GPS Orte hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="150"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="206"/>
         <source>Add Locations</source>
         <translation type="unfinished">Ort hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="156"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="212"/>
         <source>Refresh</source>
         <translation>Neu Laden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="197"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="252"/>
         <source>Next</source>
         <translation>Weiter</translation>
     </message>

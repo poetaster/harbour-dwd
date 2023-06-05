@@ -1,4 +1,4 @@
-const BRIGHTSKY_URL = 'https://api.brightsky.dev/';
+var BRIGHTSKY_URL = 'https://api.brightsky.dev/'
 
 //const jsonViewer = new JSONViewer();
 //document.getElementById('response-json').appendChild(jsonViewer.getContainer());
