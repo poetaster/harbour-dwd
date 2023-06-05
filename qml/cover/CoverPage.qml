@@ -63,8 +63,7 @@ CoverBackground {
                     if (debug ) console.debug(JSON.stringify(i));
 
                     var rain =  response.weather[index].precipitation;
-                    rainLabel.text = "\uf084  "  + response.weather[index].precipitation + " mm";
-
+                    rainLabel.text =response.weather[index].precipitation_probability + "% \uf084  "  + response.weather[index].precipitation + " mm";
                     var cloud =  response.weather[index].cloud_cover;
                     cloudLabel.text =  "\uf041  " + response.weather[index].cloud_cover + " %";
 

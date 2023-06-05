@@ -1,9 +1,21 @@
 /*
-  Copyright (C) 2021 Mark Washeim
-  Contact: blueprint@poetaster.de
-
-
-*/
+ * This file is part of harbour-dwd.
+ * Copyright (C) 2023 <blueprint@poetaster.de> Mark Washeim
+ *
+ * harbour-dwd is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * harbour-dwd is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with harbour-meteoswiss.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 
 /* requests: https://api.brightsky.dev/
 weather?lat=52.52&lon=13.41&date=2021-04-30 */
@@ -17,7 +29,7 @@ import "../js/locales.js" as TZ
 
 Page {
     id: detailsPage
-    property bool debug: true
+    property bool debug: false
     property string name
     property string lat
     property string lon
@@ -35,7 +47,7 @@ Page {
 
         console.log("func index: " + index)
 
-        for (var i = 0; i < 26; i++) {
+        for (var i = 0; i < 24; i++) {
             switch( index ) {
                case 0 : {
                    listModel.insert(i, model0.get(i))
@@ -57,10 +69,10 @@ Page {
                    listModel.insert(i, model4.get(i))
                    break
                }
-               default : console.log("none")
+               default : if (debug) console.log("none")
 
             }
-        };
+        }
 
     }
     function reloadDetails(){
@@ -101,9 +113,9 @@ Page {
         // headerDate = now.toLocaleString().split(dYear)[0]
         headerDate = now.toLocaleString(locale, "ddd MMM dd");
 
-        // not being used yet
-        if (listModel.count > 20){
+        if (listModel.count > 23){
             if (debug) console.log("cached")
+            if (debug) console.log(listModel.count)
 
             /*
             for (var i = 0; i < weather.length && i < 30; i++) {
@@ -129,8 +141,6 @@ Page {
             });
         }
 
-        // set position in listView after all elements appended.
-        //listView.positionViewAtIndex(tindex, ListView.Beginning)
     }
 
     allowedOrientations: Orientation.Portrait
@@ -140,6 +150,7 @@ Page {
     }
     Component.onCompleted: {
         /*
+          we do this in the ListView
         var time = new Date();
         if (debug) console.debug(time.toTimeString(Locale.LongFormat).split(':')[0] )
         tindex = time.toTimeString(Locale.LongFormat).split(':')[0]
@@ -210,13 +221,21 @@ Page {
                 title: name + " : " + headerDate
             }
             highlightFollowsCurrentItem: true
+
             onCountChanged:  {
-                var time = new Date();
-                if (debug) console.debug(time.toTimeString(Locale.LongFormat).split(':')[0] )
-                tindex = time.toTimeString(Locale.LongFormat).split(':')[0]
-                // set the index first
-                listView.currentIndex = tindex
-                listView.positionViewAtIndex(tindex, ListView.Beginning)
+                //only update view if we have full count
+                if (listModel.count === 24){
+                    var time = new Date();
+                    // only move if it's current day
+                    if (time.toLocaleString(locale, "ddd MMM dd") === headerDate) {
+                        tindex = time.toTimeString(Locale.LongFormat).split(':')[0]
+                        if (debug) console.debug(tindex)
+                        // set the index first
+                        listView.currentIndex = tindex
+                        listView.positionViewAtEnd()
+                        listView.positionViewAtIndex(tindex, ListView.Beginning)
+                    }
+                }
             }
             anchors.fill: parent
             //width: parent.width
