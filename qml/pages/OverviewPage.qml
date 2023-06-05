@@ -39,7 +39,6 @@ Page {
     //onQueryChanged: updateJSONModel();
     function updateModel(index,response){
 
-        console.log("func index: " + index)
         for (var i = 0; i < response.weather.length && i < 30; i++) {
             switch( index ) {
                case 0 : {
@@ -62,7 +61,7 @@ Page {
                    model4.append(response.weather[i]);
                    break
                }
-               default : console.log("none")
+               default : if (debug) console.log("none")
 
             }
         };
@@ -130,7 +129,6 @@ Page {
 
     function updateWeatherModel(){
 
-        debug = true
 
         listModel.clear();
 
@@ -241,7 +239,6 @@ Page {
             delegate: ForecastItem {
                 id:delegate
                 onClicked: {
-                    console.debug(JSON.stringify(weather[index]))
                     pageStack.push(Qt.resolvedUrl("DailyDetails.qml"), { "name": name, "lat": lat, "lon": lon, "dailyDate": dailyDate, "oindex": index   });
                 }
             }

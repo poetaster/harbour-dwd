@@ -14,15 +14,14 @@ CoverBackground {
         source: "../png/weathericons-regular-webfont.ttf"
     }
     id: back
-    property var debug;
-    property var now;
-    property string name;
-    property string lat;
-    property string lon;
-    property var hourly;
+    property bool debug: false
+    property var now
+    property string name
+    property string lat
+    property string lon
+    property var hourly
 
     function reload(){
-        debug = true;
         var tz = TZ.jstz.determine(); // Determines the time zone of the browser client
         var tzname = tz.name(); // Returns the name of the time zone eg "Europe/Berlin"
 

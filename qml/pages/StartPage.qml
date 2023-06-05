@@ -33,7 +33,7 @@ Page {
     property string dDay
     property string dMonth
     property string dYear
-    property bool debug
+    property bool debug: false
 
     allowedOrientations: Orientation.Portrait
 
