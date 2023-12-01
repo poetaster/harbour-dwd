@@ -139,7 +139,7 @@ Page {
                     id:locations
                 }
                 spacing: 2
-                VerticalScrollDecorator { flickable: sListview}
+                VerticalScrollDecorator { flickable: listview}
             }
         }
     }

@@ -162,7 +162,7 @@ function dailyAvg(weather, key) {
 }
 
 function dailyMax(weather, key) {
-    var  current = 0.0 ;
+    var current = dailyAvg(weather,key);
     for (var i = 0; i < weather.length; i++) {
              if ( weather[i][key] > current ) {
                  current = weather[i][key];
