@@ -18,9 +18,11 @@ Version:    0.9.8
 Release:    1
 Group:      Applications/Internet
 License:    GPLv3
+BuildArch:  noarch
 URL:        https://github.com/poetaster/harbour-dwd
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5 >= 1.1.0
+Requires:   libsailfishapp-launcher
 
 BuildRequires:  qt5-qttools-linguist
 BuildRequires:  pkgconfig(sailfishapp)

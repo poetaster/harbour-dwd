@@ -32,7 +32,7 @@ Page {
     property string headerDate // used to go to the next day
     property var weather
     property var now
-    property bool debug: true
+    property bool debug: false
     property var locale: Qt.locale()
 
     //onWeatherChanged: updateWeatherModel();
@@ -202,7 +202,8 @@ Page {
                 //errorMsg.visible = false;
                 page.reload();
                 break;
-            case PageStatus.Deactivating:
+            case PageStatus.Deactivating::w
+
                 //errorMsg.visible = false;
                 break;
         }
@@ -239,6 +240,12 @@ Page {
                 text: qsTr("Refresh")
                 onClicked: {
                     page.reload();
+                }
+            }
+            MenuItem {
+                text: qsTr("Rain Radar")
+                onClicked: {
+                    pageStack.push(Qt.resolvedUrl("RadarView.qml"), { "name": name, "lat": lat, "lon": lon, "dailyDate": dailyDate   });
                 }
             }
         }

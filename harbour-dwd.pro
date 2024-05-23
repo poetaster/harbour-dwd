@@ -11,10 +11,8 @@
 
 # The name of your application
 TARGET = harbour-dwd
-CONFIG += sailfishapp
 
-SOURCES += \
-    src/harbour-dwd.cpp
+CONFIG += sailfishapp_qml
 
 DISTFILES += \
     qml/cover/CoverPage.qml \

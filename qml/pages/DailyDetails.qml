@@ -29,7 +29,7 @@ import "../js/locales.js" as TZ
 
 Page {
     id: detailsPage
-    property bool debug: true
+    property bool debug: false
     property string name
     property string lat
     property string lon

@@ -2,7 +2,7 @@
 Type=Application
 Icon=harbour-dwd
 X-Nemo-Application-Type=silica-qt5
-Exec=harbour-dwd
+Exec=sailfish-qml harbour-dwd
 Name=German Weather Service
 Name[de]=Deutscher Wetter Dienst
 

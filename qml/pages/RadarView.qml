@@ -93,8 +93,8 @@ Page {
             onViewInitialized: {
                 webview.loadFrameScript(Qt.resolvedUrl("../html/framescript.js"));
                 webview.addMessageListener("webview:action");
-                webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
             }
+
             on_PageOrientationChanged: {
                 if ( data.topic != lon ) {
                         webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
