@@ -5,58 +5,55 @@ import "../js/storage.js" as Store
 
 ListItem {
     //property var now;
-    contentHeight: contentRow.height + separatorBottom.height
+    //contentHeight: contentRow.height + separatorBottom.height
     function localDate (timestamp) {
         timestamp.toLocaleString('de-de', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'});
     }
-
-    Row {
-        id: contentRow
-        x: Theme.horizontalPageMargin
-        width: parent.width - 2*x
-        spacing: Theme.paddingSmall
-        Button {
-            //text: model.timestamp.split('t')[1].split('+')[0];
-            text: model.name
-            width: parent.width / 2
-            color: Theme.highlightColor
-            opacity: 0.7
-            onClicked: {
-                Store.setCoverLocation(model.location_id);
-                pageStack.push(Qt.resolvedUrl("../pages/OverviewPage.qml"), {
-                                   "name":name,
-                                   "lat":lat,
-                                   "lon":lon});
-            }
-        }
-        Button {
-            id: deleteMe
-            color: Theme.highlightColor
-            opacity: 0.7
-            //OpacityRampEffect
-            x: Theme.horizontalPageMargin
-            Image {
-                //x: Theme.horizontalPageMargin
-                x: Theme.paddingMedium
-                y: Theme.paddingSmall
-                source: "image://theme/icon-m-delete?"  // + Theme.highlightColor
-            }
-            text: qsTr("Delete")
-            onClicked: {
-                //if (debug) console.debug(model.location_id);
-
-                Store.delCoverLocation(model.location_id);
-                Store.removeLocation(model.location_id);
-                fetchCities();
-            }
-        }
-
+    function remove() {
+        //root.deletingItems = true
+        remorseDelete(function() {
+            Store.delCoverLocation(model.location_id);
+            Store.removeLocation(model.location_id);
+            fetchCities();
+        })
     }
-    Separator {
-        id: separatorBottom
-        visible: index < listView.count
+    /*
+    root.deletingItems = true
+    var remorse = Remorse.popupAction(
+                root, "Cleared",
+                function() {
+                    listModel.clear()
+                })
+    remorse.canceled.connect(function() { root.deletingItems = false })
+    */
+    onClicked: {
+        Store.setCoverLocation(model.location_id);
+        pageStack.animatorPush(Qt.resolvedUrl("../pages/OverviewPage.qml"), {
+                           "name":name,
+                           "lat":lat,
+                           "lon":lon});
+    }
+
+    ListView.onRemove: animateRemoval()
+    enabled: !root.deletingItems
+    opacity: enabled ? 1.0 : 0.0
+    Behavior on opacity { FadeAnimator {}}
+
+    menu: Component {
+        ContextMenu {
+            MenuItem {
+                text: qsTr("Delete")
+                onClicked: remove()
+            }
+        }
+    }
+
+    Label {
         x: Theme.horizontalPageMargin
-        width: parent.width - 2*x
-        color: Theme.darkSecondaryColor
+        width: parent.width - 2 * x
+        anchors.verticalCenter: parent.verticalCenter
+        text: model.name
+        truncationMode: TruncationMode.Fade
+        font.capitalization: Font.Capitalize
     }
 }

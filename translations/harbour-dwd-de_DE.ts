@@ -70,7 +70,7 @@
 <context>
     <name>LocationItem</name>
     <message>
-        <location filename="../qml/delegates/LocationItem.qml" line="44"/>
+        <location filename="../qml/delegates/LocationItem.qml" line="45"/>
         <source>Delete</source>
         <translation>Löschen</translation>
     </message>
@@ -157,27 +157,27 @@
 <context>
     <name>StartPage</name>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="78"/>
+        <location filename="../qml/pages/StartPage.qml" line="154"/>
         <source>Stored Locations</source>
         <translation>Gespeicherte Orte</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="84"/>
+        <location filename="../qml/pages/StartPage.qml" line="160"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="90"/>
+        <location filename="../qml/pages/StartPage.qml" line="166"/>
         <source>GPS Locations</source>
         <translation type="unfinished">GPS Orte hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="96"/>
+        <location filename="../qml/pages/StartPage.qml" line="172"/>
         <source>Add Locations</source>
         <translation>Ort hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="104"/>
+        <location filename="../qml/pages/StartPage.qml" line="180"/>
         <source>Refresh</source>
         <translation>Neu Laden</translation>
     </message>

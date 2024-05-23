@@ -14,7 +14,7 @@ CoverBackground {
         source: "../png/weathericons-regular-webfont.ttf"
     }
     id: back
-    property bool debug: false
+    property bool debug: true
     property var now
     property string name
     property string lat

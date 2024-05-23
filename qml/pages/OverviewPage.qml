@@ -32,7 +32,7 @@ Page {
     property string headerDate // used to go to the next day
     property var weather
     property var now
-    property bool debug:false
+    property bool debug:true
     property var locale: Qt.locale()
 
     //onWeatherChanged: updateWeatherModel();
