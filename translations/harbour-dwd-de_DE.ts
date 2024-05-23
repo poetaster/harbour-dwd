@@ -93,7 +93,7 @@
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="168"/>
         <source>Position (GPS) Locations</source>
-        <translation type="unfinished">GPS Orte hinzufügen</translation>
+        <translation type="unfinished">GPS Ort hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="173"/>
@@ -129,9 +129,14 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="239"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="240"/>
         <source>Refresh</source>
         <translation>Neu Laden</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/OverviewPage.qml" line="246"/>
+        <source>Rain Radar</source>
+        <translation type="unfinished">Regenradar</translation>
     </message>
 </context>
 <context>

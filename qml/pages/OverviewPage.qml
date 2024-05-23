@@ -115,8 +115,8 @@ Page {
         var dYear = now.getFullYear() ;
 
         //headerDate = now.toLocaleString().split(dYear)[0];
-        var headerDay = Locs.addDays(now, 9).toLocaleString(locale, "MM/dd");
-        headerDate = now.toLocaleString(locale, "MM/dd - ") + headerDay;
+        var headerDay = Locs.addDays(now, 9).toLocaleString(locale, "dd/MM");
+        headerDate = now.toLocaleString(locale, "dd/MM - ") + headerDay;
 
         weather = new Array;
         for (var j = 0; j < 10; j++) {
