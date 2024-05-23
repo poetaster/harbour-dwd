@@ -14,13 +14,14 @@ Name:       harbour-dwd
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 
 Summary:    German Weather Service client
-Version:    0.9.7
+Version:    0.9.8
 Release:    1
 Group:      Applications/Internet
 License:    GPLv3
 URL:        https://github.com/poetaster/harbour-dwd
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   sailfishsilica-qt5 >= 1.1.0
+
 BuildRequires:  qt5-qttools-linguist
 BuildRequires:  pkgconfig(sailfishapp)
 BuildRequires:  pkgconfig(Qt5Core)
@@ -47,6 +48,7 @@ Screenshots:
  - https://raw.githubusercontent.com/poetaster/harbour-dwd/main/screen1.png
  - https://raw.githubusercontent.com/poetaster/harbour-dwd/main/screen2.png
  - https://raw.githubusercontent.com/poetaster/harbour-dwd/main/screen3.png
+ - https://raw.githubusercontent.com/poetaster/harbour-dwd/main/screen4.png
 Url:
   Homepage: https://github.com/poetaster/harbour-dwd
   Help: https://github.com/poetaster/harbour-dwd/discussions
