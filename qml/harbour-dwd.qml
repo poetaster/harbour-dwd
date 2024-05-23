@@ -40,6 +40,21 @@ ApplicationWindow
     ListModel{
         id: model4
     }
+    ListModel{
+        id: model5
+    }
+    ListModel{
+        id: model6
+    }
+    ListModel{
+        id: model7
+    }
+    ListModel{
+        id: model8
+    }
+    ListModel{
+        id: model9
+    }
     initialPage: Component { StartPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 

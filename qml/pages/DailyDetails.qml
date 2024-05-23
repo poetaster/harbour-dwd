@@ -29,7 +29,7 @@ import "../js/locales.js" as TZ
 
 Page {
     id: detailsPage
-    property bool debug: false
+    property bool debug: true
     property string name
     property string lat
     property string lon
@@ -67,6 +67,26 @@ Page {
                }
                case 4 :  {
                    listModel.insert(i, model4.get(i))
+                   break
+               }
+               case 5 :  {
+                   listModel.insert(i, model5.get(i))
+                   break
+               }
+               case 6 :  {
+                   listModel.insert(i, model6.get(i))
+                   break
+               }
+               case 7 :  {
+                   listModel.insert(i, model7.get(i))
+                   break
+               }
+               case 8 :  {
+                   listModel.insert(i, model8.get(i))
+                   break
+               }
+               case 9 :  {
+                   listModel.insert(i, model9.get(i))
                    break
                }
                default : if (debug) console.log("none")

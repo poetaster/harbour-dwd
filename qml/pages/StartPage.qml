@@ -151,7 +151,7 @@ Page {
         //contentWidth: column.width; contentHeight: column.height
         PageHeader {
             id: header
-            title: qsTr("Stored Locations")
+            title: qsTr("Current Conditions")
         }
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
@@ -199,19 +199,19 @@ Page {
                 font.pixelSize:Theme.fontSizeLarge
              }*/
 
-             Label {
+        Label {
             font.family: localFont.name
             text: name
             width: parent.width
             wrapMode: Text.WordWrap
-            font.pixelSize: Theme.fontSizeMedium
+            font.pixelSize: Theme.fontSizeLarge
             color: Theme.primaryColor
             horizontalAlignment: "AlignHCenter"
             verticalAlignment: "AlignVCenter"
             topPadding: 48
         }
 
-             Label {
+        Label {
             font.family: localFont.name
             id:tempLabel
             width: parent.width
@@ -229,43 +229,50 @@ Page {
             //bottomPadding: 24
             width: parent.width
             wrapMode: Text.WordWrap
-            font.pixelSize: Theme.fontSizeExtraLarge + 24
+            font.pixelSize: Theme.fontSizeHuge
             color: Theme.highlightColor
             horizontalAlignment: "AlignHCenter"
             verticalAlignment: "AlignVCenter"
         }
-             Label {
+        Label {
             font.family: localFont.name
             id:rainLabel
             topPadding: 4
             width: parent.width
             wrapMode: Text.WordWrap
-            font.pixelSize: Theme.fontSizeExtraSmall
+            font.pixelSize: Theme.fontSizeSmall
             color: Theme.highlightColor
             horizontalAlignment: "AlignHCenter"
             verticalAlignment: "AlignVCenter"
         }
-             Label {
+        Label {
             font.family: localFont.name
             id:cloudLabel
             topPadding: 4
             width: parent.width
             wrapMode: Text.WordWrap
-            font.pixelSize: Theme.fontSizeExtraSmall
+            font.pixelSize: Theme.fontSizeSmall
             color: Theme.highlightColor
             horizontalAlignment: "AlignHCenter"
             verticalAlignment: "AlignVCenter"
+
         }
-             Label {
+
+        Label {
             font.family: localFont.name
             id:windLabel
             topPadding: 4
             width: parent.width
             wrapMode: Text.WordWrap
-            font.pixelSize: Theme.fontSizeExtraSmall
+            font.pixelSize: Theme.fontSizeSmall
             color: Theme.highlightColor
             horizontalAlignment: "AlignHCenter"
             verticalAlignment: "AlignVCenter"
+        }
+
+        SectionHeader{
+            text: qsTr("Stored Locations")
+            font.pixelSize: Theme.fontSizeLarge
         }
 
             Component.onCompleted:reload()

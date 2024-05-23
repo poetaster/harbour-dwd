@@ -32,7 +32,7 @@ Page {
     property string headerDate // used to go to the next day
     property var weather
     property var now
-    property bool debug:true
+    property bool debug: true
     property var locale: Qt.locale()
 
     //onWeatherChanged: updateWeatherModel();
@@ -61,6 +61,26 @@ Page {
                    model4.append(response.weather[i]);
                    break
                }
+               case 5 :  {
+                   model5.append(response.weather[i]);
+                   break
+               }
+               case 6 :  {
+                   model6.append(response.weather[i]);
+                   break
+               }
+               case 7 :  {
+                   model7.append(response.weather[i]);
+                   break
+               }
+               case 8 :  {
+                   model8.append(response.weather[i]);
+                   break
+               }
+               case 9 :  {
+                   model9.append(response.weather[i]);
+                   break
+               }
                default : if (debug) console.log("none")
 
             }
@@ -74,6 +94,11 @@ Page {
         model2.clear()
         model3.clear()
         model4.clear()
+        model5.clear()
+        model6.clear()
+        model7.clear()
+        model8.clear()
+        model9.clear()
 
         debug = false;
 
@@ -90,11 +115,11 @@ Page {
         var dYear = now.getFullYear() ;
 
         //headerDate = now.toLocaleString().split(dYear)[0];
-        var headerDay = Locs.addDays(now, 4).toLocaleString(locale, "dd");
-        headerDate = now.toLocaleString(locale, "MMM dd - ") + headerDay;
+        var headerDay = Locs.addDays(now, 9).toLocaleString(locale, "MM/dd");
+        headerDate = now.toLocaleString(locale, "MM/dd - ") + headerDay;
 
         weather = new Array;
-        for (var j = 0; j < 5; j++) {
+        for (var j = 0; j < 10; j++) {
 
             var dDate = Locs.addDays(now,j).toISOString().replace(/T.*/,'') ;
             //var uri = "https://api.brightsky.dev/weather?tz="+tzname+"&lat=" + lat + "&lon=" + lon + "&date=" + dDate + "&max_dist=5000";
@@ -121,7 +146,7 @@ Page {
                 // restart the timer. gives us enough time to
                 // get all the results since ORDER is not garanteed
 
-                if( index < 4) getTimer.restart();
+                if( index > 8) getTimer.restart();
                 if (debug) console.debug(JSON.stringify(weather[index]));
             });
         }
@@ -133,14 +158,14 @@ Page {
         listModel.clear();
 
         var modelComplete = true;
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 10; i++) {
 
             if (weather[i] === ""){
                 if (debug) console.debug(JSON.stringify('weather: ' + i));
                 modelComplete = false;
             }
         }
-        for (var j = 0; j < 5; j++) {
+        for (var j = 0; j < 10; j++) {
             if (modelComplete === true){
                 listModel.append(weather[j]);
             }
@@ -190,6 +215,7 @@ Page {
         quickScroll: true
 
         PullDownMenu {
+            /*
             MenuItem {
                 text: qsTr("About")
                 onClicked: {
@@ -208,6 +234,7 @@ Page {
                     pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
                 }
             }
+            */
             MenuItem {
                 text: qsTr("Refresh")
                 onClicked: {
@@ -246,7 +273,7 @@ Page {
             VerticalScrollDecorator {flickable: listView}
         }
 
-
+        /*
         PushUpMenu {
             MenuItem {
                 text: qsTr("Next")
@@ -257,19 +284,10 @@ Page {
                     dailyDate = now.toLocaleString();
                     page.reload();
 
-                    /*
-                    pageStack.push(Qt.resolvedUrl("OverviewPage.qml"), {
-                                       "name":name,
-                                       "lat":lat,
-                                       "lon":lon,
-                                       "now":now
-                                   });
-                                   */
-
-
                 }
             }
         }
+        */
 
     }
 }

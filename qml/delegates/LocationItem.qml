@@ -28,6 +28,7 @@ ListItem {
     */
     onClicked: {
         Store.setCoverLocation(model.location_id);
+        reload();
         pageStack.animatorPush(Qt.resolvedUrl("../pages/OverviewPage.qml"), {
                            "name":name,
                            "lat":lat,
@@ -55,5 +56,6 @@ ListItem {
         text: model.name
         truncationMode: TruncationMode.Fade
         font.capitalization: Font.Capitalize
+        font.pixelSize: Theme.fontSizeExtraLarge
     }
 }

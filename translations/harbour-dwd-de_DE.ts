@@ -129,27 +129,27 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="194"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="219"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="200"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="225"/>
         <source>GPS Locations</source>
         <translation type="unfinished">GPS Orte hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="206"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="231"/>
         <source>Add Locations</source>
         <translation type="unfinished">Ort hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="212"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="237"/>
         <source>Refresh</source>
         <translation>Neu Laden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="252"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="277"/>
         <source>Next</source>
         <translation>Weiter</translation>
     </message>
@@ -157,7 +157,7 @@
 <context>
     <name>StartPage</name>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="154"/>
+        <location filename="../qml/pages/StartPage.qml" line="274"/>
         <source>Stored Locations</source>
         <translation>Gespeicherte Orte</translation>
     </message>
@@ -165,6 +165,11 @@
         <location filename="../qml/pages/StartPage.qml" line="160"/>
         <source>About</source>
         <translation>Über</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StartPage.qml" line="154"/>
+        <source>Current Conditions</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/StartPage.qml" line="166"/>
