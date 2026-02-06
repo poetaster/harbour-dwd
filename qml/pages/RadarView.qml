@@ -29,12 +29,13 @@ import "../delegates"
 
 
 Page {
-    property bool debug: false
+    property bool debug: true
     property string lat
     property string lon
     property string dailyDate
     property string name
     property string rurl
+    property string location
 
     onStatusChanged: {
 
@@ -88,7 +89,8 @@ Page {
                 WebEngineSettings.setPreference("security.fileuri.strict_origin_policy", false, WebEngineSettings.BoolPref)
             }
 
-            url: Qt.resolvedUrl("../html/rainviewer-api.html")
+            //url: Qt.resolvedUrl("../html/meteo.html")
+            url: Qt.resolvedUrl("https://widgets.meteox.com/de-DE/widgets/radar/location/"+ location + "/rain?z=8")
 
             onViewInitialized: {
                 webview.loadFrameScript(Qt.resolvedUrl("../html/framescript.js"));
@@ -110,11 +112,10 @@ Page {
                     break
                 case "webview:action":
                     if ( data.topic != lon ) {
-                        webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
+                        //webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
                         if (debug) console.debug(data.topic)
-                        if (debug) console.debug(data.also)
-                        if (debug) console.debug(data.src)
                     }
+
                     break
                 }
             }

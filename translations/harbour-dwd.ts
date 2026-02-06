@@ -52,17 +52,17 @@
 <context>
     <name>DailyDetails</name>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="211"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="223"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="218"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="230"/>
         <source>Rain Radar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="226"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="239"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
@@ -129,12 +129,12 @@
 <context>
     <name>OverviewPage</name>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="240"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="251"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/OverviewPage.qml" line="246"/>
+        <location filename="../qml/pages/OverviewPage.qml" line="257"/>
         <source>Rain Radar</source>
         <translation type="unfinished"></translation>
     </message>

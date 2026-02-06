@@ -32,6 +32,7 @@ DISTFILES += \
     qml/js/stations.json \
     qml/js/locales.js \
     qml/html/rainviewer-api.html \
+    qml/html/meteo.html \
     qml/html/leaflet.js \
     qml/html/leaflet.css \
     qml/html/framescript.js \

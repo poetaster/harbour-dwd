@@ -14,7 +14,7 @@ Name:       harbour-dwd
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 
 Summary:    German Weather Service client
-Version:    0.9.8
+Version:    0.9.9
 Release:    1
 Group:      Applications/Internet
 License:    GPLv3

@@ -163,6 +163,18 @@ Page {
 
     }
 
+    function getLocationId (name) {
+        var uri = "https://geosearch.meteoplaza.com/v3/weerplaza/search?lang=en&search=" + name +"&limit=1"
+        console.log(uri)
+        Locs.httpRequest(uri, function(doc) {
+                var response = JSON.parse(doc.responseText);
+                var locationId  = response[0].location_id
+                if (locationId !== "") {
+                 pageStack.push(Qt.resolvedUrl("RadarView.qml"), { "name": name, "location": locationId, "lat": lat, "lon": lon, "dailyDate": dailyDate   });
+                }
+
+        });
+    }
     allowedOrientations: Orientation.Portrait
 
     ListModel {
@@ -217,7 +229,8 @@ Page {
             MenuItem {
                 text: qsTr("Rain Radar")
                 onClicked: {
-                    pageStack.push(Qt.resolvedUrl("RadarView.qml"), { "name": name, "lat": lat, "lon": lon, "dailyDate": dailyDate   });
+                    getLocationId(name)
+                    //pageStack.push(Qt.resolvedUrl("RadarView.qml"), { "name": name, "lat": lat, "lon": lon, "dailyDate": dailyDate   });
                 }
             }
         }
