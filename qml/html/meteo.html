@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>RainViewer API Example</title>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="leaflet.css" rel="stylesheet">
+    <script type="text/javascript">
+
+    var latitude 
+    var longitude
+
+    function lat(latitude) {
+        var output = document.getElementById('output');
+        output.textcontent = latitude
+        var latitude = latitude;
+    }
+    function lon(longitude) {
+        var output = document.getElementById('output');
+        output.textcontent = longitude
+        longitude = longitude;
+    }
+    function getLoc() {
+        var customEvent = new CustomEvent("framescript:action",
+            { detail: { topic: longitude, also: latitude } } );
+        document.dispatchEvent(customEvent);
+    }
+
+    function latlon(lat,lon) {
+        var output = document.getElementById('output');
+        //output.textContent = lat + " " + lon;
+        latitude = lat;
+        longitude = lon;
+        //map.panTo([lat, lon]);
+        map.panTo([latitude, longitude]);
+        getLoc();
+    }
+
+    </script>
+    <script src="leaflet.js"></script>
+    <style type="text/css">
+        li {
+            list-style: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="">
+
+
+<iframe
+sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox"
+src="https://widgets.meteox.com/en-GB/widgets/radar/location/6573/rain"
+style="width:100%!important;max-width:600px!important;max-height:600px!important;height:100%!important;padding:0px;border:none!important;box-sizing:border-box!important;" scrolling="no" frameborder="0">
+</iframe>
+
+</body>
+</html>
