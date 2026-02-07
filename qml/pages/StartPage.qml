@@ -113,22 +113,22 @@ Page {
                     if (debug ) console.debug(JSON.stringify(now.getHours()));
                     if (debug ) console.debug(JSON.stringify(i));
 
-                    var rain =  response.weather[index].precipitation
+                    var rain =  Locs.localNum(response.weather[index].precipitation)
                     var rain_prob =  response.weather[index].precipitation_probability
-                    rainLabel.text =  "\uf084  "  + response.weather[index].precipitation + " mm";
+                    rainLabel.text =  "\uf084  "  + Locs.localNum(response.weather[index].precipitation) + " mm";
                     //rainLabel.text = response.weather[index].precipitation_probability + "% \uf084  "  + response.weather[index].precipitation + " mm";
                     var cloud =  response.weather[index].cloud_cover;
                     cloudLabel.text =  "\uf041  " + response.weather[index].cloud_cover + " %";
 
-                    var temp =  response.weather[index].temperature;
-                    tempLabel.text =  response.weather[index].temperature + " °C" ;
+                    var temp =  Locs.localNum(response.weather[index].temperature);
+                    tempLabel.text =  Locs.localNum(response.weather[index].temperature) + " °C" ;
 
                     var cond =  response.weather[index].condition ;
                     var icon =  Locs.mapIcon(response.weather[index].icon,hourly.rain,response.weather[index].condition) ;
                     iconLabel.text =  Locs.mapIcon(response.weather[index].icon,rain,response.weather[index].condition) ;
 
-                    var wind  = response.weather[index].wind_speed;
-                    windLabel.text  = "\uf050  " + response.weather[i].wind_speed;
+                    var wind  = Locs.localNum(response.weather[index].wind_speed);
+                    windLabel.text  = "\uf050  " + Locs.localNum(response.weather[i].wind_speed) + " km/h";
                     hourly={temp:temp , cond: cond, icon: icon,  rain: rain, cloud:cloud, wind:wind };
 
                     if (debug) console.debug(JSON.stringify(hourly));
@@ -270,34 +270,36 @@ Page {
             verticalAlignment: "AlignVCenter"
         }
 
+
+            //Component.onCompleted:reload()
+
+        }
         SectionHeader{
+            id:listHeader
+            anchors.top: column.bottom
             text: qsTr("Stored Locations")
             font.pixelSize: Theme.fontSizeLarge
         }
-
+        SilicaListView {
+            anchors.top: listHeader.bottom
             Component.onCompleted:reload()
-            SilicaListView {
-                id:listView
-                height: contentItem.childrenRect.height
-                width: parent.width - 2*x
+            id:listView
+            height: contentItem.childrenRect.height - 150
+            width: parent.width - 2*x
 
-                //spacing: Theme.paddingSmall
-                model:   ListModel {
-                    id: listModel
-                    function update() {
-                        fetchCities()
-                    }
-                    Component.onCompleted:update()
+            //spacing: Theme.paddingSmall
+            model:   ListModel {
+                id: listModel
+                function update() {
+                    fetchCities()
                 }
-                delegate: LocationItem {
-                    id:locations
-                }
-                spacing: 2
-                VerticalScrollDecorator { flickable: listview}
+                Component.onCompleted:update()
             }
-
-
-
+            delegate: LocationItem {
+                id:locations
+            }
+            spacing: 2
+            VerticalScrollDecorator { flickable: listView}
         }
     }
 }
