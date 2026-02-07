@@ -142,7 +142,7 @@
 <context>
     <name>StartPage</name>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="274"/>
+        <location filename="../qml/pages/StartPage.qml" line="280"/>
         <source>Stored Locations</source>
         <translation type="unfinished"></translation>
     </message>

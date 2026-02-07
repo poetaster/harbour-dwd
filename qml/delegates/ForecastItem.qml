@@ -1,4 +1,4 @@
-import QtQuick 2.2
+import QtQuick 2.6
 import Sailfish.Silica 1.0
 import "../js/locations.js" as Locs
 
@@ -40,7 +40,7 @@ ListItem {
                 Label {
                     id:low
                     width: parent.width
-                    text: model.temperatureLow + " °C " + " / " + model.temperatureHigh + " °C"
+                    text: model.temperatureLow + " °C " + " / " + Locs.localNum(model.temperatureHigh) + " °C"
                     font.pixelSize: Theme.fontSizeMedium
                     color: Theme.highlightColor
                 }
@@ -92,7 +92,7 @@ ListItem {
                     //color: Theme.highlightColor
                 }
                 Label {
-                    text: model.likelyRain + " % \uf084 " + model.totalRain + " mm"
+                    text: model.likelyRain + " % \uf084 " + Locs.localNum(model.totalRain) + " mm"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
@@ -100,7 +100,7 @@ ListItem {
                 }
                 Label {
                     bottomPadding: 4
-                    text: model.wind_speed + " km/h \uf050" //+ model.wind_direction + " °"
+                    text: Locs.localNum(model.wind_speed) + " km/h \uf050" //+ model.wind_direction + " °"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall

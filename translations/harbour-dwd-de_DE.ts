@@ -142,7 +142,7 @@
 <context>
     <name>StartPage</name>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="274"/>
+        <location filename="../qml/pages/StartPage.qml" line="280"/>
         <source>Stored Locations</source>
         <translation>Gespeicherte Orte</translation>
     </message>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../qml/pages/StartPage.qml" line="180"/>
         <source>Refresh</source>
-        <translation>Neu Laden</translation>
+        <translation type="unfinished">Neu Laden</translation>
     </message>
 </context>
 </TS>

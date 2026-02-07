@@ -25,6 +25,10 @@
                         showRequestInfo(doc.getResponseHeader ("Last-Modified"));
 */
 
+function localNum (number) {
+    return Number(number).toLocaleString(Qt.locale())
+}
+
 function httpRequest(url, callback) {
     var doc = new XMLHttpRequest();
     doc.onreadystatechange = function() {

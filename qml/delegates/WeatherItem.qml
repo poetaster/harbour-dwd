@@ -67,7 +67,7 @@ ListItem {
                 }
                 Label
                 {
-                    text: model.temperature + " °C"
+                    text: Locs.localNum(model.temperature) + " °C"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeMedium
@@ -129,8 +129,7 @@ ListItem {
                     //color: Theme.highlightColor
                 }
                 Label {
-                    //text: model.cloud_cover + "% \uf013  " +parseFloat(model.precipitation) + " mm \uf084 "
-                    text: model.precipitation_probability + "% \uf084 " + parseFloat(model.precipitation) + " mm"
+                    text: model.precipitation_probability + "% \uf084 " + Locs.localNum(parseFloat(model.precipitation)) + " mm"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
@@ -138,7 +137,7 @@ ListItem {
                     //color: Theme.primaryColor
                 }
                 Text {
-                    text: model.wind_speed + " km/h \uf050 " + model.wind_direction + " °"
+                    text: Locs.localNum(model.wind_speed) + " km/h \uf050 " + model.wind_direction + " °"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall
