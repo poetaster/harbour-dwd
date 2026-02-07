@@ -273,14 +273,11 @@ Page {
             topMargin: 200
             //x: Theme.horizontalPageMargin
             width: parent.width
-            height: contentItem.childrenRect.heigh
+            height: contentItem.childrenRect.height / 2
             id: listView
             model:   ListModel {
                 id: listModel
-                function update() {
-                    page.reload()
-                }
-                Component.onCompleted:update()
+                Component.onCompleted:page.reload()
             }
             delegate: ForecastItem {
                 id:delegate
