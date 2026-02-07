@@ -25,13 +25,13 @@
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="84"/>
-        <source> © 2021-2024 Mark Washeim</source>
-        <translation type="unfinished"> © 2021 Mark Washeim {2021-2022 ?} {2021-2023 ?} {2021-2024 ?}</translation>
+        <source> © 2021-2026 Mark Washeim</source>
+        <translation type="unfinished"> © 2021 Mark Washeim {2021-2022 ?} {2021-2023 ?} {2021-2026 ?}</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="114"/>
         <source>Icons by Erik Flowers</source>
-        <translation type="unfinished">Icons von Erik Flowers</translation>
+        <translation type="unfinished">Wettersymbole von Erik Flowers</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="131"/>
@@ -46,7 +46,7 @@
     <message>
         <location filename="../qml/pages/About.qml" line="99"/>
         <source>GNU General Public License v3.</source>
-        <translation>GNU General Public License v3.</translation>
+        <translation>GNU Generell Publizierte Lizenz v3.</translation>
     </message>
 </context>
 <context>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../qml/pages/DailyDetails.qml" line="223"/>
         <source>Refresh</source>
-        <translation>Neueste Daten laden<</translation>
+        <translation>Daten aktualisieren<</translation>
     </message>
     <message>
         <location filename="../qml/pages/DailyDetails.qml" line="230"/>
@@ -113,7 +113,7 @@
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="231"/>
         <source> meters</source>
-        <translation type="unfinished"> meter</translation>
+        <translation type="unfinished"> Meter</translation>
     </message>
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="283"/>
@@ -131,7 +131,7 @@
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="251"/>
         <source>Refresh</source>
-        <translation>Neueste Daten laden</translation>
+        <translation>Daten aktualisieren</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="257"/>
@@ -154,7 +154,7 @@
     <message>
         <location filename="../qml/pages/StartPage.qml" line="154"/>
         <source>Current Conditions</source>
-        <translation>Aktuelle Lage</translation>
+        <translation>Aktuelle Bedingungen</translation>
     </message>
     <message>
         <location filename="../qml/pages/StartPage.qml" line="166"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../qml/pages/StartPage.qml" line="180"/>
         <source>Refresh</source>
-        <translation type="unfinished">Neueste Daten laden</translation>
+        <translation type="unfinished">Daten aktualisieren</translation>
     </message>
 </context>
 </TS>
