@@ -28,7 +28,8 @@ ListItem {
     */
     onClicked: {
         Store.setCoverLocation(model.location_id);
-        reload();
+        //reload();
+        modelStateConnector.changedLocation()
         pageStack.animatorPush(Qt.resolvedUrl("../pages/OverviewPage.qml"), {
                            "name":name,
                            "lat":lat,

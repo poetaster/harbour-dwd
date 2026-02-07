@@ -294,9 +294,6 @@ Page {
             model:   ListModel {
                 id: listModel
                onModelReset:  fetchCities()
-                function update() {
-                    fetchCities()
-                }
 
             }
             delegate: LocationItem {

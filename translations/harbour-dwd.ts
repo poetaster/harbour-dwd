@@ -70,7 +70,7 @@
 <context>
     <name>LocationItem</name>
     <message>
-        <location filename="../qml/delegates/LocationItem.qml" line="46"/>
+        <location filename="../qml/delegates/LocationItem.qml" line="47"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>

@@ -21,7 +21,13 @@ CoverBackground {
     property string lon
     property var hourly
 
-
+    Connections {
+        target:modelStateConnector
+        onChangedLocation: {
+            reload();
+            if (debug) console.log("changed")
+        }
+    }
 
 
     function reload(){

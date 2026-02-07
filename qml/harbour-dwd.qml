@@ -55,6 +55,10 @@ ApplicationWindow
     ListModel{
         id: model9
     }
+    QtObject {
+        id: modelStateConnector
+        signal changedLocation()
+    }
     initialPage: Component { StartPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 
