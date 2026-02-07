@@ -6,22 +6,22 @@
     <message>
         <location filename="../qml/pages/About.qml" line="16"/>
         <source>About the DWD client</source>
-        <translation>Über den DWD client</translation>
+        <translation>Über den DWD-client</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="45"/>
         <source>A simple consumer of the</source>
-        <translation>Ein einfacher Konsument des</translation>
+        <translation>Ein Konsument der brightsky.dev</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="59"/>
         <source>of the </source>
-        <translation type="unfinished">vom </translation>
+        <translation type="unfinished">Ansicht des </translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="59"/>
         <source>German Weather Service</source>
-        <translation type="unfinished"></translation>
+        <translation>Deutschen Wetterdienstes</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="84"/>
@@ -30,8 +30,8 @@
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="114"/>
-        <source>Icons by </source>
-        <translation type="unfinished">Icons von </translation>
+        <source>Icons by Erik Flowers</source>
+        <translation type="unfinished">Icons von Erik Flowers</translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="131"/>
@@ -54,12 +54,12 @@
     <message>
         <location filename="../qml/pages/DailyDetails.qml" line="223"/>
         <source>Refresh</source>
-        <translation>Neu Laden</translation>
+        <translation>Neueste Daten laden<</translation>
     </message>
     <message>
         <location filename="../qml/pages/DailyDetails.qml" line="230"/>
         <source>Rain Radar</source>
-        <translation type="unfinished">Regenradar</translation>
+        <translation type="unfinished">Regen-Radar</translation>
     </message>
     <message>
         <location filename="../qml/pages/DailyDetails.qml" line="239"/>
@@ -93,7 +93,7 @@
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="168"/>
         <source>Position (GPS) Locations</source>
-        <translation type="unfinished">GPS Ort hinzufügen</translation>
+        <translation type="unfinished">GPS-Ort hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="173"/>
@@ -131,12 +131,12 @@
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="251"/>
         <source>Refresh</source>
-        <translation>Neu Laden</translation>
+        <translation>Neueste Daten laden</translation>
     </message>
     <message>
         <location filename="../qml/pages/OverviewPage.qml" line="257"/>
         <source>Rain Radar</source>
-        <translation type="unfinished">Regenradar</translation>
+        <translation type="unfinished">Regen-Radar</translation>
     </message>
 </context>
 <context>
@@ -154,12 +154,12 @@
     <message>
         <location filename="../qml/pages/StartPage.qml" line="154"/>
         <source>Current Conditions</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuelle Lage</translation>
     </message>
     <message>
         <location filename="../qml/pages/StartPage.qml" line="166"/>
         <source>GPS Locations</source>
-        <translation type="unfinished">GPS Orte hinzufügen</translation>
+        <translation type="unfinished">GPS-Orte hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/pages/StartPage.qml" line="172"/>
@@ -169,7 +169,7 @@
     <message>
         <location filename="../qml/pages/StartPage.qml" line="180"/>
         <source>Refresh</source>
-        <translation type="unfinished">Neu Laden</translation>
+        <translation type="unfinished">Neueste Daten laden</translation>
     </message>
 </context>
 </TS>

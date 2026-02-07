@@ -142,6 +142,7 @@ Page {
         if (PageStatus.Activating) {
             if (debug) console.debug(listModel.count)
              fetchCities();
+
         }
        }
 
@@ -271,7 +272,7 @@ Page {
         }
 
 
-            //Component.onCompleted:reload()
+       Component.onCompleted:reload()
 
         }
         SectionHeader{
@@ -282,18 +283,21 @@ Page {
         }
         SilicaListView {
             anchors.top: listHeader.bottom
-            Component.onCompleted:reload()
+            anchors.bottom: parent.bottom
+            //Component.onCompleted:reload()
             id:listView
-            height: contentItem.childrenRect.height - 150
+            //anchors.fill: parent
+            height: contentItem.childrenRect.height / 2
             width: parent.width - 2*x
 
             //spacing: Theme.paddingSmall
             model:   ListModel {
                 id: listModel
+               onModelReset:  fetchCities()
                 function update() {
                     fetchCities()
                 }
-                Component.onCompleted:update()
+
             }
             delegate: LocationItem {
                 id:locations

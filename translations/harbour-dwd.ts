@@ -142,32 +142,32 @@
 <context>
     <name>StartPage</name>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="280"/>
+        <location filename="../qml/pages/StartPage.qml" line="281"/>
         <source>Stored Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="160"/>
+        <location filename="../qml/pages/StartPage.qml" line="161"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="154"/>
+        <location filename="../qml/pages/StartPage.qml" line="155"/>
         <source>Current Conditions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="166"/>
+        <location filename="../qml/pages/StartPage.qml" line="167"/>
         <source>GPS Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="172"/>
+        <location filename="../qml/pages/StartPage.qml" line="173"/>
         <source>Add Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="180"/>
+        <location filename="../qml/pages/StartPage.qml" line="181"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>

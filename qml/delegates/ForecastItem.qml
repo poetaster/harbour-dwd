@@ -40,7 +40,7 @@ ListItem {
                 Label {
                     id:low
                     width: parent.width
-                    text: model.temperatureLow + " °C " + " / " + Locs.localNum(model.temperatureHigh) + " °C"
+                    text: Locs.localNum(model.temperatureLow) + " °C " + " / " + Locs.localNum(model.temperatureHigh) + " °C"
                     font.pixelSize: Theme.fontSizeMedium
                     color: Theme.highlightColor
                 }

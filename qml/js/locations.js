@@ -158,7 +158,7 @@ function dailyTotal(weather, key) {
              total += weather[i][key];
     }
     //console.debug(parseFloat(total).toPrecision(2))
-    return parseFloat(total).toPrecision(2);
+    return parseFloat(total).toPrecision(1);
 }
 
 function dailyAvg(weather, key) {
