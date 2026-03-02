@@ -36,7 +36,8 @@ Page {
     property var name
 
     id: managePage
-    allowedOrientations: Orientation.All
+
+    allowedOrientations: Orientation.Portrait
 
     Component.onCompleted: {
         //fetchStoredCities();

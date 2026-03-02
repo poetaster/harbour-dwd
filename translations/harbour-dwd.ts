@@ -4,11 +4,6 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="../qml/pages/About.qml" line="16"/>
-        <source>About the DWD client</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/About.qml" line="45"/>
         <source>A simple consumer of the</source>
         <translation type="unfinished"></translation>
@@ -21,11 +16,6 @@
     <message>
         <location filename="../qml/pages/About.qml" line="59"/>
         <source>German Weather Service</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/About.qml" line="84"/>
-        <source> © 2021-2024 Mark Washeim</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -44,6 +34,16 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/About.qml" line="16"/>
+        <source>About the DWD client, 1.0.1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="84"/>
+        <source> © 2021-2026 Mark Washeim</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/About.qml" line="99"/>
         <source>GNU General Public License v3.</source>
         <translation type="unfinished"></translation>
@@ -52,17 +52,17 @@
 <context>
     <name>DailyDetails</name>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="223"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="224"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="230"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="231"/>
         <source>Rain Radar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="239"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="240"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>
@@ -91,37 +91,37 @@
 <context>
     <name>ManageLocations</name>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="168"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="169"/>
         <source>Position (GPS) Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="173"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="174"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="179"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="180"/>
         <source>Add Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="185"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="186"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="231"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="232"/>
         <source> meters</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="283"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="284"/>
         <source>Timeout occurred!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ManageLocations.qml" line="287"/>
+        <location filename="../qml/pages/ManageLocations.qml" line="288"/>
         <source>Retrieving update...</source>
         <translation type="unfinished"></translation>
     </message>

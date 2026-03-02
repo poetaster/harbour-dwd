@@ -4,7 +4,7 @@ import Sailfish.Silica 1.0
 Page {
     objectName: "AboutPage"
 
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
 
     Column {
         anchors.left: parent.left
@@ -13,7 +13,7 @@ Page {
         anchors.rightMargin: Theme.paddingMedium
 
         PageHeader {
-            title: qsTr("About the DWD client")
+            title: qsTr("About the DWD client, 1.0.1")
         }
 
         Item {
@@ -81,7 +81,7 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.secondaryColor
-            text:  qsTr(" © 2021-2024 Mark Washeim")
+            text:  qsTr(" © 2021-2026 Mark Washeim")
         }
 
         Item {

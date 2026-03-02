@@ -43,6 +43,8 @@ Page {
     property var tindex
     property var oindex
 
+    allowedOrientations: Orientation.All
+
     function updateModel(index){
 
         console.log("func index: " + index)
@@ -175,7 +177,6 @@ Page {
 
         });
     }
-    allowedOrientations: Orientation.Portrait
 
     ListModel {
         id: listModel

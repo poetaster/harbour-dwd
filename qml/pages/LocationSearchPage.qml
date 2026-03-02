@@ -29,7 +29,7 @@ Page {
     property var debug;
 
     id: searchPage
-    allowedOrientations: Orientation.All
+    allowedOrientations: Orientation.Portrait
 
     Component.onCompleted: {
         searchField.forceActiveFocus();
