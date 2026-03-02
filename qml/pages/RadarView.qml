@@ -89,8 +89,8 @@ Page {
                 WebEngineSettings.setPreference("security.fileuri.strict_origin_policy", false, WebEngineSettings.BoolPref)
             }
 
-            //url: Qt.resolvedUrl("../html/meteo.html")
-            url: Qt.resolvedUrl("https://widgets.meteox.com/de-DE/widgets/radar/location/"+ location + "/rain?z=8")
+            url: Qt.resolvedUrl("../html/rainviewer-api.html")
+            //url: Qt.resolvedUrl("https://widgets.meteox.com/de-DE/widgets/radar/location/"+ location + "/rain?z=8")
 
             onViewInitialized: {
                 webview.loadFrameScript(Qt.resolvedUrl("../html/framescript.js"));
