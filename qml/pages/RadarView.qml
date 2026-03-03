@@ -89,8 +89,7 @@ Page {
                 WebEngineSettings.setPreference("security.fileuri.strict_origin_policy", false, WebEngineSettings.BoolPref)
             }
 
-            url: Qt.resolvedUrl("../html/rainviewer-api.html")
-            //url: Qt.resolvedUrl("https://widgets.meteox.com/de-DE/widgets/radar/location/"+ location + "/rain?z=8")
+            url: Qt.resolvedUrl("../html/rainviewer.html")
 
             onViewInitialized: {
                 webview.loadFrameScript(Qt.resolvedUrl("../html/framescript.js"));
@@ -112,7 +111,7 @@ Page {
                     break
                 case "webview:action":
                     if ( data.topic != lon ) {
-                        //webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
+                        webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
                         if (debug) console.debug(data.topic)
                     }
 

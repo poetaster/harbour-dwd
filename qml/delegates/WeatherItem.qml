@@ -91,30 +91,6 @@ ListItem {
                     verticalAlignment: "AlignVCenter"
                 }
 
-                /*Image {
-                    id: weatherImage
-                    width:120
-                    height:120
-                    x: Theme.horizontalPageMargin
-                    source:
-                        if ( model.icon === "cloudy" && parseFloat(model.precipitation) > 0.2 ) {
-                            return "../png/showers.svg.png";
-                        } else if ( model.icon === "partly-cloudy-day" && parseFloat(model.precipitation) > 0.2 ) {
-                            return "../png/partly-cloudy-day-showers.svg.png";
-                        } else {
-                            return "../png/"+ model.icon + ".svg.png";
-                        }
-
-                    //source: "image://theme/icon-m-right?" + Theme.highlightColor
-                }*/
-
-                /*Label {
-                    text: model.cloud_cover + "% cloud  " + model.precipitation + " mm"
-                    width: parent.width
-                    wrapMode: Text.WordWrap
-                    font.pixelSize: Theme.fontSizeExtraSmall
-                    color: Theme.highlightColor
-                }*/
             }
             Column {
                 id: column3

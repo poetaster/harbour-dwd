@@ -44,15 +44,6 @@ ListItem {
                     font.pixelSize: Theme.fontSizeMedium
                     color: Theme.highlightColor
                 }
-                /*Label {
-                id:high
-                //x:low.width + 2
-                width: parent.width
-                text: model.temperatureHigh + " °C"
-                font.pixelSize: Theme.fontSizeMedium
-                color: Theme.primaryColor
-            }*/
-
             }
             Column {
                 id: column2

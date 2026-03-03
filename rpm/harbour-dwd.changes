@@ -1,6 +1,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Tue Mar 3 2026 Mark Washeim <blueprint@poetaster.de> 1.0.2
+- rebuild the rainviwer page.
+- correct precision of floats.
+
 * Thu May 23 2024 Mark Washeim <blueprint@poetaster.de> 0.9.8
 - rebuild the GPS page, text and button position.
 

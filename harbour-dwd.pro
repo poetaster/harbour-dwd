@@ -16,6 +16,7 @@ CONFIG += sailfishapp_qml
 
 DISTFILES += \
     qml/cover/CoverPage.qml \
+    qml/html/rainviewer.html \
     qml/pages/About.qml \
     qml/pages/RadarViewQml.qml \
     qml/pages/StartPage.qml \
@@ -31,7 +32,7 @@ DISTFILES += \
     qml/js/storage.js \
     qml/js/stations.json \
     qml/js/locales.js \
-    qml/html/rainviewer-api.html \
+    qml/html/rainviewer.html \
     qml/html/meteo.html \
     qml/html/leaflet.js \
     qml/html/leaflet.css \

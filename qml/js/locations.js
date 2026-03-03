@@ -26,7 +26,7 @@
 */
 
 function localNum (number) {
-    return Number(number).toLocaleString(Qt.locale())
+    return Number(number).toLocaleString(Qt.locale(), 'f', 1)
 }
 
 function httpRequest(url, callback) {
@@ -158,7 +158,7 @@ function dailyTotal(weather, key) {
              total += weather[i][key];
     }
     //console.debug(parseFloat(total).toPrecision(2))
-    return parseFloat(total).toPrecision(1);
+    return total; //parseFloat(total).toPrecision(1);
 }
 
 function dailyAvg(weather, key) {
