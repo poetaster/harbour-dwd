@@ -35,7 +35,7 @@
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="16"/>
-        <source>About the DWD client, 1.0.1</source>
+        <source>About DWD client</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -29,7 +29,7 @@ import "../delegates"
 
 
 Page {
-    property bool debug: true
+    property bool debug: false
     property string lat
     property string lon
     property string dailyDate
@@ -80,6 +80,7 @@ Page {
 
     SilicaFlickable {
         anchors.fill: parent
+
         WebView {
             id: webview
             anchors.fill: parent
@@ -97,7 +98,7 @@ Page {
             }
 
             on_PageOrientationChanged: {
-                if ( data.topic != lon ) {
+                if ( data.topic !== lon ) {
                         webview.runJavaScript("return latlon('" + lat + "','" + lon + "')");
                 }
 

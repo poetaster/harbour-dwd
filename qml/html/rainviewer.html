@@ -37,7 +37,7 @@
             getLoc();
         }
 
-        </script>
+    </script>
     <style>
         body { margin: 0; font-family: sans-serif; }
         .controls {
@@ -238,6 +238,10 @@ function showFrame(position) {
 
 // === INITIALIZATION ===
 function initialize(api) {
+    // blueprint
+    delete window.document.referrer;
+    window.document.__defineGetter__('referrer', function () { return "poetaster.de"; });
+    // blueprint
     clearLayerCache();
     currentLayer = null;
     mapFrames = [];

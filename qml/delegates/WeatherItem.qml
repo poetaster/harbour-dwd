@@ -98,7 +98,7 @@ ListItem {
                 spacing: Theme.paddingMedium
                 Label {
                     topPadding: 8
-                    text:model.cloud_cover + "% \uf013  " +  model.pressure_msl + " hPa"
+                    text: model.cloud_cover + "% \uf013  " +  Locs.localNum(model.pressure_msl) + " hPa"
                     width: parent.width
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeExtraSmall

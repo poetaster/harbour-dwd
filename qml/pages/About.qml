@@ -13,7 +13,7 @@ Page {
         anchors.rightMargin: Theme.paddingMedium
 
         PageHeader {
-            title: qsTr("About DWD client, 1.0.2")
+            title: qsTr("About DWD client")
         }
 
         Item {
