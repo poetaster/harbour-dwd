@@ -81,6 +81,18 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.secondaryColor
+            text:  qsTr(" Version:  1.0.4")
+        }
+        Item {
+            width: parent.width
+            height: Theme.paddingLarge
+        }
+
+        Label {
+            width: parent.width
+            horizontalAlignment: Text.AlignHCenter
+            font.pixelSize: Theme.fontSizeExtraSmall
+            color: Theme.secondaryColor
             text:  qsTr(" © 2021-2026 Mark Washeim")
         }
 

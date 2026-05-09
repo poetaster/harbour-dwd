@@ -261,19 +261,19 @@ Page {
                 }
             }
         }
-        PageHeader {
-                id: vDate
-                //title: name + " : " + now.toLocaleString().split(now.getFullYear())[0].slice(0,-1)
-                title: name + " : " + headerDate
-        }
 
         SilicaListView {
             anchors.fill: parent
             //anchors.top: vDate.bottom
-            topMargin: 200
+            //topMargin: 300
             //x: Theme.horizontalPageMargin
             width: parent.width
             height: contentItem.childrenRect.height / 2
+
+            header: PageHeader {
+                id: vDate
+                title: name + ": \n" + now.toLocaleString().split(now.getFullYear())[0].slice(0,-2)
+            }
             id: listView
             model:   ListModel {
                 id: listModel
