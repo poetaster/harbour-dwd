@@ -45,7 +45,7 @@ Page {
     property string dDay
     property string dMonth
     property string dYear
-    property bool debug: false
+    property bool debug: true
 
     allowedOrientations: Orientation.Portrait
     anchors.fill: parent
@@ -71,6 +71,12 @@ Page {
             pageStack.push(Qt.resolvedUrl("LocationSearchPage.qml"),{});
         }
         now = new Date();
+    }
+    function updateIndex() {
+        debug = true;
+        for (var i = 0; i < listModel.count; i++) {
+           Store.updateCindex(listModel.get(i).name, i)
+        }
     }
 
     function reload(){
@@ -294,6 +300,7 @@ Page {
             model:   ListModel {
                 id: listModel
                onModelReset:  fetchCities()
+               onRowsMoved: updateIndex()
 
             }
             delegate: LocationItem {

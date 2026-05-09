@@ -12,7 +12,7 @@ ListItem {
     function remove() {
         //root.deletingItems = true
         remorseDelete(function() {
-            Store.delCoverLocation(model.location_id);
+            //Store.delCoverLocation(model.location_id);
             Store.removeLocation(model.location_id);
             fetchCities();
         })
@@ -57,6 +57,28 @@ ListItem {
         text: model.name
         truncationMode: TruncationMode.Fade
         font.capitalization: Font.Capitalize
-        font.pixelSize: Theme.fontSizeExtraLarge
+        font.pixelSize: Theme.fontSizeLarge
+    }
+    Item {
+        x: Theme.horizontalPageMargin
+        width: parent.width / 4
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+        //visible: reorder_mode
+        IconButton {
+           id: mvup_btn
+           icon.source: "image://theme/icon-m-up?" + (pressed? Theme.highlightColor: Theme.primaryColor)
+           onClicked: listModel.move( index, index-1, 1 )
+           anchors.left: parent.left
+           anchors.verticalCenter: parent.verticalCenter
+       }
+       IconButton {
+           id: mvdw_btn
+           icon.source: "image://theme/icon-m-down?" + (pressed? Theme.highlightColor: Theme.primaryColor)
+           onClicked: listModel.move( index, index+1, 1 )
+           anchors.left: mvup_btn.right
+           //anchors.margins: Theme.paddingSmall
+           anchors.verticalCenter: parent.verticalCenter
+       }
     }
 }

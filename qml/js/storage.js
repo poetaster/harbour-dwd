@@ -45,9 +45,27 @@ function doInit(db) {
     db.transaction(function(tx) {
         tx.executeSql('CREATE TABLE IF NOT EXISTS locations(\
             location_id INTEGER NOT NULL PRIMARY KEY, name TEXT NOT NULL,\
-            lat REAL NOT NULL, lon REAL NOT NULL)');
+            lat REAL NOT NULL, lon REAL NOT NULL, cindex INTEGER NOT NULL DEFAULT 9999)');
         tx.executeSql('CREATE TABLE IF NOT EXISTS settings(setting TEXT NOT NULL PRIMARY KEY, value TEXT)');
     });
+
+    // update add cindex column if not already there.
+    try {
+        db.transaction(function(tx) {
+            var rs = undefined;
+            rs = tx.executeSql('SELECT * FROM locations WHERE cindex=?;', [0]);
+        });
+    } catch(e) {
+        console.log("cindex query error: '" + e);
+        try {
+            db.transaction(function(tx) {
+            tx.executeSql('ALTER TABLE locations ADD COLUMN cindex INTEGER NOT NULL DEFAULT 9999')
+            });
+        } catch(b) {
+            console.log("alter error in query: '" + b);
+        }
+
+     }
 }
 
 function simpleQuery(query, values, getSelectedCount) {
@@ -102,8 +120,12 @@ function addLocation(locationData) {
     var lat = defaultFor(locationData.lat, 0);
     var lon = defaultFor(locationData.lon, 0);
     var name = defaultFor(locationData.name, null);
+
+    // get the total number and add new with count+1 at end
+    var cindex = getLocationsCount()+1;
+
     //var id =  getLocationsCount() + 100;
-    var res = simpleQuery('INSERT INTO locations VALUES (?,?,?,?);', [, name, lat, lon ]);
+    var res = simpleQuery('INSERT INTO locations VALUES (?,?,?,?,?);', [, name, lat, lon, cindex]);
     if (res !== 0 && !res) {
         console.log("error: failed to save location " + name + " to db");
     }
@@ -113,10 +135,25 @@ function addLocation(locationData) {
 function removeLocation(locationId) {
     var res = simpleQuery('DELETE FROM locations WHERE location_id=?;', [locationId]);
     if (!res) {
+        res=0;
         console.log("error: failed to remove location " + locationId + " from db");
+    } else {
+        console.log("removed location")
     }
+    //return res;
+    //var res = simpleQuery('INSERT INTO locations VALUES (?,?,?,?,?);', [, name, lat, lon, cindex]);
+    //return res;
+}
 
-    return res;
+function updateCindex(name, cindex) {
+    var  res = simpleQuery('UPDATE locations set cindex =? WHERE name=?;', [cindex, name]);
+    if (!res) {
+        res=0;
+        console.log("error: failed to remove location " + name + " from db");
+    } else {
+        console.log("updated cindex on location")
+    }
+    //return res;
 }
 
 function getCoverLocation() {
@@ -177,7 +214,7 @@ function delCoverLocation(locationId) {
     if (!res) {
         console.log("error: failed to remove location " + locationId + " from db");
     }
-    return res;
+    //return res;
 }
 
 function setCoverLocation(locationId) {
@@ -212,7 +249,7 @@ function getLocationsList() {
 
     try {
         db.transaction(function(tx) {
-            var rs = tx.executeSql('SELECT * FROM locations;', []);
+            var rs = tx.executeSql('SELECT * FROM locations ORDER BY cindex ASC;', []);
 
             for (var i = 0; i < rs.rows.length; i++) {
                 res.push(rs.rows.item(i).location_id);
@@ -243,7 +280,7 @@ function getLocationsCount() {
 
 function getLocationData(locationId) {
     var db = getDatabase();
-    var res = {location_id:"",lat:"",lon:"",name:""};
+    var res = {location_id:"",lat:"",lon:"",name:"", cindex:""};
 
     try {
         db.transaction(function(tx) {
@@ -252,7 +289,8 @@ function getLocationData(locationId) {
             if (locationId) {
                 rs = tx.executeSql('SELECT * FROM locations WHERE location_id=?;', [locationId]);
             } else {
-                rs = tx.executeSql('SELECT * FROM locations ORDER BY name ASC;');
+                //rs = tx.executeSql('SELECT * FROM locations ORDER BY name ASC;');
+                rs = tx.executeSql('SELECT * FROM locations ORDER BY cindex ASC;');
             }
 
             for (var i = 0; i < rs.rows.length; i++) {
@@ -260,6 +298,7 @@ function getLocationData(locationId) {
                 res.name = rs.rows.item(i).name;
                 res.lat = rs.rows.item(i).lat;
                 res.lon = rs.rows.item(i).lon;
+                res.cindex = rs.rows.item(i).cindex;
                 /*res.push({
                     locationId: rs.rows.item(i).location_id,
                     lat: rs.rows.item(i).lat,
