@@ -19,17 +19,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="114"/>
+        <location filename="../qml/pages/About.qml" line="126"/>
         <source>Icons by </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="131"/>
+        <location filename="../qml/pages/About.qml" line="143"/>
         <source>Radar courtesy of</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="98"/>
+        <location filename="../qml/pages/About.qml" line="110"/>
         <source>This program is FOSS software licensed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -40,11 +40,16 @@
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="84"/>
+        <source> Version:  1.0.4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="96"/>
         <source> © 2021-2026 Mark Washeim</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="99"/>
+        <location filename="../qml/pages/About.qml" line="111"/>
         <source>GNU General Public License v3.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -78,12 +83,12 @@
 <context>
     <name>LocationSearchPage</name>
     <message>
-        <location filename="../qml/pages/LocationSearchPage.qml" line="94"/>
+        <location filename="../qml/pages/LocationSearchPage.qml" line="92"/>
         <source>Choose Location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/LocationSearchPage.qml" line="98"/>
+        <location filename="../qml/pages/LocationSearchPage.qml" line="96"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
@@ -142,32 +147,32 @@
 <context>
     <name>StartPage</name>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="281"/>
+        <location filename="../qml/pages/StartPage.qml" line="286"/>
         <source>Stored Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="161"/>
+        <location filename="../qml/pages/StartPage.qml" line="166"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="155"/>
+        <location filename="../qml/pages/StartPage.qml" line="160"/>
         <source>Current Conditions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="167"/>
+        <location filename="../qml/pages/StartPage.qml" line="172"/>
         <source>GPS Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="173"/>
+        <location filename="../qml/pages/StartPage.qml" line="178"/>
         <source>Add Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="181"/>
+        <location filename="../qml/pages/StartPage.qml" line="186"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>

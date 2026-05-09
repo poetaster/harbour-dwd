@@ -26,7 +26,7 @@ import "../delegates"
 
 Page {
     property var cities;
-    property var debug;
+    property bool debug: false
 
     id: searchPage
     allowedOrientations: Orientation.Portrait
@@ -37,7 +37,6 @@ Page {
         fetchLocal();
     }
     function fetchLocal(){
-        debug = false;
         Locs.loadJSON("../js/stations.json", function(doc) {
             var response = JSON.parse(doc.responseText);
             listModel.clear();
@@ -51,7 +50,6 @@ Page {
     }
 
     function fetchCities() {
-        debug = false;
         // dynamic search
         // https://api.brightsky.dev/sources?lat=48.944&lon=11.569&max_dist=500000
 

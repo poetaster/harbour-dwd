@@ -24,7 +24,8 @@
 
 function defaultFor(arg, val) { return typeof arg !== 'undefined' ? arg : val; }
 
-var initialized = false
+var initialized = false;
+var debug = false;
 
 function getDatabase() {
     var db = LS.LocalStorage.openDatabaseSync("harbour-dwd", "1.0", "DWD Location Cache", 10000);
@@ -56,13 +57,13 @@ function doInit(db) {
             rs = tx.executeSql('SELECT * FROM locations WHERE cindex=?;', [0]);
         });
     } catch(e) {
-        console.log("cindex query error: '" + e);
+        if (debug) console.log("cindex query error: '" + e);
         try {
             db.transaction(function(tx) {
             tx.executeSql('ALTER TABLE locations ADD COLUMN cindex INTEGER NOT NULL DEFAULT 9999')
             });
         } catch(b) {
-            console.log("alter error in query: '" + b);
+            if (debug) console.log("alter error in query: '" + b);
         }
 
      }
@@ -74,7 +75,7 @@ function simpleQuery(query, values, getSelectedCount) {
     values = defaultFor(values, []);
 
     if (!query) {
-        console.log("error: empty query");
+        if (debug) console.log("error: empty query");
         return undefined;
     }
 
@@ -93,7 +94,7 @@ function simpleQuery(query, values, getSelectedCount) {
             }
         });
     } catch(e) {
-        console.log("error in query: '"+ e +"', values=", values);
+        if (debug) console.log("error in query: '"+ e +"', values=", values);
         res = undefined;
     }
 
@@ -112,7 +113,7 @@ function vacuumDatabase() {
             var rs2 = tx.executeSql("VACUUM;");
         });
     } catch(e) {
-        console.log("error in query: '"+ e);
+        if (debug) console.log("error in query: '"+ e);
     }
 }
 
@@ -127,7 +128,7 @@ function addLocation(locationData) {
     //var id =  getLocationsCount() + 100;
     var res = simpleQuery('INSERT INTO locations VALUES (?,?,?,?,?);', [, name, lat, lon, cindex]);
     if (res !== 0 && !res) {
-        console.log("error: failed to save location " + name + " to db");
+        if (debug) console.log("error: failed to save location " + name + " to db");
     }
     return res;
 }
@@ -136,9 +137,9 @@ function removeLocation(locationId) {
     var res = simpleQuery('DELETE FROM locations WHERE location_id=?;', [locationId]);
     if (!res) {
         res=0;
-        console.log("error: failed to remove location " + locationId + " from db");
+        if (debug) console.log("error: failed to remove location " + locationId + " from db");
     } else {
-        console.log("removed location")
+        if (debug) console.log("removed location")
     }
     //return res;
     //var res = simpleQuery('INSERT INTO locations VALUES (?,?,?,?,?);', [, name, lat, lon, cindex]);
@@ -149,9 +150,9 @@ function updateCindex(name, cindex) {
     var  res = simpleQuery('UPDATE locations set cindex =? WHERE name=?;', [cindex, name]);
     if (!res) {
         res=0;
-        console.log("error: failed to remove location " + name + " from db");
+        if (debug) console.log("error: failed to remove location " + name + " from db");
     } else {
-        console.log("updated cindex on location")
+        if (debug) console.log("updated cindex on location")
     }
     //return res;
 }
@@ -171,7 +172,7 @@ function getCoverLocation() {
             }
         });
     } catch(e) {
-        console.log("error while loading cover location data");
+        if (debug) console.log("error while loading cover location data");
         return 0;
     }
 
@@ -191,7 +192,7 @@ function getNextCoverLocation(locationId) {
 
                 if (rs.rows.length === 0) {
                     res = 0;
-                    console.log("failed to get next cover location: no locations available");
+                    if (debug) console.log("failed to get next cover location: no locations available");
                     return res;
                 }
             }
@@ -199,20 +200,20 @@ function getNextCoverLocation(locationId) {
             res = rs.rows.item(0).location_id;
         });
     } catch(e) {
-        console.log("error while loading next cover location");
+        if (debug) console.log("error while loading next cover location");
         return 0;
     }
 
     return res;
 }
 
-
+// do we need this? we always have one and always replace it when changing location
 function delCoverLocation(locationId) {
     //var res = simpleQuery('DELETE FROM locations WHERE location_id=?;', [locationId]);
-    var res = simpleQuery('DELETE from settings where cover_location=?;', [locationId]);
+    var res = simpleQuery('DELETE from settings where setting="cover_location""=?;', [locationId]);
 
     if (!res) {
-        console.log("error: failed to remove location " + locationId + " from db");
+        if (debug) console.log("error: failed to remove location " + locationId + " from db");
     }
     //return res;
 }
@@ -232,12 +233,12 @@ function setCoverLocation(locationId) {
             }
         });
     } catch(e) {
-        console.log("error in query:", values)
+        if (debug) console.log("error in query:", values)
         res = undefined;
     }
 
     if (res !== 0 && !res) {
-        console.log("error: failed to save cover settings")
+        if (debug) console.log("error: failed to save cover settings")
     }
 
     return res;
@@ -256,7 +257,7 @@ function getLocationsList() {
             }
         });
     } catch(e) {
-        console.log("error while loading locations list")
+        if (debug) console.log("error while loading locations list")
     }
 
     return res;
@@ -272,7 +273,7 @@ function getLocationsCount() {
             res = rs.rows.length;
         });
     } catch(e) {
-        console.log("error while loading locations count")
+        if (debug) console.log("error while loading locations count")
     }
 
     return res;
@@ -308,7 +309,7 @@ function getLocationData(locationId) {
             }
         });
     } catch(e) {
-        console.log("error while loading locations data for " + locationId)
+        if (debug) console.log("error while loading locations data for " + locationId)
         return [];
     }
 

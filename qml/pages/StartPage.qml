@@ -45,7 +45,7 @@ Page {
     property string dDay
     property string dMonth
     property string dYear
-    property bool debug: true
+    property bool debug: false
 
     allowedOrientations: Orientation.Portrait
     anchors.fill: parent
@@ -58,7 +58,6 @@ Page {
     }
 
     function fetchCities() {
-        debug = false;
         var response = Store.getLocationsList();
         listModel.clear();
         if (response.length > 0) {
@@ -73,7 +72,6 @@ Page {
         now = new Date();
     }
     function updateIndex() {
-        debug = true;
         for (var i = 0; i < listModel.count; i++) {
            Store.updateCindex(listModel.get(i).name, i)
         }
@@ -147,7 +145,8 @@ Page {
     onStatusChanged: {
         if (PageStatus.Activating) {
             if (debug) console.debug(listModel.count)
-             fetchCities();
+             fetchCities()
+            reload()
 
         }
        }
