@@ -252,7 +252,7 @@ Page {
         SilicaListView {
             header: PageHeader {
                 id: vDate
-                title: name + ": \n" + now.toLocaleString().split(now.getFullYear())[0].slice(0,-2)
+                title: name + ": \n" + now.toLocaleString().split(now.getFullYear())[0].slice(0,-1)
             }
             highlightFollowsCurrentItem: true
 
