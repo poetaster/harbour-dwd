@@ -115,8 +115,8 @@ Page {
         var dYear = now.getFullYear() ;
 
         //headerDate = now.toLocaleString().split(dYear)[0];
-        var headerDay = Locs.addDays(now, 9).toLocaleString(locale, "dd/MM");
-        headerDate = now.toLocaleString(locale, "dd/MM - ") + headerDay;
+        var headerDay = Locs.addDays(now, 9).toLocaleString(locale, "dd MMM");
+        headerDate = now.toLocaleString(locale, "dd MMM - ") + headerDay;
 
         weather = new Array;
         for (var j = 0; j < 10; j++) {
@@ -272,7 +272,8 @@ Page {
 
             header: PageHeader {
                 id: vDate
-                title: name + ": \n" + now.toLocaleString().split(now.getFullYear())[0].slice(0,-1)
+                title: name + ": \n" +  headerDate
+                       //now.toLocaleString().split(now.getFullYear())[0].slice(0,-1)
             }
             id: listView
             model:   ListModel {
