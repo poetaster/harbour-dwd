@@ -19,11 +19,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="84"/>
-        <source> Version:  1.0.5</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/About.qml" line="126"/>
         <source>Icons by </source>
         <translation type="unfinished"></translation>
@@ -41,6 +36,11 @@
     <message>
         <location filename="../qml/pages/About.qml" line="16"/>
         <source>About DWD client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="84"/>
+        <source> Version:  1.0.6</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -147,33 +147,38 @@
 <context>
     <name>StartPage</name>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="286"/>
+        <location filename="../qml/pages/StartPage.qml" line="290"/>
         <source>Stored Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="166"/>
+        <location filename="../qml/pages/StartPage.qml" line="168"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="160"/>
+        <location filename="../qml/pages/StartPage.qml" line="162"/>
         <source>Current Conditions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="172"/>
+        <location filename="../qml/pages/StartPage.qml" line="174"/>
         <source>GPS Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="178"/>
+        <location filename="../qml/pages/StartPage.qml" line="180"/>
         <source>Add Locations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/StartPage.qml" line="186"/>
+        <location filename="../qml/pages/StartPage.qml" line="188"/>
         <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/StartPage.qml" line="192"/>
+        <source>Reorder</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

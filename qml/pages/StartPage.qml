@@ -47,6 +47,8 @@ Page {
     property string dYear
     property bool debug: false
 
+    property bool reorderMode:false
+
     allowedOrientations: Orientation.Portrait
     anchors.fill: parent
 
@@ -184,9 +186,11 @@ Page {
         PushUpMenu {
             MenuItem {
                 text: qsTr("Refresh")
-                onClicked: {
-                    startPage.fetchCities();
-                }
+                onClicked: { startPage.fetchCities(); }
+            }
+            MenuItem {
+                text: qsTr("Reorder")
+                onClicked: { reorderMode = !reorderMode }
             }
 
         }

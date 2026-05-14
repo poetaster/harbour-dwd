@@ -66,6 +66,7 @@ ListItem {
         anchors.verticalCenter: parent.verticalCenter
         //visible: reorder_mode
         IconButton {
+           visible: reorderMode
            id: mvup_btn
            icon.source: "image://theme/icon-m-up?" + (pressed? Theme.highlightColor: Theme.primaryColor)
            onClicked: listModel.move( index, index-1, 1 )
@@ -74,6 +75,7 @@ ListItem {
        }
        IconButton {
            id: mvdw_btn
+           visible: reorderMode
            icon.source: "image://theme/icon-m-down?" + (pressed? Theme.highlightColor: Theme.primaryColor)
            onClicked: listModel.move( index, index+1, 1 )
            anchors.left: mvup_btn.right

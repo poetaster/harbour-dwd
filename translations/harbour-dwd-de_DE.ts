@@ -171,5 +171,10 @@
         <source>Refresh</source>
         <translation type="unfinished">Daten aktualisieren</translation>
     </message>
+    <message>
+        <location filename="../qml/pages/StartPage.qml" line="192"/>
+        <source>Reorder</source>
+        <translation>Umordnen</translation>
+    </message>
 </context>
 </TS>
