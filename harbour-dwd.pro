@@ -16,6 +16,7 @@ CONFIG += sailfishapp_qml
 
 DISTFILES += \
     qml/cover/CoverPage.qml \
+    qml/html/librewxr.html \
     qml/html/rainviewer.html \
     qml/pages/About.qml \
     qml/pages/RadarViewQml.qml \

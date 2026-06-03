@@ -107,7 +107,8 @@
 var TILE_SIZE = window.devicePixelRatio >= 2 ? 512 : 256;
 var RADAR_OPACITY = 0.8;
 var ANIMATION_DELAY_MS = 500;
-var API_URL = "https://api.rainviewer.com/public/weather-maps.json";
+//var API_URL = "https://api.rainviewer.com/public/weather-maps.json";
+var API_URL = "https://api.librewxr.net/public/weather-maps.json";
 
 // === STATE ===
 var apiData = {};
@@ -251,7 +252,7 @@ function initialize(api) {
         return;
     }
 
-    mapFrames = api.radar.past;
+    mapFrames = api.radar;
     showFrame(mapFrames.length - 1);
 }
 
