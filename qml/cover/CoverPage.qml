@@ -82,7 +82,7 @@ CoverBackground {
 
                     var cond =  response.weather[index].condition ;
                     var icon =  Locs.mapIcon(response.weather[index].icon,hourly.rain,response.weather[index].condition) ;
-                    iconLabel.text =  Locs.mapIcon(response.weather[index].icon,rain,response.weather[index].condition) ;
+                    //iconLabel.text =  Locs.mapIcon(response.weather[index].icon,rain,response.weather[index].condition) ;
 
                     var wind  = Locs.localNum(response.weather[index].wind_speed);
                     windLabel.text  = "\uf050  " + Locs.localNum( response.weather[i].wind_speed)  + " km/h";
@@ -109,6 +109,7 @@ CoverBackground {
         Component.onCompleted: reload();
 
         Label {
+            id: placeName
             font.family: localFont.name
             text: name
             width: parent.width
@@ -117,39 +118,16 @@ CoverBackground {
             color: Theme.primaryColor
             horizontalAlignment: "AlignHCenter"
             verticalAlignment: "AlignVCenter"
-            topPadding: 48
+            topPadding: 38
         }
 
         Label {
             font.family: localFont.name
             id:tempLabel
+            topPadding: 3
             width: parent.width
             wrapMode: Text.WordWrap
-            font.pixelSize: Theme.fontSizeLarge
-            color: Theme.highlightColor
-            horizontalAlignment: "AlignHCenter"
-            verticalAlignment: "AlignVCenter"
-        }
-
-        Label {
-            font.family: localFont.name
-            id:iconLabel
-            //topPadding: 24
-            //bottomPadding: 24
-            width: parent.width
-            wrapMode: Text.WordWrap
-            font.pixelSize: Theme.fontSizeExtraLarge + 24
-            color: Theme.highlightColor
-            horizontalAlignment: "AlignHCenter"
-            verticalAlignment: "AlignVCenter"
-        }
-        Label {
-            font.family: localFont.name
-            id:rainLabel
-            topPadding: 4
-            width: parent.width
-            wrapMode: Text.WordWrap
-            font.pixelSize: Theme.fontSizeExtraSmall
+            font.pixelSize: Theme.fontSizeMedium
             color: Theme.highlightColor
             horizontalAlignment: "AlignHCenter"
             verticalAlignment: "AlignVCenter"
@@ -157,10 +135,21 @@ CoverBackground {
         Label {
             font.family: localFont.name
             id:cloudLabel
-            topPadding: 4
+            topPadding: 3
             width: parent.width
             wrapMode: Text.WordWrap
-            font.pixelSize: Theme.fontSizeExtraSmall
+            font.pixelSize: Theme.fontSizeSmall
+            color: Theme.highlightColor
+            horizontalAlignment: "AlignHCenter"
+            verticalAlignment: "AlignVCenter"
+        }
+        Label {
+            font.family: localFont.name
+            id:rainLabel
+            topPadding: 3
+            width: parent.width
+            wrapMode: Text.WordWrap
+            font.pixelSize: Theme.fontSizeSmall
             color: Theme.highlightColor
             horizontalAlignment: "AlignHCenter"
             verticalAlignment: "AlignVCenter"
@@ -168,13 +157,18 @@ CoverBackground {
         Label {
             font.family: localFont.name
             id:windLabel
-            topPadding: 4
+            topPadding: 3
             width: parent.width
             wrapMode: Text.WordWrap
-            font.pixelSize: Theme.fontSizeExtraSmall
+            font.pixelSize: Theme.fontSizeSmall
             color: Theme.highlightColor
             horizontalAlignment: "AlignHCenter"
             verticalAlignment: "AlignVCenter"
+        }
+        Label {
+            id:spacer
+            topPadding: 3
+            width: parent.width
         }
 
     }

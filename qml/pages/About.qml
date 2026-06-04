@@ -81,7 +81,7 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.secondaryColor
-            text:  qsTr(" Version:  1.0.7")
+            text:  qsTr(" Version:  1.0.8")
         }
         Item {
             width: parent.width
@@ -140,7 +140,7 @@ Page {
             color: Theme.primaryColor
             textFormat: Text.StyledText
             linkColor: Theme.highlightColor
-            text: qsTr("Radar courtesy of") + " <a href=\"https://www.rainviewer.com\">rainviewer.com</a>"
+            text: qsTr("Radar courtesy of") + " <a href=\"https://librewxr.net/\">LibreWXR</a>"
             onLinkActivated: {
                 Qt.openUrlExternally(link)
             }

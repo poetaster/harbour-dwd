@@ -57,17 +57,17 @@
 <context>
     <name>DailyDetails</name>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="224"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="227"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="231"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="234"/>
         <source>Rain Radar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/DailyDetails.qml" line="240"/>
+        <location filename="../qml/pages/DailyDetails.qml" line="243"/>
         <source>Next</source>
         <translation type="unfinished"></translation>
     </message>

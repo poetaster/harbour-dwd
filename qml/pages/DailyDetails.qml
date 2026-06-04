@@ -37,6 +37,7 @@ Page {
     property var weather
     property string dailyDate
     property string headerDate
+    property string hDate
     property string weatherDetails
     property var index
     property var locale: Qt.locale()
@@ -115,6 +116,8 @@ Page {
         }
         if (debug) console.debug("now: " + now);
         // console.debug(now.toLocaleDateString('de-DE', {timezone: 'long', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}));
+
+        hDate = now.toLocaleString().split( now.getFullYear() )[0].slice(0,-1)
 
         //var time = new Date();
         //if (debug) console.debug(time.toTimeString(Locale.LongFormat).split(':')[0] ) ;
@@ -252,7 +255,7 @@ Page {
         SilicaListView {
             header: PageHeader {
                 id: vDate
-                title: name + ": \n" + now.toLocaleString().split(now.getFullYear())[0].slice(0,-1)
+                title: name + ": \n" + hDate //now.toLocaleString().split( now.getFullYear() )[0].slice(0,-1)
             }
             highlightFollowsCurrentItem: true
 
