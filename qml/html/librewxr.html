@@ -1111,6 +1111,9 @@ function loadApiData() {
     stopAnimation();
     document.getElementById('timestampDisplay').textContent = 'Loading...';
 
+    delete window.document.referrer;
+    window.document.__defineGetter__('referrer', function () { return "poetaster.de"; });
+
     var xhr = new XMLHttpRequest();
     xhr.open('GET', getApiUrl(), true);
     xhr.onload = function() {

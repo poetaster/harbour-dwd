@@ -19,11 +19,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="84"/>
-        <source> Version:  1.0.7</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/About.qml" line="126"/>
         <source>Icons by </source>
         <translation type="unfinished"></translation>
@@ -41,6 +36,11 @@
     <message>
         <location filename="../qml/pages/About.qml" line="16"/>
         <source>About DWD client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="84"/>
+        <source> Version:  1.0.8</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
