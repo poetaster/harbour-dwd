@@ -90,7 +90,7 @@ Page {
                 WebEngineSettings.setPreference("security.fileuri.strict_origin_policy", false, WebEngineSettings.BoolPref)
             }
 
-            url: Qt.resolvedUrl("../html/librewxr.html")
+            url: Qt.resolvedUrl("https://poetaster.de/dwd/librewxr.html")
 
             onViewInitialized: {
                 webview.loadFrameScript(Qt.resolvedUrl("../html/framescript.js"));

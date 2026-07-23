@@ -4,6 +4,11 @@
 <context>
     <name>About</name>
     <message>
+        <location filename="../qml/pages/About.qml" line="16"/>
+        <source>About DWD client</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/About.qml" line="45"/>
         <source>A simple consumer of the</source>
         <translation type="unfinished"></translation>
@@ -19,28 +24,8 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="126"/>
-        <source>Icons by </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/About.qml" line="143"/>
-        <source>Radar courtesy of</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/About.qml" line="110"/>
-        <source>This program is FOSS software licensed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/About.qml" line="16"/>
-        <source>About DWD client</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../qml/pages/About.qml" line="84"/>
-        <source> Version:  1.0.8</source>
+        <source> Version:  1.0.9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -49,8 +34,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/About.qml" line="110"/>
+        <source>This program is FOSS software licensed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/About.qml" line="111"/>
         <source>GNU General Public License v3.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="126"/>
+        <source>Icons by </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/About.qml" line="143"/>
+        <source>Radar courtesy of</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
