@@ -67,7 +67,7 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.secondaryColor
-            text: qsTr("Version: 1.1.0")
+            text: qsTr("Version: 1.1.1")
         }
         Item {
             width: parent.width
