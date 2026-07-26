@@ -35,28 +35,14 @@ Page {
             height: Theme.paddingLarge
         }
 
-        Label {
+        LinkedLabel {
             width: parent.width
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeMedium
             color: Theme.primaryColor
             textFormat: Text.StyledText
             linkColor: Theme.highlightColor
-            text: qsTr("A simple consumer of the") + "\n" +
-                       "<a href=\"https://brightsky.dev\">brightsky.dev</a> view"
-            onLinkActivated: {
-                Qt.openUrlExternally(link)
-            }
-        }
-        Label {
-            id: dwdLabel
-            width: parent.width
-            horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: Theme.fontSizeMedium
-            color: Theme.primaryColor
-            textFormat: Text.StyledText
-            linkColor: Theme.highlightColor
-            text: qsTr("of the ") + "<a href=\"https://dwd.de\">" + qsTr("German Weather Service") + "</a>"
+            text: qsTr("A simple consumer of the <a href=\"https://brightsky.dev\">brightsky.dev</a> view of the <a href=\"https://dwd.de\">German Weather Service</a>")
             onLinkActivated: {
                 Qt.openUrlExternally(link)
             }
@@ -81,7 +67,7 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.secondaryColor
-            text:  qsTr(" Version:  1.0.9")
+            text: qsTr("Version: 1.1.0")
         }
         Item {
             width: parent.width
@@ -93,7 +79,7 @@ Page {
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeExtraSmall
             color: Theme.secondaryColor
-            text:  qsTr(" © 2021-2026 Mark Washeim")
+            text: qsTr("© 2021-2026 Mark Washeim")
         }
 
         Item {

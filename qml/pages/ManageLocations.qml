@@ -202,8 +202,8 @@ Page {
             Label {
                 id: posText
                 font.bold: true
-                padding:Theme.paddingLarge
-                text: "Longitude: "+ coord.longitude + "\n" + "Latitude: " + coord.latitude
+                padding: Theme.paddingLarge
+                text: qsTr("Longitude: %1\nLatitude: %2").arg(coord.longitude).arg(coord.latitude)
             }
 
             Item {
@@ -255,7 +255,7 @@ Page {
 
             Button {
                 id: locateButton
-                text: "Locate & update"
+                text: qsTr("Locate & update")
                 anchors.left : column.horizontalCenter
                 visible: true
                 onClicked: {
@@ -303,7 +303,9 @@ Page {
         Text {id: sourceText; color: "white"; font.bold: true;
             anchors.top: locateButton.bottom
             anchors.left: locateButton.left
-            text: "Source: " + printableMethod(positionSource.supportedPositioningMethods); style: Text.Raised; styleColor: "black";
+            text: qsTr("Source: %1").arg(printableMethod(positionSource.supportedPositioningMethods))
+            style: Text.Raised
+            styleColor: "black"
             visible: false
         }
 

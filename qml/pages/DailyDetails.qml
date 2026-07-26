@@ -240,7 +240,7 @@ Page {
         }
         PushUpMenu {
             MenuItem {
-                text: qsTr("Next")
+                text: qsTr("Next day")
                 onClicked: {
                     now = Locs.addDays(now, 1);
                     if (debug) console.debug(now);
