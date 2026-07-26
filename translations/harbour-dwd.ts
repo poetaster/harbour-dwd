@@ -10,46 +10,36 @@
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="45"/>
-        <source>A simple consumer of the</source>
+        <source>A simple consumer of the &lt;a href=&quot;https://brightsky.dev&quot;&gt;brightsky.dev&lt;/a&gt; view of the &lt;a href=&quot;https://dwd.de&quot;&gt;German Weather Service&lt;/a&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="59"/>
-        <source>of the </source>
+        <location filename="../qml/pages/About.qml" line="70"/>
+        <source>Version: 1.1.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="59"/>
-        <source>German Weather Service</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/About.qml" line="84"/>
-        <source> Version:  1.0.9</source>
+        <location filename="../qml/pages/About.qml" line="82"/>
+        <source>© 2021-2026 Mark Washeim</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/pages/About.qml" line="96"/>
-        <source> © 2021-2026 Mark Washeim</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/About.qml" line="110"/>
         <source>This program is FOSS software licensed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="111"/>
+        <location filename="../qml/pages/About.qml" line="97"/>
         <source>GNU General Public License v3.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="126"/>
+        <location filename="../qml/pages/About.qml" line="112"/>
         <source>Icons by </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="143"/>
+        <location filename="../qml/pages/About.qml" line="129"/>
         <source>Radar courtesy of</source>
         <translation type="unfinished"></translation>
     </message>
@@ -68,7 +58,7 @@
     </message>
     <message>
         <location filename="../qml/pages/DailyDetails.qml" line="243"/>
-        <source>Next</source>
+        <source>Next day</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -116,8 +106,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/ManageLocations.qml" line="206"/>
+        <source>Longitude: %1
+Latitude: %2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/ManageLocations.qml" line="232"/>
         <source> meters</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ManageLocations.qml" line="258"/>
+        <source>Locate &amp; update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -128,6 +129,11 @@
     <message>
         <location filename="../qml/pages/ManageLocations.qml" line="288"/>
         <source>Retrieving update...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ManageLocations.qml" line="306"/>
+        <source>Source: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
